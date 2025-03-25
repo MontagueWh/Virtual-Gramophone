@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Fries and Seagull/Bar 02/BRP Sample Scene.unity
     guid: ab87d11da6d96f843bfe3ecf6b8a89ba
   m_configObjects:
