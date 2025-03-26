@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Fries and Seagull/Bar 02/BRP Sample Scene.unity
-    guid: ab87d11da6d96f843bfe3ecf6b8a89ba
+  - enabled: 1
+    path: Assets/Scenes/Free Set.unity
+    guid: 659b40b9cdd999e4a9869157fbe48321
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
