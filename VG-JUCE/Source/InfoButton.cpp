@@ -13,8 +13,8 @@ InfoButton::InfoButton (juce::Colour colour)
 
     std::string info_string = "";
     info_string += ProjectInfo::companyName + std::string (" ") + ProjectInfo::projectName + std::string (" version ") + ProjectInfo::versionString + std::string ("\n\n");
-    info_string += std::string ("Copyright (C) Martin Eriksson, \nSource code licenced under MIT license\n\n");
-    info_string += std::string ("Check out my other projects at ") + JucePlugin_ManufacturerWebsite + std::string ("\n");
+    info_string += std::string ("by Montague Whishaw\n\n");
+    info_string += std::string ("Check out my other projects at https://github.com/MontagueWh");
 
     info_text.setText (info_string, juce::dontSendNotification);
 }

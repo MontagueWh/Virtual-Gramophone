@@ -4,6 +4,693 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
   <MAINGROUP id="ri06i3" name="VG-JUCE">
     <GROUP id="{C6B7CFA8-4DDD-C98A-6124-311CC2B0A917}" name="Source">
+      <GROUP id="{8E29E749-9B61-C426-6920-A04B20172B8D}" name="The Synthesis Tookit">
+        <GROUP id="{1CD9A7EF-1EEF-70CB-7E00-0BDCEC101B8B}" name="bin">
+          <FILE id="Nwat8I" name="treesed" compile="0" resource="1" file="Source/The Synthesis Tookit/bin/treesed"/>
+        </GROUP>
+        <GROUP id="{0E6164A2-5468-8876-45CD-EF8FF8C33798}" name="cmake">
+          <FILE id="mXKp74" name="FindCoreAudio.cmake" compile="0" resource="1"
+                file="Source/The Synthesis Tookit/cmake/FindCoreAudio.cmake"/>
+        </GROUP>
+        <GROUP id="{7FA7753B-D0DF-BAC0-2632-F44D25F2AB5B}" name="config">
+          <FILE id="XJPvpM" name="config.guess" compile="0" resource="1" file="Source/The Synthesis Tookit/config/config.guess"/>
+          <FILE id="WEQBWE" name="config.sub" compile="0" resource="1" file="Source/The Synthesis Tookit/config/config.sub"/>
+          <FILE id="txzCIG" name="install.sh" compile="0" resource="1" file="Source/The Synthesis Tookit/config/install.sh"/>
+        </GROUP>
+        <GROUP id="{EB540F00-9D25-5AA3-C56C-CC0E60468641}" name="doc">
+          <GROUP id="{A75AE8EF-44CC-F447-B207-86C5DD4B790E}" name="doxygen">
+            <GROUP id="{367D9A75-94E4-811B-9B45-214D489E8130}" name="images">
+              <FILE id="zkwuCW" name="ccrma.gif" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/images/ccrma.gif"/>
+              <FILE id="RpIIpB" name="mcgill.gif" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/images/mcgill.gif"/>
+              <FILE id="P6GqGx" name="princeton.gif" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/images/princeton.gif"/>
+            </GROUP>
+            <FILE id="SeyS4C" name="classes.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/classes.txt"/>
+            <FILE id="XEUNG0" name="compile.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/compile.txt"/>
+            <FILE id="tpXAFD" name="control.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/control.txt"/>
+            <FILE id="QIKfzq" name="crealtime.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/crealtime.txt"/>
+            <FILE id="tR0Yhw" name="download.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/download.txt"/>
+            <FILE id="IzDOUw" name="Doxyfile" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/Doxyfile"/>
+            <FILE id="VDty27" name="faq.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/faq.txt"/>
+            <FILE id="ja8aJ5" name="filtering.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/filtering.txt"/>
+            <FILE id="IknbqS" name="footer.html" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/footer.html"/>
+            <FILE id="xh1oVi" name="fundamentals.txt" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/doc/doxygen/fundamentals.txt"/>
+            <FILE id="rbFUHj" name="header.html" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/header.html"/>
+            <FILE id="Rbp7E1" name="header.tex" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/header.tex"/>
+            <FILE id="efpCXi" name="hello.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/hello.txt"/>
+            <FILE id="uftmQX" name="index.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/index.txt"/>
+            <FILE id="WUgW2Q" name="information.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/information.txt"/>
+            <FILE id="sOsYMm" name="instruments.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/instruments.txt"/>
+            <FILE id="rY5oZd" name="links.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/links.txt"/>
+            <FILE id="WLcfb8" name="maillist.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/maillist.txt"/>
+            <FILE id="y63pVj" name="multichannel.txt" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/doc/doxygen/multichannel.txt"/>
+            <FILE id="tytwc9" name="polyvoices.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/polyvoices.txt"/>
+            <FILE id="rkRHS1" name="realtime.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/realtime.txt"/>
+            <FILE id="IDNqB2" name="skini.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/skini.txt"/>
+            <FILE id="KdkoRm" name="system.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/system.txt"/>
+            <FILE id="btWfOW" name="tutorial.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/tutorial.txt"/>
+            <FILE id="QnuaJq" name="usage.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/doxygen/usage.txt"/>
+          </GROUP>
+          <GROUP id="{AECCE2A9-2E2D-B961-E6F9-D855C5A4596D}" name="html">
+            <FILE id="yIQeuh" name="ccrma.gif" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/html/ccrma.gif"/>
+            <FILE id="twXAr7" name="mcgill.gif" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/html/mcgill.gif"/>
+            <FILE id="xBH6wJ" name="princeton.gif" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/html/princeton.gif"/>
+          </GROUP>
+          <FILE id="tuGMos" name="hierarchy.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/hierarchy.txt"/>
+          <FILE id="iyopSw" name="README-Linux.txt" compile="0" resource="1"
+                file="Source/The Synthesis Tookit/doc/README-Linux.txt"/>
+          <FILE id="u2lNkN" name="README-MacOSX.txt" compile="0" resource="1"
+                file="Source/The Synthesis Tookit/doc/README-MacOSX.txt"/>
+          <FILE id="iEBmo4" name="README-SGI.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/README-SGI.txt"/>
+          <FILE id="ECcu5U" name="README-Win.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/README-Win.txt"/>
+          <FILE id="LRvpPk" name="ReleaseNotes.txt" compile="0" resource="1"
+                file="Source/The Synthesis Tookit/doc/ReleaseNotes.txt"/>
+          <FILE id="NyNpDI" name="SKINI.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/SKINI.txt"/>
+          <FILE id="f2whiL" name="treesed.html" compile="0" resource="1" file="Source/The Synthesis Tookit/doc/treesed.html"/>
+        </GROUP>
+        <GROUP id="{CF923284-191D-9589-BAB1-12805520CA15}" name="include">
+          <FILE id="sXSkgf" name="ADSR.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/ADSR.h"/>
+          <FILE id="NuvdLy" name="Asymp.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Asymp.h"/>
+          <FILE id="RKZ0gK" name="BandedWG.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/BandedWG.h"/>
+          <FILE id="pbrEni" name="BeeThree.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/BeeThree.h"/>
+          <FILE id="kCIC0O" name="BiQuad.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/BiQuad.h"/>
+          <FILE id="Os6NOg" name="Blit.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Blit.h"/>
+          <FILE id="FahHOX" name="BlitSaw.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/BlitSaw.h"/>
+          <FILE id="HvbGV7" name="BlitSquare.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/BlitSquare.h"/>
+          <FILE id="pOnYD0" name="BlowBotl.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/BlowBotl.h"/>
+          <FILE id="fOvsWB" name="BlowHole.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/BlowHole.h"/>
+          <FILE id="SoOqBg" name="Bowed.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Bowed.h"/>
+          <FILE id="FO7mm9" name="BowTable.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/BowTable.h"/>
+          <FILE id="CKiAqY" name="Brass.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Brass.h"/>
+          <FILE id="n1y4d2" name="Chorus.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Chorus.h"/>
+          <FILE id="NdIzKZ" name="Clarinet.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Clarinet.h"/>
+          <FILE id="pdVUKy" name="Cubic.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Cubic.h"/>
+          <FILE id="rqSCKG" name="Delay.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Delay.h"/>
+          <FILE id="GAm8X4" name="DelayA.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/DelayA.h"/>
+          <FILE id="IkJpeT" name="DelayL.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/DelayL.h"/>
+          <FILE id="ClLVE7" name="Drummer.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Drummer.h"/>
+          <FILE id="voNbBF" name="Echo.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Echo.h"/>
+          <FILE id="nnQcnI" name="Effect.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Effect.h"/>
+          <FILE id="EG7EhC" name="Envelope.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Envelope.h"/>
+          <FILE id="FD3l0H" name="FileLoop.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/FileLoop.h"/>
+          <FILE id="Tn1y7E" name="FileRead.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/FileRead.h"/>
+          <FILE id="MijZQ7" name="FileWrite.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/FileWrite.h"/>
+          <FILE id="gKZr0W" name="FileWvIn.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/FileWvIn.h"/>
+          <FILE id="zIOkuN" name="FileWvOut.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/FileWvOut.h"/>
+          <FILE id="HmQ2qc" name="Filter.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Filter.h"/>
+          <FILE id="asUMG5" name="Fir.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Fir.h"/>
+          <FILE id="rZgFBx" name="Flute.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Flute.h"/>
+          <FILE id="jcG4Jd" name="FM.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/FM.h"/>
+          <FILE id="iibIx6" name="FMVoices.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/FMVoices.h"/>
+          <FILE id="AiLU6u" name="FormSwep.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/FormSwep.h"/>
+          <FILE id="e02ogv" name="FreeVerb.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/FreeVerb.h"/>
+          <FILE id="RuSGHH" name="Function.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Function.h"/>
+          <FILE id="eGU569" name="Generator.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Generator.h"/>
+          <FILE id="pmwnIo" name="Granulate.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Granulate.h"/>
+          <FILE id="qw5ior" name="Guitar.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Guitar.h"/>
+          <FILE id="qwTWPS" name="HevyMetl.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/HevyMetl.h"/>
+          <FILE id="Rdmb54" name="Iir.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Iir.h"/>
+          <FILE id="PwKDFi" name="InetWvIn.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/InetWvIn.h"/>
+          <FILE id="NQdr7K" name="InetWvOut.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/InetWvOut.h"/>
+          <FILE id="Mpm4ly" name="Instrmnt.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Instrmnt.h"/>
+          <FILE id="u3CarW" name="JCRev.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/JCRev.h"/>
+          <FILE id="HrIWG4" name="JetTable.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/JetTable.h"/>
+          <FILE id="to84vK" name="LentPitShift.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/LentPitShift.h"/>
+          <FILE id="xEkmox" name="Mandolin.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Mandolin.h"/>
+          <FILE id="gdIQ6Q" name="Mesh2D.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Mesh2D.h"/>
+          <FILE id="MKpan1" name="Messager.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Messager.h"/>
+          <FILE id="zQcKY3" name="MidiFileIn.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/MidiFileIn.h"/>
+          <FILE id="rcXkio" name="Modal.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Modal.h"/>
+          <FILE id="XVOWmY" name="ModalBar.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/ModalBar.h"/>
+          <FILE id="DfvWBb" name="Modulate.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Modulate.h"/>
+          <FILE id="MGcQ66" name="Moog.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Moog.h"/>
+          <FILE id="tsxYX7" name="Mutex.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Mutex.h"/>
+          <FILE id="m1RBz1" name="Noise.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Noise.h"/>
+          <FILE id="rSSOYM" name="NRev.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/NRev.h"/>
+          <FILE id="fN4QPL" name="OnePole.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/OnePole.h"/>
+          <FILE id="TljAdK" name="OneZero.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/OneZero.h"/>
+          <FILE id="jPaZSd" name="PercFlut.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/PercFlut.h"/>
+          <FILE id="ZOLsPy" name="Phonemes.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Phonemes.h"/>
+          <FILE id="SsfBhG" name="PitShift.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/PitShift.h"/>
+          <FILE id="irAYNJ" name="Plucked.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Plucked.h"/>
+          <FILE id="eEdYhm" name="PoleZero.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/PoleZero.h"/>
+          <FILE id="Bfc2Q1" name="PRCRev.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/PRCRev.h"/>
+          <FILE id="Sf98iP" name="Recorder.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Recorder.h"/>
+          <FILE id="pHlQJU" name="ReedTable.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/ReedTable.h"/>
+          <FILE id="eGIa3V" name="Resonate.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Resonate.h"/>
+          <FILE id="OVTClw" name="Rhodey.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Rhodey.h"/>
+          <FILE id="mI7nDR" name="RtAudio.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/RtAudio.h"/>
+          <FILE id="MIuW9M" name="RtMidi.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/RtMidi.h"/>
+          <FILE id="tDAtza" name="RtWvIn.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/RtWvIn.h"/>
+          <FILE id="MXc8Kl" name="RtWvOut.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/RtWvOut.h"/>
+          <FILE id="TpnSXP" name="Sampler.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Sampler.h"/>
+          <FILE id="o86vZR" name="Saxofony.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Saxofony.h"/>
+          <FILE id="KBiWAz" name="Shakers.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Shakers.h"/>
+          <FILE id="prvbsb" name="Simple.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Simple.h"/>
+          <FILE id="PaHDwB" name="SineWave.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/SineWave.h"/>
+          <FILE id="VrgUXz" name="SingWave.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/SingWave.h"/>
+          <FILE id="qSUJsJ" name="Sitar.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Sitar.h"/>
+          <FILE id="sevRnO" name="Skini.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Skini.h"/>
+          <FILE id="DWSOzo" name="SKINImsg.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/SKINImsg.h"/>
+          <FILE id="dCAU2j" name="SKINItbl.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/SKINItbl.h"/>
+          <FILE id="KhialG" name="Socket.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Socket.h"/>
+          <FILE id="OWJfja" name="Sphere.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Sphere.h"/>
+          <FILE id="Ibpy7k" name="StifKarp.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/StifKarp.h"/>
+          <FILE id="GDF3vC" name="Stk.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Stk.h"/>
+          <FILE id="ZEpJjC" name="TapDelay.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/TapDelay.h"/>
+          <FILE id="D7tArO" name="TcpClient.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/TcpClient.h"/>
+          <FILE id="kNoHw5" name="TcpServer.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/TcpServer.h"/>
+          <FILE id="b2LGqM" name="Thread.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Thread.h"/>
+          <FILE id="RK6Aes" name="TubeBell.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/TubeBell.h"/>
+          <FILE id="DkFDUq" name="Twang.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Twang.h"/>
+          <FILE id="wIgdEH" name="TwoPole.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/TwoPole.h"/>
+          <FILE id="ecWxjl" name="TwoZero.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/TwoZero.h"/>
+          <FILE id="NSKdNd" name="UdpSocket.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/UdpSocket.h"/>
+          <FILE id="uMozWX" name="Vector3D.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Vector3D.h"/>
+          <FILE id="plbqAJ" name="Voicer.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Voicer.h"/>
+          <FILE id="soiUuf" name="VoicForm.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/VoicForm.h"/>
+          <FILE id="KRDxN9" name="Whistle.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Whistle.h"/>
+          <FILE id="aSx6va" name="Wurley.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/Wurley.h"/>
+          <FILE id="H6sGgB" name="WvIn.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/WvIn.h"/>
+          <FILE id="pZNw7I" name="WvOut.h" compile="0" resource="0" file="Source/The Synthesis Tookit/include/WvOut.h"/>
+        </GROUP>
+        <GROUP id="{0DD01628-3616-C878-77FD-5C05F67090F5}" name="iOS">
+          <GROUP id="{EBF95013-625E-E4BE-9B0B-955A28AFDC49}" name="demo">
+            <GROUP id="{05647E13-24B4-22C9-EF0C-9E107A83336D}" name="iOS Demo">
+              <GROUP id="{D26969A5-B52D-F788-6A00-2AD3124B8171}" name="en.lproj">
+                <FILE id="UrxAQb" name="InfoPlist.strings" compile="0" resource="1"
+                      file="Source/The Synthesis Tookit/iOS/demo/iOS Demo/en.lproj/InfoPlist.strings"/>
+              </GROUP>
+              <GROUP id="{2F93C2CD-C661-7DA8-AFEA-B9DDE7E67678}" name="Images.xcassets">
+                <GROUP id="{37D37C2D-ADA2-795E-8914-FC41DB365606}" name="AppIcon.appiconset">
+                  <FILE id="lWM9qY" name="Contents.json" compile="0" resource="1" file="Source/The Synthesis Tookit/iOS/demo/iOS Demo/Images.xcassets/AppIcon.appiconset/Contents.json"/>
+                </GROUP>
+                <GROUP id="{A6D89363-27B7-7AA7-3315-804D20E8F6B2}" name="LaunchImage.launchimage">
+                  <FILE id="WYGvjP" name="Contents.json" compile="0" resource="1" file="Source/The Synthesis Tookit/iOS/demo/iOS Demo/Images.xcassets/LaunchImage.launchimage/Contents.json"/>
+                </GROUP>
+              </GROUP>
+              <FILE id="olC2xJ" name="AppDelegate.h" compile="0" resource="0" file="Source/The Synthesis Tookit/iOS/demo/iOS Demo/AppDelegate.h"/>
+              <FILE id="pC7qbk" name="AppDelegate.m" compile="1" resource="0" file="Source/The Synthesis Tookit/iOS/demo/iOS Demo/AppDelegate.m"/>
+              <FILE id="YoFsXD" name="iOS Demo-Info.plist" compile="0" resource="1"
+                    file="Source/The Synthesis Tookit/iOS/demo/iOS Demo/iOS Demo-Info.plist"/>
+              <FILE id="HqNaG5" name="iOS Demo-Prefix.pch" compile="0" resource="1"
+                    file="Source/The Synthesis Tookit/iOS/demo/iOS Demo/iOS Demo-Prefix.pch"/>
+              <FILE id="UKThyG" name="main.m" compile="1" resource="0" file="Source/The Synthesis Tookit/iOS/demo/iOS Demo/main.m"/>
+              <FILE id="FWqFwi" name="ViewController.h" compile="0" resource="0"
+                    file="Source/The Synthesis Tookit/iOS/demo/iOS Demo/ViewController.h"/>
+              <FILE id="Si9Iwh" name="ViewController.mm" compile="1" resource="0"
+                    file="Source/The Synthesis Tookit/iOS/demo/iOS Demo/ViewController.mm"/>
+            </GROUP>
+            <GROUP id="{027B5D86-0A97-5D9C-F1E3-07524C3BBA3E}" name="iOS Demo.xcodeproj">
+              <GROUP id="{94712D2B-8BD7-2B07-55F1-D67E739922E5}" name="project.xcworkspace">
+                <GROUP id="{F456DF04-682C-3932-4429-9D87916C5F56}" name="xcshareddata">
+                  <FILE id="m34jhy" name="iOS Demo.xccheckout" compile="0" resource="1"
+                        file="Source/The Synthesis Tookit/iOS/demo/iOS Demo.xcodeproj/project.xcworkspace/xcshareddata/iOS Demo.xccheckout"/>
+                </GROUP>
+                <FILE id="YdzLaP" name="contents.xcworkspacedata" compile="0" resource="1"
+                      file="Source/The Synthesis Tookit/iOS/demo/iOS Demo.xcodeproj/project.xcworkspace/contents.xcworkspacedata"/>
+              </GROUP>
+              <FILE id="B5nSMb" name="project.pbxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/iOS/demo/iOS Demo.xcodeproj/project.pbxproj"/>
+            </GROUP>
+            <GROUP id="{74E65486-24CC-99EA-D06C-24029CFFC064}" name="iOS DemoTests">
+              <GROUP id="{B07BB715-1D80-5537-F697-94849C17D296}" name="en.lproj">
+                <FILE id="It5xP3" name="InfoPlist.strings" compile="0" resource="1"
+                      file="Source/The Synthesis Tookit/iOS/demo/iOS DemoTests/en.lproj/InfoPlist.strings"/>
+              </GROUP>
+              <FILE id="clVi4M" name="iOS DemoTests-Info.plist" compile="0" resource="1"
+                    file="Source/The Synthesis Tookit/iOS/demo/iOS DemoTests/iOS DemoTests-Info.plist"/>
+              <FILE id="R6zWrl" name="iOS_DemoTests.m" compile="1" resource="0" file="Source/The Synthesis Tookit/iOS/demo/iOS DemoTests/iOS_DemoTests.m"/>
+            </GROUP>
+            <FILE id="GB5mUM" name="README.md" compile="0" resource="1" file="Source/The Synthesis Tookit/iOS/demo/README.md"/>
+          </GROUP>
+          <GROUP id="{A9B166B1-138E-1F75-F4F1-697F0F77A065}" name="STK.xcodeproj">
+            <GROUP id="{DA608DE2-0233-1743-6575-6CB13CD7C89C}" name="project.xcworkspace">
+              <FILE id="b5ZI4D" name="contents.xcworkspacedata" compile="0" resource="1"
+                    file="Source/The Synthesis Tookit/iOS/STK.xcodeproj/project.xcworkspace/contents.xcworkspacedata"/>
+            </GROUP>
+            <FILE id="yagfI7" name="project.pbxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/iOS/STK.xcodeproj/project.pbxproj"/>
+          </GROUP>
+          <FILE id="icUumQ" name="README-iOS.md" compile="0" resource="1" file="Source/The Synthesis Tookit/iOS/README-iOS.md"/>
+        </GROUP>
+        <GROUP id="{39010617-AFD0-7F70-8A50-1F86AF5C9FBB}" name="m4">
+          <FILE id="u491IW" name="ax_cxx_compile_stdcxx.m4" compile="0" resource="1"
+                file="Source/The Synthesis Tookit/m4/ax_cxx_compile_stdcxx.m4"/>
+        </GROUP>
+        <GROUP id="{9923AFB7-0F00-7F19-C87B-81815CBF968B}" name="projects">
+          <GROUP id="{089AC66E-4335-D6C5-BBB5-4512545E2F63}" name="demo">
+            <GROUP id="{644892AF-A977-3D64-77C1-82AEB1FCF2E5}" name="scores">
+              <FILE id="HsGdfM" name="bachfugue.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/bachfugue.ski"/>
+              <FILE id="jU3r83" name="bookert.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/bookert.ski"/>
+              <FILE id="ESh6sb" name="chords.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/chords.ski"/>
+              <FILE id="Jo1sog" name="doogie.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/doogie.ski"/>
+              <FILE id="zKqXX8" name="drumfunk.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/drumfunk.ski"/>
+              <FILE id="QkeIsd" name="drumtest.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/drumtest.ski"/>
+              <FILE id="nBXJga" name="duelingb.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/duelingb.ski"/>
+              <FILE id="bG1Lx7" name="fiddle.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/fiddle.ski"/>
+              <FILE id="mWClgJ" name="flutbach.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/flutbach.ski"/>
+              <FILE id="G4wFsC" name="funicula.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/funicula.ski"/>
+              <FILE id="Ml6w52" name="funskini.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/funskini.ski"/>
+              <FILE id="IOYncV" name="lacrymos.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/lacrymos.ski"/>
+              <FILE id="SvMw8I" name="mandtune.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/mandtune.ski"/>
+              <FILE id="LiM1f1" name="marimba2.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/marimba2.ski"/>
+              <FILE id="HTTLxn" name="marimtst.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/marimtst.ski"/>
+              <FILE id="IcNdOe" name="misacrio.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/misacrio.ski"/>
+              <FILE id="btl2J3" name="morazbel.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/morazbel.ski"/>
+              <FILE id="KdDvuI" name="muneira.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/muneira.ski"/>
+              <FILE id="fxoIK3" name="organs.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/organs.ski"/>
+              <FILE id="yyatic" name="pickdamp.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/pickdamp.ski"/>
+              <FILE id="IY7g2x" name="pictures.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/pictures.ski"/>
+              <FILE id="GhgSRL" name="README" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/README"/>
+              <FILE id="aU1JaI" name="riderson.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/riderson.ski"/>
+              <FILE id="OHW0Gz" name="scales.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/scales.ski"/>
+              <FILE id="SQqgW8" name="shaktest.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/shaktest.ski"/>
+              <FILE id="Gqp3xi" name="simplgft.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/simplgft.ski"/>
+              <FILE id="RV4U5t" name="spain.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/spain.ski"/>
+              <FILE id="MdJZ5n" name="streetsf.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/streetsf.ski"/>
+              <FILE id="S98WUf" name="test.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/test.ski"/>
+              <FILE id="SI4Z5z" name="thecars.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/thecars.ski"/>
+              <FILE id="FEHxBX" name="tubebell.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/tubebell.ski"/>
+              <FILE id="D7pAdw" name="vocaliz.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/scores/vocaliz.ski"/>
+            </GROUP>
+            <GROUP id="{7D19F867-1CA8-5864-240D-C0968B50A7FC}" name="tcl">
+              <GROUP id="{74EA99A1-1304-7208-8328-8FE5F24EBCEB}" name="bitmaps">
+                <FILE id="Tu4wq3" name="bamboo.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/bamboo.xbm"/>
+                <FILE id="uvh0ss" name="cabasa.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/cabasa.xbm"/>
+                <FILE id="SJOYcT" name="cokecan.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/cokecan.xbm"/>
+                <FILE id="eUXKAP" name="guiro.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/guiro.xbm"/>
+                <FILE id="ZgOrr8" name="kasm.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/kasm.xbm"/>
+                <FILE id="lzwuRV" name="KFiddl.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/KFiddl.xbm"/>
+                <FILE id="rjtLvu" name="KFloot.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/KFloot.xbm"/>
+                <FILE id="FENgJd" name="KFMod.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/KFMod.xbm"/>
+                <FILE id="JOvkoM" name="KHose.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/KHose.xbm"/>
+                <FILE id="P2NP0P" name="Klar.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/Klar.xbm"/>
+                <FILE id="x3EFiR" name="KModal.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/KModal.xbm"/>
+                <FILE id="Jkt5LP" name="KPluk.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/KPluk.xbm"/>
+                <FILE id="uHUuS9" name="KVoiceFM.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/KVoiceFM.xbm"/>
+                <FILE id="rTiSvW" name="KVoicForm.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/KVoicForm.xbm"/>
+                <FILE id="kyodd4" name="maraca.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/maraca.xbm"/>
+                <FILE id="GMXddn" name="phism.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/phism.xbm"/>
+                <FILE id="A0VIq6" name="prc.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/prc.xbm"/>
+                <FILE id="Gr5JDi" name="prcFunny.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/prcFunny.xbm"/>
+                <FILE id="ykxnuf" name="rachet.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/rachet.xbm"/>
+                <FILE id="n05xEj" name="sleighbell.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/sleighbell.xbm"/>
+                <FILE id="e8Uf57" name="tambourine.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/bitmaps/tambourine.xbm"/>
+              </GROUP>
+              <FILE id="cCYJCz" name="Banded.tcl" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/Banded.tcl"/>
+              <FILE id="DM6lST" name="Demo.tcl" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/Demo.tcl"/>
+              <FILE id="jilIc0" name="Drums.tcl" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/Drums.tcl"/>
+              <FILE id="v8WEPn" name="Modal.tcl" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/Modal.tcl"/>
+              <FILE id="mrvSCQ" name="Physical.tcl" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/Physical.tcl"/>
+              <FILE id="hRtQYJ" name="Shakers.tcl" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/Shakers.tcl"/>
+              <FILE id="SMMfKx" name="Voice.tcl" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/tcl/Voice.tcl"/>
+            </GROUP>
+            <FILE id="kyfrTg" name="Banded" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Banded"/>
+            <FILE id="HFsHoV" name="Banded.bat" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Banded.bat"/>
+            <FILE id="laXNWQ" name="CMakeLists.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/CMakeLists.txt"/>
+            <FILE id="kjt08y" name="demo.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/demo/demo.cpp"/>
+            <FILE id="GEyWMC" name="demo.sln" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/demo.sln"/>
+            <FILE id="dENehx" name="demo.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/demo.vcxproj"/>
+            <FILE id="oZJMI7" name="demo.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/demo/demo.vcxproj.filters"/>
+            <FILE id="JLt1Vy" name="Drums" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Drums"/>
+            <FILE id="jHDPxe" name="Drums.bat" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Drums.bat"/>
+            <FILE id="FuTrE5" name="Makefile.in" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Makefile.in"/>
+            <FILE id="y25Kf2" name="Md2Skini.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/demo/Md2Skini.cpp"/>
+            <FILE id="aLg89z" name="Md2Skini.dsp" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Md2Skini.dsp"/>
+            <FILE id="ty2fZI" name="Modal" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Modal"/>
+            <FILE id="rN1je3" name="Modal.bat" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Modal.bat"/>
+            <FILE id="HpXnpZ" name="Physical" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Physical"/>
+            <FILE id="QdIXnX" name="Physical.bat" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Physical.bat"/>
+            <FILE id="rKVSE6" name="Shakers" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Shakers"/>
+            <FILE id="ouvo01" name="Shakers.bat" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Shakers.bat"/>
+            <FILE id="S9O2Ti" name="StkDemo" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/StkDemo"/>
+            <FILE id="dO2scF" name="StkDemo.bat" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/StkDemo.bat"/>
+            <FILE id="avSolW" name="utilities.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/demo/utilities.cpp"/>
+            <FILE id="eGFxD2" name="utilities.h" compile="0" resource="0" file="Source/The Synthesis Tookit/projects/demo/utilities.h"/>
+            <FILE id="BqCb1N" name="Voice" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Voice"/>
+            <FILE id="CpkFAv" name="Voice.bat" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/demo/Voice.bat"/>
+          </GROUP>
+          <GROUP id="{EC916099-5884-4B08-E8D9-3D02C1812418}" name="effects">
+            <GROUP id="{46E6055A-8CB5-BFA6-EC6A-59CB4E47F3B7}" name="tcl">
+              <FILE id="NlFLQV" name="Effects.tcl" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/effects/tcl/Effects.tcl"/>
+            </GROUP>
+            <FILE id="uxcwcx" name="CMakeLists.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/effects/CMakeLists.txt"/>
+            <FILE id="ocN77V" name="effects.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/effects/effects.cpp"/>
+            <FILE id="QxB4Ex" name="effects.sln" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/effects/effects.sln"/>
+            <FILE id="aRq5wg" name="effects.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/effects/effects.vcxproj"/>
+            <FILE id="d7JTGX" name="Makefile.in" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/effects/Makefile.in"/>
+            <FILE id="sl3opY" name="README-effects.txt" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/effects/README-effects.txt"/>
+            <FILE id="K2JZyS" name="StkEffects" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/effects/StkEffects"/>
+            <FILE id="ky4d7t" name="StkEffects.bat" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/effects/StkEffects.bat"/>
+          </GROUP>
+          <GROUP id="{55A9294C-2EE2-66F6-A5BC-86067466CCF0}" name="eguitar">
+            <GROUP id="{44475114-9931-1205-0FE0-F111A5007BFC}" name="scores">
+              <FILE id="XoFERd" name="test.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/eguitar/scores/test.ski"/>
+            </GROUP>
+            <GROUP id="{478566BE-5944-6205-42B1-605B61F81EAA}" name="tcl">
+              <FILE id="VQmqQd" name="EGuitar.tcl" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/eguitar/tcl/EGuitar.tcl"/>
+            </GROUP>
+            <FILE id="FCeH7d" name="CMakeLists.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/eguitar/CMakeLists.txt"/>
+            <FILE id="xJ5HNz" name="eguitar.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/eguitar/eguitar.cpp"/>
+            <FILE id="tTPoGE" name="eguitar.sln" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/eguitar/eguitar.sln"/>
+            <FILE id="ScblPp" name="eguitar.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/eguitar/eguitar.vcxproj"/>
+            <FILE id="RY1a9u" name="ElectricGuitar" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/eguitar/ElectricGuitar"/>
+            <FILE id="JGyQf5" name="ElectricGuitar.bat" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/eguitar/ElectricGuitar.bat"/>
+            <FILE id="E0Ni9s" name="Makefile.in" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/eguitar/Makefile.in"/>
+            <FILE id="uAuJL7" name="README-eguitar.txt" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/eguitar/README-eguitar.txt"/>
+            <FILE id="WoFQ3i" name="utilities.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/eguitar/utilities.cpp"/>
+            <FILE id="t0hXqN" name="utilities.h" compile="0" resource="0" file="Source/The Synthesis Tookit/projects/eguitar/utilities.h"/>
+          </GROUP>
+          <GROUP id="{8154C6FA-CC37-948C-F71B-D5808BAA30F6}" name="examples">
+            <GROUP id="{ECC5C7D8-2991-5716-4A06-B7A001AEE964}" name="midifiles">
+              <FILE id="LlFnPP" name="bwv772.mid" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/midifiles/bwv772.mid"/>
+              <FILE id="UYSwTW" name="jesu.mid" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/midifiles/jesu.mid"/>
+              <FILE id="e8LBm1" name="tango.mid" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/midifiles/tango.mid"/>
+            </GROUP>
+            <GROUP id="{DADD6F62-E55B-79D4-DB91-69127DEB8AFD}" name="rawwaves">
+              <FILE id="OI2WJc" name="sinewave.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/rawwaves/sinewave.raw"/>
+            </GROUP>
+            <GROUP id="{0DD7A899-7724-9CBA-8AF6-87CEF29DA7CE}" name="scores">
+              <FILE id="ehxSUr" name="bachfugue.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/scores/bachfugue.ski"/>
+              <FILE id="bi2PCv" name="bookert.ski" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/scores/bookert.ski"/>
+            </GROUP>
+            <FILE id="on0GiU" name="audioprobe.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/audioprobe.cpp"/>
+            <FILE id="kl3WQu" name="audioprobe.vcxproj" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/audioprobe.vcxproj"/>
+            <FILE id="EkO9q3" name="audioprobe.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/audioprobe.vcxproj.filters"/>
+            <FILE id="E7IctY" name="bethree.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/bethree.cpp"/>
+            <FILE id="DzgENS" name="bethree.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/bethree.vcxproj"/>
+            <FILE id="QbBtGs" name="bethree.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/bethree.vcxproj.filters"/>
+            <FILE id="WVJpJU" name="CMakeLists.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/CMakeLists.txt"/>
+            <FILE id="xJ7Aco" name="controlbee.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/controlbee.cpp"/>
+            <FILE id="qhS8EG" name="controlbee.vcxproj" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/controlbee.vcxproj"/>
+            <FILE id="HQncaf" name="controlbee.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/controlbee.vcxproj.filters"/>
+            <FILE id="ifJmv1" name="crtsine.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/crtsine.cpp"/>
+            <FILE id="NQHhvE" name="crtsine.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/crtsine.vcxproj"/>
+            <FILE id="W80Zkw" name="crtsine.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/crtsine.vcxproj.filters"/>
+            <FILE id="U74ve9" name="duplex.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/duplex.cpp"/>
+            <FILE id="Qxkn3Q" name="duplex.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/duplex.vcxproj"/>
+            <FILE id="rQFrol" name="duplex.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/duplex.vcxproj.filters"/>
+            <FILE id="gDkV7X" name="examples.sln" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/examples.sln"/>
+            <FILE id="k8CdRC" name="foursine.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/foursine.cpp"/>
+            <FILE id="NMROKm" name="foursine.vcxproj" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/foursine.vcxproj"/>
+            <FILE id="C0B9tZ" name="foursine.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/foursine.vcxproj.filters"/>
+            <FILE id="hBDmni" name="grains.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/grains.cpp"/>
+            <FILE id="DtVdVw" name="grains.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/grains.vcxproj"/>
+            <FILE id="Xn4uCW" name="grains.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/grains.vcxproj.filters"/>
+            <FILE id="gXkgR4" name="inetIn.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/inetIn.cpp"/>
+            <FILE id="KYCP0E" name="inetIn.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/inetIn.vcxproj"/>
+            <FILE id="PPgvgl" name="inetIn.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/inetIn.vcxproj.filters"/>
+            <FILE id="gOlV1e" name="inetOut.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/inetOut.cpp"/>
+            <FILE id="ZKoYhu" name="inetOut.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/inetOut.vcxproj"/>
+            <FILE id="RXMiiI" name="inetOut.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/inetOut.vcxproj.filters"/>
+            <FILE id="wHUEgD" name="libMakefile.in" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/libMakefile.in"/>
+            <FILE id="fmm04J" name="Makefile.in" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/Makefile.in"/>
+            <FILE id="sl7FKY" name="midiprobe.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/midiprobe.cpp"/>
+            <FILE id="OTEWV2" name="midiprobe.vcxproj" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/midiprobe.vcxproj"/>
+            <FILE id="ymtBMn" name="midiprobe.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/midiprobe.vcxproj.filters"/>
+            <FILE id="jaJ9am" name="play.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/play.cpp"/>
+            <FILE id="weRnUd" name="play.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/play.vcxproj"/>
+            <FILE id="yCa0YW" name="play.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/play.vcxproj.filters"/>
+            <FILE id="b3adwJ" name="playsmf.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/playsmf.cpp"/>
+            <FILE id="zLVlun" name="playsmf.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/playsmf.vcxproj"/>
+            <FILE id="oGPu33" name="playsmf.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/playsmf.vcxproj.filters"/>
+            <FILE id="MkffpU" name="record.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/record.cpp"/>
+            <FILE id="yt65fk" name="record.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/record.vcxproj"/>
+            <FILE id="JOerCq" name="record.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/record.vcxproj.filters"/>
+            <FILE id="Y6zgzX" name="rtsine.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/rtsine.cpp"/>
+            <FILE id="YoeG9V" name="rtsine.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/rtsine.vcxproj"/>
+            <FILE id="Rz2ShM" name="rtsine.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/rtsine.vcxproj.filters"/>
+            <FILE id="zXNvMS" name="simple.tcl" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/simple.tcl"/>
+            <FILE id="aorjr7" name="sine.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/sine.cpp"/>
+            <FILE id="QaLp9J" name="sine.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/sine.vcxproj"/>
+            <FILE id="bSlBDi" name="sine.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/sine.vcxproj.filters"/>
+            <FILE id="nd8n6c" name="sineosc.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/sineosc.cpp"/>
+            <FILE id="ODM0BE" name="sineosc.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/examples/sineosc.vcxproj"/>
+            <FILE id="JWlxRV" name="sineosc.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/sineosc.vcxproj.filters"/>
+            <FILE id="nuYhLp" name="threebees.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/examples/threebees.cpp"/>
+            <FILE id="mMGhyL" name="threebees.vcxproj" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/threebees.vcxproj"/>
+            <FILE id="WAfm1r" name="threebees.vcxproj.filters" compile="0" resource="1"
+                  file="Source/The Synthesis Tookit/projects/examples/threebees.vcxproj.filters"/>
+          </GROUP>
+          <GROUP id="{CD203E52-31DF-0836-7584-3874039C814B}" name="ragamatic">
+            <GROUP id="{D0CF48C9-808A-FF4E-A28B-DE1A6F710FAE}" name="rawwaves">
+              <FILE id="Gd1aIj" name="bee1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/bee1.raw"/>
+              <FILE id="syYWa5" name="dee1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/dee1.raw"/>
+              <FILE id="cToNYv" name="dee2.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/dee2.raw"/>
+              <FILE id="a5Wcie" name="din1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/din1.raw"/>
+              <FILE id="wWfkg3" name="Drdak2.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/Drdak2.raw"/>
+              <FILE id="OfTY7P" name="Drdak3.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/Drdak3.raw"/>
+              <FILE id="lUGYxp" name="Drdak4.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/Drdak4.raw"/>
+              <FILE id="B8XTg4" name="Drddak1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/Drddak1.raw"/>
+              <FILE id="CJ0d5x" name="Drdee1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/Drdee1.raw"/>
+              <FILE id="V8srzy" name="Drdee2.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/Drdee2.raw"/>
+              <FILE id="AtQdxJ" name="DrDoi1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/DrDoi1.raw"/>
+              <FILE id="P4Ecw3" name="DrDoi2.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/DrDoi2.raw"/>
+              <FILE id="aY5DUa" name="Drdoo1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/Drdoo1.raw"/>
+              <FILE id="qqIELj" name="Drdoo2.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/Drdoo2.raw"/>
+              <FILE id="PlxzoP" name="Drdoo3.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/Drdoo3.raw"/>
+              <FILE id="z7Guah" name="Drjun1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/Drjun1.raw"/>
+              <FILE id="iRkPd8" name="Drjun2.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/Drjun2.raw"/>
+              <FILE id="UoZ54Q" name="DrTak1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/DrTak1.raw"/>
+              <FILE id="rz62Zx" name="DrTak2.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/DrTak2.raw"/>
+              <FILE id="rroVNk" name="gun1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/gun1.raw"/>
+              <FILE id="Q0IRRC" name="jun1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/jun1.raw"/>
+              <FILE id="GAAS3H" name="jun2.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/jun2.raw"/>
+              <FILE id="qTjngs" name="tak1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/tak1.raw"/>
+              <FILE id="tSx7vQ" name="tak2.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/tak2.raw"/>
+              <FILE id="sE3cVM" name="tak3.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/tak3.raw"/>
+              <FILE id="qQU1E9" name="tak4.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/rawwaves/tak4.raw"/>
+            </GROUP>
+            <GROUP id="{A7D0AAD6-99E8-F782-6E43-F1CFCB1662AF}" name="tcl">
+              <GROUP id="{85ECEDC5-B363-DF75-9FE4-B63A511FD454}" name="bitmaps">
+                <FILE id="Goevnk" name="prc.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/tcl/bitmaps/prc.xbm"/>
+                <FILE id="tVtkSU" name="prcFunny.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/tcl/bitmaps/prcFunny.xbm"/>
+                <FILE id="K45YyW" name="ragamat.bmp" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/tcl/bitmaps/ragamat.bmp"/>
+                <FILE id="szLWzg" name="ragamat.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/tcl/bitmaps/ragamat.xbm"/>
+                <FILE id="rb1Ekx" name="ragamat2.bmp" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/tcl/bitmaps/ragamat2.bmp"/>
+                <FILE id="oiQb5h" name="ragamat2.xbm" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/tcl/bitmaps/ragamat2.xbm"/>
+              </GROUP>
+              <FILE id="RRnCRf" name="Raga.tcl" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/tcl/Raga.tcl"/>
+            </GROUP>
+            <FILE id="ZLf7kT" name="CMakeLists.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/CMakeLists.txt"/>
+            <FILE id="IHJdol" name="Drone.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/ragamatic/Drone.cpp"/>
+            <FILE id="hV7zdz" name="Drone.h" compile="0" resource="0" file="Source/The Synthesis Tookit/projects/ragamatic/Drone.h"/>
+            <FILE id="WJF1GW" name="Makefile.in" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/Makefile.in"/>
+            <FILE id="CgKL1A" name="Raga" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/Raga"/>
+            <FILE id="lxXP3o" name="Raga.bat" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/Raga.bat"/>
+            <FILE id="LEUUX7" name="ragamat.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/ragamatic/ragamat.cpp"/>
+            <FILE id="R9eoNQ" name="ragamat.vcxproj" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/ragamat.vcxproj"/>
+            <FILE id="SKyrmR" name="ragamatic.sln" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/ragamatic.sln"/>
+            <FILE id="uHqiWH" name="README-raga.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/projects/ragamatic/README-raga.txt"/>
+            <FILE id="Q7L8Ct" name="Tabla.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/ragamatic/Tabla.cpp"/>
+            <FILE id="XQAGSZ" name="Tabla.h" compile="0" resource="0" file="Source/The Synthesis Tookit/projects/ragamatic/Tabla.h"/>
+            <FILE id="DFLxUM" name="VoicDrum.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/projects/ragamatic/VoicDrum.cpp"/>
+            <FILE id="mGKnpl" name="VoicDrum.h" compile="0" resource="0" file="Source/The Synthesis Tookit/projects/ragamatic/VoicDrum.h"/>
+          </GROUP>
+          <FILE id="AOu38h" name="stk-template.zip" compile="0" resource="1"
+                file="Source/The Synthesis Tookit/projects/stk-template.zip"/>
+        </GROUP>
+        <GROUP id="{FE0B901E-1B8B-FEF3-3E30-F16AB096E04F}" name="rawwaves">
+          <FILE id="oq5VFo" name="ahh.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/ahh.raw"/>
+          <FILE id="Ykg04u" name="bassdrum.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/bassdrum.raw"/>
+          <FILE id="VBO3sw" name="britestk.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/britestk.raw"/>
+          <FILE id="u7ilxf" name="cowbell1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/cowbell1.raw"/>
+          <FILE id="a6GHlJ" name="crashcym.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/crashcym.raw"/>
+          <FILE id="pAdckn" name="dope.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/dope.raw"/>
+          <FILE id="NUa1ci" name="eee.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/eee.raw"/>
+          <FILE id="jsiE1L" name="fwavblnk.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/fwavblnk.raw"/>
+          <FILE id="cS5wdF" name="halfwave.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/halfwave.raw"/>
+          <FILE id="hTsYpV" name="hihatcym.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/hihatcym.raw"/>
+          <FILE id="ov4erp" name="impuls10.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/impuls10.raw"/>
+          <FILE id="Tn1m38" name="impuls20.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/impuls20.raw"/>
+          <FILE id="t90jgX" name="impuls40.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/impuls40.raw"/>
+          <FILE id="uiMwBa" name="makefunc.c" compile="1" resource="0" file="Source/The Synthesis Tookit/rawwaves/makefunc.c"/>
+          <FILE id="dFmKh8" name="makemidi.c" compile="1" resource="0" file="Source/The Synthesis Tookit/rawwaves/makemidi.c"/>
+          <FILE id="NFTeJ8" name="makewavs.c" compile="1" resource="0" file="Source/The Synthesis Tookit/rawwaves/makewavs.c"/>
+          <FILE id="DoSBHQ" name="mand1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand1.raw"/>
+          <FILE id="P5CzIK" name="mand2.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand2.raw"/>
+          <FILE id="N4ASY8" name="mand3.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand3.raw"/>
+          <FILE id="gZqMh4" name="mand4.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand4.raw"/>
+          <FILE id="NxreV9" name="mand5.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand5.raw"/>
+          <FILE id="Zfs5vT" name="mand6.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand6.raw"/>
+          <FILE id="LlSuXm" name="mand7.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand7.raw"/>
+          <FILE id="vpJhvQ" name="mand8.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand8.raw"/>
+          <FILE id="r0b0VG" name="mand9.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand9.raw"/>
+          <FILE id="xCjBXS" name="mand10.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand10.raw"/>
+          <FILE id="DX4LHP" name="mand11.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand11.raw"/>
+          <FILE id="s5KRoX" name="mand12.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mand12.raw"/>
+          <FILE id="MHqVI0" name="mandpluk.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/mandpluk.raw"/>
+          <FILE id="vsZejl" name="marmstk1.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/marmstk1.raw"/>
+          <FILE id="jrbv1i" name="ooo.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/ooo.raw"/>
+          <FILE id="WWr2df" name="peksblnk.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/peksblnk.raw"/>
+          <FILE id="SqI0R1" name="ppksblnk.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/ppksblnk.raw"/>
+          <FILE id="rSkvzr" name="ridecymb.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/ridecymb.raw"/>
+          <FILE id="V95HzV" name="silence.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/silence.raw"/>
+          <FILE id="tD8qxz" name="sine.c" compile="1" resource="0" file="Source/The Synthesis Tookit/rawwaves/sine.c"/>
+          <FILE id="kFQGg7" name="sineblnk.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/sineblnk.raw"/>
+          <FILE id="eNE4h3" name="sinewave.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/sinewave.raw"/>
+          <FILE id="atgBEB" name="snardrum.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/snardrum.raw"/>
+          <FILE id="vfg9K0" name="snglpeak.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/snglpeak.raw"/>
+          <FILE id="jM2puq" name="tambourn.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/tambourn.raw"/>
+          <FILE id="xFVUjQ" name="tomhidrm.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/tomhidrm.raw"/>
+          <FILE id="LZcagZ" name="tomlowdr.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/tomlowdr.raw"/>
+          <FILE id="Kf8Rdl" name="tommiddr.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/tommiddr.raw"/>
+          <FILE id="DaKUrw" name="twopeaks.raw" compile="0" resource="1" file="Source/The Synthesis Tookit/rawwaves/twopeaks.raw"/>
+        </GROUP>
+        <GROUP id="{F3FBED2F-17EB-B59E-8491-70908000ECCF}" name="src">
+          <GROUP id="{7DA76194-5765-55C5-F54F-BBD198E89FEE}" name="include">
+            <FILE id="I0a4R3" name="asio.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/include/asio.cpp"/>
+            <FILE id="BlpbSF" name="asio.h" compile="0" resource="0" file="Source/The Synthesis Tookit/src/include/asio.h"/>
+            <FILE id="hznsA7" name="asiodrivers.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/include/asiodrivers.cpp"/>
+            <FILE id="R1AxMa" name="asiodrivers.h" compile="0" resource="0" file="Source/The Synthesis Tookit/src/include/asiodrivers.h"/>
+            <FILE id="C2TPki" name="asiodrvr.h" compile="0" resource="0" file="Source/The Synthesis Tookit/src/include/asiodrvr.h"/>
+            <FILE id="nDJgoj" name="asiolist.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/include/asiolist.cpp"/>
+            <FILE id="qyfUex" name="asiolist.h" compile="0" resource="0" file="Source/The Synthesis Tookit/src/include/asiolist.h"/>
+            <FILE id="ph1mtw" name="asiosys.h" compile="0" resource="0" file="Source/The Synthesis Tookit/src/include/asiosys.h"/>
+            <FILE id="GgL8Wp" name="dsound.h" compile="0" resource="0" file="Source/The Synthesis Tookit/src/include/dsound.h"/>
+            <FILE id="NRDATe" name="FunctionDiscoveryKeys_devpkey.h" compile="0"
+                  resource="0" file="Source/The Synthesis Tookit/src/include/FunctionDiscoveryKeys_devpkey.h"/>
+            <FILE id="XmO01W" name="ginclude.h" compile="0" resource="0" file="Source/The Synthesis Tookit/src/include/ginclude.h"/>
+            <FILE id="G8cRgm" name="iasiodrv.h" compile="0" resource="0" file="Source/The Synthesis Tookit/src/include/iasiodrv.h"/>
+            <FILE id="gkISrZ" name="iasiothiscallresolver.cpp" compile="1" resource="0"
+                  file="Source/The Synthesis Tookit/src/include/iasiothiscallresolver.cpp"/>
+            <FILE id="e6tYHv" name="iasiothiscallresolver.h" compile="0" resource="0"
+                  file="Source/The Synthesis Tookit/src/include/iasiothiscallresolver.h"/>
+            <FILE id="Scdabg" name="soundcard.h" compile="0" resource="0" file="Source/The Synthesis Tookit/src/include/soundcard.h"/>
+          </GROUP>
+          <FILE id="v2y8Ej" name="ADSR.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/ADSR.cpp"/>
+          <FILE id="oaFhCl" name="Asymp.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Asymp.cpp"/>
+          <FILE id="QsE9SI" name="BandedWG.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/BandedWG.cpp"/>
+          <FILE id="SR3GrN" name="BeeThree.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/BeeThree.cpp"/>
+          <FILE id="A6LhGL" name="BiQuad.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/BiQuad.cpp"/>
+          <FILE id="QC5POH" name="Blit.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Blit.cpp"/>
+          <FILE id="ixUAbc" name="BlitSaw.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/BlitSaw.cpp"/>
+          <FILE id="sVE0Nq" name="BlitSquare.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/BlitSquare.cpp"/>
+          <FILE id="ua9jSo" name="BlowBotl.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/BlowBotl.cpp"/>
+          <FILE id="fC4p1g" name="BlowHole.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/BlowHole.cpp"/>
+          <FILE id="VLvID7" name="Bowed.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Bowed.cpp"/>
+          <FILE id="Il1uSQ" name="Brass.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Brass.cpp"/>
+          <FILE id="vzbiRT" name="Chorus.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Chorus.cpp"/>
+          <FILE id="cH0yPO" name="Clarinet.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Clarinet.cpp"/>
+          <FILE id="skPyYK" name="Delay.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Delay.cpp"/>
+          <FILE id="hREmJm" name="DelayA.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/DelayA.cpp"/>
+          <FILE id="W5cL6V" name="DelayL.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/DelayL.cpp"/>
+          <FILE id="ALcnUS" name="Drummer.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Drummer.cpp"/>
+          <FILE id="G1KRFa" name="Echo.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Echo.cpp"/>
+          <FILE id="pH5XRt" name="Envelope.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Envelope.cpp"/>
+          <FILE id="Vi3Nxb" name="FileLoop.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/FileLoop.cpp"/>
+          <FILE id="QTkIul" name="FileRead.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/FileRead.cpp"/>
+          <FILE id="HP2y0t" name="FileWrite.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/FileWrite.cpp"/>
+          <FILE id="BWzXW3" name="FileWvIn.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/FileWvIn.cpp"/>
+          <FILE id="EeSTtu" name="FileWvOut.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/FileWvOut.cpp"/>
+          <FILE id="ACDxcE" name="Fir.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Fir.cpp"/>
+          <FILE id="tKSPJh" name="Flute.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Flute.cpp"/>
+          <FILE id="gylqsa" name="FM.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/FM.cpp"/>
+          <FILE id="LEC0V7" name="FMVoices.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/FMVoices.cpp"/>
+          <FILE id="Yk2d5S" name="FormSwep.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/FormSwep.cpp"/>
+          <FILE id="NrysO8" name="FreeVerb.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/FreeVerb.cpp"/>
+          <FILE id="rTHHlU" name="Granulate.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Granulate.cpp"/>
+          <FILE id="l7zHZD" name="Guitar.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Guitar.cpp"/>
+          <FILE id="YVNsQU" name="HevyMetl.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/HevyMetl.cpp"/>
+          <FILE id="UrMQf5" name="Iir.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Iir.cpp"/>
+          <FILE id="s0dwun" name="InetWvIn.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/InetWvIn.cpp"/>
+          <FILE id="l4Bbq7" name="InetWvOut.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/InetWvOut.cpp"/>
+          <FILE id="QhVktx" name="JCRev.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/JCRev.cpp"/>
+          <FILE id="bdPlSL" name="LentPitShift.cpp" compile="1" resource="0"
+                file="Source/The Synthesis Tookit/src/LentPitShift.cpp"/>
+          <FILE id="gRpXgq" name="Makefile.in" compile="0" resource="1" file="Source/The Synthesis Tookit/src/Makefile.in"/>
+          <FILE id="orRw1N" name="Mandolin.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Mandolin.cpp"/>
+          <FILE id="ImitmA" name="Mesh2D.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Mesh2D.cpp"/>
+          <FILE id="hXrb9n" name="Messager.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Messager.cpp"/>
+          <FILE id="jOiD12" name="MidiFileIn.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/MidiFileIn.cpp"/>
+          <FILE id="cVtaaJ" name="Modal.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Modal.cpp"/>
+          <FILE id="ijpeBg" name="ModalBar.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/ModalBar.cpp"/>
+          <FILE id="cfYLdU" name="Modulate.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Modulate.cpp"/>
+          <FILE id="Ky1x4V" name="Moog.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Moog.cpp"/>
+          <FILE id="CaL4LL" name="Mutex.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Mutex.cpp"/>
+          <FILE id="fMi029" name="Noise.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Noise.cpp"/>
+          <FILE id="C3gABR" name="NRev.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/NRev.cpp"/>
+          <FILE id="XnJTXB" name="OnePole.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/OnePole.cpp"/>
+          <FILE id="BC9vWi" name="OneZero.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/OneZero.cpp"/>
+          <FILE id="Vo5GJk" name="PercFlut.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/PercFlut.cpp"/>
+          <FILE id="UJyWLh" name="Phonemes.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Phonemes.cpp"/>
+          <FILE id="jNvuXk" name="PitShift.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/PitShift.cpp"/>
+          <FILE id="hBoceB" name="Plucked.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Plucked.cpp"/>
+          <FILE id="voVSL9" name="PoleZero.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/PoleZero.cpp"/>
+          <FILE id="nYu7eK" name="PRCRev.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/PRCRev.cpp"/>
+          <FILE id="yGQCw4" name="Recorder.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Recorder.cpp"/>
+          <FILE id="TM8Ttb" name="Resonate.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Resonate.cpp"/>
+          <FILE id="XdbKN1" name="Rhodey.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Rhodey.cpp"/>
+          <FILE id="p4UVe6" name="RtAudio.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/RtAudio.cpp"/>
+          <FILE id="AeOdr5" name="RtMidi.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/RtMidi.cpp"/>
+          <FILE id="Z6cHU8" name="RtWvIn.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/RtWvIn.cpp"/>
+          <FILE id="rhyfDJ" name="RtWvOut.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/RtWvOut.cpp"/>
+          <FILE id="iSEqvC" name="Sampler.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Sampler.cpp"/>
+          <FILE id="XIxmlj" name="Saxofony.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Saxofony.cpp"/>
+          <FILE id="GHYCau" name="Shakers.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Shakers.cpp"/>
+          <FILE id="NKsw2c" name="Simple.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Simple.cpp"/>
+          <FILE id="rdoWfY" name="SineWave.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/SineWave.cpp"/>
+          <FILE id="pTLS9L" name="SingWave.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/SingWave.cpp"/>
+          <FILE id="WmQFjA" name="Sitar.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Sitar.cpp"/>
+          <FILE id="Zg7Kgg" name="Skini.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Skini.cpp"/>
+          <FILE id="P9JLJh" name="Socket.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Socket.cpp"/>
+          <FILE id="b2WCZR" name="Sphere.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Sphere.cpp"/>
+          <FILE id="CuCsUP" name="StifKarp.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/StifKarp.cpp"/>
+          <FILE id="L5Ec3K" name="Stk.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Stk.cpp"/>
+          <FILE id="XbaLKd" name="TapDelay.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/TapDelay.cpp"/>
+          <FILE id="e7OVsY" name="TcpClient.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/TcpClient.cpp"/>
+          <FILE id="tkSuEA" name="TcpServer.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/TcpServer.cpp"/>
+          <FILE id="KaycWc" name="Thread.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Thread.cpp"/>
+          <FILE id="uKtdi4" name="TubeBell.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/TubeBell.cpp"/>
+          <FILE id="Y08XdX" name="Twang.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Twang.cpp"/>
+          <FILE id="oayhlE" name="TwoPole.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/TwoPole.cpp"/>
+          <FILE id="EGJBzb" name="TwoZero.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/TwoZero.cpp"/>
+          <FILE id="yzuWXQ" name="UdpSocket.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/UdpSocket.cpp"/>
+          <FILE id="yHX3iu" name="Voicer.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Voicer.cpp"/>
+          <FILE id="wDQtkr" name="VoicForm.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/VoicForm.cpp"/>
+          <FILE id="Rcjrfu" name="Whistle.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Whistle.cpp"/>
+          <FILE id="qLFgPc" name="Wurley.cpp" compile="1" resource="0" file="Source/The Synthesis Tookit/src/Wurley.cpp"/>
+        </GROUP>
+        <FILE id="QiaiB1" name="CMakeLists.txt" compile="0" resource="1" file="Source/The Synthesis Tookit/CMakeLists.txt"
+              xcodeResource="1"/>
+        <FILE id="c5Apdd" name="configure.ac" compile="0" resource="1" file="Source/The Synthesis Tookit/configure.ac"
+              xcodeResource="1"/>
+        <FILE id="x7VQys" name="INSTALL.md" compile="0" resource="1" file="Source/The Synthesis Tookit/INSTALL.md"
+              xcodeResource="1"/>
+        <FILE id="dSa240" name="LICENSE" compile="0" resource="1" file="Source/The Synthesis Tookit/LICENSE"
+              xcodeResource="1"/>
+        <FILE id="LCORTX" name="Makefile.in" compile="0" resource="1" file="Source/The Synthesis Tookit/Makefile.in"
+              xcodeResource="1"/>
+        <FILE id="DykPQ9" name="README.md" compile="0" resource="1" file="Source/The Synthesis Tookit/README.md"
+              xcodeResource="1"/>
+        <FILE id="mziG49" name="STK.podspec" compile="0" resource="1" file="Source/The Synthesis Tookit/STK.podspec"
+              xcodeResource="1"/>
+      </GROUP>
       <GROUP id="{498A95F0-ABA2-1745-C893-384084598011}" name="Assets">
         <FILE id="FXn6pu" name="CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_AlbedoTransparency.png.png"
               compile="0" resource="1" file="Source/Assets/CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_AlbedoTransparency.png.png"
@@ -47,7 +734,7 @@
   </MODULES>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
-    <VS2022 targetFolder="Builds/VisualStudio2022">
+    <VS2022 targetFolder="Builds/VisualStudio2022" extraDefs="../Source/The Synthesis Toolkit/stk">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="VG-JUCE"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="VG-JUCE"/>
@@ -70,27 +757,27 @@
         <MODULEPATH id="juce_dsp" path="../../../../../JUCE/modules"/>
       </MODULEPATHS>
     </VS2022>
-    <XCODE_MAC targetFolder="Builds/MacOSX">
+    <XCODE_MAC targetFolder="Builds/MacOSX" extraDefs="../Source/The Synthesis Toolkit/stk">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="VG-JUCE"/>
-        <CONFIGURATION isDebug="0" name="Release" targetName="VG-JUCE"/>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_audio_basics" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_core" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_midi_ci" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_dsp" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_core" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_dsp" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_midi_ci" path="D:\JUCE\modules"/>
+        <MODULEPATH id="juce_opengl" path="D:\JUCE\modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>

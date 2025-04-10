@@ -6,256 +6,286 @@
   ==============================================================================
 */
 
-#include "PluginProcessor.h"
-#include "PluginEditor.h"
+#include "PluginProcessor.h" // Includes the header file for the plugin processor class.
+#include "PluginEditor.h"    // Includes the header file for the plugin editor class.
 
-constexpr float BP_FREQ = 2950.0f;
+constexpr float BP_FREQ = 2950.0f; // Defines a constant for the band-pass filter frequency.
 
 //==============================================================================
+// Constructor for the plugin processor class.
 GramophonyAudioProcessor::GramophonyAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
-    : AudioProcessor (BusesProperties()
+    : AudioProcessor(BusesProperties() // Initializes the audio processor with bus properties.
 #if ! JucePlugin_IsMidiEffect
 #if ! JucePlugin_IsSynth
-                          .withInput ("Input", juce::AudioChannelSet::stereo(), true)
+        .withInput("Input", juce::AudioChannelSet::stereo(), true) // Adds a stereo input bus.
 #endif
-                          .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
+        .withOutput("Output", juce::AudioChannelSet::stereo(), true) // Adds a stereo output bus.
 #endif
-                          ),
-      apvts (*this, nullptr, "Parameters", createParameters())
+    ),
+    apvts(*this, nullptr, "Parameters", createParameters()) // Initializes the AudioProcessorValueTreeState for parameter management.
 #endif
 {
+    // Set initial parameters (can be controlled via UI later)
+    midiNoteNumber = 60.0; // Middle C
+    breathPressure = 0.5;
+    brassInstrument->noteOn(midiNoteNumber, breathPressure);
 }
 
 GramophonyAudioProcessor::~GramophonyAudioProcessor()
 {
+    // Destructor for the plugin processor class. Cleans up resources if necessary.
+
+    brassInstrument->noteOff(midiNoteNumber, 0.0);
 }
 
 //==============================================================================
+// Returns the name of the plugin.
 const juce::String GramophonyAudioProcessor::getName() const
 {
-    return JucePlugin_Name;
+    return JucePlugin_Name; // Uses the name defined in the JUCE plugin configuration.
 }
 
+// Determines if the plugin accepts MIDI input.
 bool GramophonyAudioProcessor::acceptsMidi() const
 {
 #if JucePlugin_WantsMidiInput
-    return true;
+    return true; // Returns true if the plugin is configured to accept MIDI input.
 #else
-    return false;
+    return false; // Returns false otherwise.
 #endif
 }
 
+// Determines if the plugin produces MIDI output.
 bool GramophonyAudioProcessor::producesMidi() const
 {
 #if JucePlugin_ProducesMidiOutput
-    return true;
+    return true; // Returns true if the plugin is configured to produce MIDI output.
 #else
-    return false;
+    return false; // Returns false otherwise.
 #endif
 }
 
+// Determines if the plugin is a MIDI effect.
 bool GramophonyAudioProcessor::isMidiEffect() const
 {
 #if JucePlugin_IsMidiEffect
-    return true;
+    return true; // Returns true if the plugin is a MIDI effect.
 #else
-    return false;
+    return false; // Returns false otherwise.
 #endif
 }
 
+// Returns the tail length of the plugin in seconds.
 double GramophonyAudioProcessor::getTailLengthSeconds() const
 {
-    return 0.0;
+    return 0.0; // No tail length is defined for this plugin.
 }
 
+// Returns the number of programs (presets) available in the plugin.
 int GramophonyAudioProcessor::getNumPrograms()
 {
-    return 1; // NB: some hosts don't cope very well if you tell them there are 0 programs,
-        // so this should be at least 1, even if you're not really implementing programs.
+    return 1; // At least one program is required, even if not implemented.
 }
 
+// Returns the index of the current program.
 int GramophonyAudioProcessor::getCurrentProgram()
 {
-    return 0;
+    return 0; // Only one program is available, so the index is always 0.
 }
 
-void GramophonyAudioProcessor::setCurrentProgram (int /*index*/)
+// Sets the current program (not implemented in this plugin).
+void GramophonyAudioProcessor::setCurrentProgram(int /*index*/)
 {
 }
 
-const juce::String GramophonyAudioProcessor::getProgramName (int /*index*/)
+// Returns the name of the program at the given index (not implemented).
+const juce::String GramophonyAudioProcessor::getProgramName(int /*index*/)
 {
-    return {};
+    return {}; // Returns an empty string.
 }
 
-void GramophonyAudioProcessor::changeProgramName (int /*index*/, const juce::String& /*newName*/)
+// Changes the name of the program at the given index (not implemented).
+void GramophonyAudioProcessor::changeProgramName(int /*index*/, const juce::String& /*newName*/)
 {
 }
 
 //==============================================================================
-void GramophonyAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+// Prepares the plugin for playback by initialising DSP components.
+void GramophonyAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
-    juce::dsp::ProcessSpec spec = { sampleRate, static_cast<juce::uint32>(samplesPerBlock), 
+    // Initialise STK global settings (sample rate)
+    stk::Stk::setSampleRate(static_cast<double>(sampleRate));
+
+    // Sets up the processing specification for DSP components.
+    juce::dsp::ProcessSpec spec = { sampleRate, static_cast<juce::uint32>(samplesPerBlock),
                                     static_cast<juce::uint32>(getMainBusNumOutputChannels()) };
 
-    chorus_.prepare (spec);
+    chorus_.prepare(spec); // Prepares the chorus effect with the processing spec.
+    mix_.prepare(spec);    // Prepares the wet/dry mix processor.
 
-    mix_.prepare (spec);
+    // Retrieves the initial frequency value from the parameter tree.
+    float frequency = apvts.getRawParameterValue("TONE")->load();
 
-    float frequency = apvts.getRawParameterValue ("TONE")->load();
-    filter_ch1_.prepare (spec);
-    filter_ch1_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass (sampleRate, frequency, 6.0f);
+    // Prepares and configures the band-pass filters for each channel.
+    filter_ch1_.prepare(spec);
+    filter_ch1_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(sampleRate, frequency, 6.0f);
 
-    filter_ch2_.prepare (spec);
-    filter_ch2_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass (sampleRate, frequency, 6.0f);
+    filter_ch2_.prepare(spec);
+    filter_ch2_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(sampleRate, frequency, 6.0f);
 }
 
+// Releases resources when playback stops.
 void GramophonyAudioProcessor::releaseResources()
 {
-    // When playback stops, you can use this as an opportunity to free up any
-    // spare memory, etc.
+    // Frees up any resources or memory used during playback.
+
+    brassInstrument->noteOff(midiNoteNumber, 0.0);
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool GramophonyAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+// Checks if the given bus layout is supported by the plugin.
+bool GramophonyAudioProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
 {
 #if JucePlugin_IsMidiEffect
-    juce::ignoreUnused (layouts);
-    return true;
+    juce::ignoreUnused(layouts);
+    return true; // MIDI effects support all layouts.
 #else
-    // This is the place where you check if the layout is supported.
-    // In this template code we only support mono or stereo.
+    // Only mono or stereo layouts are supported.
     if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono()
         && layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
         return false;
 
-        // This checks if the input layout matches the output layout
+    // Ensures the input layout matches the output layout for non-synth plugins.
 #if ! JucePlugin_IsSynth
     if (layouts.getMainOutputChannelSet() != layouts.getMainInputChannelSet())
         return false;
 #endif
 
-    return true;
+    return true; // Layout is supported.
 #endif
 }
 #endif
 
-void GramophonyAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midiMessages*/)
+// Processes audio and MIDI data for each block of samples.
+void GramophonyAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midiMessages*/)
 {
-    juce::ScopedNoDenormals noDenormals;
-    auto totalNumInputChannels = getTotalNumInputChannels();
-    auto totalNumOutputChannels = getTotalNumOutputChannels();
+    juce::ScopedNoDenormals noDenormals; // Ensures denormalized numbers are handled correctly.
+    auto totalNumInputChannels = getTotalNumInputChannels(); // Gets the number of input channels.
+    auto totalNumOutputChannels = getTotalNumOutputChannels(); // Gets the number of output channels.
 
-    // In case we have more outputs than inputs, this code clears any output
-    // channels that didn't contain input data, (because these aren't
-    // guaranteed to be empty - they may contain garbage).
-    // This is here to avoid people getting screaming feedback
-    // when they first compile a plugin, but obviously you don't need to keep
-    // this code if your algorithm always overwrites all the output channels.
+    // Clears any output channels that don't have corresponding input channels.
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
     {
-        buffer.clear (i, 0, buffer.getNumSamples());
+        buffer.clear(i, 0, buffer.getNumSamples());
     }
 
-    mix_.pushDrySamples (buffer);
+    mix_.pushDrySamples(buffer); // Pushes the dry signal into the mix processor.
 
+    // Processes each sample in the buffer.
     for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
     {
         for (int channel = 0; channel < totalNumInputChannels; ++channel)
         {
-            // TODO: make this value tweakable.
-            float treshold = apvts.getRawParameterValue ("COMPRESS")->load();
-            float frequency = apvts.getRawParameterValue ("TONE")->load();
+            float sampleValue = brassInstrument->tick();
+            
+            // Retrieves parameter values for compression and tone.
+            float treshold = apvts.getRawParameterValue("COMPRESS")->load();
+            float frequency = apvts.getRawParameterValue("TONE")->load();
 
-            if (*buffer.getReadPointer (channel, sample) >= treshold)
+            // Applies compression to the signal based on the threshold.
+            if (*buffer.getReadPointer(channel, sample) >= treshold)
             {
-                *buffer.getWritePointer (channel, sample) = (*buffer.getReadPointer (channel, sample) / 4) + (3 * treshold / 4);
+                *buffer.getWritePointer(channel, sample) = (*buffer.getReadPointer(channel, sample) / 4) + (3 * treshold / 4);
             }
-            else if (*buffer.getReadPointer (channel, sample) <= -treshold)
+            else if (*buffer.getReadPointer(channel, sample) <= -treshold)
             {
-                *buffer.getWritePointer (channel, sample) = (*buffer.getReadPointer (channel, sample) / 4) - (3 * treshold / 4);
+                *buffer.getWritePointer(channel, sample) = (*buffer.getReadPointer(channel, sample) / 4) - (3 * treshold / 4);
             }
-            // Partly calculated partly by ear set makeup gain.
-            *buffer.getWritePointer (channel, sample) *= 5.0f - (11.0f * treshold * treshold);
 
+            // Applies makeup gain to the signal.
+            *buffer.getWritePointer(channel, sample) *= 5.0f - (11.0f * treshold * treshold);
+
+            // Applies a band-pass filter to the signal for each channel.
             if (channel == 0)
             {
-                filter_ch1_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass (getSampleRate(), frequency + 10.0f, 2.7f);
-                *buffer.getWritePointer (channel, sample) = filter_ch1_.processSample (*buffer.getReadPointer (channel, sample));
+                filter_ch1_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(getSampleRate(), frequency + 10.0f, 2.7f);
+                *buffer.getWritePointer(channel, sample) = filter_ch1_.processSample(*buffer.getReadPointer(channel, sample));
             }
             else if (channel == 1)
             {
-                filter_ch2_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass (getSampleRate(), frequency - 10.0f, 2.73f);
-                *buffer.getWritePointer (channel, sample) = filter_ch2_.processSample (*buffer.getReadPointer (channel, sample));
+                filter_ch2_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(getSampleRate(), frequency - 10.0f, 2.73f);
+                *buffer.getWritePointer(channel, sample) = filter_ch2_.processSample(*buffer.getReadPointer(channel, sample));
             }
         }
     }
-    auto block = juce::dsp::AudioBlock<float> (buffer);
-    auto contextToUse = juce::dsp::ProcessContextReplacing<float> (block);
 
-    chorus_.setRate (apvts.getRawParameterValue ("VIBRATO_RATE")->load());
-    chorus_.setDepth (apvts.getRawParameterValue ("VIBRATO")->load());
-    chorus_.setCentreDelay (1.0f);
-    chorus_.setFeedback (0.0f);
-    chorus_.setMix (1.0f);
+    // Wraps the buffer in an AudioBlock for further processing.
+    auto block = juce::dsp::AudioBlock<float>(buffer);
+    auto contextToUse = juce::dsp::ProcessContextReplacing<float>(block);
 
-    chorus_.process (contextToUse);
+    // Configures and processes the chorus effect.
+    chorus_.setRate(apvts.getRawParameterValue("VIBRATO_RATE")->load());
+    chorus_.setDepth(apvts.getRawParameterValue("VIBRATO")->load());
+    chorus_.setCentreDelay(1.0f);
+    chorus_.setFeedback(0.0f);
+    chorus_.setMix(1.0f);
+    chorus_.process(contextToUse);
 
-    mix_.setWetMixProportion (1.0f - apvts.getRawParameterValue ("MIX")->load());
-    mix_.mixWetSamples (block);
+    // Configures and applies the wet/dry mix.
+    mix_.setWetMixProportion(1.0f - apvts.getRawParameterValue("MIX")->load());
+    mix_.mixWetSamples(block);
 }
 
 //==============================================================================
+// Indicates whether the plugin has an editor.
 bool GramophonyAudioProcessor::hasEditor() const
 {
-    return true; // (change this to false if you choose to not supply an editor)
+    return true; // Returns true to indicate the plugin has a GUI editor.
 }
 
+// Creates and returns the plugin editor.
 juce::AudioProcessorEditor* GramophonyAudioProcessor::createEditor()
 {
-    return new GramophonyAudioProcessorEditor (*this);
+    return new GramophonyAudioProcessorEditor(*this); // Creates an instance of the editor.
 }
 
 //==============================================================================
-void GramophonyAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
+// Saves the plugin's state to a memory block.
+void GramophonyAudioProcessor::getStateInformation(juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
-    auto state = apvts.copyState();
-    std::unique_ptr<juce::XmlElement> xml (state.createXml());
-    copyXmlToBinary (*xml, destData);
+    auto state = apvts.copyState(); // Copies the current state of the parameters.
+    std::unique_ptr<juce::XmlElement> xml(state.createXml()); // Converts the state to XML.
+    copyXmlToBinary(*xml, destData); // Saves the XML to the memory block.
 }
 
-void GramophonyAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+// Restores the plugin's state from a memory block.
+void GramophonyAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
-    std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
+    std::unique_ptr<juce::XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes)); // Reads XML from the memory block.
 
     if (xmlState.get() != nullptr)
-        if (xmlState->hasTagName (apvts.state.getType()))
-            apvts.replaceState (juce::ValueTree::fromXml (*xmlState));
+        if (xmlState->hasTagName(apvts.state.getType())) // Checks if the XML tag matches the parameter tree type.
+            apvts.replaceState(juce::ValueTree::fromXml(*xmlState)); // Restores the state from the XML.
 }
 
+// Creates and returns the parameter layout for the plugin.
 juce::AudioProcessorValueTreeState::ParameterLayout GramophonyAudioProcessor::createParameters()
 {
-    std::vector<std::unique_ptr<juce::RangedAudioParameter>> parameters;
+    std::vector<std::unique_ptr<juce::RangedAudioParameter>> parameters; // Stores the parameters.
 
-    parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("COMPRESS", "Compress", 0.04f, 0.45f, 0.1f));
-    parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("VIBRATO", "Vibrato", 0.0f, 0.33f, 0.01f));
-    parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("VIBRATO_RATE", "Rate", 0.5f, 4.0f, 2.0f));
-    parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("TONE", "Tone", 320.1f, 4700.0f, 2000.0f));
-    parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("MIX", "Mix", 0.0f, 0.5f, 0.0f));
-    return { parameters.begin(), parameters.end() };
+    // Adds parameters for compression, vibrato, tone, and mix.
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("COMPRESS", "Compress", 0.04f, 0.45f, 0.1f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VIBRATO", "Vibrato", 0.0f, 0.33f, 0.01f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VIBRATO_RATE", "Rate", 0.5f, 4.0f, 2.0f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("TONE", "Tone", 320.1f, 4700.0f, 2000.0f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("MIX", "Mix", 0.0f, 0.5f, 0.0f));
+    return { parameters.begin(), parameters.end() }; // Returns the parameter layout.
 }
 
 //==============================================================================
-// This creates new instances of the plugin..
+// Factory function to create a new instance of the plugin.
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new GramophonyAudioProcessor();
+    return new GramophonyAudioProcessor(); // Creates and returns a new instance of the processor.
 }

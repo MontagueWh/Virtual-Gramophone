@@ -10,7 +10,7 @@ namespace BinaryData
 {
 
 //================== VirtualGramophoneSuite.mtl ==================
-static const unsigned char temp_binary_data_2[] =
+static const unsigned char temp_binary_data_293[] =
 "newmtl T_CoffeeTableWoodBrown\r\n"
 "map_Kd CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_AlbedoTransparency.png\r\n"
 "bump CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_Normal.png\r\n"
@@ -18,10 +18,10 @@ static const unsigned char temp_binary_data_2[] =
 "d 1\r\n"
 "\r\n";
 
-const char* VirtualGramophoneSuite_mtl = (const char*) temp_binary_data_2;
+const char* VirtualGramophoneSuite_mtl = (const char*) temp_binary_data_293;
 
 //================== VirtualGramophoneSuite.obj ==================
-static const unsigned char temp_binary_data_3[] =
+static const unsigned char temp_binary_data_294[] =
 { 35,32,80,114,111,66,117,105,108,100,101,114,32,54,46,48,46,53,13,10,35,32,104,116,116,112,115,58,47,47,117,110,105,116,121,51,100,46,99,111,109,47,117,110,105,116,121,47,102,101,97,116,117,114,101,115,47,119,111,114,108,100,98,117,105,108,100,105,110,
 103,47,112,114,111,98,117,105,108,100,101,114,13,10,35,32,48,57,47,48,52,47,50,48,50,53,32,49,55,58,52,57,58,52,57,13,10,13,10,109,116,108,108,105,98,32,46,47,86,105,114,116,117,97,108,71,114,97,109,111,112,104,111,110,101,83,117,105,116,101,46,109,116,
 108,13,10,111,32,86,105,114,116,117,97,108,71,114,97,109,111,112,104,111,110,101,83,117,105,116,101,13,10,13,10,103,32,67,111,102,102,101,101,84,97,98,108,101,87,111,111,100,66,114,111,119,110,13,10,118,32,45,51,46,49,50,52,55,52,52,32,48,46,50,56,57,
@@ -869,5 +869,5 @@ static const unsigned char temp_binary_data_3[] =
 47,55,50,56,47,49,54,32,52,49,57,47,55,50,57,47,54,32,50,50,47,55,51,48,47,54,13,10,102,32,50,50,47,55,51,48,47,54,32,50,51,47,55,51,49,47,49,54,32,52,57,54,47,55,50,56,47,49,54,13,10,102,32,52,55,57,47,55,51,50,47,49,53,32,52,56,56,47,55,50,54,47,55,
 55,32,50,51,47,55,51,49,47,49,54,13,10,102,32,50,51,47,55,51,49,47,49,54,32,50,49,47,55,51,51,47,49,53,32,52,55,57,47,55,51,50,47,49,53,13,10,13,10,0,0 };
 
-const char* VirtualGramophoneSuite_obj = (const char*) temp_binary_data_3;
+const char* VirtualGramophoneSuite_obj = (const char*) temp_binary_data_294;
 }
