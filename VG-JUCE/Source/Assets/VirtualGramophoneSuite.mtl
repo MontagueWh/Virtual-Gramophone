@@ -1,0 +1,6 @@
+newmtl T_CoffeeTableWoodBrown
+map_Kd CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_AlbedoTransparency.png
+bump CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_Normal.png
+Kd 0.9063317 0.9063317 0.9063317
+d 1
+
