@@ -19,75 +19,54 @@
 class GramophonyAudioProcessor : public juce::AudioProcessor
 {
 public:
+
     //==============================================================================
     GramophonyAudioProcessor(); // Constructor for the audio processor.
     ~GramophonyAudioProcessor() override; // Destructor for the audio processor.
 
     //==============================================================================
-    // Prepares the processor for playback by initializing resources.
-    void prepareToPlay(double sampleRate, int samplesPerBlock) override;
-
-    // Releases resources when playback stops.
-    void releaseResources() override;
+    void prepareToPlay(double sampleRate, int samplesPerBlock) override; // Prepares the processor for playback by initialising resources
+    
+    void releaseResources() override; // Releases resources when playback stops.
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-    // Checks if the given bus layout is supported by the plugin.
-    bool isBusesLayoutSupported(const BusesLayout& layouts) const override;
+    bool isBusesLayoutSupported(const BusesLayout& layouts) const override; // Checks if the given bus layout is supported by the plugin
 #endif
-
-    // Processes audio and MIDI data for each block of samples.
-    void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
-
-    //==============================================================================
-    // Creates and returns the plugin editor (GUI).
-    juce::AudioProcessorEditor* createEditor() override;
-
-    // Indicates whether the plugin has an editor (GUI).
-    bool hasEditor() const override;
+    
+    void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override; // Processes audio and MIDI data for each block of samples
 
     //==============================================================================
-    // Returns the name of the plugin.
-    const juce::String getName() const override;
+    juce::AudioProcessorEditor* createEditor() override; // Creates and returns the plugin editor (GUI)
 
-    // Determines if the plugin accepts MIDI input.
-    bool acceptsMidi() const override;
-
-    // Determines if the plugin produces MIDI output.
-    bool producesMidi() const override;
-
-    // Determines if the plugin is a MIDI effect.
-    bool isMidiEffect() const override;
-
-    // Returns the tail length of the plugin in seconds.
-    double getTailLengthSeconds() const override;
+    bool hasEditor() const override; // Indicates whether the plugin has an editor (GUI)
 
     //==============================================================================
-    // Returns the number of programs (presets) available in the plugin.
-    int getNumPrograms() override;
+    const juce::String getName() const override; // Returns the name of the plugin
+    
+    bool acceptsMidi() const override; // Determines if the plugin accepts MIDI input
+	bool producesMidi() const override; // Determines if the plugin produces MIDI output
+    bool isMidiEffect() const override; // Determines if the plugin is a MIDI effect
 
-    // Returns the index of the current program.
-    int getCurrentProgram() override;
-
-    // Sets the current program (preset) by index.
-    void setCurrentProgram(int index) override;
-
-    // Returns the name of the program (preset) at the given index.
-    const juce::String getProgramName(int index) override;
-
-    // Changes the name of the program (preset) at the given index.
-    void changeProgramName(int index, const juce::String& newName) override;
+    double getTailLengthSeconds() const override; // Returns the tail length of the plugin in seconds
 
     //==============================================================================
-    // Saves the plugin's state to a memory block.
-    void getStateInformation(juce::MemoryBlock& destData) override;
+    int getNumPrograms() override; // Returns the number of programs (presets) available in the plugin
+    int getCurrentProgram() override; // Returns the index of the current program
+    void setCurrentProgram(int index) override; // Sets the current program (preset) by index.
 
-    // Restores the plugin's state from a memory block.
-    void setStateInformation(const void* data, int sizeInBytes) override;
+    const juce::String getProgramName(int index) override; // Returns the name of the program (preset) at the given index
+    void changeProgramName(int index, const juce::String& newName) override; // Changes the name of the program (preset) at the given index
 
-    // Manages the plugin's parameters using a value tree state.
-    juce::AudioProcessorValueTreeState apvts;
+    //==============================================================================
+    void getStateInformation(juce::MemoryBlock& destData) override; // Saves the plugin's state to a memory block
+
+    void setStateInformation(const void* data, int sizeInBytes) override; // Restores the plugin's state from a memory block
+
+    juce::AudioProcessorValueTreeState apvts; // Manages the plugin's parameters using a value tree state.
 
 private:
+
+	//==============================================================================
     // Creates and returns the parameter layout for the plugin.
     juce::AudioProcessorValueTreeState::ParameterLayout createParameters();
 
@@ -96,8 +75,6 @@ private:
     juce::dsp::IIR::Filter<float> filter_ch1_; // Band-pass filter for channel 1.
     juce::dsp::IIR::Filter<float> filter_ch2_; // Band-pass filter for channel 2.
     juce::dsp::DryWetMixer<float> mix_; // Wet/dry mix processor.
-
-    Brass GramoHorn;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GramophonyAudioProcessor)

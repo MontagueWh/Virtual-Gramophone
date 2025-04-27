@@ -11,6 +11,12 @@
 #include "PluginProcessor.h" // Includes the header file for the plugin processor.
 #include "InfoButton.h"      // Includes the header file for the InfoButton class.
 #include <JuceHeader.h>      // Includes the JUCE framework header file.
+#include "3DModelLoad/WavefrontObjParser.h" // Includes the header file for loading 3D models.
+
+//#include "Assets/VirtualGramophoneSuite.obj" // Includes the Gramophone Suite 3D model file.
+//#include "Assets/VirtualGramophoneSuite.mtl" // Includes the material file for the 3D model.
+//#include "Assets/CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_Normal.png" // Includes the texture file for a 3D coffee table model.
+//#include "Assets/CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_AlbedoTransparency.png" // Includes the texture file for the coffee table model's albedo transparency.
 
 //==============================================================================
 /**
@@ -50,7 +56,7 @@ private:
     juce::Slider vibrato_slider_; // Slider for controlling the vibrato depth parameter.
     SliderAttatchmentPtr vibrato_slider_attachment_; // Attachment to link the vibrato slider to the parameter tree.
 
-    juce::Slider vibrato_rate_slider_; // Slider for controlling the vibrato rate parameter.
+    juce::Slider vibratoRate; // Slider for controlling the vibrato rate parameter.
     SliderAttatchmentPtr vibrato_rate_slider_attachment_; // Attachment to link the vibrato rate slider to the parameter tree.
 
     juce::Slider mix_slider_; // Slider for controlling the wet/dry mix parameter.
@@ -68,6 +74,12 @@ private:
     juce::Rectangle<int> tone_text_section_; // Rectangle for the tone text label section.
     juce::Rectangle<int> vibrato_text_section_; // Rectangle for the vibrato text label section.
     juce::Rectangle<int> mix_text_section_; // Rectangle for the mix text label section.
+
+    WavefrontObjFile gramoSuiteModels;
+    WavefrontObjFile coffeeTableModel;
+
+    juce::Image coffeeTableNormalMap;
+    juce::Image coffeeTableAlbedoMap;
 
     GramophonyAudioProcessor& audioProcessor; // Reference to the audio processor instance.
 
