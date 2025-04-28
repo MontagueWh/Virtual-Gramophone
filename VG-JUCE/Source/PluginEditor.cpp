@@ -79,7 +79,8 @@ void GramophonyAudioProcessorEditor::paint(juce::Graphics& g)
     g.setFont(40.0f); // Sets the font size for the title text.
     g.drawFittedText("GRAMOPHONY", getLocalBounds(), juce::Justification::centredTop, 1); // Draws the plugin title.
 
-	ObjParser.load("gramophone.obj"); // Loads the 3D model of the gramophone.
+	ObjParser.load("VirtualGramophoneSuiteobj"); // Loads the 3D model of the gramophone.
+    juce::File gramophoneObjFile = contentDir.getChildFile("Assets").getChildFile("VirtualGramophoneSuite.obj");
 
     /*// Creates the shape of a gramophone funnel.
     juce::Path funnel;
@@ -146,113 +147,6 @@ void GramophonyAudioProcessorEditor::paint(juce::Graphics& g)
     g.drawFittedText("TONE", tone_text_section_, juce::Justification::left, 1);
     g.drawFittedText("VIBE", vibrato_text_section_, juce::Justification::left, 1);
     g.drawFittedText("DRY", mix_text_section_, juce::Justification::left, 1);
-}
-
-void GramophonyAudioProcessorEditor::load3DAssets()
-{
-    // Get the plugin's content directory
-    juce::File contentDir =
-        juce::File::getSpecialLocation(
-            juce::File::SpecialLocationType::userApplicationDataDirectory)
-        .getChildFile("YourCompanyName") // Replace "YourCompanyName"
-        .getChildFile("YourPluginName")    // Replace "YourPluginName"
-        .getChildFile("Content");
-
-    // Load Gramophone Model
-    juce::File gramophoneObjFile =
-        contentDir.getChildFile("models").getChildFile("gramophone").getChildFile(
-            "VirtualGramophoneSuite.obj");
-    if (gramophoneObjFile.exists())
-    {
-        if (gramophoneModel.load(gramophoneObjFile).failed())
-        {
-            juce::Logger::writeToLog("Error loading gramophone OBJ file");
-            return false;
-        }
-        else
-        {
-            juce::Logger::writeToLog("Gramophone OBJ file loaded successfully");
-        }
-    }
-    else
-    {
-        juce::Logger::writeToLog(
-            "Gramophone OBJ file not found: " + gramophoneObjFile.getFullPathName());
-        return false;
-    }
-
-    // Load Coffee Table Model
-    juce::File coffeeTableObjFile =
-        contentDir.getChildFile("models").getChildFile("furniture").getChildFile(
-            "CoffeeTable.obj"); // Adjust path if needed
-    if (coffeeTableObjFile.exists())
-    {
-        if (coffeeTableModel.load(coffeeTableObjFile).failed())
-        {
-            juce::Logger::writeToLog("Error loading coffee table OBJ file");
-            return false;
-        }
-        else
-        {
-            juce::Logger::writeToLog("Coffee table OBJ file loaded successfully");
-        }
-    }
-    else
-    {
-        juce::Logger::writeToLog(
-            "Coffee table OBJ file not found: " +
-            coffeeTableObjFile.getFullPathName());
-        return false;
-    }
-
-    // Load Coffee Table Textures
-    juce::File normalMapFile =
-        contentDir.getChildFile("textures").getChildFile(
-            "CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_Normal.png");
-    if (normalMapFile.exists())
-    {
-        coffeeTableNormalMap = juce::ImageCache::getFromFile(normalMapFile);
-        if (!coffeeTableNormalMap.isValid())
-        {
-            juce::Logger::writeToLog("Error loading coffee table normal map");
-            return false;
-        }
-        else
-        {
-            juce::Logger::writeToLog("Coffee table normal map loaded");
-        }
-    }
-    else
-    {
-        juce::Logger::writeToLog(
-            "Coffee table normal map not found: " + normalMapFile.getFullPathName());
-        return false;
-    }
-
-    juce::File albedoMapFile =
-        contentDir.getChildFile("textures").getChildFile(
-            "CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_AlbedoTransparency.png");
-    if (albedoMapFile.exists())
-    {
-        coffeeTableAlbedoMap = juce::ImageCache::getFromFile(albedoMapFile);
-        if (!coffeeTableAlbedoMap.isValid())
-        {
-            juce::Logger::writeToLog("Error loading coffee table albedo map");
-            return false;
-        }
-        else
-        {
-            juce::Logger::writeToLog("Coffee table albedo map loaded");
-        }
-    }
-    else
-    {
-        juce::Logger::writeToLog(
-            "Coffee table albedo map not found: " + albedoMapFile.getFullPathName());
-        return false;
-    }
-
-    return true;
 }
 
 // Converts a slider's value to an alpha (transparency) value.

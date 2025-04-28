@@ -4,12 +4,8 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
   <MAINGROUP id="ri06i3" name="VG-JUCE">
     <GROUP id="{C6B7CFA8-4DDD-C98A-6124-311CC2B0A917}" name="Source">
-      <GROUP id="{562BB2A7-0FF2-E9EA-08D9-3FD3C5E51977}" name="3DModelLoad">
-        <FILE id="br7XeQ" name="DemoUtilities.h" compile="0" resource="0" file="Source/3DModelLoad/DemoUtilities.h"/>
-        <FILE id="o92eZP" name="OpenGLDemo.h" compile="0" resource="0" file="Source/3DModelLoad/OpenGLDemo.h"/>
-        <FILE id="dsSBa5" name="WavefrontObjParser.h" compile="0" resource="0"
-              file="Source/3DModelLoad/WavefrontObjParser.h"/>
-      </GROUP>
+      <FILE id="C7MEUj" name="WavefrontObjParser.h" compile="0" resource="0"
+            file="Source/WavefrontObjParser.h"/>
       <GROUP id="{8E29E749-9B61-C426-6920-A04B20172B8D}" name="The Synthesis Tookit">
         <GROUP id="{1CD9A7EF-1EEF-70CB-7E00-0BDCEC101B8B}" name="bin">
           <FILE id="Nwat8I" name="treesed" compile="0" resource="1" file="Source/The Synthesis Tookit/bin/treesed"/>
