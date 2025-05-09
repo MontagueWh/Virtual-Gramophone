@@ -17,7 +17,8 @@ constexpr float LINE_THICKNESS = 4.0f; // Defines the thickness of lines drawn i
 GramophonyAudioProcessorEditor::GramophonyAudioProcessorEditor(GramophonyAudioProcessor& p)
     : AudioProcessorEditor(&p), // Initialises the base class with the processor reference.
     audioProcessor(p), // Stores a reference to the audio processor.
-    info_button_(juce::Colours::darkgrey) // Initialises the info button with a dark gray colour.
+    info_button_(juce::Colours::darkgrey), // Initialises the info button with a dark gray colour.
+	openGLContext_(*this) // Sets up the OpenGL context for rendering.
 {
     constexpr int TEXT_BOX_SIZE = 25; // Defines the size of the text box for sliders.
 
@@ -61,12 +62,27 @@ GramophonyAudioProcessorEditor::GramophonyAudioProcessorEditor(GramophonyAudioPr
     // Adds the info button to the editor.
     info_button_.addToEditor(this);
 
+    // Attach and initialise OpenGL
+    openGLContext.setRenderer(this);
+    openGLContext.attachTo(*this);
+
     setSize(500, 300); // Sets the initial size of the editor window.
 }
 
 // Destructor for the plugin editor.
 GramophonyAudioProcessorEditor::~GramophonyAudioProcessorEditor()
 {
+    openGLContext.detach();
+    if (vertexBuffer != 0)
+        openGLContext.extensions.glDeleteBuffers(1, &vertexBuffer);
+    if (shaderProgram != 0)
+    {
+        GLuint shaders[2];
+        openGLContext.extensions.glGetAttachedShaders(shaderProgram, shaders);
+        for (auto shader : shaders)
+            openGLContext.extensions.glDeleteShader(shader);
+        openGLContext.extensions.glDeleteProgram(shaderProgram);
+    }
 }
 
 //==============================================================================
@@ -79,65 +95,9 @@ void GramophonyAudioProcessorEditor::paint(juce::Graphics& g)
     g.setFont(40.0f); // Sets the font size for the title text.
     g.drawFittedText("GRAMOPHONY", getLocalBounds(), juce::Justification::centredTop, 1); // Draws the plugin title.
 
-	ObjParser.load("VirtualGramophoneSuiteobj"); // Loads the 3D model of the gramophone.
-    juce::File gramophoneObjFile = contentDir.getChildFile("Assets").getChildFile("VirtualGramophoneSuite.obj");
+    assimp::Importer::ReadFile
 
-    /*// Creates the shape of a gramophone funnel.
-    juce::Path funnel;
-    funnel.startNewSubPath(8.0f, 102.0f);
-    funnel.lineTo(43.0f, 48.0f);
-    funnel.lineTo(113.0f, 38.0f);
-    funnel.lineTo(194.0f, 55.0);
-    funnel.lineTo(258.0f, 109.0f);
-    funnel.lineTo(279.0f, 171.0f);
-    funnel.lineTo(252.0f, 225.0f);
-    funnel.lineTo(174.0f, 245.0f);
-    funnel.lineTo(92.0f, 229.0f);
-    funnel.lineTo(25.0f, 166.0f);
-    funnel.closeSubPath();
-
-    // Creates the shape of the gramophone base.
-    juce::Path base;
-    base.startNewSubPath(74.0f, 210.0f);
-    base.lineTo(54.0f, 254.0f);
-    base.lineTo(53.0f, 275.0f);
-    base.lineTo(0.0F, 300.0f);
-    base.lineTo(32.0F, 300.0f);
-    base.lineTo(73.0f, 285.0f);
-    base.lineTo(79.0f, 260.0f);
-    base.lineTo(104.0F, 230.0f);
-    base.closeSubPath();
-
-    g.setColour(juce::Colour(0xff123456)); // Sets the color for the base.
-    g.fillPath(base); // Fills the base shape.
-
-    g.setColour(juce::Colours::beige); // Sets the color to beige to hide parts of the base.
-    g.fillPath(funnel); // Fills the funnel shape with beige.
-
-    // Fills the funnel with colors based on slider values.
-    g.setColour(juce::Colours::orange.withAlpha(0.2f + sliderToAplhaValue(tone_slider_) / 2.0f));
-    g.fillPath(funnel);
-    g.setColour(juce::Colours::yellow.withAlpha(sliderToAplhaValue(compress_slider_) / 2.0f));
-    g.fillPath(funnel);
-    g.setColour(juce::Colours::blueviolet.withAlpha(sliderToAplhaValue(vibrato_slider_) / 4.0f));
-    g.fillPath(funnel);
-    g.setColour(juce::Colours::rebeccapurple.withAlpha(sliderToAplhaValue(vibrato_rate_slider_) / 3.0f));
-    g.fillPath(funnel);
-    g.setColour(juce::Colours::orangered.withAlpha(sliderToAplhaValue(mix_slider_) / 3.0f));
-    g.fillPath(funnel);
-
-    // Draws contours for the gramophone funnel.
-    g.setColour(juce::Colour(0xff123456));
-    DrawThreePointLine(g, 73.0f, 179.0f, 62.0f, 144.0f, 8.0f, 102.0f);
-    DrawThreePointLine(g, 85.0f, 189.0f, 83.0f, 133.0f, 43.0f, 48.0f);
-    DrawThreePointLine(g, 92.0f, 193.0f, 105.0f, 129.0f, 113.0f, 38.0f);
-    DrawThreePointLine(g, 101.0f, 201.0f, 144.0f, 126.0f, 194.0f, 55.0f);
-    DrawThreePointLine(g, 108.0f, 203.0f, 176.0f, 145.0f, 258.0f, 109.0f);
-    DrawThreePointLine(g, 122.0f, 209.0f, 188.0f, 179.0f, 279.0f, 171.0f);
-    DrawThreePointLine(g, 136.0f, 211.0f, 174.0f, 202.0f, 252.0f, 225.0f);
-    DrawThreePointLine(g, 108.0f, 203.0f, 144.0f, 215.0f, 174.0f, 245.0f);
-    DrawThreePointLine(g, 108.0f, 203.0f, 73.0f, 179.0f, 25.0f, 166.0f);
-    g.drawLine(juce::Line<float>(108.0f, 203.0f, 92.0f, 229.0f), LINE_THICKNESS);*/
+    objParser.load(gramoSuite.getFullPathName()); // Use getFullPathName()
 
     SetupSections(); // Sets up the layout sections for the GUI.
 

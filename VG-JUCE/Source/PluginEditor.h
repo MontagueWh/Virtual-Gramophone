@@ -11,12 +11,11 @@
 #include "PluginProcessor.h" // Includes the header file for the plugin processor.
 #include "InfoButton.h"      // Includes the header file for the InfoButton class.
 #include <JuceHeader.h>      // Includes the JUCE framework header file.
-#include "3DModelLoad/WavefrontObjParser.h" // Includes the header file for loading 3D models.
 
-//#include "Assets/VirtualGramophoneSuite.obj" // Includes the Gramophone Suite 3D model file.
-//#include "Assets/VirtualGramophoneSuite.mtl" // Includes the material file for the 3D model.
-//#include "Assets/CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_Normal.png" // Includes the texture file for a 3D coffee table model.
-//#include "Assets/CoffeeTableWoodBrown_T_CoffeeTableWoodBrown_AlbedoTransparency.png" // Includes the texture file for the coffee table model's albedo transparency.
+#include <../Source/assimp/include/assimp/Importer.hpp> //C++ importer interface
+#include <../Source/assimp/include/assimp/scene.h> // Output data structure
+#include <../Source/assimp/include/assimp/postprocess.h> // Post processing flags
+
 
 //==============================================================================
 /**
@@ -25,7 +24,7 @@
  * Handles the GUI and user interactions for the plugin.
  */
 class GramophonyAudioProcessorEditor : public juce::AudioProcessorEditor,
-    public juce::Slider::Listener
+	public juce::Slider::Listener, public juce::Open
 {
 public:
     explicit GramophonyAudioProcessorEditor(GramophonyAudioProcessor&); // Constructor that takes a reference to the audio processor.
@@ -75,11 +74,12 @@ private:
     juce::Rectangle<int> vibrato_text_section_; // Rectangle for the vibrato text label section.
     juce::Rectangle<int> mix_text_section_; // Rectangle for the mix text label section.
 
-    WavefrontObjFile gramoSuiteModels;
-    WavefrontObjFile coffeeTableModel;
+	Assimp::Importer importer; // Assimp importer for loading 3D models.
 
-    juce::Image coffeeTableNormalMap;
-    juce::Image coffeeTableAlbedoMap;
+    // OpenGL-related members
+    juce::OpenGLContext openGLContext;
+    GLuint vertexBuffer = 0;
+    GLuint shaderProgram = 0;
 
     GramophonyAudioProcessor& audioProcessor; // Reference to the audio processor instance.
 
