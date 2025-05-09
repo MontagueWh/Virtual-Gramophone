@@ -14,110 +14,105 @@ constexpr float LINE_THICKNESS = 4.0f; // Defines the thickness of lines drawn i
 
 //==============================================================================
 // Constructor for the plugin editor.
-GramophonyAudioProcessorEditor::GramophonyAudioProcessorEditor(GramophonyAudioProcessor& p)
-    : AudioProcessorEditor(&p), // Initialises the base class with the processor reference.
-    audioProcessor(p), // Stores a reference to the audio processor.
-    info_button_(juce::Colours::darkgrey), // Initialises the info button with a dark gray colour.
-	openGLContext_(*this) // Sets up the OpenGL context for rendering.
+VirtualGramoAudioProcessorEditor::VirtualGramoAudioProcessorEditor(VirtualGramoAudioProcessor& p)
+    : AudioProcessorEditor(&p), audioProcessor(p), info_button_(juce::Colours::darkgrey)
 {
     constexpr int TEXT_BOX_SIZE = 25; // Defines the size of the text box for sliders.
 
     // Sets up the compression slider.
-    compress_slider_.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
-    compress_slider_.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
-    compress_slider_.addListener(this); // Adds this editor as a listener for slider changes.
-    addAndMakeVisible(compress_slider_); // Makes the slider visible in the editor.
+    compressThreshParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
+    compressThreshParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
+    compressThreshParam.addListener(this); // Adds this editor as a listener for slider changes.
+    addAndMakeVisible(compressThreshParam); // Makes the slider visible in the editor.
 
     // Links the compression slider to the "COMPRESS" parameter in the processor's parameter tree.
-    compress_slider_attachment_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "COMPRESS", compress_slider_);
+    compressThreshAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "COMPRESS", compressThreshParam);
 
     // Sets up the tone slider.
-    tone_slider_.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    tone_slider_.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    tone_slider_.addListener(this);
-    addAndMakeVisible(tone_slider_);
-    tone_slider_attachment_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "TONE", tone_slider_);
+    toneParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    toneParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    toneParam.addListener(this);
+    addAndMakeVisible(toneParam);
+    toneAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "TONE", toneParam);
 
     // Sets up the vibrato slider.
-    vibrato_slider_.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    vibrato_slider_.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    vibrato_slider_.addListener(this);
-    addAndMakeVisible(vibrato_slider_);
-    vibrato_slider_attachment_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO", vibrato_slider_);
+    vibratoDepthParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    vibratoDepthParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    vibratoDepthParam.addListener(this);
+    addAndMakeVisible(vibratoDepthParam);
+    vibratoDepthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_DEPTH", vibratoDepthParam);
 
     // Sets up the vibrato rate slider.
-    vibrato_rate_slider_.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    vibrato_rate_slider_.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    vibrato_rate_slider_.addListener(this);
-    addAndMakeVisible(vibrato_rate_slider_);
-    vibrato_rate_slider_attachment_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_RATE", vibrato_rate_slider_);
+    vibratoRateParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    vibratoRateParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    vibratoRateParam.addListener(this);
+    addAndMakeVisible(vibratoRateParam);
+    vibratoRateAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_RATE", vibratoRateParam);
 
     // Sets up the mix slider.
-    mix_slider_.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    mix_slider_.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    mix_slider_.addListener(this);
-    addAndMakeVisible(mix_slider_);
-    mix_slider_attachment_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "MIX", mix_slider_);
+    wetDryParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    wetDryParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    wetDryParam.addListener(this);
+    addAndMakeVisible(wetDryParam);
+    wetDryAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "MIX", wetDryParam);
 
     // Adds the info button to the editor.
     info_button_.addToEditor(this);
-
-    // Attach and initialise OpenGL
-    openGLContext.setRenderer(this);
-    openGLContext.attachTo(*this);
 
     setSize(500, 300); // Sets the initial size of the editor window.
 }
 
 // Destructor for the plugin editor.
-GramophonyAudioProcessorEditor::~GramophonyAudioProcessorEditor()
+VirtualGramoAudioProcessorEditor::~VirtualGramoAudioProcessorEditor()
 {
-    openGLContext.detach();
-    if (vertexBuffer != 0)
-        openGLContext.extensions.glDeleteBuffers(1, &vertexBuffer);
-    if (shaderProgram != 0)
-    {
-        GLuint shaders[2];
-        openGLContext.extensions.glGetAttachedShaders(shaderProgram, shaders);
-        for (auto shader : shaders)
-            openGLContext.extensions.glDeleteShader(shader);
-        openGLContext.extensions.glDeleteProgram(shaderProgram);
-    }
+    
 }
 
 //==============================================================================
 // Paints the editor's GUI components.
-void GramophonyAudioProcessorEditor::paint(juce::Graphics& g)
+void VirtualGramoAudioProcessorEditor::paint(juce::Graphics& g)
 {
-    g.fillAll(juce::Colours::beige); // Fills the background with a beige color.
+    // (Our component is opaque, so we must completely fill the background with a solid colour)
+    g.fillAll(juce::Colours::beige);
 
-    g.setColour(juce::Colour(0xff123456)); // Sets the color for the title text.
-    g.setFont(40.0f); // Sets the font size for the title text.
-    g.drawFittedText("GRAMOPHONY", getLocalBounds(), juce::Justification::centredTop, 1); // Draws the plugin title.
+    g.setColour(juce::Colour(0xff123456));
+    g.setFont(40.0f);
+    g.drawFittedText("Virtual Gramophone", getLocalBounds(), juce::Justification::centredTop, 1);
 
-    assimp::Importer::ReadFile
+	std::string FBXFilePath = "../Source/GramoSuite.fbx"; // Path to the FBX file
+	ImportModel(FBXFilePath); // Import the model from the specified path
 
-    objParser.load(gramoSuite.getFullPathName()); // Use getFullPathName()
 
-    SetupSections(); // Sets up the layout sections for the GUI.
+    // Draw contours
+    g.setColour(juce::Colour(0xff123456));
+    DrawThreePointLine(g, 73.0f, 179.0f, 62.0f, 144.0f, 8.0f, 102.0f);
+    DrawThreePointLine(g, 85.0f, 189.0f, 83.0f, 133.0f, 43.0f, 48.0f);
+    DrawThreePointLine(g, 92.0f, 193.0f, 105.0f, 129.0f, 113.0f, 38.0f);
+    DrawThreePointLine(g, 101.0f, 201.0f, 144.0f, 126.0f, 194.0f, 55.0f);
+    DrawThreePointLine(g, 108.0f, 203.0f, 176.0f, 145.0f, 258.0f, 109.0f);
+    DrawThreePointLine(g, 122.0f, 209.0f, 188.0f, 179.0f, 279.0f, 171.0f);
+    DrawThreePointLine(g, 136.0f, 211.0f, 174.0f, 202.0f, 252.0f, 225.0f);
+    DrawThreePointLine(g, 108.0f, 203.0f, 144.0f, 215.0f, 174.0f, 245.0f);
+    DrawThreePointLine(g, 108.0f, 203.0f, 73.0f, 179.0f, 25.0f, 166.0f);
+    g.drawLine(juce::Line<float>(108.0f, 203.0f, 92.0f, 229.0f), LINE_THICKNESS);
 
-    // Draws labels for the sliders.
+    SetupSections();
     g.setFont(18.0f);
-    g.drawFittedText("COMP", comp_text_section_, juce::Justification::left, 1);
-    g.drawFittedText("TONE", tone_text_section_, juce::Justification::left, 1);
-    g.drawFittedText("VIBE", vibrato_text_section_, juce::Justification::left, 1);
-    g.drawFittedText("DRY", mix_text_section_, juce::Justification::left, 1);
+    g.drawFittedText("COMP", compressTextSection, juce::Justification::left, 1);
+    g.drawFittedText("TONE", toneTextSection, juce::Justification::left, 1);
+    g.drawFittedText("VIBE", vibratoTextSection, juce::Justification::left, 1);
+    g.drawFittedText("DRY", wetDryTextSection, juce::Justification::left, 1);
 }
 
 // Converts a slider's value to an alpha (transparency) value.
-float GramophonyAudioProcessorEditor::sliderToAplhaValue(juce::Slider& slider)
+float VirtualGramoAudioProcessorEditor::sliderToAplhaValue(juce::Slider& slider)
 {
     double range = (slider.getMaximum() - slider.getMinimum());
     return static_cast<float>((slider.getValue() - slider.getMinimum()) / range);
 }
 
 // Draws a line connecting three points.
-void GramophonyAudioProcessorEditor::DrawThreePointLine(juce::Graphics& g,
+void VirtualGramoAudioProcessorEditor::DrawThreePointLine(juce::Graphics& g,
     float x1,
     float y1,
     float x2,
@@ -130,46 +125,78 @@ void GramophonyAudioProcessorEditor::DrawThreePointLine(juce::Graphics& g,
 }
 
 // Handles resizing and layout of GUI components.
-void GramophonyAudioProcessorEditor::resized()
+void VirtualGramoAudioProcessorEditor::resized()
 {
     info_button_.button.setBounds(getWidth() - 35, 10, 20, 20); // Positions the info button.
     info_button_.info_text.setBounds(30, 50, getWidth() - 60, getHeight() - 100); // Positions the info text.
     SetupSections(); // Updates the layout sections.
-    compress_slider_.setBounds(comp_section_); // Positions the compression slider.
-    tone_slider_.setBounds(tone_section_); // Positions the tone slider.
-    vibrato_slider_.setBounds(vibrato_section_); // Positions the vibrato slider.
-    vibrato_rate_slider_.setBounds(vibrato_rate_section_); // Positions the vibrato rate slider.
-    mix_slider_.setBounds(mix_section_); // Positions the mix slider.
+    compressThreshParam.setBounds(compressSection); // Positions the compression slider.
+    toneParam.setBounds(toneSection); // Positions the tone slider.
+    vibratoDepthParam.setBounds(vibratoDepthSection); // Positions the vibrato slider.
+    vibratoRateParam.setBounds(vibratoRateSection); // Positions the vibrato rate slider.
+    wetDryParam.setBounds(wetDrySection); // Positions the mix slider.
 }
 
 // Sets up the layout sections for the GUI.
-void GramophonyAudioProcessorEditor::SetupSections()
+void VirtualGramoAudioProcessorEditor::SetupSections()
 {
     juce::Rectangle<int> r = getLocalBounds(); // Gets the bounds of the editor.
-    top_section_ = r.removeFromTop(50); // Allocates the top section.
-    picture_section_ = r.removeFromLeft(310); // Allocates the picture section.
+    topSection = r.removeFromTop(50); // Allocates the top section.
+    pictureSection = r.removeFromLeft(310); // Allocates the picture section.
 
-    juce::Rectangle<int> interface_section = r; // Remaining area for the interface.
-    int section_height = interface_section.getHeight() / 4; // Divides the interface into four sections.
-    constexpr int text_section_width = 40; // Width for the text labels.
+    juce::Rectangle<int> interfaceSection = r; // Remaining area for the interface.
+    int section_height = interfaceSection.getHeight() / 4; // Divides the interface into four sections.
+    constexpr int textSectionWidth = 40; // Width for the text labels.
 
     // Allocates sections for sliders and their labels.
-    comp_section_ = interface_section.removeFromTop(section_height);
-    comp_text_section_ = comp_section_.removeFromLeft(text_section_width);
+    compressSection = interfaceSection.removeFromTop(section_height);
+    compressTextSection = compressSection.removeFromLeft(textSectionWidth);
 
-    tone_section_ = interface_section.removeFromTop(section_height);
-    tone_text_section_ = tone_section_.removeFromLeft(text_section_width);
+	toneSection = interfaceSection.removeFromTop(section_height);
+	toneTextSection = toneSection.removeFromLeft(textSectionWidth);
 
-    vibrato_section_ = interface_section.removeFromTop(section_height);
-    vibrato_text_section_ = vibrato_section_.removeFromLeft(text_section_width);
-    vibrato_rate_section_ = vibrato_section_.removeFromRight(vibrato_section_.getWidth() / 2);
+	vibratoDepthSection = interfaceSection.removeFromTop(section_height);
+	vibratoTextSection = vibratoDepthSection.removeFromLeft(textSectionWidth);
+	vibratoRateSection = interfaceSection.removeFromTop(section_height);
 
-    mix_section_ = interface_section;
-    mix_text_section_ = mix_section_.removeFromLeft(text_section_width);
+    wetDrySection = interfaceSection;
+    wetDrySection = interfaceSection.removeFromTop(textSectionWidth);
 }
 
 // Callback for when a slider's value changes.
-void GramophonyAudioProcessorEditor::sliderValueChanged(juce::Slider* /*slider*/)
+void VirtualGramoAudioProcessorEditor::sliderValueChanged(juce::Slider* /*slider*/)
 {
     repaint(); // Repaints the editor to reflect the updated slider value.
+}
+
+void VirtualGramoAudioProcessorEditor::importModel(const std::string& pFile)
+{
+    // Initialise Assimp importer instance
+    Assimp::Importer importer;
+    
+    // Set up import flags specifically optimised for FBX files
+    const unsigned int importFlags = 
+        aiProcess_CalcTangentSpace |      // Calculate tangent space for normal mapping
+        aiProcess_Triangulate |           // Make sure all faces are triangles
+        aiProcess_JoinIdenticalVertices | // Optimise mesh by joining identical vertices
+        aiProcess_SortByPType |           // Split meshes by primitive type
+        aiProcess_FlipUVs;                // FBX files often need UV coordinates flipped
+    
+    // Import the FBX file
+    const aiScene* scene = importer.ReadFile(pFile, importFlags);
+    
+    // Check for import errors
+    if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
+        // Handle import errors
+        std::string errorString = "Assimp error: ";
+        errorString += importer.GetErrorString();
+        DBG(errorString);  // Output error to JUCE debug console
+        return;
+    }
+    
+    // Basic scene information
+    DBG("Model imported successfully:");
+    DBG(" - Meshes: " + juce::String(scene->mNumMeshes));
+    DBG(" - Materials: " + juce::String(scene->mNumMaterials));
+    DBG(" - Animations: " + juce::String(scene->mNumAnimations));
 }

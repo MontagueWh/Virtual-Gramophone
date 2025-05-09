@@ -13,7 +13,7 @@ constexpr float BP_FREQ = 2950.0f; // Defines a constant for the band-pass filte
 
 //==============================================================================
 // Constructor for the plugin processor class.
-GramophonyAudioProcessor::GramophonyAudioProcessor()
+VirtualGramoAudioProcessor::VirtualGramoAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
     : AudioProcessor(BusesProperties() // Initializes the audio processor with bus properties.
 #if ! JucePlugin_IsMidiEffect
@@ -26,28 +26,22 @@ GramophonyAudioProcessor::GramophonyAudioProcessor()
     apvts(*this, nullptr, "Parameters", createParameters()) // Initializes the AudioProcessorValueTreeState for parameter management.
 #endif
 {
-    // Set initial parameters (can be controlled via UI later)
-    midiNoteNumber = 60.0; // Middle C
-    breathPressure = 0.5;
-    brassInstrument->noteOn(midiNoteNumber, breathPressure);
 }
 
-GramophonyAudioProcessor::~GramophonyAudioProcessor()
+VirtualGramoAudioProcessor::~VirtualGramoAudioProcessor()
 {
     // Destructor for the plugin processor class. Cleans up resources if necessary.
-
-    brassInstrument->noteOff(midiNoteNumber, 0.0);
 }
 
 //==============================================================================
 // Returns the name of the plugin.
-const juce::String GramophonyAudioProcessor::getName() const
+const juce::String VirtualGramoAudioProcessor::getName() const
 {
     return JucePlugin_Name; // Uses the name defined in the JUCE plugin configuration.
 }
 
 // Determines if the plugin accepts MIDI input.
-bool GramophonyAudioProcessor::acceptsMidi() const
+bool VirtualGramoAudioProcessor::acceptsMidi() const
 {
 #if JucePlugin_WantsMidiInput
     return true; // Returns true if the plugin is configured to accept MIDI input.
@@ -57,7 +51,7 @@ bool GramophonyAudioProcessor::acceptsMidi() const
 }
 
 // Determines if the plugin produces MIDI output.
-bool GramophonyAudioProcessor::producesMidi() const
+bool VirtualGramoAudioProcessor::producesMidi() const
 {
 #if JucePlugin_ProducesMidiOutput
     return true; // Returns true if the plugin is configured to produce MIDI output.
@@ -67,7 +61,7 @@ bool GramophonyAudioProcessor::producesMidi() const
 }
 
 // Determines if the plugin is a MIDI effect.
-bool GramophonyAudioProcessor::isMidiEffect() const
+bool VirtualGramoAudioProcessor::isMidiEffect() const
 {
 #if JucePlugin_IsMidiEffect
     return true; // Returns true if the plugin is a MIDI effect.
@@ -77,46 +71,43 @@ bool GramophonyAudioProcessor::isMidiEffect() const
 }
 
 // Returns the tail length of the plugin in seconds.
-double GramophonyAudioProcessor::getTailLengthSeconds() const
+double VirtualGramoAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0; // No tail length is defined for this plugin.
 }
 
 // Returns the number of programs (presets) available in the plugin.
-int GramophonyAudioProcessor::getNumPrograms()
+int VirtualGramoAudioProcessor::getNumPrograms()
 {
     return 1; // At least one program is required, even if not implemented.
 }
 
 // Returns the index of the current program.
-int GramophonyAudioProcessor::getCurrentProgram()
+int VirtualGramoAudioProcessor::getCurrentProgram()
 {
     return 0; // Only one program is available, so the index is always 0.
 }
 
 // Sets the current program (not implemented in this plugin).
-void GramophonyAudioProcessor::setCurrentProgram(int /*index*/)
+void VirtualGramoAudioProcessor::setCurrentProgram(int /*index*/)
 {
 }
 
 // Returns the name of the program at the given index (not implemented).
-const juce::String GramophonyAudioProcessor::getProgramName(int /*index*/)
+const juce::String VirtualGramoAudioProcessor::getProgramName(int /*index*/)
 {
     return {}; // Returns an empty string.
 }
 
 // Changes the name of the program at the given index (not implemented).
-void GramophonyAudioProcessor::changeProgramName(int /*index*/, const juce::String& /*newName*/)
+void VirtualGramoAudioProcessor::changeProgramName(int /*index*/, const juce::String& /*newName*/)
 {
 }
 
 //==============================================================================
 // Prepares the plugin for playback by initialising DSP components.
-void GramophonyAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
+void VirtualGramoAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
-    // Initialise STK global settings (sample rate)
-    stk::Stk::setSampleRate(static_cast<double>(sampleRate));
-
     // Sets up the processing specification for DSP components.
     juce::dsp::ProcessSpec spec = { sampleRate, static_cast<juce::uint32>(samplesPerBlock),
                                     static_cast<juce::uint32>(getMainBusNumOutputChannels()) };
@@ -136,16 +127,16 @@ void GramophonyAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBl
 }
 
 // Releases resources when playback stops.
-void GramophonyAudioProcessor::releaseResources()
+void VirtualGramoAudioProcessor::releaseResources()
 {
     // Frees up any resources or memory used during playback.
 
-    brassInstrument->noteOff(midiNoteNumber, 0.0);
+    
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
 // Checks if the given bus layout is supported by the plugin.
-bool GramophonyAudioProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
+bool VirtualGramoAudioProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
 {
 #if JucePlugin_IsMidiEffect
     juce::ignoreUnused(layouts);
@@ -168,7 +159,7 @@ bool GramophonyAudioProcessor::isBusesLayoutSupported(const BusesLayout& layouts
 #endif
 
 // Processes audio and MIDI data for each block of samples.
-void GramophonyAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midiMessages*/)
+void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midiMessages*/)
 {
     juce::ScopedNoDenormals noDenormals; // Ensures denormalized numbers are handled correctly.
     auto totalNumInputChannels = getTotalNumInputChannels(); // Gets the number of input channels.
@@ -186,9 +177,7 @@ void GramophonyAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, ju
     for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
     {
         for (int channel = 0; channel < totalNumInputChannels; ++channel)
-        {
-            float sampleValue = brassInstrument->tick();
-            
+        {            
             // Retrieves parameter values for compression and tone.
             float treshold = apvts.getRawParameterValue("COMPRESS")->load();
             float frequency = apvts.getRawParameterValue("TONE")->load();
@@ -239,20 +228,20 @@ void GramophonyAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, ju
 
 //==============================================================================
 // Indicates whether the plugin has an editor.
-bool GramophonyAudioProcessor::hasEditor() const
+bool VirtualGramoAudioProcessor::hasEditor() const
 {
     return true; // Returns true to indicate the plugin has a GUI editor.
 }
 
 // Creates and returns the plugin editor.
-juce::AudioProcessorEditor* GramophonyAudioProcessor::createEditor()
+juce::AudioProcessorEditor* VirtualGramoAudioProcessor::createEditor()
 {
-    return new GramophonyAudioProcessorEditor(*this); // Creates an instance of the editor.
+    return new VirtualGramoAudioProcessorEditor(*this); // Creates an instance of the editor.
 }
 
 //==============================================================================
 // Saves the plugin's state to a memory block.
-void GramophonyAudioProcessor::getStateInformation(juce::MemoryBlock& destData)
+void VirtualGramoAudioProcessor::getStateInformation(juce::MemoryBlock& destData)
 {
     auto state = apvts.copyState(); // Copies the current state of the parameters.
     std::unique_ptr<juce::XmlElement> xml(state.createXml()); // Converts the state to XML.
@@ -260,7 +249,7 @@ void GramophonyAudioProcessor::getStateInformation(juce::MemoryBlock& destData)
 }
 
 // Restores the plugin's state from a memory block.
-void GramophonyAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
+void VirtualGramoAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
     std::unique_ptr<juce::XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes)); // Reads XML from the memory block.
 
@@ -270,7 +259,7 @@ void GramophonyAudioProcessor::setStateInformation(const void* data, int sizeInB
 }
 
 // Creates and returns the parameter layout for the plugin.
-juce::AudioProcessorValueTreeState::ParameterLayout GramophonyAudioProcessor::createParameters()
+juce::AudioProcessorValueTreeState::ParameterLayout VirtualGramoAudioProcessor::createParameters()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> parameters; // Stores the parameters.
 
@@ -287,5 +276,5 @@ juce::AudioProcessorValueTreeState::ParameterLayout GramophonyAudioProcessor::cr
 // Factory function to create a new instance of the plugin.
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new GramophonyAudioProcessor(); // Creates and returns a new instance of the processor.
+    return new VirtualGramoAudioProcessor(); // Creates and returns a new instance of the processor.
 }

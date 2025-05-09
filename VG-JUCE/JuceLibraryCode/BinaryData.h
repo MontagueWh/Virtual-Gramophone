@@ -5553,7 +5553,7 @@ namespace BinaryData
     const int            PluginEditor_cppSize = 8479;
 
     extern const char*   PluginEditor_h;
-    const int            PluginEditor_hSize = 4970;
+    const int            PluginEditor_hSize = 4953;
 
     extern const char*   InfoButton_cpp;
     const int            InfoButton_cppSize = 1468;

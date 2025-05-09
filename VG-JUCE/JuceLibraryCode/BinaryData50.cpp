@@ -600,7 +600,7 @@ static const unsigned char temp_binary_data_1848[] =
 " * Handles the GUI and user interactions for the plugin.\n"
 " */\n"
 "class GramophonyAudioProcessorEditor : public juce::AudioProcessorEditor,\n"
-"    public juce::Slider::Listener, public juce::OpenGLAppComponent\n"
+"\tpublic juce::Slider::Listener, public juce::Open\n"
 "{\n"
 "public:\n"
 "    explicit GramophonyAudioProcessorEditor(GramophonyAudioProcessor&); // Constructor that takes a reference to the audio processor.\n"

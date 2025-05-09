@@ -9,20 +9,20 @@
 #pragma once // Ensures the file is included only once during compilation.
 
 #include <JuceHeader.h> // Includes the JUCE framework header file.
-#include <stk/Brass.h> // Includes the STK Brass instrument header file.
+// #include <stk/Brass.h> // Includes the STK Brass instrument header file.
 
 //==============================================================================
 /**
  * The main audio processor class for the plugin.
  * Inherits from juce::AudioProcessor and implements its virtual methods.
  */
-class GramophonyAudioProcessor : public juce::AudioProcessor
+class VirtualGramoAudioProcessor : public juce::AudioProcessor
 {
 public:
 
     //==============================================================================
-    GramophonyAudioProcessor(); // Constructor for the audio processor.
-    ~GramophonyAudioProcessor() override; // Destructor for the audio processor.
+    VirtualGramoAudioProcessor(); // Constructor for the audio processor.
+    ~VirtualGramoAudioProcessor() override; // Destructor for the audio processor.
 
     //==============================================================================
     void prepareToPlay(double sampleRate, int samplesPerBlock) override; // Prepares the processor for playback by initialising resources
@@ -77,6 +77,6 @@ private:
     juce::dsp::DryWetMixer<float> mix_; // Wet/dry mix processor.
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GramophonyAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(VirtualGramoAudioProcessor)
         // Macro to prevent copying and enable leak detection for the class.
 };
