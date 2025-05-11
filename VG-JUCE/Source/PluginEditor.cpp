@@ -79,8 +79,11 @@ void VirtualGramoAudioProcessorEditor::paint(juce::Graphics& g)
     g.setFont(40.0f);
     g.drawFittedText("Virtual Gramophone", getLocalBounds(), juce::Justification::centredTop, 1);
 
-	std::string FBXFilePath = "../Source/GramoSuite.fbx"; // Path to the FBX file
-	ImportModel(FBXFilePath); // Import the model from the specified path
+	std::string GramoSuite = "../Source/GramoSuite.fbx"; // Path to the FBX file
+	gramoModelLoader.importModel(GramoSuite); // Import the model from the specified path
+
+    g.setColour(juce::Colours::darkgrey);
+    gramoModelLoader.renderModel(g, getLocalBounds().toFloat());
 
 
     // Draw contours
@@ -167,36 +170,4 @@ void VirtualGramoAudioProcessorEditor::SetupSections()
 void VirtualGramoAudioProcessorEditor::sliderValueChanged(juce::Slider* /*slider*/)
 {
     repaint(); // Repaints the editor to reflect the updated slider value.
-}
-
-void VirtualGramoAudioProcessorEditor::importModel(const std::string& pFile)
-{
-    // Initialise Assimp importer instance
-    Assimp::Importer importer;
-    
-    // Set up import flags specifically optimised for FBX files
-    const unsigned int importFlags = 
-        aiProcess_CalcTangentSpace |      // Calculate tangent space for normal mapping
-        aiProcess_Triangulate |           // Make sure all faces are triangles
-        aiProcess_JoinIdenticalVertices | // Optimise mesh by joining identical vertices
-        aiProcess_SortByPType |           // Split meshes by primitive type
-        aiProcess_FlipUVs;                // FBX files often need UV coordinates flipped
-    
-    // Import the FBX file
-    const aiScene* scene = importer.ReadFile(pFile, importFlags);
-    
-    // Check for import errors
-    if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
-        // Handle import errors
-        std::string errorString = "Assimp error: ";
-        errorString += importer.GetErrorString();
-        DBG(errorString);  // Output error to JUCE debug console
-        return;
-    }
-    
-    // Basic scene information
-    DBG("Model imported successfully:");
-    DBG(" - Meshes: " + juce::String(scene->mNumMeshes));
-    DBG(" - Materials: " + juce::String(scene->mNumMaterials));
-    DBG(" - Animations: " + juce::String(scene->mNumAnimations));
 }

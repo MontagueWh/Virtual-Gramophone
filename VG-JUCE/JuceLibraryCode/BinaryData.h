@@ -8,6 +8,12 @@
 
 namespace BinaryData
 {
+    extern const char*   GramoModelLoader_cpp;
+    const int            GramoModelLoader_cppSize = 1540;
+
+    extern const char*   GramoModelLoader_h;
+    const int            GramoModelLoader_hSize = 674;
+
     extern const char*   assimphunterconfig_cmake_in;
     const int            assimphunterconfig_cmake_inSize = 638;
 
@@ -882,7 +888,7 @@ namespace BinaryData
     const int            Preamble_txtSize = 1802;
 
     extern const char*   config_h_in;
-    const int            config_h_inSize = 50080;
+    const int            config_h_inSize = 50040;
 
     extern const char*   module_modulemap;
     const int            module_modulemapSize = 764;
@@ -5544,16 +5550,16 @@ namespace BinaryData
     const int            GramoSuite_fbxSize = 22266768;
 
     extern const char*   PluginProcessor_cpp;
-    const int            PluginProcessor_cppSize = 12143;
+    const int            PluginProcessor_cppSize = 11733;
 
     extern const char*   PluginProcessor_h;
-    const int            PluginProcessor_hSize = 4325;
+    const int            PluginProcessor_hSize = 4336;
 
     extern const char*   PluginEditor_cpp;
-    const int            PluginEditor_cppSize = 8479;
+    const int            PluginEditor_cppSize = 12647;
 
     extern const char*   PluginEditor_h;
-    const int            PluginEditor_hSize = 4953;
+    const int            PluginEditor_hSize = 4949;
 
     extern const char*   InfoButton_cpp;
     const int            InfoButton_cppSize = 1468;
@@ -5562,7 +5568,7 @@ namespace BinaryData
     const int            InfoButton_hSize = 643;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 1851;
+    const int namedResourceListSize = 1853;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

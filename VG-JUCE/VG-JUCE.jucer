@@ -6,6 +6,10 @@
               headerPath="../source/assimp&#10;../source/The Synthesis Tookit">
   <MAINGROUP id="ri06i3" name="VG-JUCE">
     <GROUP id="{C6B7CFA8-4DDD-C98A-6124-311CC2B0A917}" name="Source">
+      <FILE id="zoACWK" name="GramoModelLoader.cpp" compile="1" resource="1"
+            file="Source/UI/GramoModelLoader.cpp" xcodeResource="1"/>
+      <FILE id="MGOOzg" name="GramoModelLoader.h" compile="0" resource="1"
+            file="Source/UI/GramoModelLoader.h" xcodeResource="1"/>
       <GROUP id="{8AA057E8-CD11-9374-20C2-5D9D12EEEAF5}" name="assimp">
         <GROUP id="{A4C817C2-9EBC-8B34-933A-596B8D2A3814}" name="cmake-modules">
           <FILE id="S5NEFp" name="assimp-hunter-config.cmake.in" compile="0"
@@ -6437,7 +6441,8 @@
         <FILE id="mR9kKZ" name="STK.podspec" compile="0" resource="1" file="Source/The Synthesis Tookit/STK.podspec"
               xcodeResource="1"/>
       </GROUP>
-      <FILE id="C8zF6i" name="GramoSuite.fbx" compile="0" resource="1" file="Source/GramoSuite.fbx"/>
+      <FILE id="C8zF6i" name="GramoSuite.fbx" compile="0" resource="1" file="Source/GramoSuite.fbx"
+            xcodeResource="1"/>
       <FILE id="jEn1Hj" name="PluginProcessor.cpp" compile="1" resource="1"
             file="Source/PluginProcessor.cpp" xcodeResource="1"/>
       <FILE id="jQqttb" name="PluginProcessor.h" compile="0" resource="1"

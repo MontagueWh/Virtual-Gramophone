@@ -11,10 +11,7 @@
 #include "PluginProcessor.h" // Includes the header file for the plugin processor.
 #include "InfoButton.h"      // Includes the header file for the InfoButton class.
 #include <JuceHeader.h>      // Includes the JUCE framework header file.
-
-#include <../Source/assimp/include/assimp/Importer.hpp> // C++ importer interface
-#include <../Source/assimp/include/assimp/scene.h> // Output data structure
-#include <../Source/assimp/include/assimp/postprocess.h> // Post processing flags
+#include <../Source/UI/GramoModelLoader.h>
 
 
 //==============================================================================
@@ -35,7 +32,6 @@ public:
     void DrawThreePointLine(juce::Graphics&, float x1, float y1, float x2, float y2, float x3, float y3); // Custom method to draw a line connecting three points.
     void resized() override; // Handles resizing and layout of GUI components.
 
-	void importModel(const std::string& pFile); // Imports a 3D model from the given path.
 
 private:
     float sliderToAplhaValue(juce::Slider& slider); // Converts a slider's value to an alpha (transparency) value.
@@ -75,6 +71,8 @@ private:
     juce::Rectangle<int> toneTextSection; // Rectangle for the tone text label section.
     juce::Rectangle<int> vibratoTextSection; // Rectangle for the vibrato text label section.
     juce::Rectangle<int> wetDryTextSection; // Rectangle for the mix text label section.
+
+	GramoModelLoader gramoModelLoader; // Instance of the GramoModelLoader class for loading 3D models.
 
     VirtualGramoAudioProcessor& audioProcessor; // Reference to the audio processor instance.
 
