@@ -13,6 +13,9 @@ public:
     ~GramoModelLoader() override;
 
     void resized() override;
+    void newOpenGLContextCreated() override;
+	void renderOpenGL() override;
+	void openGLContextClosing() override;
 
     // Imports a model from the given file path. Returns true on success, false on failure.
     bool importModel(const std::string& pFile);
@@ -23,6 +26,14 @@ public:
     // Renders the loaded model using JUCE's Graphics.
     void renderModel(juce::Graphics& g, const juce::Rectangle<float>& bounds);
 
+    // Processes a node in the scene graph.
+    void processNode(aiNode* node, const aiScene* scene, const aiCamera* camera);
+
+    // Processes a material (currently unused).
+    void processMaterial(aiMaterial* material);
+
+    void processCamera(const aiCamera* camera); // Extract camera data
+
 private:
     struct MeshData
     {
@@ -31,16 +42,14 @@ private:
         std::vector<float> texCoords;
         std::vector<unsigned int> indices;
         unsigned int materialIndex; // Index to the material used by this mesh
+
+        GLuint vao;
+        GLuint vbo;
+        GLuint ebo; // Index buffer
     };
 
     // Processes a mesh and returns its data.
     MeshData processMesh(aiMesh* mesh);
-
-    // Processes a node in the scene graph.
-    void processNode(aiNode* node, const aiScene* scene);
-
-    // Processes a material (currently unused).
-    void processMaterial(aiMaterial* material);
 
     // Flag to indicate if a model is loaded.
     bool modelLoaded = false;

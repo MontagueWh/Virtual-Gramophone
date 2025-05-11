@@ -59,7 +59,10 @@ VirtualGramoAudioProcessorEditor::VirtualGramoAudioProcessorEditor(VirtualGramoA
     // Adds the info button to the editor.
     info_button_.addToEditor(this);
 
-    setSize(500, 300); // Sets the initial size of the editor window.
+	addAndMakeVisible(gramoModelLoader); // Adds the model loader to the editor.
+
+    setSize(1500, 1500); // Sets the initial size of the editor window.
+	setResizable(true, true);
 }
 
 // Destructor for the plugin editor.
@@ -78,13 +81,6 @@ void VirtualGramoAudioProcessorEditor::paint(juce::Graphics& g)
     g.setColour(juce::Colour(0xff123456));
     g.setFont(40.0f);
     g.drawFittedText("Virtual Gramophone", getLocalBounds(), juce::Justification::centredTop, 1);
-
-	std::string GramoSuite = "../Source/GramoSuite.fbx"; // Path to the FBX file
-	gramoModelLoader.importModel(GramoSuite); // Import the model from the specified path
-
-    g.setColour(juce::Colours::darkgrey);
-    gramoModelLoader.renderModel(g, getLocalBounds().toFloat());
-
 
     // Draw contours
     g.setColour(juce::Colour(0xff123456));
@@ -138,6 +134,11 @@ void VirtualGramoAudioProcessorEditor::resized()
     vibratoDepthParam.setBounds(vibratoDepthSection); // Positions the vibrato slider.
     vibratoRateParam.setBounds(vibratoRateSection); // Positions the vibrato rate slider.
     wetDryParam.setBounds(wetDrySection); // Positions the mix slider.
+
+
+    std::string GramoSuite = "GramoSuite.fbx"; // Path to an FBX file
+    gramoModelLoader.importModel(GramoSuite); // Import the model from the specified path
+    gramoModelLoader.setBounds(pictureSection);
 }
 
 // Sets up the layout sections for the GUI.

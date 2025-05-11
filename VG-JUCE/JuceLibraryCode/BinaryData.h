@@ -9,10 +9,10 @@
 namespace BinaryData
 {
     extern const char*   GramoModelLoader_cpp;
-    const int            GramoModelLoader_cppSize = 1540;
+    const int            GramoModelLoader_cppSize = 3853;
 
     extern const char*   GramoModelLoader_h;
-    const int            GramoModelLoader_hSize = 674;
+    const int            GramoModelLoader_hSize = 1618;
 
     extern const char*   assimphunterconfig_cmake_in;
     const int            assimphunterconfig_cmake_inSize = 638;
@@ -5556,10 +5556,10 @@ namespace BinaryData
     const int            PluginProcessor_hSize = 4336;
 
     extern const char*   PluginEditor_cpp;
-    const int            PluginEditor_cppSize = 12647;
+    const int            PluginEditor_cppSize = 8455;
 
     extern const char*   PluginEditor_h;
-    const int            PluginEditor_hSize = 4949;
+    const int            PluginEditor_hSize = 4602;
 
     extern const char*   InfoButton_cpp;
     const int            InfoButton_cppSize = 1468;

@@ -7,6 +7,31 @@ GramoModelLoader::~GramoModelLoader() {}
 
 void GramoModelLoader::resized() {}
 
+void GramoModelLoader::newOpenGLContextCreated()
+{
+    // Initialise OpenGL resources here
+
+    // Create shaders, VBOs, VAOs
+}
+
+void GramoModelLoader::renderOpenGL()
+{
+    // Perform OpenGL rendering here
+
+    // Clear buffer
+    // Set projection and view matrices (from camera)
+    // Bind VAO
+    // Draw elements
+}
+
+void GramoModelLoader::openGLContextClosing()
+{
+    // Clean up OpenGL resources here
+ 
+    // Delete VBOs, VAOs, shaders
+}
+
+
 bool GramoModelLoader::importModel(const std::string& pFile)
 {
     Assimp::Importer importer;
@@ -44,8 +69,9 @@ void GramoModelLoader::renderModel(juce::Graphics& g, const juce::Rectangle<floa
     if (!modelLoaded)
         return;
 
-    // Scale and center the model within the given bounds
-    float scale = std::min(bounds.getWidth(), bounds.getHeight()) / 2.0f;
+    // Scale and center the scene from the FBX
+    float scaleX = bounds.getWidth() / 5.0f;
+    float scaleY = bounds.getHeight() / 5.0f;
 	juce::Point<float> center = bounds.getCentre();
 
     for (const auto& mesh : meshes)
@@ -53,18 +79,18 @@ void GramoModelLoader::renderModel(juce::Graphics& g, const juce::Rectangle<floa
         for (size_t i = 0; i < mesh.indices.size(); i += 3)
         {
             auto v1 = juce::Point<float>(
-                mesh.vertices[mesh.indices[i] * 3] * scale + center.x,
-                mesh.vertices[mesh.indices[i] * 3 + 1] * scale + center.y
+                mesh.vertices[mesh.indices[i] * 3] * scaleX + center.x,
+                mesh.vertices[mesh.indices[i] * 3 + 1] * scaleY + center.y
             );
 
             auto v2 = juce::Point<float>(
-                mesh.vertices[mesh.indices[i + 1] * 3] * scale + center.x,
-                mesh.vertices[mesh.indices[i + 1] * 3 + 1] * scale + center.y
+                mesh.vertices[mesh.indices[i + 1] * 3] * scaleX + center.x,
+                mesh.vertices[mesh.indices[i + 1] * 3 + 1] * scaleY + center.y
             );
 
             auto v3 = juce::Point<float>(
-                mesh.vertices[mesh.indices[i + 2] * 3] * scale + center.x,
-                mesh.vertices[mesh.indices[i + 2] * 3 + 1] * scale + center.y
+                mesh.vertices[mesh.indices[i + 2] * 3] * scaleX + center.x,
+                mesh.vertices[mesh.indices[i + 2] * 3 + 1] * scaleY + center.y
             );
 
             g.drawLine(juce::Line<float>(v1, v2), 1.0f);
@@ -77,6 +103,10 @@ void GramoModelLoader::renderModel(juce::Graphics& g, const juce::Rectangle<floa
 GramoModelLoader::MeshData GramoModelLoader::processMesh(aiMesh* mesh)
 {
     MeshData meshData;
+
+    std::vector<MeshData> meshes;
+    glm::mat4 projectionMatrix;
+    glm::mat4 viewMatrix;
 
     for (unsigned int i = 0; i < mesh->mNumVertices; i++)
     {
@@ -112,7 +142,7 @@ GramoModelLoader::MeshData GramoModelLoader::processMesh(aiMesh* mesh)
     return meshData;
 }
 
-void GramoModelLoader::processNode(aiNode* node, const aiScene* scene)
+void GramoModelLoader::processNode(aiNode* node, const aiScene* scene, const aiCamera* camera)
 {
     for (unsigned int i = 0; i < node->mNumMeshes; i++)
     {
@@ -129,4 +159,18 @@ void GramoModelLoader::processNode(aiNode* node, const aiScene* scene)
 void GramoModelLoader::processMaterial(aiMaterial* material)
 {
     // Skipping material processing for now
+}
+
+void GramoModelLoader::processCamera(const aiCamera* camera)
+{
+	// Extract camera data if needed
+
+        // *** Extract camera parameters and calculate view/projection matrices ***
+    // Use glm functions like glm::lookAt, glm::perspective
+    glm::vec3 position(camera->mPosition.x, camera->mPosition.y, camera->mPosition.z);
+    glm::vec3 lookAt(camera->mLookAt.x, camera->mLookAt.y, camera->mLookAt.z);
+    glm::vec3 up(camera->mUp.x, camera->mUp.y, camera->mUp.z);
+
+    viewMatrix = glm::lookAt(position, lookAt, up);
+    projectionMatrix = glm::perspective(glm::radians(camera->mFoV), camera->mAspect, 0.1f, 100.0f); // Adjust near/far
 }
