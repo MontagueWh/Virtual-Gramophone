@@ -7,11 +7,43 @@ GramoModelLoader::~GramoModelLoader() {}
 
 void GramoModelLoader::resized() {}
 
-void GramoModelLoader::newOpenGLContextCreated()
+void GramoModelLoader::newOpenGLContextCreated() // Initialise OpenGL resources here
 {
-    // Initialise OpenGL resources here
-
     // Create shaders, VBOs, VAOs
+
+    const char* vertexShaderSource = "#version 330 core\n"
+        "layout (location = 0) in vec3 aPos;\n"
+        "uniform mat4 projection;\n"
+        "uniform mat4 view;\n"
+        "void main()\n"
+        "{\n"
+        "   gl_Position = projection * view * vec4(aPos, 1.0);\n"
+        "}\0";
+    const char* fragmentShaderSource = "#version 330 core\n"
+        "out vec4 FragColor;\n"
+        "void main()\n"
+        "{\n"
+        "   FragColor = vec4(1.0, 0.5, 0.2, 1.0);\n"
+        "}\n\0";
+    // Create and compile shaders (not shown for brevity)
+
+    for (auto& mesh : meshes)
+    {
+        // *** Create and configure VBOs, VAOs, EBOs ***
+        glGenVertexArrays(1, &mesh.vao);
+        glBindVertexArray(mesh.vao);
+
+        glGenBuffers(1, &mesh.vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+        glBufferData(GL_ARRAY_BUFFER, mesh.vertices.size() * sizeof(float), mesh.vertices.data(), GL_STATIC_DRAW);
+
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(0);
+
+        glGenBuffers(1, &mesh.ebo);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.ebo);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh.indices.size() * sizeof(unsigned int), mesh.indices.data(), GL_STATIC_DRAW);
+    }
 }
 
 void GramoModelLoader::renderOpenGL()
@@ -22,6 +54,22 @@ void GramoModelLoader::renderOpenGL()
     // Set projection and view matrices (from camera)
     // Bind VAO
     // Draw elements
+
+     // *** OpenGL Rendering ***
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear color and depth buffers
+
+    // Set projection and view matrices
+    GLuint projectionLoc = glGetUniformLocation(shaderProgram, "projection");
+    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projectionMatrix));
+    GLuint viewLoc = glGetUniformLocation(shaderProgram, "view");
+    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMatrix));
+
+    for (const auto& mesh : meshes)
+    {
+        glBindVertexArray(mesh.vao);
+        glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
+    }
 }
 
 void GramoModelLoader::openGLContextClosing()
@@ -42,12 +90,9 @@ bool GramoModelLoader::importModel(const std::string& pFile)
         aiProcess_JoinIdenticalVertices |
         aiProcess_SortByPType);
 
-    if (!scene || !scene->mRootNode)
-    {
-        juce::Logger::writeToLog("Failed to load model: " + juce::String(pFile));
-        modelLoaded = false;
-        return false;
-    }
+    const aiCamera* sceneCamera = scene->mNumCameras > 0 ? scene->mCameras[0] : nullptr; // Get first camera (or none)
+
+    processNode(scene->mRootNode, scene, sceneCamera); // Pass camera to processNode
 
     // Clear previous data
     meshes.clear();
@@ -154,6 +199,9 @@ void GramoModelLoader::processNode(aiNode* node, const aiScene* scene, const aiC
     {
         processNode(node->mChildren[i], scene);
     }
+
+    if (camera)  // Process camera if available
+        processCamera(camera);
 }
 
 void GramoModelLoader::processMaterial(aiMaterial* material)

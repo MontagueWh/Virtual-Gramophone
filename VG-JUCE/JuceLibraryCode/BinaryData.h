@@ -8,11 +8,878 @@
 
 namespace BinaryData
 {
-    extern const char*   GramoModelLoader_cpp;
-    const int            GramoModelLoader_cppSize = 3853;
+    extern const char*   treesed;
+    const int            treesedSize = 3645;
 
-    extern const char*   GramoModelLoader_h;
-    const int            GramoModelLoader_hSize = 1618;
+    extern const char*   FindCoreAudio_cmake;
+    const int            FindCoreAudio_cmakeSize = 501;
+
+    extern const char*   config_guess;
+    const int            config_guessSize = 43499;
+
+    extern const char*   config_sub;
+    const int            config_subSize = 36144;
+
+    extern const char*   install_sh;
+    const int            install_shSize = 0;
+
+    extern const char*   ccrma_gif;
+    const int            ccrma_gifSize = 8305;
+
+    extern const char*   mcgill_gif;
+    const int            mcgill_gifSize = 3810;
+
+    extern const char*   princeton_gif;
+    const int            princeton_gifSize = 5476;
+
+    extern const char*   classes_txt;
+    const int            classes_txtSize = 320;
+
+    extern const char*   compile_txt;
+    const int            compile_txtSize = 6515;
+
+    extern const char*   control_txt;
+    const int            control_txtSize = 4075;
+
+    extern const char*   crealtime_txt;
+    const int            crealtime_txtSize = 4000;
+
+    extern const char*   download_txt;
+    const int            download_txtSize = 17530;
+
+    extern const char*   Doxyfile;
+    const int            DoxyfileSize = 121952;
+
+    extern const char*   faq_txt;
+    const int            faq_txtSize = 4617;
+
+    extern const char*   filtering_txt;
+    const int            filtering_txtSize = 3837;
+
+    extern const char*   footer_html;
+    const int            footer_htmlSize = 249;
+
+    extern const char*   fundamentals_txt;
+    const int            fundamentals_txtSize = 4413;
+
+    extern const char*   header_html;
+    const int            header_htmlSize = 828;
+
+    extern const char*   header_tex;
+    const int            header_texSize = 904;
+
+    extern const char*   hello_txt;
+    const int            hello_txtSize = 3873;
+
+    extern const char*   index_txt;
+    const int            index_txtSize = 2026;
+
+    extern const char*   information_txt;
+    const int            information_txtSize = 10202;
+
+    extern const char*   instruments_txt;
+    const int            instruments_txtSize = 1281;
+
+    extern const char*   links_txt;
+    const int            links_txtSize = 1315;
+
+    extern const char*   maillist_txt;
+    const int            maillist_txtSize = 767;
+
+    extern const char*   multichannel_txt;
+    const int            multichannel_txtSize = 2088;
+
+    extern const char*   polyvoices_txt;
+    const int            polyvoices_txtSize = 2113;
+
+    extern const char*   realtime_txt;
+    const int            realtime_txtSize = 2756;
+
+    extern const char*   skini_txt;
+    const int            skini_txtSize = 18230;
+
+    extern const char*   system_txt;
+    const int            system_txtSize = 2555;
+
+    extern const char*   tutorial_txt;
+    const int            tutorial_txtSize = 1125;
+
+    extern const char*   usage_txt;
+    const int            usage_txtSize = 14294;
+
+    extern const char*   ccrma_gif2;
+    const int            ccrma_gif2Size = 8305;
+
+    extern const char*   mcgill_gif2;
+    const int            mcgill_gif2Size = 3810;
+
+    extern const char*   princeton_gif2;
+    const int            princeton_gif2Size = 5476;
+
+    extern const char*   hierarchy_txt;
+    const int            hierarchy_txtSize = 9216;
+
+    extern const char*   READMELinux_txt;
+    const int            READMELinux_txtSize = 1530;
+
+    extern const char*   READMEMacOSX_txt;
+    const int            READMEMacOSX_txtSize = 1001;
+
+    extern const char*   READMESGI_txt;
+    const int            READMESGI_txtSize = 423;
+
+    extern const char*   READMEWin_txt;
+    const int            READMEWin_txtSize = 2408;
+
+    extern const char*   ReleaseNotes_txt;
+    const int            ReleaseNotes_txtSize = 15749;
+
+    extern const char*   SKINI_txt;
+    const int            SKINI_txtSize = 18980;
+
+    extern const char*   treesed_html;
+    const int            treesed_htmlSize = 5617;
+
+    extern const char*   InfoPlist_strings;
+    const int            InfoPlist_stringsSize = 45;
+
+    extern const char*   Contents_json;
+    const int            Contents_jsonSize = 333;
+
+    extern const char*   Contents_json2;
+    const int            Contents_json2Size = 442;
+
+    extern const char*   iOS_DemoInfo_plist;
+    const int            iOS_DemoInfo_plistSize = 1151;
+
+    extern const char*   iOS_DemoPrefix_pch;
+    const int            iOS_DemoPrefix_pchSize = 344;
+
+    extern const char*   iOS_Demo_xccheckout;
+    const int            iOS_Demo_xccheckoutSize = 1485;
+
+    extern const char*   contents_xcworkspacedata;
+    const int            contents_xcworkspacedataSize = 153;
+
+    extern const char*   project_pbxproj;
+    const int            project_pbxprojSize = 23737;
+
+    extern const char*   InfoPlist_strings2;
+    const int            InfoPlist_strings2Size = 45;
+
+    extern const char*   iOS_DemoTestsInfo_plist;
+    const int            iOS_DemoTestsInfo_plistSize = 674;
+
+    extern const char*   README_md;
+    const int            README_mdSize = 771;
+
+    extern const char*   contents_xcworkspacedata2;
+    const int            contents_xcworkspacedata2Size = 156;
+
+    extern const char*   project_pbxproj2;
+    const int            project_pbxproj2Size = 83199;
+
+    extern const char*   READMEiOS_md;
+    const int            READMEiOS_mdSize = 3944;
+
+    extern const char*   ax_cxx_compile_stdcxx_m4;
+    const int            ax_cxx_compile_stdcxx_m4Size = 19367;
+
+    extern const char*   bachfugue_ski;
+    const int            bachfugue_skiSize = 54442;
+
+    extern const char*   bookert_ski;
+    const int            bookert_skiSize = 3626;
+
+    extern const char*   chords_ski;
+    const int            chords_skiSize = 2361;
+
+    extern const char*   doogie_ski;
+    const int            doogie_skiSize = 1300;
+
+    extern const char*   drumfunk_ski;
+    const int            drumfunk_skiSize = 4893;
+
+    extern const char*   drumtest_ski;
+    const int            drumtest_skiSize = 1898;
+
+    extern const char*   duelingb_ski;
+    const int            duelingb_skiSize = 981;
+
+    extern const char*   fiddle_ski;
+    const int            fiddle_skiSize = 4507;
+
+    extern const char*   flutbach_ski;
+    const int            flutbach_skiSize = 3181;
+
+    extern const char*   funicula_ski;
+    const int            funicula_skiSize = 5850;
+
+    extern const char*   funskini_ski;
+    const int            funskini_skiSize = 3316;
+
+    extern const char*   lacrymos_ski;
+    const int            lacrymos_skiSize = 1367;
+
+    extern const char*   mandtune_ski;
+    const int            mandtune_skiSize = 1491;
+
+    extern const char*   marimba2_ski;
+    const int            marimba2_skiSize = 3656;
+
+    extern const char*   marimtst_ski;
+    const int            marimtst_skiSize = 1755;
+
+    extern const char*   misacrio_ski;
+    const int            misacrio_skiSize = 2362;
+
+    extern const char*   morazbel_ski;
+    const int            morazbel_skiSize = 3409;
+
+    extern const char*   muneira_ski;
+    const int            muneira_skiSize = 504780;
+
+    extern const char*   organs_ski;
+    const int            organs_skiSize = 7267;
+
+    extern const char*   pickdamp_ski;
+    const int            pickdamp_skiSize = 2710;
+
+    extern const char*   pictures_ski;
+    const int            pictures_skiSize = 1227;
+
+    extern const char*   README;
+    const int            READMESize = 449;
+
+    extern const char*   riderson_ski;
+    const int            riderson_skiSize = 2547;
+
+    extern const char*   scales_ski;
+    const int            scales_skiSize = 1990;
+
+    extern const char*   shaktest_ski;
+    const int            shaktest_skiSize = 1948;
+
+    extern const char*   simplgft_ski;
+    const int            simplgft_skiSize = 1915;
+
+    extern const char*   spain_ski;
+    const int            spain_skiSize = 942;
+
+    extern const char*   streetsf_ski;
+    const int            streetsf_skiSize = 2281;
+
+    extern const char*   test_ski;
+    const int            test_skiSize = 112;
+
+    extern const char*   thecars_ski;
+    const int            thecars_skiSize = 1552;
+
+    extern const char*   tubebell_ski;
+    const int            tubebell_skiSize = 782;
+
+    extern const char*   vocaliz_ski;
+    const int            vocaliz_skiSize = 6247;
+
+    extern const char*   bamboo_xbm;
+    const int            bamboo_xbmSize = 10570;
+
+    extern const char*   cabasa_xbm;
+    const int            cabasa_xbmSize = 10570;
+
+    extern const char*   cokecan_xbm;
+    const int            cokecan_xbmSize = 5260;
+
+    extern const char*   guiro_xbm;
+    const int            guiro_xbmSize = 10567;
+
+    extern const char*   kasm_xbm;
+    const int            kasm_xbmSize = 8960;
+
+    extern const char*   KFiddl_xbm;
+    const int            KFiddl_xbmSize = 8966;
+
+    extern const char*   KFloot_xbm;
+    const int            KFloot_xbmSize = 8966;
+
+    extern const char*   KFMod_xbm;
+    const int            KFMod_xbmSize = 8963;
+
+    extern const char*   KHose_xbm;
+    const int            KHose_xbmSize = 8963;
+
+    extern const char*   Klar_xbm;
+    const int            Klar_xbmSize = 8960;
+
+    extern const char*   KModal_xbm;
+    const int            KModal_xbmSize = 8966;
+
+    extern const char*   KPluk_xbm;
+    const int            KPluk_xbmSize = 8963;
+
+    extern const char*   KVoiceFM_xbm;
+    const int            KVoiceFM_xbmSize = 8972;
+
+    extern const char*   KVoicForm_xbm;
+    const int            KVoicForm_xbmSize = 8975;
+
+    extern const char*   maraca_xbm;
+    const int            maraca_xbmSize = 10570;
+
+    extern const char*   phism_xbm;
+    const int            phism_xbmSize = 6843;
+
+    extern const char*   prc_xbm;
+    const int            prc_xbmSize = 7650;
+
+    extern const char*   prcFunny_xbm;
+    const int            prcFunny_xbmSize = 4486;
+
+    extern const char*   rachet_xbm;
+    const int            rachet_xbmSize = 10570;
+
+    extern const char*   sleighbell_xbm;
+    const int            sleighbell_xbmSize = 10582;
+
+    extern const char*   tambourine_xbm;
+    const int            tambourine_xbmSize = 10582;
+
+    extern const char*   Banded_tcl;
+    const int            Banded_tclSize = 5614;
+
+    extern const char*   Demo_tcl;
+    const int            Demo_tclSize = 36789;
+
+    extern const char*   Drums_tcl;
+    const int            Drums_tclSize = 3624;
+
+    extern const char*   Modal_tcl;
+    const int            Modal_tclSize = 6643;
+
+    extern const char*   Physical_tcl;
+    const int            Physical_tclSize = 16362;
+
+    extern const char*   Shakers_tcl;
+    const int            Shakers_tclSize = 8534;
+
+    extern const char*   Voice_tcl;
+    const int            Voice_tclSize = 5159;
+
+    extern const char*   Banded;
+    const int            BandedSize = 52;
+
+    extern const char*   Banded_bat;
+    const int            Banded_batSize = 50;
+
+    extern const char*   CMakeLists_txt;
+    const int            CMakeLists_txtSize = 251;
+
+    extern const char*   demo_sln;
+    const int            demo_slnSize = 1042;
+
+    extern const char*   demo_vcxproj;
+    const int            demo_vcxprojSize = 15069;
+
+    extern const char*   demo_vcxproj_filters;
+    const int            demo_vcxproj_filtersSize = 17345;
+
+    extern const char*   Drums;
+    const int            DrumsSize = 50;
+
+    extern const char*   Drums_bat;
+    const int            Drums_batSize = 48;
+
+    extern const char*   Makefile_in;
+    const int            Makefile_inSize = 2712;
+
+    extern const char*   Md2Skini_dsp;
+    const int            Md2Skini_dspSize = 4693;
+
+    extern const char*   Modal;
+    const int            ModalSize = 51;
+
+    extern const char*   Modal_bat;
+    const int            Modal_batSize = 49;
+
+    extern const char*   Physical;
+    const int            PhysicalSize = 54;
+
+    extern const char*   Physical_bat;
+    const int            Physical_batSize = 52;
+
+    extern const char*   Shakers;
+    const int            ShakersSize = 52;
+
+    extern const char*   Shakers_bat;
+    const int            Shakers_batSize = 50;
+
+    extern const char*   StkDemo;
+    const int            StkDemoSize = 50;
+
+    extern const char*   StkDemo_bat;
+    const int            StkDemo_batSize = 48;
+
+    extern const char*   Voice;
+    const int            VoiceSize = 51;
+
+    extern const char*   Voice_bat;
+    const int            Voice_batSize = 49;
+
+    extern const char*   Effects_tcl;
+    const int            Effects_tclSize = 9487;
+
+    extern const char*   CMakeLists_txt2;
+    const int            CMakeLists_txt2Size = 266;
+
+    extern const char*   effects_sln;
+    const int            effects_slnSize = 1048;
+
+    extern const char*   effects_vcxproj;
+    const int            effects_vcxprojSize = 9471;
+
+    extern const char*   Makefile_in2;
+    const int            Makefile_in2Size = 1788;
+
+    extern const char*   READMEeffects_txt;
+    const int            READMEeffects_txtSize = 1021;
+
+    extern const char*   StkEffects;
+    const int            StkEffectsSize = 39;
+
+    extern const char*   StkEffects_bat;
+    const int            StkEffects_batSize = 37;
+
+    extern const char*   test_ski2;
+    const int            test_ski2Size = 903;
+
+    extern const char*   EGuitar_tcl;
+    const int            EGuitar_tclSize = 9388;
+
+    extern const char*   CMakeLists_txt3;
+    const int            CMakeLists_txt3Size = 266;
+
+    extern const char*   eguitar_sln;
+    const int            eguitar_slnSize = 1048;
+
+    extern const char*   eguitar_vcxproj;
+    const int            eguitar_vcxprojSize = 9331;
+
+    extern const char*   ElectricGuitar;
+    const int            ElectricGuitarSize = 43;
+
+    extern const char*   ElectricGuitar_bat;
+    const int            ElectricGuitar_batSize = 41;
+
+    extern const char*   Makefile_in3;
+    const int            Makefile_in3Size = 1892;
+
+    extern const char*   READMEeguitar_txt;
+    const int            READMEeguitar_txtSize = 1890;
+
+    extern const char*   bwv772_mid;
+    const int            bwv772_midSize = 4569;
+
+    extern const char*   jesu_mid;
+    const int            jesu_midSize = 17539;
+
+    extern const char*   tango_mid;
+    const int            tango_midSize = 12274;
+
+    extern const char*   sinewave_raw;
+    const int            sinewave_rawSize = 512;
+
+    extern const char*   bachfugue_ski2;
+    const int            bachfugue_ski2Size = 54442;
+
+    extern const char*   bookert_ski2;
+    const int            bookert_ski2Size = 3613;
+
+    extern const char*   audioprobe_vcxproj;
+    const int            audioprobe_vcxprojSize = 7159;
+
+    extern const char*   audioprobe_vcxproj_filters;
+    const int            audioprobe_vcxproj_filtersSize = 1356;
+
+    extern const char*   bethree_vcxproj;
+    const int            bethree_vcxprojSize = 8331;
+
+    extern const char*   bethree_vcxproj_filters;
+    const int            bethree_vcxproj_filtersSize = 3952;
+
+    extern const char*   CMakeLists_txt4;
+    const int            CMakeLists_txt4Size = 293;
+
+    extern const char*   controlbee_vcxproj;
+    const int            controlbee_vcxprojSize = 8745;
+
+    extern const char*   controlbee_vcxproj_filters;
+    const int            controlbee_vcxproj_filtersSize = 4661;
+
+    extern const char*   crtsine_vcxproj;
+    const int            crtsine_vcxprojSize = 7091;
+
+    extern const char*   crtsine_vcxproj_filters;
+    const int            crtsine_vcxproj_filtersSize = 1518;
+
+    extern const char*   duplex_vcxproj;
+    const int            duplex_vcxprojSize = 7131;
+
+    extern const char*   duplex_vcxproj_filters;
+    const int            duplex_vcxproj_filtersSize = 1333;
+
+    extern const char*   examples_sln;
+    const int            examples_slnSize = 8056;
+
+    extern const char*   foursine_vcxproj;
+    const int            foursine_vcxprojSize = 7212;
+
+    extern const char*   foursine_vcxproj_filters;
+    const int            foursine_vcxproj_filtersSize = 1727;
+
+    extern const char*   grains_vcxproj;
+    const int            grains_vcxprojSize = 7341;
+
+    extern const char*   grains_vcxproj_filters;
+    const int            grains_vcxproj_filtersSize = 2029;
+
+    extern const char*   inetIn_vcxproj;
+    const int            inetIn_vcxprojSize = 7612;
+
+    extern const char*   inetIn_vcxproj_filters;
+    const int            inetIn_vcxproj_filtersSize = 2531;
+
+    extern const char*   inetOut_vcxproj;
+    const int            inetOut_vcxprojSize = 7457;
+
+    extern const char*   inetOut_vcxproj_filters;
+    const int            inetOut_vcxproj_filtersSize = 2239;
+
+    extern const char*   libMakefile_in;
+    const int            libMakefile_inSize = 2649;
+
+    extern const char*   Makefile_in4;
+    const int            Makefile_in4Size = 6497;
+
+    extern const char*   midiprobe_vcxproj;
+    const int            midiprobe_vcxprojSize = 6866;
+
+    extern const char*   midiprobe_vcxproj_filters;
+    const int            midiprobe_vcxproj_filtersSize = 1115;
+
+    extern const char*   play_vcxproj;
+    const int            play_vcxprojSize = 7146;
+
+    extern const char*   play_vcxproj_filters;
+    const int            play_vcxproj_filtersSize = 1612;
+
+    extern const char*   playsmf_vcxproj;
+    const int            playsmf_vcxprojSize = 7120;
+
+    extern const char*   playsmf_vcxproj_filters;
+    const int            playsmf_vcxproj_filtersSize = 1519;
+
+    extern const char*   record_vcxproj;
+    const int            record_vcxprojSize = 7406;
+
+    extern const char*   record_vcxproj_filters;
+    const int            record_vcxproj_filtersSize = 2115;
+
+    extern const char*   rtsine_vcxproj;
+    const int            rtsine_vcxprojSize = 7310;
+
+    extern const char*   rtsine_vcxproj_filters;
+    const int            rtsine_vcxproj_filtersSize = 1917;
+
+    extern const char*   simple_tcl;
+    const int            simple_tclSize = 2143;
+
+    extern const char*   sine_vcxproj;
+    const int            sine_vcxprojSize = 7184;
+
+    extern const char*   sine_vcxproj_filters;
+    const int            sine_vcxproj_filtersSize = 1723;
+
+    extern const char*   sineosc_vcxproj;
+    const int            sineosc_vcxprojSize = 7447;
+
+    extern const char*   sineosc_vcxproj_filters;
+    const int            sineosc_vcxproj_filtersSize = 2343;
+
+    extern const char*   threebees_vcxproj;
+    const int            threebees_vcxprojSize = 8836;
+
+    extern const char*   threebees_vcxproj_filters;
+    const int            threebees_vcxproj_filtersSize = 4860;
+
+    extern const char*   bee1_raw;
+    const int            bee1_rawSize = 4192;
+
+    extern const char*   dee1_raw;
+    const int            dee1_rawSize = 4650;
+
+    extern const char*   dee2_raw;
+    const int            dee2_rawSize = 8800;
+
+    extern const char*   din1_raw;
+    const int            din1_rawSize = 3654;
+
+    extern const char*   Drdak2_raw;
+    const int            Drdak2_rawSize = 2438;
+
+    extern const char*   Drdak3_raw;
+    const int            Drdak3_rawSize = 4706;
+
+    extern const char*   Drdak4_raw;
+    const int            Drdak4_rawSize = 3782;
+
+    extern const char*   Drddak1_raw;
+    const int            Drddak1_rawSize = 5294;
+
+    extern const char*   Drdee1_raw;
+    const int            Drdee1_rawSize = 9242;
+
+    extern const char*   Drdee2_raw;
+    const int            Drdee2_rawSize = 9326;
+
+    extern const char*   DrDoi1_raw;
+    const int            DrDoi1_rawSize = 19752;
+
+    extern const char*   DrDoi2_raw;
+    const int            DrDoi2_rawSize = 19752;
+
+    extern const char*   Drdoo1_raw;
+    const int            Drdoo1_rawSize = 2018;
+
+    extern const char*   Drdoo2_raw;
+    const int            Drdoo2_rawSize = 2774;
+
+    extern const char*   Drdoo3_raw;
+    const int            Drdoo3_rawSize = 7310;
+
+    extern const char*   Drjun1_raw;
+    const int            Drjun1_rawSize = 4538;
+
+    extern const char*   Drjun2_raw;
+    const int            Drjun2_rawSize = 4790;
+
+    extern const char*   DrTak1_raw;
+    const int            DrTak1_rawSize = 9792;
+
+    extern const char*   DrTak2_raw;
+    const int            DrTak2_rawSize = 9792;
+
+    extern const char*   gun1_raw;
+    const int            gun1_rawSize = 4152;
+
+    extern const char*   jun1_raw;
+    const int            jun1_rawSize = 14776;
+
+    extern const char*   jun2_raw;
+    const int            jun2_rawSize = 5646;
+
+    extern const char*   tak1_raw;
+    const int            tak1_rawSize = 4816;
+
+    extern const char*   tak2_raw;
+    const int            tak2_rawSize = 3986;
+
+    extern const char*   tak3_raw;
+    const int            tak3_rawSize = 7472;
+
+    extern const char*   tak4_raw;
+    const int            tak4_rawSize = 7638;
+
+    extern const char*   prc_xbm2;
+    const int            prc_xbm2Size = 7549;
+
+    extern const char*   prcFunny_xbm2;
+    const int            prcFunny_xbm2Size = 4426;
+
+    extern const char*   ragamat_bmp;
+    const int            ragamat_bmpSize = 91598;
+
+    extern const char*   ragamat_xbm;
+    const int            ragamat_xbmSize = 58965;
+
+    extern const char*   ragamat2_bmp;
+    const int            ragamat2_bmpSize = 24018;
+
+    extern const char*   ragamat2_xbm;
+    const int            ragamat2_xbmSize = 15207;
+
+    extern const char*   Raga_tcl;
+    const int            Raga_tclSize = 7314;
+
+    extern const char*   CMakeLists_txt5;
+    const int            CMakeLists_txt5Size = 268;
+
+    extern const char*   Makefile_in5;
+    const int            Makefile_in5Size = 2058;
+
+    extern const char*   Raga;
+    const int            RagaSize = 36;
+
+    extern const char*   Raga_bat;
+    const int            Raga_batSize = 34;
+
+    extern const char*   ragamat_vcxproj;
+    const int            ragamat_vcxprojSize = 9425;
+
+    extern const char*   ragamatic_sln;
+    const int            ragamatic_slnSize = 1050;
+
+    extern const char*   READMEraga_txt;
+    const int            READMEraga_txtSize = 909;
+
+    extern const char*   stktemplate_zip;
+    const int            stktemplate_zipSize = 9512;
+
+    extern const char*   ahh_raw;
+    const int            ahh_rawSize = 184;
+
+    extern const char*   bassdrum_raw;
+    const int            bassdrum_rawSize = 4288;
+
+    extern const char*   britestk_raw;
+    const int            britestk_rawSize = 4096;
+
+    extern const char*   cowbell1_raw;
+    const int            cowbell1_rawSize = 6438;
+
+    extern const char*   crashcym_raw;
+    const int            crashcym_rawSize = 40776;
+
+    extern const char*   dope_raw;
+    const int            dope_rawSize = 20480;
+
+    extern const char*   eee_raw;
+    const int            eee_rawSize = 184;
+
+    extern const char*   fwavblnk_raw;
+    const int            fwavblnk_rawSize = 512;
+
+    extern const char*   halfwave_raw;
+    const int            halfwave_rawSize = 512;
+
+    extern const char*   hihatcym_raw;
+    const int            hihatcym_rawSize = 4976;
+
+    extern const char*   impuls10_raw;
+    const int            impuls10_rawSize = 512;
+
+    extern const char*   impuls20_raw;
+    const int            impuls20_rawSize = 512;
+
+    extern const char*   impuls40_raw;
+    const int            impuls40_rawSize = 512;
+
+    extern const char*   mand1_raw;
+    const int            mand1_rawSize = 2048;
+
+    extern const char*   mand2_raw;
+    const int            mand2_rawSize = 2048;
+
+    extern const char*   mand3_raw;
+    const int            mand3_rawSize = 2048;
+
+    extern const char*   mand4_raw;
+    const int            mand4_rawSize = 2048;
+
+    extern const char*   mand5_raw;
+    const int            mand5_rawSize = 2048;
+
+    extern const char*   mand6_raw;
+    const int            mand6_rawSize = 2048;
+
+    extern const char*   mand7_raw;
+    const int            mand7_rawSize = 2048;
+
+    extern const char*   mand8_raw;
+    const int            mand8_rawSize = 2048;
+
+    extern const char*   mand9_raw;
+    const int            mand9_rawSize = 2048;
+
+    extern const char*   mand10_raw;
+    const int            mand10_rawSize = 2048;
+
+    extern const char*   mand11_raw;
+    const int            mand11_rawSize = 2048;
+
+    extern const char*   mand12_raw;
+    const int            mand12_rawSize = 2048;
+
+    extern const char*   mandpluk_raw;
+    const int            mandpluk_rawSize = 8900;
+
+    extern const char*   marmstk1_raw;
+    const int            marmstk1_rawSize = 512;
+
+    extern const char*   ooo_raw;
+    const int            ooo_rawSize = 184;
+
+    extern const char*   peksblnk_raw;
+    const int            peksblnk_rawSize = 512;
+
+    extern const char*   ppksblnk_raw;
+    const int            ppksblnk_rawSize = 512;
+
+    extern const char*   ridecymb_raw;
+    const int            ridecymb_rawSize = 32394;
+
+    extern const char*   silence_raw;
+    const int            silence_rawSize = 448;
+
+    extern const char*   sineblnk_raw;
+    const int            sineblnk_rawSize = 512;
+
+    extern const char*   sinewave_raw2;
+    const int            sinewave_raw2Size = 2048;
+
+    extern const char*   snardrum_raw;
+    const int            snardrum_rawSize = 16660;
+
+    extern const char*   snglpeak_raw;
+    const int            snglpeak_rawSize = 512;
+
+    extern const char*   tambourn_raw;
+    const int            tambourn_rawSize = 9240;
+
+    extern const char*   tomhidrm_raw;
+    const int            tomhidrm_rawSize = 27642;
+
+    extern const char*   tomlowdr_raw;
+    const int            tomlowdr_rawSize = 39200;
+
+    extern const char*   tommiddr_raw;
+    const int            tommiddr_rawSize = 28292;
+
+    extern const char*   twopeaks_raw;
+    const int            twopeaks_rawSize = 512;
+
+    extern const char*   Makefile_in6;
+    const int            Makefile_in6Size = 3351;
+
+    extern const char*   CMakeLists_txt6;
+    const int            CMakeLists_txt6Size = 8062;
+
+    extern const char*   configure_ac;
+    const int            configure_acSize = 8415;
+
+    extern const char*   INSTALL_md;
+    const int            INSTALL_mdSize = 2927;
+
+    extern const char*   LICENSE;
+    const int            LICENSESize = 1364;
+
+    extern const char*   Makefile_in7;
+    const int            Makefile_in7Size = 1033;
+
+    extern const char*   README_md2;
+    const int            README_md2Size = 9661;
+
+    extern const char*   STK_podspec;
+    const int            STK_podspecSize = 1640;
 
     extern const char*   assimphunterconfig_cmake_in;
     const int            assimphunterconfig_cmake_inSize = 638;
@@ -36,7 +903,7 @@ namespace BinaryData
     const int            DebSourcePPA_cmakeSize = 17417;
 
     extern const char*   Findassimp_cmake;
-    const int            Findassimp_cmakeSize = 2392;
+    const int            Findassimp_cmakeSize = 3313;
 
     extern const char*   FindDevIL_cmake;
     const int            FindDevIL_cmakeSize = 2423;
@@ -62,14 +929,14 @@ namespace BinaryData
     extern const char*   PrecompiledHeader_cmake;
     const int            PrecompiledHeader_cmakeSize = 1011;
 
-    extern const char*   README_md;
-    const int            README_mdSize = 1042;
+    extern const char*   README_md3;
+    const int            README_md3Size = 1042;
 
     extern const char*   assimp_rc;
     const int            assimp_rcSize = 1060;
 
-    extern const char*   CMakeLists_txt;
-    const int            CMakeLists_txtSize = 55457;
+    extern const char*   CMakeLists_txt7;
+    const int            CMakeLists_txt7Size = 55457;
 
     extern const char*   android_toolchain_cmake;
     const int            android_toolchain_cmakeSize = 82398;
@@ -83,8 +950,8 @@ namespace BinaryData
     extern const char*   ndk_links_md;
     const int            ndk_links_mdSize = 10395;
 
-    extern const char*   README_md2;
-    const int            README_md2Size = 13180;
+    extern const char*   README_md4;
+    const int            README_md4Size = 13180;
 
     extern const char*   License_txt;
     const int            License_txtSize = 1374;
@@ -206,8 +1073,8 @@ namespace BinaryData
     extern const char*   build_sh;
     const int            build_shSize = 1162;
 
-    extern const char*   CMakeLists_txt2;
-    const int            CMakeLists_txt2Size = 870;
+    extern const char*   CMakeLists_txt8;
+    const int            CMakeLists_txt8Size = 870;
 
     extern const char*   test_py;
     const int            test_pySize = 16063;
@@ -221,20 +1088,20 @@ namespace BinaryData
     extern const char*   CMAKE_md;
     const int            CMAKE_mdSize = 4547;
 
-    extern const char*   CMakeLists_txt3;
-    const int            CMakeLists_txt3Size = 49532;
+    extern const char*   CMakeLists_txt9;
+    const int            CMakeLists_txt9Size = 49532;
 
     extern const char*   CONTRIBUTING_md;
     const int            CONTRIBUTING_mdSize = 1578;
 
-    extern const char*   LICENSE;
-    const int            LICENSESize = 13898;
-
-    extern const char*   README_md3;
-    const int            README_md3Size = 24608;
-
     extern const char*   LICENSE2;
-    const int            LICENSE2Size = 738;
+    const int            LICENSE2Size = 13898;
+
+    extern const char*   README_md5;
+    const int            README_md5Size = 24608;
+
+    extern const char*   LICENSE3;
+    const int            LICENSE3Size = 738;
 
     extern const char*   linuxpresubmit_sh;
     const int            linuxpresubmit_shSize = 4533;
@@ -323,11 +1190,11 @@ namespace BinaryData
     extern const char*   gmock_main_pc_in;
     const int            gmock_main_pc_inSize = 354;
 
-    extern const char*   README_md4;
-    const int            README_md4Size = 139;
+    extern const char*   README_md6;
+    const int            README_md6Size = 139;
 
-    extern const char*   README_md5;
-    const int            README_md5Size = 510;
+    extern const char*   README_md7;
+    const int            README_md7Size = 510;
 
     extern const char*   BUILD_bazel;
     const int            BUILD_bazelSize = 3294;
@@ -344,11 +1211,11 @@ namespace BinaryData
     extern const char*   gmock_test_utils_py;
     const int            gmock_test_utils_pySize = 3108;
 
-    extern const char*   CMakeLists_txt4;
-    const int            CMakeLists_txt4Size = 7882;
+    extern const char*   CMakeLists_txt10;
+    const int            CMakeLists_txt10Size = 7882;
 
-    extern const char*   README_md6;
-    const int            README_md6Size = 1538;
+    extern const char*   README_md8;
+    const int            README_md8Size = 1538;
 
     extern const char*   Config_cmake_in;
     const int            Config_cmake_inSize = 284;
@@ -365,11 +1232,11 @@ namespace BinaryData
     extern const char*   libgtest_la_in;
     const int            libgtest_la_inSize = 499;
 
-    extern const char*   README_md7;
-    const int            README_md7Size = 139;
+    extern const char*   README_md9;
+    const int            README_md9Size = 139;
 
-    extern const char*   README_md8;
-    const int            README_md8Size = 1269;
+    extern const char*   README_md10;
+    const int            README_md10Size = 1269;
 
     extern const char*   BUILD_bazel2;
     const int            BUILD_bazel2Size = 15469;
@@ -458,17 +1325,17 @@ namespace BinaryData
     extern const char*   gtest_xml_test_utils_py;
     const int            gtest_xml_test_utils_pySize = 10192;
 
-    extern const char*   CMakeLists_txt5;
-    const int            CMakeLists_txt5Size = 11960;
+    extern const char*   CMakeLists_txt11;
+    const int            CMakeLists_txt11Size = 11960;
 
-    extern const char*   README_md9;
-    const int            README_md9Size = 8961;
+    extern const char*   README_md11;
+    const int            README_md11Size = 8961;
 
     extern const char*   BUILD_bazel3;
     const int            BUILD_bazel3Size = 6488;
 
-    extern const char*   CMakeLists_txt6;
-    const int            CMakeLists_txt6Size = 819;
+    extern const char*   CMakeLists_txt12;
+    const int            CMakeLists_txt12Size = 819;
 
     extern const char*   CONTRIBUTING_md2;
     const int            CONTRIBUTING_md2Size = 5688;
@@ -479,11 +1346,11 @@ namespace BinaryData
     extern const char*   googletest_deps_bzl;
     const int            googletest_deps_bzlSize = 1124;
 
-    extern const char*   LICENSE3;
-    const int            LICENSE3Size = 1475;
+    extern const char*   LICENSE4;
+    const int            LICENSE4Size = 1475;
 
-    extern const char*   README_md10;
-    const int            README_md10Size = 5814;
+    extern const char*   README_md12;
+    const int            README_md12Size = 5814;
 
     extern const char*   WORKSPACE;
     const int            WORKSPACESize = 1159;
@@ -491,35 +1358,35 @@ namespace BinaryData
     extern const char*   meshlab_patch;
     const int            meshlab_patchSize = 41065;
 
-    extern const char*   README_md11;
-    const int            README_md11Size = 583;
+    extern const char*   README_md13;
+    const int            README_md13Size = 583;
 
-    extern const char*   README_md12;
-    const int            README_md12Size = 520;
+    extern const char*   README_md14;
+    const int            README_md14Size = 520;
 
-    extern const char*   CMakeLists_txt7;
-    const int            CMakeLists_txt7Size = 8030;
+    extern const char*   CMakeLists_txt13;
+    const int            CMakeLists_txt13Size = 8030;
 
     extern const char*   CREDITS;
     const int            CREDITSSize = 444;
 
-    extern const char*   LICENSE4;
-    const int            LICENSE4Size = 1079;
+    extern const char*   LICENSE5;
+    const int            LICENSE5Size = 1079;
 
-    extern const char*   README_md13;
-    const int            README_md13Size = 4700;
+    extern const char*   README_md15;
+    const int            README_md15Size = 4700;
 
     extern const char*   AUTHORS2;
     const int            AUTHORS2Size = 147;
 
-    extern const char*   LICENSE5;
-    const int            LICENSE5Size = 1489;
+    extern const char*   LICENSE6;
+    const int            LICENSE6Size = 1489;
 
-    extern const char*   README_md14;
-    const int            README_md14Size = 2449;
+    extern const char*   README_md16;
+    const int            README_md16Size = 2449;
 
-    extern const char*   CMakeLists_txt8;
-    const int            CMakeLists_txt8Size = 3033;
+    extern const char*   CMakeLists_txt14;
+    const int            CMakeLists_txt14Size = 3033;
 
     extern const char*   readme_txt;
     const int            readme_txtSize = 2094;
@@ -530,8 +1397,8 @@ namespace BinaryData
     extern const char*   readme_md;
     const int            readme_mdSize = 11146;
 
-    extern const char*   README_md15;
-    const int            README_md15Size = 1402;
+    extern const char*   README_md17;
+    const int            README_md17Size = 1402;
 
     extern const char*   tinyusdz_patch;
     const int            tinyusdz_patchSize = 1740;
@@ -539,17 +1406,17 @@ namespace BinaryData
     extern const char*   assimp_tinyusdz_logging_inc;
     const int            assimp_tinyusdz_logging_incSize = 2559;
 
-    extern const char*   README_md16;
-    const int            README_md16Size = 473;
+    extern const char*   README_md18;
+    const int            README_md18Size = 473;
 
     extern const char*   MiniZip64_info_txt;
     const int            MiniZip64_info_txtSize = 3048;
 
-    extern const char*   LICENSE6;
-    const int            LICENSE6Size = 1338;
+    extern const char*   LICENSE7;
+    const int            LICENSE7Size = 1338;
 
-    extern const char*   README_md17;
-    const int            README_md17Size = 55726;
+    extern const char*   README_md19;
+    const int            README_md19Size = 55726;
 
     extern const char*   asanwrapper;
     const int            asanwrapperSize = 2011;
@@ -560,11 +1427,11 @@ namespace BinaryData
     extern const char*   Config_cmake_in2;
     const int            Config_cmake_in2Size = 125;
 
-    extern const char*   CMakeLists_txt9;
-    const int            CMakeLists_txt9Size = 1674;
+    extern const char*   CMakeLists_txt15;
+    const int            CMakeLists_txt15Size = 1674;
 
-    extern const char*   CMakeLists_txt10;
-    const int            CMakeLists_txt10Size = 4485;
+    extern const char*   CMakeLists_txt16;
+    const int            CMakeLists_txt16Size = 4485;
 
     extern const char*   CONTRIBUTING_md3;
     const int            CONTRIBUTING_md3Size = 303;
@@ -572,8 +1439,8 @@ namespace BinaryData
     extern const char*   Doxyfile_in;
     const int            Doxyfile_inSize = 108164;
 
-    extern const char*   README_md18;
-    const int            README_md18Size = 16940;
+    extern const char*   README_md20;
+    const int            README_md20Size = 16940;
 
     extern const char*   UNLICENSE;
     const int            UNLICENSESize = 1257;
@@ -620,8 +1487,8 @@ namespace BinaryData
     extern const char*   README_686;
     const int            README_686Size = 1622;
 
-    extern const char*   README;
-    const int            READMESize = 74;
+    extern const char*   README2;
+    const int            README2Size = 74;
 
     extern const char*   test_pk;
     const int            test_pkSize = 8;
@@ -683,11 +1550,11 @@ namespace BinaryData
     extern const char*   readme_txt4;
     const int            readme_txt4Size = 2300;
 
-    extern const char*   README2;
-    const int            README2Size = 51;
-
     extern const char*   README3;
-    const int            README3Size = 1490;
+    const int            README3Size = 51;
+
+    extern const char*   README4;
+    const int            README4Size = 1490;
 
     extern const char*   TODO;
     const int            TODOSize = 491;
@@ -704,8 +1571,8 @@ namespace BinaryData
     extern const char*   readme_txt6;
     const int            readme_txt6Size = 846;
 
-    extern const char*   configure_ac;
-    const int            configure_acSize = 787;
+    extern const char*   configure_ac2;
+    const int            configure_ac2Size = 787;
 
     extern const char*   make_vms_com;
     const int            make_vms_comSize = 901;
@@ -740,8 +1607,8 @@ namespace BinaryData
     extern const char*   zlibpas_pas;
     const int            zlibpas_pasSize = 10127;
 
-    extern const char*   README4;
-    const int            README4Size = 3077;
+    extern const char*   README5;
+    const int            README5Size = 3077;
 
     extern const char*   zeros_raw;
     const int            zeros_rawSize = 2517;
@@ -815,14 +1682,14 @@ namespace BinaryData
     extern const char*   ChangeLog;
     const int            ChangeLogSize = 82522;
 
-    extern const char*   CMakeLists_txt11;
-    const int            CMakeLists_txt11Size = 6369;
+    extern const char*   CMakeLists_txt17;
+    const int            CMakeLists_txt17Size = 6369;
 
-    extern const char*   LICENSE7;
-    const int            LICENSE7Size = 1002;
+    extern const char*   LICENSE8;
+    const int            LICENSE8Size = 1002;
 
-    extern const char*   README5;
-    const int            README5Size = 5191;
+    extern const char*   README6;
+    const int            README6Size = 5191;
 
     extern const char*   zconf_h_cmakein;
     const int            zconf_h_cmakeinSize = 16676;
@@ -869,8 +1736,8 @@ namespace BinaryData
     extern const char*   dragonsplash_png;
     const int            dragonsplash_pngSize = 49960;
 
-    extern const char*   CMakeLists_txt12;
-    const int            CMakeLists_txt12Size = 1136;
+    extern const char*   CMakeLists_txt18;
+    const int            CMakeLists_txt18Size = 1136;
 
     extern const char*   datastructure_xml;
     const int            datastructure_xmlSize = 2916;
@@ -888,7 +1755,7 @@ namespace BinaryData
     const int            Preamble_txtSize = 1802;
 
     extern const char*   config_h_in;
-    const int            config_h_inSize = 50040;
+    const int            config_h_inSize = 50080;
 
     extern const char*   module_modulemap;
     const int            module_modulemapSize = 764;
@@ -920,11 +1787,11 @@ namespace BinaryData
     extern const char*   WEB;
     const int            WEBSize = 124;
 
-    extern const char*   CMakeLists_txt13;
-    const int            CMakeLists_txt13Size = 487;
+    extern const char*   CMakeLists_txt19;
+    const int            CMakeLists_txt19Size = 487;
 
-    extern const char*   README_md19;
-    const int            README_md19Size = 1188;
+    extern const char*   README_md21;
+    const int            README_md21Size = 1188;
 
     extern const char*   mod_rs;
     const int            mod_rsSize = 33;
@@ -1193,8 +2060,8 @@ namespace BinaryData
     extern const char*   versionInfo_d;
     const int            versionInfo_dSize = 2518;
 
-    extern const char*   README6;
-    const int            README6Size = 543;
+    extern const char*   README7;
+    const int            README7Size = 543;
 
     extern const char*   build_sh2;
     const int            build_sh2Size = 10007;
@@ -1223,8 +2090,8 @@ namespace BinaryData
     extern const char*   IPHONESIMULATOR_X86_64_TOOLCHAIN_cmake;
     const int            IPHONESIMULATOR_X86_64_TOOLCHAIN_cmakeSize = 508;
 
-    extern const char*   README_md20;
-    const int            README_md20Size = 1507;
+    extern const char*   README_md22;
+    const int            README_md22Size = 1507;
 
     extern const char*   AiAnimation_java;
     const int            AiAnimation_javaSize = 5176;
@@ -1358,8 +2225,8 @@ namespace BinaryData
     extern const char*   build_xml;
     const int            build_xmlSize = 1576;
 
-    extern const char*   README7;
-    const int            README7Size = 1829;
+    extern const char*   README8;
+    const int            README8Size = 1829;
 
     extern const char*   materialgen_py;
     const int            materialgen_pySize = 3618;
@@ -1383,7 +2250,7 @@ namespace BinaryData
     const int            material_pySize = 2409;
 
     extern const char*   postprocess_py;
-    const int            postprocess_pySize = 24011;
+    const int            postprocess_pySize = 25081;
 
     extern const char*   structs_py;
     const int            structs_pySize = 43960;
@@ -1400,8 +2267,8 @@ namespace BinaryData
     extern const char*   quicktest_py;
     const int            quicktest_pySize = 1746;
 
-    extern const char*   README_md21;
-    const int            README_md21Size = 506;
+    extern const char*   README_md23;
+    const int            README_md23Size = 506;
 
     extern const char*   sample_py;
     const int            sample_pySize = 2735;
@@ -1412,11 +2279,11 @@ namespace BinaryData
     extern const char*   _3d_viewer_screenshot_png;
     const int            _3d_viewer_screenshot_pngSize = 51610;
 
-    extern const char*   LICENSE8;
-    const int            LICENSE8Size = 758;
+    extern const char*   LICENSE9;
+    const int            LICENSE9Size = 758;
 
-    extern const char*   README_md22;
-    const int            README_md22Size = 2164;
+    extern const char*   README_md24;
+    const int            README_md24Size = 2164;
 
     extern const char*   README_rst;
     const int            README_rstSize = 2378;
@@ -1427,8 +2294,8 @@ namespace BinaryData
     extern const char*   Credits_rtf;
     const int            Credits_rtfSize = 436;
 
-    extern const char*   InfoPlist_strings;
-    const int            InfoPlist_stringsSize = 90;
+    extern const char*   InfoPlist_strings3;
+    const int            InfoPlist_strings3Size = 90;
 
     extern const char*   MainMenu_xib;
     const int            MainMenu_xibSize = 137525;
@@ -1445,8 +2312,8 @@ namespace BinaryData
     extern const char*   layout;
     const int            layoutSize = 475;
 
-    extern const char*   project_pbxproj;
-    const int            project_pbxprojSize = 27377;
+    extern const char*   project_pbxproj3;
+    const int            project_pbxproj3Size = 27377;
 
     extern const char*   vade_mode1v3;
     const int            vade_mode1v3Size = 41158;
@@ -1454,8 +2321,8 @@ namespace BinaryData
     extern const char*   vade_pbxuser;
     const int            vade_pbxuserSize = 55171;
 
-    extern const char*   README8;
-    const int            README8Size = 642;
+    extern const char*   README9;
+    const int            README9Size = 642;
 
     extern const char*   SimpleAssimpViewXInfo_plist;
     const int            SimpleAssimpViewXInfo_plistSize = 2669;
@@ -1463,8 +2330,8 @@ namespace BinaryData
     extern const char*   SimpleAssimpViewX_Prefix_pch;
     const int            SimpleAssimpViewX_Prefix_pchSize = 257;
 
-    extern const char*   CMakeLists_txt14;
-    const int            CMakeLists_txt14Size = 1499;
+    extern const char*   CMakeLists_txt20;
+    const int            CMakeLists_txt20Size = 1499;
 
     extern const char*   SimpleOpenGL_sln;
     const int            SimpleOpenGL_slnSize = 869;
@@ -1478,20 +2345,20 @@ namespace BinaryData
     extern const char*   VertexShader_hlsl;
     const int            VertexShader_hlslSize = 402;
 
-    extern const char*   CMakeLists_txt15;
-    const int            CMakeLists_txt15Size = 1572;
+    extern const char*   CMakeLists_txt21;
+    const int            CMakeLists_txt21Size = 1572;
 
     extern const char*   SimpleTexturedOpenGL_vcproj;
     const int            SimpleTexturedOpenGL_vcprojSize = 4701;
 
-    extern const char*   CMakeLists_txt16;
-    const int            CMakeLists_txt16Size = 1245;
+    extern const char*   CMakeLists_txt22;
+    const int            CMakeLists_txt22Size = 1245;
 
     extern const char*   SimpleTexturedOpenGL_sln;
     const int            SimpleTexturedOpenGL_slnSize = 906;
 
-    extern const char*   README9;
-    const int            README9Size = 1794;
+    extern const char*   README10;
+    const int            README10Size = 1794;
 
     extern const char*   make_android_bat;
     const int            make_android_batSize = 2973;
@@ -1553,8 +2420,8 @@ namespace BinaryData
     extern const char*   scan_printf_sh;
     const int            scan_printf_shSize = 296;
 
-    extern const char*   CMakeLists_txt17;
-    const int            CMakeLists_txt17Size = 1020;
+    extern const char*   CMakeLists_txt23;
+    const int            CMakeLists_txt23Size = 1020;
 
     extern const char*   headercheck_cpp_in;
     const int            headercheck_cpp_inSize = 60;
@@ -1619,8 +2486,8 @@ namespace BinaryData
     extern const char*   sample_subdiv_ac_solid_png;
     const int            sample_subdiv_ac_solid_pngSize = 268184;
 
-    extern const char*   README_md23;
-    const int            README_md23Size = 227;
+    extern const char*   README_md25;
+    const int            README_md25Size = 227;
 
     extern const char*   closedLine_ac;
     const int            closedLine_acSize = 258;
@@ -1661,8 +2528,8 @@ namespace BinaryData
     extern const char*   Wuson_acc;
     const int            Wuson_accSize = 300323;
 
-    extern const char*   README10;
-    const int            README10Size = 98;
+    extern const char*   README11;
+    const int            README11Size = 98;
 
     extern const char*   test_with_mat_amf;
     const int            test_with_mat_amfSize = 1607;
@@ -1700,8 +2567,8 @@ namespace BinaryData
     extern const char*   MotionCaptureROM_ase_gif;
     const int            MotionCaptureROM_ase_gifSize = 7023262;
 
-    extern const char*   README_md24;
-    const int            README_md24Size = 818;
+    extern const char*   README_md26;
+    const int            README_md26Size = 818;
 
     extern const char*   UVTransform_Normal_ASE;
     const int            UVTransform_Normal_ASESize = 14713;
@@ -1844,8 +2711,8 @@ namespace BinaryData
     extern const char*   Boxing_Toes_bvh_gif;
     const int            Boxing_Toes_bvh_gifSize = 4503296;
 
-    extern const char*   README_md25;
-    const int            README_md25Size = 503;
+    extern const char*   README_md27;
+    const int            README_md27Size = 503;
 
     extern const char*   _01_01_bvh;
     const int            _01_01_bvhSize = 2070355;
@@ -1862,8 +2729,8 @@ namespace BinaryData
     extern const char*   molecule_ascii_cob_png;
     const int            molecule_ascii_cob_pngSize = 248304;
 
-    extern const char*   README_md26;
-    const int            README_md26Size = 139;
+    extern const char*   README_md28;
+    const int            README_md28Size = 139;
 
     extern const char*   axe_jpg;
     const int            axe_jpgSize = 65191;
@@ -1901,8 +2768,8 @@ namespace BinaryData
     extern const char*   human_zae_png;
     const int            human_zae_pngSize = 646451;
 
-    extern const char*   README_md27;
-    const int            README_md27Size = 148;
+    extern const char*   README_md29;
+    const int            README_md29Size = 148;
 
     extern const char*   anims_with_full_rotations_between_keys_DAE;
     const int            anims_with_full_rotations_between_keys_DAESize = 504895;
@@ -2015,8 +2882,8 @@ namespace BinaryData
     extern const char*   ThomasFechten_csm_gif;
     const int            ThomasFechten_csm_gifSize = 1526563;
 
-    extern const char*   README_md28;
-    const int            README_md28Size = 136;
+    extern const char*   README_md30;
+    const int            README_md30Size = 136;
 
     extern const char*   ThomasFechten_csm;
     const int            ThomasFechten_csmSize = 3664370;
@@ -2180,8 +3047,8 @@ namespace BinaryData
     extern const char*   README_body_md;
     const int            README_body_mdSize = 301;
 
-    extern const char*   README_md29;
-    const int            README_md29Size = 1109;
+    extern const char*   README_md31;
+    const int            README_md31Size = 1109;
 
     extern const char*   AnimatedMorphSphere_bin;
     const int            AnimatedMorphSphere_binSize = 218476;
@@ -2189,8 +3056,8 @@ namespace BinaryData
     extern const char*   AnimatedMorphSphere_gltf;
     const int            AnimatedMorphSphere_gltfSize = 4622;
 
-    extern const char*   README_md30;
-    const int            README_md30Size = 749;
+    extern const char*   README_md32;
+    const int            README_md32Size = 749;
 
     extern const char*   BoxBadNormals_glb;
     const int            BoxBadNormals_glbSize = 1924;
@@ -2381,11 +3248,11 @@ namespace BinaryData
     extern const char*   Mesh_PrimitiveMode_15_gltf;
     const int            Mesh_PrimitiveMode_15_gltfSize = 1110;
 
-    extern const char*   README_md31;
-    const int            README_md31Size = 4962;
+    extern const char*   README_md33;
+    const int            README_md33Size = 4962;
 
-    extern const char*   LICENSE9;
-    const int            LICENSE9Size = 1065;
+    extern const char*   LICENSE10;
+    const int            LICENSE10Size = 1065;
 
     extern const char*   AnimatedMorphCube_bin2;
     const int            AnimatedMorphCube_bin2Size = 4284;
@@ -2432,8 +3299,8 @@ namespace BinaryData
     extern const char*   README_body_md2;
     const int            README_body_md2Size = 982;
 
-    extern const char*   README_md32;
-    const int            README_md32Size = 1884;
+    extern const char*   README_md34;
+    const int            README_md34Size = 1884;
 
     extern const char*   Base_AO_png;
     const int            Base_AO_pngSize = 178434;
@@ -2456,8 +3323,8 @@ namespace BinaryData
     extern const char*   README_body_md3;
     const int            README_body_md3Size = 2698;
 
-    extern const char*   README_md33;
-    const int            README_md33Size = 3434;
+    extern const char*   README_md35;
+    const int            README_md35Size = 3434;
 
     extern const char*   RecursiveNodes_gltf;
     const int            RecursiveNodes_gltfSize = 343;
@@ -2477,8 +3344,8 @@ namespace BinaryData
     extern const char*   SimpleMorph_gif;
     const int            SimpleMorph_gifSize = 92753;
 
-    extern const char*   README_md34;
-    const int            README_md34Size = 558;
+    extern const char*   README_md36;
+    const int            README_md36Size = 558;
 
     extern const char*   CesiumLogoFlat_png6;
     const int            CesiumLogoFlat_png6Size = 2433;
@@ -2507,8 +3374,8 @@ namespace BinaryData
     extern const char*   README_body_md4;
     const int            README_body_md4Size = 449;
 
-    extern const char*   README_md35;
-    const int            README_md35Size = 1011;
+    extern const char*   README_md37;
+    const int            README_md37Size = 1011;
 
     extern const char*   NoScene_gltf;
     const int            NoScene_gltfSize = 66;
@@ -2564,8 +3431,8 @@ namespace BinaryData
     extern const char*   terrain_hmp_png;
     const int            terrain_hmp_pngSize = 141244;
 
-    extern const char*   README_md36;
-    const int            README_md36Size = 118;
+    extern const char*   README_md38;
+    const int            README_md38Size = 118;
 
     extern const char*   formatDetection;
     const int            formatDetectionSize = 4476;
@@ -2633,8 +3500,8 @@ namespace BinaryData
     extern const char*   mrfixit_iqm_png;
     const int            mrfixit_iqm_pngSize = 1575656;
 
-    extern const char*   README_md37;
-    const int            README_md37Size = 118;
+    extern const char*   README_md39;
+    const int            README_md39Size = 118;
 
     extern const char*   Body_jpg;
     const int            Body_jpgSize = 369618;
@@ -2723,8 +3590,8 @@ namespace BinaryData
     extern const char*   scenegraphAnimMod_UTF16LE_irr_anim_Irr_GlobalAnimChannel_gif;
     const int            scenegraphAnimMod_UTF16LE_irr_anim_Irr_GlobalAnimChannel_gifSize = 1202540;
 
-    extern const char*   README_md38;
-    const int            README_md38Size = 638;
+    extern const char*   README_md40;
+    const int            README_md40Size = 638;
 
     extern const char*   animMesh_irr;
     const int            animMesh_irrSize = 6330;
@@ -3089,8 +3956,8 @@ namespace BinaryData
     extern const char*   sydney_md2_png;
     const int            sydney_md2_pngSize = 591732;
 
-    extern const char*   README_md39;
-    const int            README_md39Size = 198;
+    extern const char*   README_md41;
+    const int            README_md41Size = 198;
 
     extern const char*   faeriesource_txt;
     const int            faeriesource_txtSize = 973;
@@ -3263,8 +4130,8 @@ namespace BinaryData
     extern const char*   cone_nff_png;
     const int            cone_nff_pngSize = 512075;
 
-    extern const char*   README_md40;
-    const int            README_md40Size = 109;
+    extern const char*   README_md42;
+    const int            README_md42Size = 109;
 
     extern const char*   cone_nff;
     const int            cone_nffSize = 355;
@@ -3629,8 +4496,8 @@ namespace BinaryData
     extern const char*   RealisticTerrain_ter_png;
     const int            RealisticTerrain_ter_pngSize = 932991;
 
-    extern const char*   README_md41;
-    const int            README_md41Size = 276;
+    extern const char*   README_md43;
+    const int            README_md43Size = 276;
 
     extern const char*   RealisticTerrain_ter;
     const int            RealisticTerrain_terSize = 132184;
@@ -3641,20 +4508,20 @@ namespace BinaryData
     extern const char*   MotionCaptureROM_usdc_png;
     const int            MotionCaptureROM_usdc_pngSize = 101549;
 
-    extern const char*   README_md42;
-    const int            README_md42Size = 148;
+    extern const char*   README_md44;
+    const int            README_md44Size = 148;
 
     extern const char*   MotionCaptureROM_usdc;
     const int            MotionCaptureROM_usdcSize = 133113;
 
-    extern const char*   README_md43;
-    const int            README_md43Size = 327;
+    extern const char*   README_md45;
+    const int            README_md45Size = 327;
 
     extern const char*   HelloWorld_wrl_png;
     const int            HelloWorld_wrl_pngSize = 820902;
 
-    extern const char*   README_md44;
-    const int            README_md44Size = 127;
+    extern const char*   README_md46;
+    const int            README_md46Size = 127;
 
     extern const char*   credits_txt3;
     const int            credits_txt3Size = 84;
@@ -3668,8 +4535,8 @@ namespace BinaryData
     extern const char*   MotionCaptureROM_WRL;
     const int            MotionCaptureROM_WRLSize = 2314611;
 
-    extern const char*   README_md45;
-    const int            README_md45Size = 177;
+    extern const char*   README_md47;
+    const int            README_md47Size = 177;
 
     extern const char*   Wuson_wrl;
     const int            Wuson_wrlSize = 222394;
@@ -3680,8 +4547,8 @@ namespace BinaryData
     extern const char*   Testwuson_X_anim_Wuson_Run_gif;
     const int            Testwuson_X_anim_Wuson_Run_gifSize = 2639740;
 
-    extern const char*   README_md46;
-    const int            README_md46Size = 259;
+    extern const char*   README_md48;
+    const int            README_md48Size = 259;
 
     extern const char*   anim_test_txt;
     const int            anim_test_txtSize = 642;
@@ -3749,8 +4616,8 @@ namespace BinaryData
     extern const char*   HelloWorld_x3d_png;
     const int            HelloWorld_x3d_pngSize = 950873;
 
-    extern const char*   README_md47;
-    const int            README_md47Size = 664;
+    extern const char*   README_md49;
+    const int            README_md49Size = 664;
 
     extern const char*   ComputerKeyboard_x3d;
     const int            ComputerKeyboard_x3dSize = 9682;
@@ -3767,8 +4634,8 @@ namespace BinaryData
     extern const char*   IndexedLineSet_x3d;
     const int            IndexedLineSet_x3dSize = 751;
 
-    extern const char*   README_md48;
-    const int            README_md48Size = 122;
+    extern const char*   README_md50;
+    const int            README_md50Size = 122;
 
     extern const char*   earthtopo_png3;
     const int            earthtopo_png3Size = 102593;
@@ -3776,14 +4643,14 @@ namespace BinaryData
     extern const char*   HelloWorld_x3db;
     const int            HelloWorld_x3dbSize = 1551;
 
-    extern const char*   README_md49;
-    const int            README_md49Size = 165;
+    extern const char*   README_md51;
+    const int            README_md51Size = 165;
 
     extern const char*   HelloWorld_x3dv_png;
     const int            HelloWorld_x3dv_pngSize = 940411;
 
-    extern const char*   README_md50;
-    const int            README_md50Size = 131;
+    extern const char*   README_md52;
+    const int            README_md52Size = 131;
 
     extern const char*   earthtopo_png4;
     const int            earthtopo_png4Size = 102593;
@@ -3791,8 +4658,8 @@ namespace BinaryData
     extern const char*   HelloWorld_x3dv;
     const int            HelloWorld_x3dvSize = 3374;
 
-    extern const char*   README_md51;
-    const int            README_md51Size = 220;
+    extern const char*   README_md53;
+    const int            README_md53Size = 220;
 
     extern const char*   BCN_Epileptic_zgl;
     const int            BCN_Epileptic_zglSize = 179894;
@@ -3884,8 +4751,8 @@ namespace BinaryData
     extern const char*   screenshot_3_bananas_jpeg;
     const int            screenshot_3_bananas_jpegSize = 46918;
 
-    extern const char*   README_md52;
-    const int            README_md52Size = 702;
+    extern const char*   README_md54;
+    const int            README_md54Size = 702;
 
     extern const char*   _3_bananas_amf_7z;
     const int            _3_bananas_amf_7zSize = 7652329;
@@ -3914,8 +4781,8 @@ namespace BinaryData
     extern const char*   turtle1_b3d_gif;
     const int            turtle1_b3d_gifSize = 4169793;
 
-    extern const char*   README_md53;
-    const int            README_md53Size = 284;
+    extern const char*   README_md55;
+    const int            README_md55Size = 284;
 
     extern const char*   axe_jpg3;
     const int            axe_jpg3Size = 65191;
@@ -3941,8 +4808,8 @@ namespace BinaryData
     extern const char*   fleurOptonl_blend_png;
     const int            fleurOptonl_blend_pngSize = 924517;
 
-    extern const char*   README_md54;
-    const int            README_md54Size = 138;
+    extern const char*   README_md56;
+    const int            README_md56Size = 138;
 
     extern const char*   Bob_blend;
     const int            Bob_blendSize = 591624;
@@ -4103,8 +4970,8 @@ namespace BinaryData
     extern const char*   terrain_withtexture_hmp_png;
     const int            terrain_withtexture_hmp_pngSize = 1219304;
 
-    extern const char*   README_md55;
-    const int            README_md55Size = 154;
+    extern const char*   README_md57;
+    const int            README_md57Size = 154;
 
     extern const char*   terrain_withtexture_hmp;
     const int            terrain_withtexture_hmpSize = 605688;
@@ -4190,8 +5057,8 @@ namespace BinaryData
     extern const char*   quickdraw_v2_2_lws_gif;
     const int            quickdraw_v2_2_lws_gifSize = 944206;
 
-    extern const char*   README_md56;
-    const int            README_md56Size = 141;
+    extern const char*   README_md58;
+    const int            README_md58Size = 141;
 
     extern const char*   QuickDraw_v_2_2_lws;
     const int            QuickDraw_v_2_2_lwsSize = 22315;
@@ -4250,8 +5117,8 @@ namespace BinaryData
     extern const char*   Bob_md5mesh_gif;
     const int            Bob_md5mesh_gifSize = 6051414;
 
-    extern const char*   README_md57;
-    const int            README_md57Size = 284;
+    extern const char*   README_md59;
+    const int            README_md59Size = 284;
 
     extern const char*   BoarMan_md5mesh;
     const int            BoarMan_md5meshSize = 213481;
@@ -4286,8 +5153,8 @@ namespace BinaryData
     extern const char*   gijoe_mdl_png;
     const int            gijoe_mdl_pngSize = 585072;
 
-    extern const char*   README_md58;
-    const int            README_md58Size = 113;
+    extern const char*   README_md60;
+    const int            README_md60Size = 113;
 
     extern const char*   gijoereadme_txt;
     const int            gijoereadme_txtSize = 1535;
@@ -4370,8 +5237,8 @@ namespace BinaryData
     extern const char*   ninja_mesh_gif;
     const int            ninja_mesh_gifSize = 6809636;
 
-    extern const char*   README_md59;
-    const int            README_md59Size = 253;
+    extern const char*   README_md61;
+    const int            README_md61Size = 253;
 
     extern const char*   fish_jpg;
     const int            fish_jpgSize = 71256;
@@ -4388,8 +5255,8 @@ namespace BinaryData
     extern const char*   fish_skeleton_xml;
     const int            fish_skeleton_xmlSize = 4742;
 
-    extern const char*   LICENSE10;
-    const int            LICENSE10Size = 1136;
+    extern const char*   LICENSE11;
+    const int            LICENSE11Size = 1136;
 
     extern const char*   ninja_jpg;
     const int            ninja_jpgSize = 43726;
@@ -4415,8 +5282,8 @@ namespace BinaryData
     extern const char*   razor_mesh_xml;
     const int            razor_mesh_xmlSize = 160568;
 
-    extern const char*   README_md60;
-    const int            README_md60Size = 717;
+    extern const char*   README_md62;
+    const int            README_md62Size = 717;
 
     extern const char*   Scene_material;
     const int            Scene_materialSize = 459;
@@ -4442,8 +5309,8 @@ namespace BinaryData
     extern const char*   blendshape_usda;
     const int            blendshape_usdaSize = 6517;
 
-    extern const char*   README_md61;
-    const int            README_md61Size = 605;
+    extern const char*   README_md63;
+    const int            README_md63Size = 605;
 
     extern const char*   simpleskinanimationtest_usda;
     const int            simpleskinanimationtest_usdaSize = 15065;
@@ -4469,8 +5336,8 @@ namespace BinaryData
     extern const char*   blendshape_usdc;
     const int            blendshape_usdcSize = 4862;
 
-    extern const char*   README_md62;
-    const int            README_md62Size = 447;
+    extern const char*   README_md64;
+    const int            README_md64Size = 447;
 
     extern const char*   suzanne_usdc;
     const int            suzanne_usdcSize = 48768;
@@ -4508,8 +5375,8 @@ namespace BinaryData
     extern const char*   ChevyTahoe_x3d_pugi_xml_png;
     const int            ChevyTahoe_x3d_pugi_xml_pngSize = 547271;
 
-    extern const char*   README_md63;
-    const int            README_md63Size = 531;
+    extern const char*   README_md65;
+    const int            README_md65Size = 531;
 
     extern const char*   README_txt;
     const int            README_txtSize = 332;
@@ -4541,8 +5408,8 @@ namespace BinaryData
     extern const char*   whitelist_csv;
     const int            whitelist_csvSize = 3031;
 
-    extern const char*   CMakeLists_txt18;
-    const int            CMakeLists_txt18Size = 8931;
+    extern const char*   CMakeLists_txt24;
+    const int            CMakeLists_txt24Size = 8931;
 
     extern const char*   test_3mf;
     const int            test_3mfSize = 1143;
@@ -4550,8 +5417,8 @@ namespace BinaryData
     extern const char*   assimp_cmd_rc;
     const int            assimp_cmd_rcSize = 1155;
 
-    extern const char*   CMakeLists_txt19;
-    const int            CMakeLists_txt19Size = 2747;
+    extern const char*   CMakeLists_txt25;
+    const int            CMakeLists_txt25Size = 2747;
 
     extern const char*   assimp_view_rc;
     const int            assimp_view_rcSize = 18814;
@@ -4580,8 +5447,8 @@ namespace BinaryData
     extern const char*   base_stats_bmp;
     const int            base_stats_bmpSize = 9630;
 
-    extern const char*   CMakeLists_txt20;
-    const int            CMakeLists_txt20Size = 3407;
+    extern const char*   CMakeLists_txt26;
+    const int            CMakeLists_txt26Size = 3407;
 
     extern const char*   fx_bmp;
     const int            fx_bmpSize = 822;
@@ -4643,8 +5510,8 @@ namespace BinaryData
     extern const char*   CHANGES;
     const int            CHANGESSize = 25076;
 
-    extern const char*   CMakeLists_txt21;
-    const int            CMakeLists_txt21Size = 38301;
+    extern const char*   CMakeLists_txt27;
+    const int            CMakeLists_txt27Size = 38301;
 
     extern const char*   CODE_OF_CONDUCT_md;
     const int            CODE_OF_CONDUCT_mdSize = 5202;
@@ -4664,8 +5531,8 @@ namespace BinaryData
     extern const char*   INSTALL;
     const int            INSTALLSize = 560;
 
-    extern const char*   LICENSE11;
-    const int            LICENSE11Size = 3791;
+    extern const char*   LICENSE12;
+    const int            LICENSE12Size = 3791;
 
     extern const char*   Readme_md3;
     const int            Readme_md3Size = 6920;
@@ -4673,878 +5540,11 @@ namespace BinaryData
     extern const char*   SECURITY_md;
     const int            SECURITY_mdSize = 391;
 
-    extern const char*   treesed;
-    const int            treesedSize = 3645;
-
-    extern const char*   FindCoreAudio_cmake;
-    const int            FindCoreAudio_cmakeSize = 501;
-
-    extern const char*   config_guess;
-    const int            config_guessSize = 43499;
-
-    extern const char*   config_sub;
-    const int            config_subSize = 36144;
-
-    extern const char*   install_sh;
-    const int            install_shSize = 0;
-
-    extern const char*   ccrma_gif;
-    const int            ccrma_gifSize = 8305;
-
-    extern const char*   mcgill_gif;
-    const int            mcgill_gifSize = 3810;
-
-    extern const char*   princeton_gif;
-    const int            princeton_gifSize = 5476;
-
-    extern const char*   classes_txt;
-    const int            classes_txtSize = 320;
-
-    extern const char*   compile_txt;
-    const int            compile_txtSize = 6515;
-
-    extern const char*   control_txt;
-    const int            control_txtSize = 4075;
-
-    extern const char*   crealtime_txt;
-    const int            crealtime_txtSize = 4000;
-
-    extern const char*   download_txt;
-    const int            download_txtSize = 17530;
-
-    extern const char*   Doxyfile;
-    const int            DoxyfileSize = 121952;
-
-    extern const char*   faq_txt;
-    const int            faq_txtSize = 4617;
-
-    extern const char*   filtering_txt;
-    const int            filtering_txtSize = 3837;
-
-    extern const char*   footer_html;
-    const int            footer_htmlSize = 249;
-
-    extern const char*   fundamentals_txt;
-    const int            fundamentals_txtSize = 4413;
-
-    extern const char*   header_html;
-    const int            header_htmlSize = 828;
-
-    extern const char*   header_tex;
-    const int            header_texSize = 904;
-
-    extern const char*   hello_txt;
-    const int            hello_txtSize = 3873;
-
-    extern const char*   index_txt;
-    const int            index_txtSize = 2026;
-
-    extern const char*   information_txt;
-    const int            information_txtSize = 10202;
-
-    extern const char*   instruments_txt;
-    const int            instruments_txtSize = 1281;
-
-    extern const char*   links_txt;
-    const int            links_txtSize = 1315;
-
-    extern const char*   maillist_txt;
-    const int            maillist_txtSize = 767;
-
-    extern const char*   multichannel_txt;
-    const int            multichannel_txtSize = 2088;
-
-    extern const char*   polyvoices_txt;
-    const int            polyvoices_txtSize = 2113;
-
-    extern const char*   realtime_txt;
-    const int            realtime_txtSize = 2756;
-
-    extern const char*   skini_txt;
-    const int            skini_txtSize = 18230;
-
-    extern const char*   system_txt;
-    const int            system_txtSize = 2555;
-
-    extern const char*   tutorial_txt;
-    const int            tutorial_txtSize = 1125;
-
-    extern const char*   usage_txt;
-    const int            usage_txtSize = 14294;
-
-    extern const char*   ccrma_gif2;
-    const int            ccrma_gif2Size = 8305;
-
-    extern const char*   mcgill_gif2;
-    const int            mcgill_gif2Size = 3810;
-
-    extern const char*   princeton_gif2;
-    const int            princeton_gif2Size = 5476;
-
-    extern const char*   hierarchy_txt;
-    const int            hierarchy_txtSize = 9216;
-
-    extern const char*   READMELinux_txt;
-    const int            READMELinux_txtSize = 1530;
-
-    extern const char*   READMEMacOSX_txt;
-    const int            READMEMacOSX_txtSize = 1001;
-
-    extern const char*   READMESGI_txt;
-    const int            READMESGI_txtSize = 423;
-
-    extern const char*   READMEWin_txt;
-    const int            READMEWin_txtSize = 2408;
-
-    extern const char*   ReleaseNotes_txt;
-    const int            ReleaseNotes_txtSize = 15749;
-
-    extern const char*   SKINI_txt;
-    const int            SKINI_txtSize = 18980;
-
-    extern const char*   treesed_html;
-    const int            treesed_htmlSize = 5617;
-
-    extern const char*   InfoPlist_strings2;
-    const int            InfoPlist_strings2Size = 45;
-
-    extern const char*   Contents_json;
-    const int            Contents_jsonSize = 333;
-
-    extern const char*   Contents_json2;
-    const int            Contents_json2Size = 442;
-
-    extern const char*   iOS_DemoInfo_plist;
-    const int            iOS_DemoInfo_plistSize = 1151;
-
-    extern const char*   iOS_DemoPrefix_pch;
-    const int            iOS_DemoPrefix_pchSize = 344;
-
-    extern const char*   iOS_Demo_xccheckout;
-    const int            iOS_Demo_xccheckoutSize = 1485;
-
-    extern const char*   contents_xcworkspacedata;
-    const int            contents_xcworkspacedataSize = 153;
-
-    extern const char*   project_pbxproj2;
-    const int            project_pbxproj2Size = 23737;
-
-    extern const char*   InfoPlist_strings3;
-    const int            InfoPlist_strings3Size = 45;
-
-    extern const char*   iOS_DemoTestsInfo_plist;
-    const int            iOS_DemoTestsInfo_plistSize = 674;
-
-    extern const char*   README_md64;
-    const int            README_md64Size = 771;
-
-    extern const char*   contents_xcworkspacedata2;
-    const int            contents_xcworkspacedata2Size = 156;
-
-    extern const char*   project_pbxproj3;
-    const int            project_pbxproj3Size = 83199;
-
-    extern const char*   READMEiOS_md;
-    const int            READMEiOS_mdSize = 3944;
-
-    extern const char*   ax_cxx_compile_stdcxx_m4;
-    const int            ax_cxx_compile_stdcxx_m4Size = 19367;
-
-    extern const char*   bachfugue_ski;
-    const int            bachfugue_skiSize = 54442;
-
-    extern const char*   bookert_ski;
-    const int            bookert_skiSize = 3626;
-
-    extern const char*   chords_ski;
-    const int            chords_skiSize = 2361;
-
-    extern const char*   doogie_ski;
-    const int            doogie_skiSize = 1300;
-
-    extern const char*   drumfunk_ski;
-    const int            drumfunk_skiSize = 4893;
-
-    extern const char*   drumtest_ski;
-    const int            drumtest_skiSize = 1898;
-
-    extern const char*   duelingb_ski;
-    const int            duelingb_skiSize = 981;
-
-    extern const char*   fiddle_ski;
-    const int            fiddle_skiSize = 4507;
-
-    extern const char*   flutbach_ski;
-    const int            flutbach_skiSize = 3181;
-
-    extern const char*   funicula_ski;
-    const int            funicula_skiSize = 5850;
-
-    extern const char*   funskini_ski;
-    const int            funskini_skiSize = 3316;
-
-    extern const char*   lacrymos_ski;
-    const int            lacrymos_skiSize = 1367;
-
-    extern const char*   mandtune_ski;
-    const int            mandtune_skiSize = 1491;
-
-    extern const char*   marimba2_ski;
-    const int            marimba2_skiSize = 3656;
-
-    extern const char*   marimtst_ski;
-    const int            marimtst_skiSize = 1755;
-
-    extern const char*   misacrio_ski;
-    const int            misacrio_skiSize = 2362;
-
-    extern const char*   morazbel_ski;
-    const int            morazbel_skiSize = 3409;
-
-    extern const char*   muneira_ski;
-    const int            muneira_skiSize = 504780;
-
-    extern const char*   organs_ski;
-    const int            organs_skiSize = 7267;
-
-    extern const char*   pickdamp_ski;
-    const int            pickdamp_skiSize = 2710;
-
-    extern const char*   pictures_ski;
-    const int            pictures_skiSize = 1227;
-
-    extern const char*   README11;
-    const int            README11Size = 449;
-
-    extern const char*   riderson_ski;
-    const int            riderson_skiSize = 2547;
-
-    extern const char*   scales_ski;
-    const int            scales_skiSize = 1990;
-
-    extern const char*   shaktest_ski;
-    const int            shaktest_skiSize = 1948;
-
-    extern const char*   simplgft_ski;
-    const int            simplgft_skiSize = 1915;
-
-    extern const char*   spain_ski;
-    const int            spain_skiSize = 942;
-
-    extern const char*   streetsf_ski;
-    const int            streetsf_skiSize = 2281;
-
-    extern const char*   test_ski;
-    const int            test_skiSize = 112;
-
-    extern const char*   thecars_ski;
-    const int            thecars_skiSize = 1552;
-
-    extern const char*   tubebell_ski;
-    const int            tubebell_skiSize = 782;
-
-    extern const char*   vocaliz_ski;
-    const int            vocaliz_skiSize = 6247;
-
-    extern const char*   bamboo_xbm;
-    const int            bamboo_xbmSize = 10570;
-
-    extern const char*   cabasa_xbm;
-    const int            cabasa_xbmSize = 10570;
-
-    extern const char*   cokecan_xbm;
-    const int            cokecan_xbmSize = 5260;
-
-    extern const char*   guiro_xbm;
-    const int            guiro_xbmSize = 10567;
-
-    extern const char*   kasm_xbm;
-    const int            kasm_xbmSize = 8960;
-
-    extern const char*   KFiddl_xbm;
-    const int            KFiddl_xbmSize = 8966;
-
-    extern const char*   KFloot_xbm;
-    const int            KFloot_xbmSize = 8966;
-
-    extern const char*   KFMod_xbm;
-    const int            KFMod_xbmSize = 8963;
-
-    extern const char*   KHose_xbm;
-    const int            KHose_xbmSize = 8963;
-
-    extern const char*   Klar_xbm;
-    const int            Klar_xbmSize = 8960;
-
-    extern const char*   KModal_xbm;
-    const int            KModal_xbmSize = 8966;
-
-    extern const char*   KPluk_xbm;
-    const int            KPluk_xbmSize = 8963;
-
-    extern const char*   KVoiceFM_xbm;
-    const int            KVoiceFM_xbmSize = 8972;
-
-    extern const char*   KVoicForm_xbm;
-    const int            KVoicForm_xbmSize = 8975;
-
-    extern const char*   maraca_xbm;
-    const int            maraca_xbmSize = 10570;
-
-    extern const char*   phism_xbm;
-    const int            phism_xbmSize = 6843;
-
-    extern const char*   prc_xbm;
-    const int            prc_xbmSize = 7650;
-
-    extern const char*   prcFunny_xbm;
-    const int            prcFunny_xbmSize = 4486;
-
-    extern const char*   rachet_xbm;
-    const int            rachet_xbmSize = 10570;
-
-    extern const char*   sleighbell_xbm;
-    const int            sleighbell_xbmSize = 10582;
-
-    extern const char*   tambourine_xbm;
-    const int            tambourine_xbmSize = 10582;
-
-    extern const char*   Banded_tcl;
-    const int            Banded_tclSize = 5614;
-
-    extern const char*   Demo_tcl;
-    const int            Demo_tclSize = 36789;
-
-    extern const char*   Drums_tcl;
-    const int            Drums_tclSize = 3624;
-
-    extern const char*   Modal_tcl;
-    const int            Modal_tclSize = 6643;
-
-    extern const char*   Physical_tcl;
-    const int            Physical_tclSize = 16362;
-
-    extern const char*   Shakers_tcl;
-    const int            Shakers_tclSize = 8534;
-
-    extern const char*   Voice_tcl;
-    const int            Voice_tclSize = 5159;
-
-    extern const char*   Banded;
-    const int            BandedSize = 52;
-
-    extern const char*   Banded_bat;
-    const int            Banded_batSize = 50;
-
-    extern const char*   CMakeLists_txt22;
-    const int            CMakeLists_txt22Size = 251;
-
-    extern const char*   demo_sln;
-    const int            demo_slnSize = 1042;
-
-    extern const char*   demo_vcxproj;
-    const int            demo_vcxprojSize = 15069;
-
-    extern const char*   demo_vcxproj_filters;
-    const int            demo_vcxproj_filtersSize = 17345;
-
-    extern const char*   Drums;
-    const int            DrumsSize = 50;
-
-    extern const char*   Drums_bat;
-    const int            Drums_batSize = 48;
-
-    extern const char*   Makefile_in;
-    const int            Makefile_inSize = 2712;
-
-    extern const char*   Md2Skini_dsp;
-    const int            Md2Skini_dspSize = 4693;
-
-    extern const char*   Modal;
-    const int            ModalSize = 51;
-
-    extern const char*   Modal_bat;
-    const int            Modal_batSize = 49;
-
-    extern const char*   Physical;
-    const int            PhysicalSize = 54;
-
-    extern const char*   Physical_bat;
-    const int            Physical_batSize = 52;
-
-    extern const char*   Shakers;
-    const int            ShakersSize = 52;
-
-    extern const char*   Shakers_bat;
-    const int            Shakers_batSize = 50;
-
-    extern const char*   StkDemo;
-    const int            StkDemoSize = 50;
-
-    extern const char*   StkDemo_bat;
-    const int            StkDemo_batSize = 48;
-
-    extern const char*   Voice;
-    const int            VoiceSize = 51;
-
-    extern const char*   Voice_bat;
-    const int            Voice_batSize = 49;
-
-    extern const char*   Effects_tcl;
-    const int            Effects_tclSize = 9487;
-
-    extern const char*   CMakeLists_txt23;
-    const int            CMakeLists_txt23Size = 266;
-
-    extern const char*   effects_sln;
-    const int            effects_slnSize = 1048;
-
-    extern const char*   effects_vcxproj;
-    const int            effects_vcxprojSize = 9471;
-
-    extern const char*   Makefile_in2;
-    const int            Makefile_in2Size = 1788;
-
-    extern const char*   READMEeffects_txt;
-    const int            READMEeffects_txtSize = 1021;
-
-    extern const char*   StkEffects;
-    const int            StkEffectsSize = 39;
-
-    extern const char*   StkEffects_bat;
-    const int            StkEffects_batSize = 37;
-
-    extern const char*   test_ski2;
-    const int            test_ski2Size = 903;
-
-    extern const char*   EGuitar_tcl;
-    const int            EGuitar_tclSize = 9388;
-
-    extern const char*   CMakeLists_txt24;
-    const int            CMakeLists_txt24Size = 266;
-
-    extern const char*   eguitar_sln;
-    const int            eguitar_slnSize = 1048;
-
-    extern const char*   eguitar_vcxproj;
-    const int            eguitar_vcxprojSize = 9331;
-
-    extern const char*   ElectricGuitar;
-    const int            ElectricGuitarSize = 43;
-
-    extern const char*   ElectricGuitar_bat;
-    const int            ElectricGuitar_batSize = 41;
-
-    extern const char*   Makefile_in3;
-    const int            Makefile_in3Size = 1892;
-
-    extern const char*   READMEeguitar_txt;
-    const int            READMEeguitar_txtSize = 1890;
-
-    extern const char*   bwv772_mid;
-    const int            bwv772_midSize = 4569;
-
-    extern const char*   jesu_mid;
-    const int            jesu_midSize = 17539;
-
-    extern const char*   tango_mid;
-    const int            tango_midSize = 12274;
-
-    extern const char*   sinewave_raw;
-    const int            sinewave_rawSize = 512;
-
-    extern const char*   bachfugue_ski2;
-    const int            bachfugue_ski2Size = 54442;
-
-    extern const char*   bookert_ski2;
-    const int            bookert_ski2Size = 3613;
-
-    extern const char*   audioprobe_vcxproj;
-    const int            audioprobe_vcxprojSize = 7159;
-
-    extern const char*   audioprobe_vcxproj_filters;
-    const int            audioprobe_vcxproj_filtersSize = 1356;
-
-    extern const char*   bethree_vcxproj;
-    const int            bethree_vcxprojSize = 8331;
-
-    extern const char*   bethree_vcxproj_filters;
-    const int            bethree_vcxproj_filtersSize = 3952;
-
-    extern const char*   CMakeLists_txt25;
-    const int            CMakeLists_txt25Size = 293;
-
-    extern const char*   controlbee_vcxproj;
-    const int            controlbee_vcxprojSize = 8745;
-
-    extern const char*   controlbee_vcxproj_filters;
-    const int            controlbee_vcxproj_filtersSize = 4661;
-
-    extern const char*   crtsine_vcxproj;
-    const int            crtsine_vcxprojSize = 7091;
-
-    extern const char*   crtsine_vcxproj_filters;
-    const int            crtsine_vcxproj_filtersSize = 1518;
-
-    extern const char*   duplex_vcxproj;
-    const int            duplex_vcxprojSize = 7131;
-
-    extern const char*   duplex_vcxproj_filters;
-    const int            duplex_vcxproj_filtersSize = 1333;
-
-    extern const char*   examples_sln;
-    const int            examples_slnSize = 8056;
-
-    extern const char*   foursine_vcxproj;
-    const int            foursine_vcxprojSize = 7212;
-
-    extern const char*   foursine_vcxproj_filters;
-    const int            foursine_vcxproj_filtersSize = 1727;
-
-    extern const char*   grains_vcxproj;
-    const int            grains_vcxprojSize = 7341;
-
-    extern const char*   grains_vcxproj_filters;
-    const int            grains_vcxproj_filtersSize = 2029;
-
-    extern const char*   inetIn_vcxproj;
-    const int            inetIn_vcxprojSize = 7612;
-
-    extern const char*   inetIn_vcxproj_filters;
-    const int            inetIn_vcxproj_filtersSize = 2531;
-
-    extern const char*   inetOut_vcxproj;
-    const int            inetOut_vcxprojSize = 7457;
-
-    extern const char*   inetOut_vcxproj_filters;
-    const int            inetOut_vcxproj_filtersSize = 2239;
-
-    extern const char*   libMakefile_in;
-    const int            libMakefile_inSize = 2649;
-
-    extern const char*   Makefile_in4;
-    const int            Makefile_in4Size = 6497;
-
-    extern const char*   midiprobe_vcxproj;
-    const int            midiprobe_vcxprojSize = 6866;
-
-    extern const char*   midiprobe_vcxproj_filters;
-    const int            midiprobe_vcxproj_filtersSize = 1115;
-
-    extern const char*   play_vcxproj;
-    const int            play_vcxprojSize = 7146;
-
-    extern const char*   play_vcxproj_filters;
-    const int            play_vcxproj_filtersSize = 1612;
-
-    extern const char*   playsmf_vcxproj;
-    const int            playsmf_vcxprojSize = 7120;
-
-    extern const char*   playsmf_vcxproj_filters;
-    const int            playsmf_vcxproj_filtersSize = 1519;
-
-    extern const char*   record_vcxproj;
-    const int            record_vcxprojSize = 7406;
-
-    extern const char*   record_vcxproj_filters;
-    const int            record_vcxproj_filtersSize = 2115;
-
-    extern const char*   rtsine_vcxproj;
-    const int            rtsine_vcxprojSize = 7310;
-
-    extern const char*   rtsine_vcxproj_filters;
-    const int            rtsine_vcxproj_filtersSize = 1917;
-
-    extern const char*   simple_tcl;
-    const int            simple_tclSize = 2143;
-
-    extern const char*   sine_vcxproj;
-    const int            sine_vcxprojSize = 7184;
-
-    extern const char*   sine_vcxproj_filters;
-    const int            sine_vcxproj_filtersSize = 1723;
-
-    extern const char*   sineosc_vcxproj;
-    const int            sineosc_vcxprojSize = 7447;
-
-    extern const char*   sineosc_vcxproj_filters;
-    const int            sineosc_vcxproj_filtersSize = 2343;
-
-    extern const char*   threebees_vcxproj;
-    const int            threebees_vcxprojSize = 8836;
-
-    extern const char*   threebees_vcxproj_filters;
-    const int            threebees_vcxproj_filtersSize = 4860;
-
-    extern const char*   bee1_raw;
-    const int            bee1_rawSize = 4192;
-
-    extern const char*   dee1_raw;
-    const int            dee1_rawSize = 4650;
-
-    extern const char*   dee2_raw;
-    const int            dee2_rawSize = 8800;
-
-    extern const char*   din1_raw;
-    const int            din1_rawSize = 3654;
-
-    extern const char*   Drdak2_raw;
-    const int            Drdak2_rawSize = 2438;
-
-    extern const char*   Drdak3_raw;
-    const int            Drdak3_rawSize = 4706;
-
-    extern const char*   Drdak4_raw;
-    const int            Drdak4_rawSize = 3782;
-
-    extern const char*   Drddak1_raw;
-    const int            Drddak1_rawSize = 5294;
-
-    extern const char*   Drdee1_raw;
-    const int            Drdee1_rawSize = 9242;
-
-    extern const char*   Drdee2_raw;
-    const int            Drdee2_rawSize = 9326;
-
-    extern const char*   DrDoi1_raw;
-    const int            DrDoi1_rawSize = 19752;
-
-    extern const char*   DrDoi2_raw;
-    const int            DrDoi2_rawSize = 19752;
-
-    extern const char*   Drdoo1_raw;
-    const int            Drdoo1_rawSize = 2018;
-
-    extern const char*   Drdoo2_raw;
-    const int            Drdoo2_rawSize = 2774;
-
-    extern const char*   Drdoo3_raw;
-    const int            Drdoo3_rawSize = 7310;
-
-    extern const char*   Drjun1_raw;
-    const int            Drjun1_rawSize = 4538;
-
-    extern const char*   Drjun2_raw;
-    const int            Drjun2_rawSize = 4790;
-
-    extern const char*   DrTak1_raw;
-    const int            DrTak1_rawSize = 9792;
-
-    extern const char*   DrTak2_raw;
-    const int            DrTak2_rawSize = 9792;
-
-    extern const char*   gun1_raw;
-    const int            gun1_rawSize = 4152;
-
-    extern const char*   jun1_raw;
-    const int            jun1_rawSize = 14776;
-
-    extern const char*   jun2_raw;
-    const int            jun2_rawSize = 5646;
-
-    extern const char*   tak1_raw;
-    const int            tak1_rawSize = 4816;
-
-    extern const char*   tak2_raw;
-    const int            tak2_rawSize = 3986;
-
-    extern const char*   tak3_raw;
-    const int            tak3_rawSize = 7472;
-
-    extern const char*   tak4_raw;
-    const int            tak4_rawSize = 7638;
-
-    extern const char*   prc_xbm2;
-    const int            prc_xbm2Size = 7549;
-
-    extern const char*   prcFunny_xbm2;
-    const int            prcFunny_xbm2Size = 4426;
-
-    extern const char*   ragamat_bmp;
-    const int            ragamat_bmpSize = 91598;
-
-    extern const char*   ragamat_xbm;
-    const int            ragamat_xbmSize = 58965;
-
-    extern const char*   ragamat2_bmp;
-    const int            ragamat2_bmpSize = 24018;
-
-    extern const char*   ragamat2_xbm;
-    const int            ragamat2_xbmSize = 15207;
-
-    extern const char*   Raga_tcl;
-    const int            Raga_tclSize = 7314;
-
-    extern const char*   CMakeLists_txt26;
-    const int            CMakeLists_txt26Size = 268;
-
-    extern const char*   Makefile_in5;
-    const int            Makefile_in5Size = 2058;
-
-    extern const char*   Raga;
-    const int            RagaSize = 36;
-
-    extern const char*   Raga_bat;
-    const int            Raga_batSize = 34;
-
-    extern const char*   ragamat_vcxproj;
-    const int            ragamat_vcxprojSize = 9425;
-
-    extern const char*   ragamatic_sln;
-    const int            ragamatic_slnSize = 1050;
-
-    extern const char*   READMEraga_txt;
-    const int            READMEraga_txtSize = 909;
-
-    extern const char*   stktemplate_zip;
-    const int            stktemplate_zipSize = 9512;
-
-    extern const char*   ahh_raw;
-    const int            ahh_rawSize = 184;
-
-    extern const char*   bassdrum_raw;
-    const int            bassdrum_rawSize = 4288;
-
-    extern const char*   britestk_raw;
-    const int            britestk_rawSize = 4096;
-
-    extern const char*   cowbell1_raw;
-    const int            cowbell1_rawSize = 6438;
-
-    extern const char*   crashcym_raw;
-    const int            crashcym_rawSize = 40776;
-
-    extern const char*   dope_raw;
-    const int            dope_rawSize = 20480;
-
-    extern const char*   eee_raw;
-    const int            eee_rawSize = 184;
-
-    extern const char*   fwavblnk_raw;
-    const int            fwavblnk_rawSize = 512;
-
-    extern const char*   halfwave_raw;
-    const int            halfwave_rawSize = 512;
-
-    extern const char*   hihatcym_raw;
-    const int            hihatcym_rawSize = 4976;
-
-    extern const char*   impuls10_raw;
-    const int            impuls10_rawSize = 512;
-
-    extern const char*   impuls20_raw;
-    const int            impuls20_rawSize = 512;
-
-    extern const char*   impuls40_raw;
-    const int            impuls40_rawSize = 512;
-
-    extern const char*   mand1_raw;
-    const int            mand1_rawSize = 2048;
-
-    extern const char*   mand2_raw;
-    const int            mand2_rawSize = 2048;
-
-    extern const char*   mand3_raw;
-    const int            mand3_rawSize = 2048;
-
-    extern const char*   mand4_raw;
-    const int            mand4_rawSize = 2048;
-
-    extern const char*   mand5_raw;
-    const int            mand5_rawSize = 2048;
-
-    extern const char*   mand6_raw;
-    const int            mand6_rawSize = 2048;
-
-    extern const char*   mand7_raw;
-    const int            mand7_rawSize = 2048;
-
-    extern const char*   mand8_raw;
-    const int            mand8_rawSize = 2048;
-
-    extern const char*   mand9_raw;
-    const int            mand9_rawSize = 2048;
-
-    extern const char*   mand10_raw;
-    const int            mand10_rawSize = 2048;
-
-    extern const char*   mand11_raw;
-    const int            mand11_rawSize = 2048;
-
-    extern const char*   mand12_raw;
-    const int            mand12_rawSize = 2048;
-
-    extern const char*   mandpluk_raw;
-    const int            mandpluk_rawSize = 8900;
-
-    extern const char*   marmstk1_raw;
-    const int            marmstk1_rawSize = 512;
-
-    extern const char*   ooo_raw;
-    const int            ooo_rawSize = 184;
-
-    extern const char*   peksblnk_raw;
-    const int            peksblnk_rawSize = 512;
-
-    extern const char*   ppksblnk_raw;
-    const int            ppksblnk_rawSize = 512;
-
-    extern const char*   ridecymb_raw;
-    const int            ridecymb_rawSize = 32394;
-
-    extern const char*   silence_raw;
-    const int            silence_rawSize = 448;
-
-    extern const char*   sineblnk_raw;
-    const int            sineblnk_rawSize = 512;
-
-    extern const char*   sinewave_raw2;
-    const int            sinewave_raw2Size = 2048;
-
-    extern const char*   snardrum_raw;
-    const int            snardrum_rawSize = 16660;
-
-    extern const char*   snglpeak_raw;
-    const int            snglpeak_rawSize = 512;
-
-    extern const char*   tambourn_raw;
-    const int            tambourn_rawSize = 9240;
-
-    extern const char*   tomhidrm_raw;
-    const int            tomhidrm_rawSize = 27642;
-
-    extern const char*   tomlowdr_raw;
-    const int            tomlowdr_rawSize = 39200;
-
-    extern const char*   tommiddr_raw;
-    const int            tommiddr_rawSize = 28292;
-
-    extern const char*   twopeaks_raw;
-    const int            twopeaks_rawSize = 512;
-
-    extern const char*   Makefile_in6;
-    const int            Makefile_in6Size = 3351;
-
-    extern const char*   CMakeLists_txt27;
-    const int            CMakeLists_txt27Size = 8062;
-
-    extern const char*   configure_ac2;
-    const int            configure_ac2Size = 8415;
-
-    extern const char*   INSTALL_md;
-    const int            INSTALL_mdSize = 2927;
-
-    extern const char*   LICENSE12;
-    const int            LICENSE12Size = 1364;
-
-    extern const char*   Makefile_in7;
-    const int            Makefile_in7Size = 1033;
-
-    extern const char*   README_md65;
-    const int            README_md65Size = 9661;
-
-    extern const char*   STK_podspec;
-    const int            STK_podspecSize = 1640;
+    extern const char*   GramoModelLoader_cpp;
+    const int            GramoModelLoader_cppSize = 7220;
+
+    extern const char*   GramoModelLoader_h;
+    const int            GramoModelLoader_hSize = 2915;
 
     extern const char*   GramoSuite_fbx;
     const int            GramoSuite_fbxSize = 22266768;
@@ -5556,7 +5556,7 @@ namespace BinaryData
     const int            PluginProcessor_hSize = 4336;
 
     extern const char*   PluginEditor_cpp;
-    const int            PluginEditor_cppSize = 8455;
+    const int            PluginEditor_cppSize = 8498;
 
     extern const char*   PluginEditor_h;
     const int            PluginEditor_hSize = 4602;
