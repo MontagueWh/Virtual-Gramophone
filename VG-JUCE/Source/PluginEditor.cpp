@@ -59,7 +59,7 @@ VirtualGramoAudioProcessorEditor::VirtualGramoAudioProcessorEditor(VirtualGramoA
     // Adds the info button to the editor.
     info_button_.addToEditor(this);
 
-	addAndMakeVisible(gramoModelLoader); // Adds the model loader to the editor.
+	//addAndMakeVisible(gramoModelLoader); // Adds the model loader to the editor.
 
     setSize(1500, 1500); // Sets the initial size of the editor window.
 	setResizable(true, true);
@@ -137,13 +137,13 @@ void VirtualGramoAudioProcessorEditor::resized()
 
 
     std::string GramoSuite = "GramoSuite.fbx"; // Path to an FBX file
-    gramoModelLoader.importModel(GramoSuite); // Import the model from the specified path
-    gramoModelLoader.setBounds(pictureSection);
+    //gramoModelLoader.importModel(GramoSuite); // Import the model from the specified path
+    //gramoModelLoader.setBounds(pictureSection);
 }
 
 // Sets up the layout sections for the GUI.
 void VirtualGramoAudioProcessorEditor::SetupSections()
-{
+{    
     juce::Rectangle<int> r = getLocalBounds(); // Gets the bounds of the editor.
     topSection = r.removeFromTop(50); // Allocates the top section.
     pictureSection = r.removeFromLeft(310); // Allocates the picture section.

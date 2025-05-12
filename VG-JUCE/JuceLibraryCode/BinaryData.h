@@ -5808,10 +5808,10 @@ namespace BinaryData
     const int            SECURITY_mdSize = 391;
 
     extern const char*   GramoModelLoader_cpp;
-    const int            GramoModelLoader_cppSize = 7220;
+    const int            GramoModelLoader_cppSize = 7228;
 
     extern const char*   GramoModelLoader_h;
-    const int            GramoModelLoader_hSize = 2911;
+    const int            GramoModelLoader_hSize = 2921;
 
     extern const char*   GramoSuite_fbx;
     const int            GramoSuite_fbxSize = 22266768;
@@ -5823,10 +5823,10 @@ namespace BinaryData
     const int            PluginProcessor_hSize = 4336;
 
     extern const char*   PluginEditor_cpp;
-    const int            PluginEditor_cppSize = 8498;
+    const int            PluginEditor_cppSize = 8508;
 
     extern const char*   PluginEditor_h;
-    const int            PluginEditor_hSize = 4602;
+    const int            PluginEditor_hSize = 4606;
 
     extern const char*   InfoButton_cpp;
     const int            InfoButton_cppSize = 1468;

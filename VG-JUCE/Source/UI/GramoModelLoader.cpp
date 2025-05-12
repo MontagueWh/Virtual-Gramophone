@@ -7,7 +7,7 @@ GramoModelLoader::~GramoModelLoader() {}
 
 void GramoModelLoader::resized() {}
 
-void GramoModelLoader::newOpenGLContextCreated() // Initialise OpenGL resources here
+/*void GramoModelLoader::newOpenGLContextCreated() // Initialise OpenGL resources here
 {
     // Create shaders, VBOs, VAOs
 
@@ -44,9 +44,9 @@ void GramoModelLoader::newOpenGLContextCreated() // Initialise OpenGL resources 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.ebo);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh.indices.size() * sizeof(unsigned int), mesh.indices.data(), GL_STATIC_DRAW);
     }
-}
+}*/
 
-void GramoModelLoader::renderOpenGL()
+/*void GramoModelLoader::renderOpenGL()
 {
     // Perform OpenGL rendering here
 
@@ -70,7 +70,7 @@ void GramoModelLoader::renderOpenGL()
         glBindVertexArray(mesh.vao);
         glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
     }
-}
+}*/
 
 void GramoModelLoader::openGLContextClosing()
 {
