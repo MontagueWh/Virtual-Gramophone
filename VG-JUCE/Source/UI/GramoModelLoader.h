@@ -8,10 +8,10 @@
 #include <../Source/Libs/assimp/include/assimp/mesh.h>
 #include <../Source/Libs/assimp/include/assimp/camera.h>
 
-/*#include <../Source/glm/glm.hpp> //  For basic GLM types
-#include <../Source/glm/glm/gtc/matrix_transform.hpp> //  For transformations (translate, rotate, scale)
+#include <../Source/Libs/glm/glm/glm.hpp> //  For basic GLM types
+#include <../Source/Libs/glm/glm/gtc/matrix_transform.hpp> //  For transformations (translate, rotate, scale)
 #include <../Source/Libs/glm/glm/gtc/type_ptr.hpp>   //  For glm::value_ptr (to pass matrices to OpenGL)
-#include <../Source/Libs/glm/glm/ext/matrix_clip_space.hpp> // For perspective projection*/
+#include <../Source/Libs/glm/glm/ext/matrix_clip_space.hpp> // For perspective projection
 
 
 class GramoModelLoader : public juce::Component, public juce::OpenGLRenderer

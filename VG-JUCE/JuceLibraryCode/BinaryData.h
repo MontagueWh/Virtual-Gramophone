@@ -8,6 +8,273 @@
 
 namespace BinaryData
 {
+    extern const char*   frontpage1_png;
+    const int            frontpage1_pngSize = 731902;
+
+    extern const char*   frontpage2_png;
+    const int            frontpage2_pngSize = 233177;
+
+    extern const char*   gtruc_png;
+    const int            gtruc_pngSize = 13441;
+
+    extern const char*   logomini_png;
+    const int            logomini_pngSize = 12008;
+
+    extern const char*   logo_png;
+    const int            logo_pngSize = 41859;
+
+    extern const char*   noiseperlin1_jpg;
+    const int            noiseperlin1_jpgSize = 8464;
+
+    extern const char*   noiseperlin2_jpg;
+    const int            noiseperlin2_jpgSize = 7755;
+
+    extern const char*   noiseperlin3_jpg;
+    const int            noiseperlin3_jpgSize = 7143;
+
+    extern const char*   noiseperlin4_png;
+    const int            noiseperlin4_pngSize = 1253;
+
+    extern const char*   noiseperlin5_png;
+    const int            noiseperlin5_pngSize = 1025;
+
+    extern const char*   noiseperlin6_png;
+    const int            noiseperlin6_pngSize = 1092;
+
+    extern const char*   noisesimplex1_jpg;
+    const int            noisesimplex1_jpgSize = 10985;
+
+    extern const char*   noisesimplex2_jpg;
+    const int            noisesimplex2_jpgSize = 9494;
+
+    extern const char*   noisesimplex3_jpg;
+    const int            noisesimplex3_jpgSize = 9873;
+
+    extern const char*   randomballrand_png;
+    const int            randomballrand_pngSize = 3431;
+
+    extern const char*   randomcircularrand_png;
+    const int            randomcircularrand_pngSize = 503;
+
+    extern const char*   randomdiskrand_png;
+    const int            randomdiskrand_pngSize = 3113;
+
+    extern const char*   randomgaussrand_png;
+    const int            randomgaussrand_pngSize = 3137;
+
+    extern const char*   randomlinearrand_png;
+    const int            randomlinearrand_pngSize = 3108;
+
+    extern const char*   randomsphericalrand_png;
+    const int            randomsphericalrand_pngSize = 3703;
+
+    extern const char*   referencescinder_png;
+    const int            referencescinder_pngSize = 77425;
+
+    extern const char*   referencesglsl4book_jpg;
+    const int            referencesglsl4book_jpgSize = 9668;
+
+    extern const char*   referencesleosfortune_jpeg;
+    const int            referencesleosfortune_jpegSize = 13608;
+
+    extern const char*   referencesleosfortune2_jpg;
+    const int            referencesleosfortune2_jpgSize = 13183;
+
+    extern const char*   referencesopencloth1_png;
+    const int            referencesopencloth1_pngSize = 12531;
+
+    extern const char*   referencesopencloth3_png;
+    const int            referencesopencloth3_pngSize = 21325;
+
+    extern const char*   referencesouterra1_jpg;
+    const int            referencesouterra1_jpgSize = 5355;
+
+    extern const char*   referencesouterra2_jpg;
+    const int            referencesouterra2_jpgSize = 4827;
+
+    extern const char*   referencesouterra3_jpg;
+    const int            referencesouterra3_jpgSize = 3906;
+
+    extern const char*   referencesouterra4_jpg;
+    const int            referencesouterra4_jpgSize = 5427;
+
+    extern const char*   bc_s_png;
+    const int            bc_s_pngSize = 600;
+
+    extern const char*   bdwn_png;
+    const int            bdwn_pngSize = 200;
+
+    extern const char*   closed_png;
+    const int            closed_pngSize = 194;
+
+    extern const char*   doc_png;
+    const int            doc_pngSize = 624;
+
+    extern const char*   doxygen_css;
+    const int            doxygen_cssSize = 25934;
+
+    extern const char*   doxygen_png;
+    const int            doxygen_pngSize = 2419;
+
+    extern const char*   folderclosed_png;
+    const int            folderclosed_pngSize = 573;
+
+    extern const char*   folderopen_png;
+    const int            folderopen_pngSize = 596;
+
+    extern const char*   logomini_png2;
+    const int            logomini_png2Size = 11967;
+
+    extern const char*   nav_f_png;
+    const int            nav_f_pngSize = 233;
+
+    extern const char*   nav_g_png;
+    const int            nav_g_pngSize = 95;
+
+    extern const char*   nav_h_png;
+    const int            nav_h_pngSize = 188;
+
+    extern const char*   open_png;
+    const int            open_pngSize = 177;
+
+    extern const char*   splitbar_png;
+    const int            splitbar_pngSize = 262;
+
+    extern const char*   sync_off_png;
+    const int            sync_off_pngSize = 717;
+
+    extern const char*   sync_on_png;
+    const int            sync_on_pngSize = 712;
+
+    extern const char*   tab_a_png;
+    const int            tab_a_pngSize = 217;
+
+    extern const char*   tab_b_png;
+    const int            tab_b_pngSize = 253;
+
+    extern const char*   tab_h_png;
+    const int            tab_h_pngSize = 255;
+
+    extern const char*   tab_s_png;
+    const int            tab_s_pngSize = 260;
+
+    extern const char*   man_doxy;
+    const int            man_doxySize = 111317;
+
+    extern const char*   manual_pdf;
+    const int            manual_pdfSize = 1466032;
+
+    extern const char*   CMakeLists_txt;
+    const int            CMakeLists_txtSize = 2465;
+
+    extern const char*   glm_cppm;
+    const int            glm_cppmSize = 70507;
+
+    extern const char*   glm_hpp;
+    const int            glm_hppSize = 4503;
+
+    extern const char*   integer_hpp;
+    const int            integer_hppSize = 10476;
+
+    extern const char*   mat2x2_hpp;
+    const int            mat2x2_hppSize = 224;
+
+    extern const char*   mat2x3_hpp;
+    const int            mat2x3_hppSize = 224;
+
+    extern const char*   mat2x4_hpp;
+    const int            mat2x4_hppSize = 224;
+
+    extern const char*   mat3x2_hpp;
+    const int            mat3x2_hppSize = 224;
+
+    extern const char*   mat3x3_hpp;
+    const int            mat3x3_hppSize = 223;
+
+    extern const char*   mat3x4_hpp;
+    const int            mat3x4_hppSize = 223;
+
+    extern const char*   mat4x2_hpp;
+    const int            mat4x2_hppSize = 224;
+
+    extern const char*   mat4x3_hpp;
+    const int            mat4x3_hppSize = 223;
+
+    extern const char*   mat4x4_hpp;
+    const int            mat4x4_hppSize = 224;
+
+    extern const char*   matrix_hpp;
+    const int            matrix_hppSize = 5648;
+
+    extern const char*   packing_hpp;
+    const int            packing_hppSize = 10897;
+
+    extern const char*   trigonometric_hpp;
+    const int            trigonometric_hppSize = 10677;
+
+    extern const char*   vec2_hpp;
+    const int            vec2_hppSize = 437;
+
+    extern const char*   vec3_hpp;
+    const int            vec3_hppSize = 437;
+
+    extern const char*   vec4_hpp;
+    const int            vec4_hppSize = 438;
+
+    extern const char*   vector_relational_hpp;
+    const int            vector_relational_hppSize = 6343;
+
+    extern const char*   CMakeLists_txt2;
+    const int            CMakeLists_txt2Size = 36;
+
+    extern const char*   CMakeLists_txt3;
+    const int            CMakeLists_txt3Size = 221;
+
+    extern const char*   CMakeLists_txt4;
+    const int            CMakeLists_txt4Size = 1969;
+
+    extern const char*   CMakeLists_txt5;
+    const int            CMakeLists_txt5Size = 2173;
+
+    extern const char*   CMakeLists_txt6;
+    const int            CMakeLists_txt6Size = 643;
+
+    extern const char*   CMakeLists_txt7;
+    const int            CMakeLists_txt7Size = 2068;
+
+    extern const char*   CMakeLists_txt8;
+    const int            CMakeLists_txt8Size = 228;
+
+    extern const char*   CMakeLists_txt9;
+    const int            CMakeLists_txt9Size = 3514;
+
+    extern const char*   glm_cppcheck;
+    const int            glm_cppcheckSize = 136;
+
+    extern const char*   autoexp_txt;
+    const int            autoexp_txtSize = 434;
+
+    extern const char*   autoexp_vc2010_dat;
+    const int            autoexp_vc2010_datSize = 129432;
+
+    extern const char*   glm_natvis;
+    const int            glm_natvisSize = 20556;
+
+    extern const char*   usertype_dat;
+    const int            usertype_datSize = 2610;
+
+    extern const char*   CMakeLists_txt10;
+    const int            CMakeLists_txt10Size = 9365;
+
+    extern const char*   copying_txt;
+    const int            copying_txtSize = 2865;
+
+    extern const char*   manual_md;
+    const int            manual_mdSize = 96036;
+
+    extern const char*   readme_md;
+    const int            readme_mdSize = 46205;
+
     extern const char*   treesed;
     const int            treesedSize = 3645;
 
@@ -371,8 +638,8 @@ namespace BinaryData
     extern const char*   Banded_bat;
     const int            Banded_batSize = 50;
 
-    extern const char*   CMakeLists_txt;
-    const int            CMakeLists_txtSize = 251;
+    extern const char*   CMakeLists_txt11;
+    const int            CMakeLists_txt11Size = 251;
 
     extern const char*   demo_sln;
     const int            demo_slnSize = 1042;
@@ -428,8 +695,8 @@ namespace BinaryData
     extern const char*   Effects_tcl;
     const int            Effects_tclSize = 9487;
 
-    extern const char*   CMakeLists_txt2;
-    const int            CMakeLists_txt2Size = 266;
+    extern const char*   CMakeLists_txt12;
+    const int            CMakeLists_txt12Size = 266;
 
     extern const char*   effects_sln;
     const int            effects_slnSize = 1048;
@@ -455,8 +722,8 @@ namespace BinaryData
     extern const char*   EGuitar_tcl;
     const int            EGuitar_tclSize = 9388;
 
-    extern const char*   CMakeLists_txt3;
-    const int            CMakeLists_txt3Size = 266;
+    extern const char*   CMakeLists_txt13;
+    const int            CMakeLists_txt13Size = 266;
 
     extern const char*   eguitar_sln;
     const int            eguitar_slnSize = 1048;
@@ -506,8 +773,8 @@ namespace BinaryData
     extern const char*   bethree_vcxproj_filters;
     const int            bethree_vcxproj_filtersSize = 3952;
 
-    extern const char*   CMakeLists_txt4;
-    const int            CMakeLists_txt4Size = 293;
+    extern const char*   CMakeLists_txt14;
+    const int            CMakeLists_txt14Size = 293;
 
     extern const char*   controlbee_vcxproj;
     const int            controlbee_vcxprojSize = 8745;
@@ -710,8 +977,8 @@ namespace BinaryData
     extern const char*   Raga_tcl;
     const int            Raga_tclSize = 7314;
 
-    extern const char*   CMakeLists_txt5;
-    const int            CMakeLists_txt5Size = 268;
+    extern const char*   CMakeLists_txt15;
+    const int            CMakeLists_txt15Size = 268;
 
     extern const char*   Makefile_in5;
     const int            Makefile_in5Size = 2058;
@@ -860,8 +1127,8 @@ namespace BinaryData
     extern const char*   Makefile_in6;
     const int            Makefile_in6Size = 3351;
 
-    extern const char*   CMakeLists_txt6;
-    const int            CMakeLists_txt6Size = 8062;
+    extern const char*   CMakeLists_txt16;
+    const int            CMakeLists_txt16Size = 8062;
 
     extern const char*   configure_ac;
     const int            configure_acSize = 8415;
@@ -935,8 +1202,8 @@ namespace BinaryData
     extern const char*   assimp_rc;
     const int            assimp_rcSize = 1060;
 
-    extern const char*   CMakeLists_txt7;
-    const int            CMakeLists_txt7Size = 55457;
+    extern const char*   CMakeLists_txt17;
+    const int            CMakeLists_txt17Size = 55457;
 
     extern const char*   android_toolchain_cmake;
     const int            android_toolchain_cmakeSize = 82398;
@@ -1073,8 +1340,8 @@ namespace BinaryData
     extern const char*   build_sh;
     const int            build_shSize = 1162;
 
-    extern const char*   CMakeLists_txt8;
-    const int            CMakeLists_txt8Size = 870;
+    extern const char*   CMakeLists_txt18;
+    const int            CMakeLists_txt18Size = 870;
 
     extern const char*   test_py;
     const int            test_pySize = 16063;
@@ -1088,8 +1355,8 @@ namespace BinaryData
     extern const char*   CMAKE_md;
     const int            CMAKE_mdSize = 4547;
 
-    extern const char*   CMakeLists_txt9;
-    const int            CMakeLists_txt9Size = 49532;
+    extern const char*   CMakeLists_txt19;
+    const int            CMakeLists_txt19Size = 49532;
 
     extern const char*   CONTRIBUTING_md;
     const int            CONTRIBUTING_mdSize = 1578;
@@ -1211,8 +1478,8 @@ namespace BinaryData
     extern const char*   gmock_test_utils_py;
     const int            gmock_test_utils_pySize = 3108;
 
-    extern const char*   CMakeLists_txt10;
-    const int            CMakeLists_txt10Size = 7882;
+    extern const char*   CMakeLists_txt20;
+    const int            CMakeLists_txt20Size = 7882;
 
     extern const char*   README_md8;
     const int            README_md8Size = 1538;
@@ -1325,8 +1592,8 @@ namespace BinaryData
     extern const char*   gtest_xml_test_utils_py;
     const int            gtest_xml_test_utils_pySize = 10192;
 
-    extern const char*   CMakeLists_txt11;
-    const int            CMakeLists_txt11Size = 11960;
+    extern const char*   CMakeLists_txt21;
+    const int            CMakeLists_txt21Size = 11960;
 
     extern const char*   README_md11;
     const int            README_md11Size = 8961;
@@ -1334,8 +1601,8 @@ namespace BinaryData
     extern const char*   BUILD_bazel3;
     const int            BUILD_bazel3Size = 6488;
 
-    extern const char*   CMakeLists_txt12;
-    const int            CMakeLists_txt12Size = 819;
+    extern const char*   CMakeLists_txt22;
+    const int            CMakeLists_txt22Size = 819;
 
     extern const char*   CONTRIBUTING_md2;
     const int            CONTRIBUTING_md2Size = 5688;
@@ -1364,8 +1631,8 @@ namespace BinaryData
     extern const char*   README_md14;
     const int            README_md14Size = 520;
 
-    extern const char*   CMakeLists_txt13;
-    const int            CMakeLists_txt13Size = 8030;
+    extern const char*   CMakeLists_txt23;
+    const int            CMakeLists_txt23Size = 8030;
 
     extern const char*   CREDITS;
     const int            CREDITSSize = 444;
@@ -1385,8 +1652,8 @@ namespace BinaryData
     extern const char*   README_md16;
     const int            README_md16Size = 2449;
 
-    extern const char*   CMakeLists_txt14;
-    const int            CMakeLists_txt14Size = 3033;
+    extern const char*   CMakeLists_txt24;
+    const int            CMakeLists_txt24Size = 3033;
 
     extern const char*   readme_txt;
     const int            readme_txtSize = 2094;
@@ -1394,8 +1661,8 @@ namespace BinaryData
     extern const char*   license_txt;
     const int            license_txtSize = 5152;
 
-    extern const char*   readme_md;
-    const int            readme_mdSize = 11146;
+    extern const char*   readme_md2;
+    const int            readme_md2Size = 11146;
 
     extern const char*   README_md17;
     const int            README_md17Size = 1402;
@@ -1427,11 +1694,11 @@ namespace BinaryData
     extern const char*   Config_cmake_in2;
     const int            Config_cmake_in2Size = 125;
 
-    extern const char*   CMakeLists_txt15;
-    const int            CMakeLists_txt15Size = 1674;
+    extern const char*   CMakeLists_txt25;
+    const int            CMakeLists_txt25Size = 1674;
 
-    extern const char*   CMakeLists_txt16;
-    const int            CMakeLists_txt16Size = 4485;
+    extern const char*   CMakeLists_txt26;
+    const int            CMakeLists_txt26Size = 4485;
 
     extern const char*   CONTRIBUTING_md3;
     const int            CONTRIBUTING_md3Size = 303;
@@ -1682,8 +1949,8 @@ namespace BinaryData
     extern const char*   ChangeLog;
     const int            ChangeLogSize = 82522;
 
-    extern const char*   CMakeLists_txt17;
-    const int            CMakeLists_txt17Size = 6369;
+    extern const char*   CMakeLists_txt27;
+    const int            CMakeLists_txt27Size = 6369;
 
     extern const char*   LICENSE8;
     const int            LICENSE8Size = 1002;
@@ -1736,8 +2003,8 @@ namespace BinaryData
     extern const char*   dragonsplash_png;
     const int            dragonsplash_pngSize = 49960;
 
-    extern const char*   CMakeLists_txt18;
-    const int            CMakeLists_txt18Size = 1136;
+    extern const char*   CMakeLists_txt28;
+    const int            CMakeLists_txt28Size = 1136;
 
     extern const char*   datastructure_xml;
     const int            datastructure_xmlSize = 2916;
@@ -1755,7 +2022,7 @@ namespace BinaryData
     const int            Preamble_txtSize = 1802;
 
     extern const char*   config_h_in;
-    const int            config_h_inSize = 50080;
+    const int            config_h_inSize = 50040;
 
     extern const char*   module_modulemap;
     const int            module_modulemapSize = 764;
@@ -1787,8 +2054,8 @@ namespace BinaryData
     extern const char*   WEB;
     const int            WEBSize = 124;
 
-    extern const char*   CMakeLists_txt19;
-    const int            CMakeLists_txt19Size = 487;
+    extern const char*   CMakeLists_txt29;
+    const int            CMakeLists_txt29Size = 487;
 
     extern const char*   README_md21;
     const int            README_md21Size = 1188;
@@ -2330,8 +2597,8 @@ namespace BinaryData
     extern const char*   SimpleAssimpViewX_Prefix_pch;
     const int            SimpleAssimpViewX_Prefix_pchSize = 257;
 
-    extern const char*   CMakeLists_txt20;
-    const int            CMakeLists_txt20Size = 1499;
+    extern const char*   CMakeLists_txt30;
+    const int            CMakeLists_txt30Size = 1499;
 
     extern const char*   SimpleOpenGL_sln;
     const int            SimpleOpenGL_slnSize = 869;
@@ -2345,14 +2612,14 @@ namespace BinaryData
     extern const char*   VertexShader_hlsl;
     const int            VertexShader_hlslSize = 402;
 
-    extern const char*   CMakeLists_txt21;
-    const int            CMakeLists_txt21Size = 1572;
+    extern const char*   CMakeLists_txt31;
+    const int            CMakeLists_txt31Size = 1572;
 
     extern const char*   SimpleTexturedOpenGL_vcproj;
     const int            SimpleTexturedOpenGL_vcprojSize = 4701;
 
-    extern const char*   CMakeLists_txt22;
-    const int            CMakeLists_txt22Size = 1245;
+    extern const char*   CMakeLists_txt32;
+    const int            CMakeLists_txt32Size = 1245;
 
     extern const char*   SimpleTexturedOpenGL_sln;
     const int            SimpleTexturedOpenGL_slnSize = 906;
@@ -2420,8 +2687,8 @@ namespace BinaryData
     extern const char*   scan_printf_sh;
     const int            scan_printf_shSize = 296;
 
-    extern const char*   CMakeLists_txt23;
-    const int            CMakeLists_txt23Size = 1020;
+    extern const char*   CMakeLists_txt33;
+    const int            CMakeLists_txt33Size = 1020;
 
     extern const char*   headercheck_cpp_in;
     const int            headercheck_cpp_inSize = 60;
@@ -5408,8 +5675,8 @@ namespace BinaryData
     extern const char*   whitelist_csv;
     const int            whitelist_csvSize = 3031;
 
-    extern const char*   CMakeLists_txt24;
-    const int            CMakeLists_txt24Size = 8931;
+    extern const char*   CMakeLists_txt34;
+    const int            CMakeLists_txt34Size = 8931;
 
     extern const char*   test_3mf;
     const int            test_3mfSize = 1143;
@@ -5417,8 +5684,8 @@ namespace BinaryData
     extern const char*   assimp_cmd_rc;
     const int            assimp_cmd_rcSize = 1155;
 
-    extern const char*   CMakeLists_txt25;
-    const int            CMakeLists_txt25Size = 2747;
+    extern const char*   CMakeLists_txt35;
+    const int            CMakeLists_txt35Size = 2747;
 
     extern const char*   assimp_view_rc;
     const int            assimp_view_rcSize = 18814;
@@ -5447,8 +5714,8 @@ namespace BinaryData
     extern const char*   base_stats_bmp;
     const int            base_stats_bmpSize = 9630;
 
-    extern const char*   CMakeLists_txt26;
-    const int            CMakeLists_txt26Size = 3407;
+    extern const char*   CMakeLists_txt36;
+    const int            CMakeLists_txt36Size = 3407;
 
     extern const char*   fx_bmp;
     const int            fx_bmpSize = 822;
@@ -5510,8 +5777,8 @@ namespace BinaryData
     extern const char*   CHANGES;
     const int            CHANGESSize = 25076;
 
-    extern const char*   CMakeLists_txt27;
-    const int            CMakeLists_txt27Size = 38301;
+    extern const char*   CMakeLists_txt37;
+    const int            CMakeLists_txt37Size = 38301;
 
     extern const char*   CODE_OF_CONDUCT_md;
     const int            CODE_OF_CONDUCT_mdSize = 5202;
@@ -5544,7 +5811,7 @@ namespace BinaryData
     const int            GramoModelLoader_cppSize = 7220;
 
     extern const char*   GramoModelLoader_h;
-    const int            GramoModelLoader_hSize = 2915;
+    const int            GramoModelLoader_hSize = 2911;
 
     extern const char*   GramoSuite_fbx;
     const int            GramoSuite_fbxSize = 22266768;
@@ -5568,7 +5835,7 @@ namespace BinaryData
     const int            InfoButton_hSize = 643;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 1853;
+    const int namedResourceListSize = 1942;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

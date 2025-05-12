@@ -7,6 +7,1259 @@
   <MAINGROUP id="ri06i3" name="VG-JUCE">
     <GROUP id="{C6B7CFA8-4DDD-C98A-6124-311CC2B0A917}" name="Source">
       <GROUP id="{4552084B-C151-DAF9-EDCC-62B1C7A0014E}" name="Libs">
+        <GROUP id="{A99AA1C1-121F-7C03-D1A3-561397A0DC82}" name="glm">
+          <GROUP id="{8A345C94-5A9F-E0E5-DDA2-B28FAD115F44}" name="doc">
+            <GROUP id="{D4AD5099-9F8B-1B49-5ED2-8E6A9DE40A9B}" name="manual">
+              <FILE id="MUQfwu" name="frontpage1.png" compile="0" resource="1" file="Source/Libs/glm/doc/manual/frontpage1.png"/>
+              <FILE id="kbb9N0" name="frontpage2.png" compile="0" resource="1" file="Source/Libs/glm/doc/manual/frontpage2.png"/>
+              <FILE id="sPuuEO" name="g-truc.png" compile="0" resource="1" file="Source/Libs/glm/doc/manual/g-truc.png"/>
+              <FILE id="jwhc7v" name="logo-mini.png" compile="0" resource="1" file="Source/Libs/glm/doc/manual/logo-mini.png"/>
+              <FILE id="u2jTlM" name="logo.png" compile="0" resource="1" file="Source/Libs/glm/doc/manual/logo.png"/>
+              <FILE id="x1OLio" name="noise-perlin1.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/noise-perlin1.jpg"/>
+              <FILE id="Bq0clT" name="noise-perlin2.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/noise-perlin2.jpg"/>
+              <FILE id="iUQ3QF" name="noise-perlin3.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/noise-perlin3.jpg"/>
+              <FILE id="TlEg42" name="noise-perlin4.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/noise-perlin4.png"/>
+              <FILE id="v524bn" name="noise-perlin5.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/noise-perlin5.png"/>
+              <FILE id="EEWL7x" name="noise-perlin6.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/noise-perlin6.png"/>
+              <FILE id="XRffjN" name="noise-simplex1.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/noise-simplex1.jpg"/>
+              <FILE id="rpRBp2" name="noise-simplex2.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/noise-simplex2.jpg"/>
+              <FILE id="W857e5" name="noise-simplex3.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/noise-simplex3.jpg"/>
+              <FILE id="Tx5H4r" name="random-ballrand.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/random-ballrand.png"/>
+              <FILE id="gjS6iL" name="random-circularrand.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/random-circularrand.png"/>
+              <FILE id="UMuDTV" name="random-diskrand.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/random-diskrand.png"/>
+              <FILE id="TJjy9F" name="random-gaussrand.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/random-gaussrand.png"/>
+              <FILE id="ABpvtM" name="random-linearrand.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/random-linearrand.png"/>
+              <FILE id="MJuKhn" name="random-sphericalrand.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/random-sphericalrand.png"/>
+              <FILE id="i7AtuF" name="references-cinder.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/references-cinder.png"/>
+              <FILE id="Wn6wg0" name="references-glsl4book.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/references-glsl4book.jpg"/>
+              <FILE id="i6EKSv" name="references-leosfortune.jpeg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/references-leosfortune.jpeg"/>
+              <FILE id="CDg4Vx" name="references-leosfortune2.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/references-leosfortune2.jpg"/>
+              <FILE id="SGvKFq" name="references-opencloth1.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/references-opencloth1.png"/>
+              <FILE id="RN3zkD" name="references-opencloth3.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/references-opencloth3.png"/>
+              <FILE id="scq1yh" name="references-outerra1.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/references-outerra1.jpg"/>
+              <FILE id="xq5MOw" name="references-outerra2.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/references-outerra2.jpg"/>
+              <FILE id="omejFS" name="references-outerra3.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/references-outerra3.jpg"/>
+              <FILE id="CRHn51" name="references-outerra4.jpg" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/manual/references-outerra4.jpg"/>
+            </GROUP>
+            <GROUP id="{CEF64594-ABE7-B692-42EA-1A901191A28F}" name="theme">
+              <FILE id="XRg5yq" name="bc_s.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/bc_s.png"/>
+              <FILE id="lxQy5h" name="bdwn.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/bdwn.png"/>
+              <FILE id="TiD09F" name="closed.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/closed.png"/>
+              <FILE id="sYEC2h" name="doc.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/doc.png"/>
+              <FILE id="N1g9Tt" name="doxygen.css" compile="0" resource="1" file="Source/Libs/glm/doc/theme/doxygen.css"/>
+              <FILE id="MPcVU3" name="doxygen.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/doxygen.png"/>
+              <FILE id="joUHwL" name="folderclosed.png" compile="0" resource="1"
+                    file="Source/Libs/glm/doc/theme/folderclosed.png"/>
+              <FILE id="CDadr6" name="folderopen.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/folderopen.png"/>
+              <FILE id="ENrznA" name="logo-mini.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/logo-mini.png"/>
+              <FILE id="z9W9h2" name="nav_f.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/nav_f.png"/>
+              <FILE id="opeciW" name="nav_g.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/nav_g.png"/>
+              <FILE id="u6Hvmm" name="nav_h.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/nav_h.png"/>
+              <FILE id="kfXIl4" name="open.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/open.png"/>
+              <FILE id="yS3n8P" name="splitbar.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/splitbar.png"/>
+              <FILE id="VTCwU4" name="sync_off.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/sync_off.png"/>
+              <FILE id="VoLxoh" name="sync_on.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/sync_on.png"/>
+              <FILE id="wv497h" name="tab_a.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/tab_a.png"/>
+              <FILE id="uGQr4Z" name="tab_b.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/tab_b.png"/>
+              <FILE id="QMx7X0" name="tab_h.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/tab_h.png"/>
+              <FILE id="YNFd8u" name="tab_s.png" compile="0" resource="1" file="Source/Libs/glm/doc/theme/tab_s.png"/>
+            </GROUP>
+            <FILE id="mdY2dp" name="man.doxy" compile="0" resource="1" file="Source/Libs/glm/doc/man.doxy"/>
+            <FILE id="ecJYdn" name="manual.pdf" compile="0" resource="1" file="Source/Libs/glm/doc/manual.pdf"/>
+          </GROUP>
+          <GROUP id="{72F240C4-5802-2562-477C-6F5D64088BBB}" name="glm">
+            <GROUP id="{21ED24CE-C995-B43A-A309-9F99ED47BCBB}" name="detail">
+              <FILE id="bVzOaB" name="_features.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/_features.hpp"/>
+              <FILE id="JBDvO3" name="_fixes.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/_fixes.hpp"/>
+              <FILE id="yyAEhw" name="_noise.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/_noise.hpp"/>
+              <FILE id="NzZIk9" name="_swizzle.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/_swizzle.hpp"/>
+              <FILE id="HYOhDa" name="_swizzle_func.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/_swizzle_func.hpp"/>
+              <FILE id="wkxu4C" name="_vectorize.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/_vectorize.hpp"/>
+              <FILE id="NmFBT2" name="compute_common.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/compute_common.hpp"/>
+              <FILE id="sMtNhE" name="compute_vector_decl.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/compute_vector_decl.hpp"/>
+              <FILE id="TkQxvm" name="compute_vector_relational.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/detail/compute_vector_relational.hpp"/>
+              <FILE id="zMrgGp" name="func_common.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/func_common.inl"/>
+              <FILE id="rPwzAn" name="func_common_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_common_simd.inl"/>
+              <FILE id="AAdNfd" name="func_exponential.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_exponential.inl"/>
+              <FILE id="m7LtQb" name="func_exponential_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_exponential_simd.inl"/>
+              <FILE id="Ab4Az5" name="func_geometric.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_geometric.inl"/>
+              <FILE id="HidO0L" name="func_geometric_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_geometric_simd.inl"/>
+              <FILE id="TgEpZF" name="func_integer.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_integer.inl"/>
+              <FILE id="NBsuRt" name="func_integer_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_integer_simd.inl"/>
+              <FILE id="Gdm5xD" name="func_matrix.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/func_matrix.inl"/>
+              <FILE id="YWotDq" name="func_matrix_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_matrix_simd.inl"/>
+              <FILE id="MaYfpP" name="func_packing.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_packing.inl"/>
+              <FILE id="JRNxli" name="func_packing_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_packing_simd.inl"/>
+              <FILE id="bS6wKu" name="func_trigonometric.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_trigonometric.inl"/>
+              <FILE id="OtDd3B" name="func_trigonometric_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_trigonometric_simd.inl"/>
+              <FILE id="BGNAB0" name="func_vector_relational.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/func_vector_relational.inl"/>
+              <FILE id="IvuPL0" name="func_vector_relational_simd.inl" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/detail/func_vector_relational_simd.inl"/>
+              <FILE id="DJOR9G" name="glm.cpp" compile="1" resource="0" file="Source/Libs/glm/glm/detail/glm.cpp"/>
+              <FILE id="vPyYRP" name="qualifier.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/qualifier.hpp"/>
+              <FILE id="uWgMtc" name="setup.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/setup.hpp"/>
+              <FILE id="SypfyV" name="type_float.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_float.hpp"/>
+              <FILE id="attcNc" name="type_half.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_half.hpp"/>
+              <FILE id="zkfNk1" name="type_half.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_half.inl"/>
+              <FILE id="a52oQU" name="type_mat2x2.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat2x2.hpp"/>
+              <FILE id="zPgyIv" name="type_mat2x2.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat2x2.inl"/>
+              <FILE id="sUFrbD" name="type_mat2x3.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat2x3.hpp"/>
+              <FILE id="fCRzM1" name="type_mat2x3.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat2x3.inl"/>
+              <FILE id="zthssH" name="type_mat2x4.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat2x4.hpp"/>
+              <FILE id="C9oXTL" name="type_mat2x4.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat2x4.inl"/>
+              <FILE id="RJMTqs" name="type_mat3x2.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat3x2.hpp"/>
+              <FILE id="sC2AhE" name="type_mat3x2.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat3x2.inl"/>
+              <FILE id="xOnxoZ" name="type_mat3x3.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat3x3.hpp"/>
+              <FILE id="teTHwT" name="type_mat3x3.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat3x3.inl"/>
+              <FILE id="fIRdje" name="type_mat3x4.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat3x4.hpp"/>
+              <FILE id="myWANu" name="type_mat3x4.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat3x4.inl"/>
+              <FILE id="OBCgj0" name="type_mat4x2.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat4x2.hpp"/>
+              <FILE id="VACA0O" name="type_mat4x2.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat4x2.inl"/>
+              <FILE id="HdvzKP" name="type_mat4x3.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat4x3.hpp"/>
+              <FILE id="FtUs5D" name="type_mat4x3.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat4x3.inl"/>
+              <FILE id="SVHJqZ" name="type_mat4x4.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat4x4.hpp"/>
+              <FILE id="raigok" name="type_mat4x4.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_mat4x4.inl"/>
+              <FILE id="toYIyJ" name="type_mat4x4_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/type_mat4x4_simd.inl"/>
+              <FILE id="vtgVAn" name="type_quat.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_quat.hpp"/>
+              <FILE id="QgREZl" name="type_quat.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_quat.inl"/>
+              <FILE id="lpffa2" name="type_quat_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/type_quat_simd.inl"/>
+              <FILE id="jur3NG" name="type_vec_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/type_vec_simd.inl"/>
+              <FILE id="O657jq" name="type_vec1.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_vec1.hpp"/>
+              <FILE id="TIBAuU" name="type_vec1.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_vec1.inl"/>
+              <FILE id="YXaNVZ" name="type_vec2.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_vec2.hpp"/>
+              <FILE id="SVzOv3" name="type_vec2.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_vec2.inl"/>
+              <FILE id="srRNsI" name="type_vec3.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_vec3.hpp"/>
+              <FILE id="Zqc5jV" name="type_vec3.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_vec3.inl"/>
+              <FILE id="SwHw26" name="type_vec4.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_vec4.hpp"/>
+              <FILE id="GJS7sl" name="type_vec4.inl" compile="0" resource="0" file="Source/Libs/glm/glm/detail/type_vec4.inl"/>
+              <FILE id="xKAYzV" name="type_vec4_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/detail/type_vec4_simd.inl"/>
+            </GROUP>
+            <GROUP id="{0B12F2D6-1ECA-21E4-3697-AA2BDB7F5E6D}" name="ext">
+              <FILE id="USDZEf" name="_matrix_vectorize.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/_matrix_vectorize.hpp"/>
+              <FILE id="EGa5k6" name="matrix_clip_space.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_clip_space.hpp"/>
+              <FILE id="uTLiVk" name="matrix_clip_space.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_clip_space.inl"/>
+              <FILE id="Y3Bt8G" name="matrix_common.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_common.hpp"/>
+              <FILE id="Ro8b1O" name="matrix_common.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_common.inl"/>
+              <FILE id="w86gKn" name="matrix_double2x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_double2x2.hpp"/>
+              <FILE id="pe2K1N" name="matrix_double2x2_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_double2x2_precision.hpp"/>
+              <FILE id="vs69Rb" name="matrix_double2x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_double2x3.hpp"/>
+              <FILE id="frUJYj" name="matrix_double2x3_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_double2x3_precision.hpp"/>
+              <FILE id="Bje4aT" name="matrix_double2x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_double2x4.hpp"/>
+              <FILE id="ti9izP" name="matrix_double2x4_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_double2x4_precision.hpp"/>
+              <FILE id="WEXZGx" name="matrix_double3x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_double3x2.hpp"/>
+              <FILE id="dnmllp" name="matrix_double3x2_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_double3x2_precision.hpp"/>
+              <FILE id="spPjyb" name="matrix_double3x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_double3x3.hpp"/>
+              <FILE id="cJ1sQ4" name="matrix_double3x3_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_double3x3_precision.hpp"/>
+              <FILE id="fZ1Jxy" name="matrix_double3x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_double3x4.hpp"/>
+              <FILE id="eisAt6" name="matrix_double3x4_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_double3x4_precision.hpp"/>
+              <FILE id="nU1Nb7" name="matrix_double4x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_double4x2.hpp"/>
+              <FILE id="lfmTyb" name="matrix_double4x2_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_double4x2_precision.hpp"/>
+              <FILE id="yf4Y9A" name="matrix_double4x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_double4x3.hpp"/>
+              <FILE id="Omhdat" name="matrix_double4x3_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_double4x3_precision.hpp"/>
+              <FILE id="BimTqn" name="matrix_double4x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_double4x4.hpp"/>
+              <FILE id="BSS5jz" name="matrix_double4x4_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_double4x4_precision.hpp"/>
+              <FILE id="zr66Rb" name="matrix_float2x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_float2x2.hpp"/>
+              <FILE id="Wc75U5" name="matrix_float2x2_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_float2x2_precision.hpp"/>
+              <FILE id="WCkJVr" name="matrix_float2x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_float2x3.hpp"/>
+              <FILE id="Y4eoph" name="matrix_float2x3_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_float2x3_precision.hpp"/>
+              <FILE id="tdud1O" name="matrix_float2x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_float2x4.hpp"/>
+              <FILE id="roJ07r" name="matrix_float2x4_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_float2x4_precision.hpp"/>
+              <FILE id="b32nI8" name="matrix_float3x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_float3x2.hpp"/>
+              <FILE id="bWkYAG" name="matrix_float3x2_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_float3x2_precision.hpp"/>
+              <FILE id="fwp4hF" name="matrix_float3x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_float3x3.hpp"/>
+              <FILE id="w8vFZ3" name="matrix_float3x3_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_float3x3_precision.hpp"/>
+              <FILE id="M4Oqlh" name="matrix_float3x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_float3x4.hpp"/>
+              <FILE id="AGT6xF" name="matrix_float3x4_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_float3x4_precision.hpp"/>
+              <FILE id="aYShcU" name="matrix_float4x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_float4x2.hpp"/>
+              <FILE id="gt7o2O" name="matrix_float4x2_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_float4x2_precision.hpp"/>
+              <FILE id="zc53DM" name="matrix_float4x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_float4x3.hpp"/>
+              <FILE id="MAyZ9G" name="matrix_float4x3_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_float4x3_precision.hpp"/>
+              <FILE id="p1LCTt" name="matrix_float4x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_float4x4.hpp"/>
+              <FILE id="YXud4O" name="matrix_float4x4_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/matrix_float4x4_precision.hpp"/>
+              <FILE id="lQL0JM" name="matrix_int2x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int2x2.hpp"/>
+              <FILE id="rXX1vQ" name="matrix_int2x2_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int2x2_sized.hpp"/>
+              <FILE id="MsEO0c" name="matrix_int2x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int2x3.hpp"/>
+              <FILE id="wdqd4t" name="matrix_int2x3_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int2x3_sized.hpp"/>
+              <FILE id="SDivap" name="matrix_int2x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int2x4.hpp"/>
+              <FILE id="bH7vVt" name="matrix_int2x4_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int2x4_sized.hpp"/>
+              <FILE id="u7EtGz" name="matrix_int3x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int3x2.hpp"/>
+              <FILE id="yLcASJ" name="matrix_int3x2_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int3x2_sized.hpp"/>
+              <FILE id="bAsNOI" name="matrix_int3x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int3x3.hpp"/>
+              <FILE id="XnDa3U" name="matrix_int3x3_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int3x3_sized.hpp"/>
+              <FILE id="UHeNhb" name="matrix_int3x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int3x4.hpp"/>
+              <FILE id="fSmz3i" name="matrix_int3x4_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int3x4_sized.hpp"/>
+              <FILE id="wr4UFs" name="matrix_int4x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int4x2.hpp"/>
+              <FILE id="qzdQ9m" name="matrix_int4x2_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int4x2_sized.hpp"/>
+              <FILE id="QXb32W" name="matrix_int4x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int4x3.hpp"/>
+              <FILE id="xerLsL" name="matrix_int4x3_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int4x3_sized.hpp"/>
+              <FILE id="SEM4vo" name="matrix_int4x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int4x4.hpp"/>
+              <FILE id="znzSyA" name="matrix_int4x4_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_int4x4_sized.hpp"/>
+              <FILE id="AT04AY" name="matrix_integer.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_integer.hpp"/>
+              <FILE id="fYpFTJ" name="matrix_integer.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_integer.inl"/>
+              <FILE id="Q1QwgT" name="matrix_projection.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_projection.hpp"/>
+              <FILE id="QL7MYh" name="matrix_projection.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_projection.inl"/>
+              <FILE id="m4MzuP" name="matrix_relational.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_relational.hpp"/>
+              <FILE id="pM7NXx" name="matrix_relational.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_relational.inl"/>
+              <FILE id="fbxHdt" name="matrix_transform.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_transform.hpp"/>
+              <FILE id="UA97MW" name="matrix_transform.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_transform.inl"/>
+              <FILE id="feXI8A" name="matrix_uint2x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint2x2.hpp"/>
+              <FILE id="iabXU6" name="matrix_uint2x2_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint2x2_sized.hpp"/>
+              <FILE id="FuTknE" name="matrix_uint2x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint2x3.hpp"/>
+              <FILE id="R99Yz9" name="matrix_uint2x3_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint2x3_sized.hpp"/>
+              <FILE id="aQ3eDC" name="matrix_uint2x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint2x4.hpp"/>
+              <FILE id="gqY52y" name="matrix_uint2x4_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint2x4_sized.hpp"/>
+              <FILE id="FbF6Ay" name="matrix_uint3x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint3x2.hpp"/>
+              <FILE id="z5Vq6p" name="matrix_uint3x2_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint3x2_sized.hpp"/>
+              <FILE id="zqkD9l" name="matrix_uint3x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint3x3.hpp"/>
+              <FILE id="WybqEU" name="matrix_uint3x3_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint3x3_sized.hpp"/>
+              <FILE id="lPmAFz" name="matrix_uint3x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint3x4.hpp"/>
+              <FILE id="L07MdO" name="matrix_uint3x4_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint3x4_sized.hpp"/>
+              <FILE id="XU67s1" name="matrix_uint4x2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint4x2.hpp"/>
+              <FILE id="PIK23W" name="matrix_uint4x2_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint4x2_sized.hpp"/>
+              <FILE id="L2ERrk" name="matrix_uint4x3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint4x3.hpp"/>
+              <FILE id="KhP3Fd" name="matrix_uint4x3_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint4x3_sized.hpp"/>
+              <FILE id="DTIKyN" name="matrix_uint4x4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint4x4.hpp"/>
+              <FILE id="WlJWFs" name="matrix_uint4x4_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/matrix_uint4x4_sized.hpp"/>
+              <FILE id="KVf7Qz" name="quaternion_common.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_common.hpp"/>
+              <FILE id="zLL9MI" name="quaternion_common.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_common.inl"/>
+              <FILE id="q3tTpV" name="quaternion_common_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_common_simd.inl"/>
+              <FILE id="rNdWNn" name="quaternion_double.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_double.hpp"/>
+              <FILE id="r0BvfP" name="quaternion_double_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/quaternion_double_precision.hpp"/>
+              <FILE id="NhZI7X" name="quaternion_exponential.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_exponential.hpp"/>
+              <FILE id="JQMveB" name="quaternion_exponential.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_exponential.inl"/>
+              <FILE id="GCJ0MI" name="quaternion_float.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_float.hpp"/>
+              <FILE id="eZ7tJz" name="quaternion_float_precision.hpp" compile="0"
+                    resource="0" file="Source/Libs/glm/glm/ext/quaternion_float_precision.hpp"/>
+              <FILE id="s6tirV" name="quaternion_geometric.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_geometric.hpp"/>
+              <FILE id="S4bB7C" name="quaternion_geometric.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_geometric.inl"/>
+              <FILE id="sagpRp" name="quaternion_relational.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_relational.hpp"/>
+              <FILE id="h4tFwM" name="quaternion_relational.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_relational.inl"/>
+              <FILE id="tkMMSL" name="quaternion_transform.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_transform.hpp"/>
+              <FILE id="HsPom1" name="quaternion_transform.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_transform.inl"/>
+              <FILE id="SYCDKI" name="quaternion_trigonometric.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_trigonometric.hpp"/>
+              <FILE id="lOXl04" name="quaternion_trigonometric.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/quaternion_trigonometric.inl"/>
+              <FILE id="rCA9LV" name="scalar_common.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_common.hpp"/>
+              <FILE id="RLoX3I" name="scalar_common.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_common.inl"/>
+              <FILE id="O5a3Qi" name="scalar_constants.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_constants.hpp"/>
+              <FILE id="QXqYM3" name="scalar_constants.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_constants.inl"/>
+              <FILE id="LQ8l5u" name="scalar_int_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_int_sized.hpp"/>
+              <FILE id="nnkkci" name="scalar_integer.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_integer.hpp"/>
+              <FILE id="W1Fbr6" name="scalar_integer.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_integer.inl"/>
+              <FILE id="r0VmDL" name="scalar_packing.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_packing.hpp"/>
+              <FILE id="gVGvlO" name="scalar_packing.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_packing.inl"/>
+              <FILE id="Hnzxnb" name="scalar_reciprocal.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_reciprocal.hpp"/>
+              <FILE id="mKJ2Z8" name="scalar_reciprocal.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_reciprocal.inl"/>
+              <FILE id="UAs01s" name="scalar_relational.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_relational.hpp"/>
+              <FILE id="d9RGJA" name="scalar_relational.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_relational.inl"/>
+              <FILE id="VYPpii" name="scalar_uint_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/scalar_uint_sized.hpp"/>
+              <FILE id="h6M4jG" name="scalar_ulp.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/ext/scalar_ulp.hpp"/>
+              <FILE id="Dcs0qK" name="scalar_ulp.inl" compile="0" resource="0" file="Source/Libs/glm/glm/ext/scalar_ulp.inl"/>
+              <FILE id="K5j5PH" name="vector_bool1.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_bool1.hpp"/>
+              <FILE id="sUndjs" name="vector_bool1_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_bool1_precision.hpp"/>
+              <FILE id="Hhv5C0" name="vector_bool2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_bool2.hpp"/>
+              <FILE id="RZ9JJ5" name="vector_bool2_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_bool2_precision.hpp"/>
+              <FILE id="zvWTXZ" name="vector_bool3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_bool3.hpp"/>
+              <FILE id="hl2A4d" name="vector_bool3_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_bool3_precision.hpp"/>
+              <FILE id="yAaW2f" name="vector_bool4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_bool4.hpp"/>
+              <FILE id="hBQV7v" name="vector_bool4_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_bool4_precision.hpp"/>
+              <FILE id="IvmxVI" name="vector_common.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_common.hpp"/>
+              <FILE id="Aeo5YM" name="vector_common.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_common.inl"/>
+              <FILE id="QO8dMT" name="vector_double1.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_double1.hpp"/>
+              <FILE id="wGUx4A" name="vector_double1_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_double1_precision.hpp"/>
+              <FILE id="KrQ6bs" name="vector_double2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_double2.hpp"/>
+              <FILE id="CrLp1i" name="vector_double2_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_double2_precision.hpp"/>
+              <FILE id="kvTnR5" name="vector_double3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_double3.hpp"/>
+              <FILE id="uzYtRc" name="vector_double3_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_double3_precision.hpp"/>
+              <FILE id="ynB6RQ" name="vector_double4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_double4.hpp"/>
+              <FILE id="I2HChO" name="vector_double4_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_double4_precision.hpp"/>
+              <FILE id="qYFoyu" name="vector_float1.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_float1.hpp"/>
+              <FILE id="ylV0Gw" name="vector_float1_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_float1_precision.hpp"/>
+              <FILE id="TVROcg" name="vector_float2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_float2.hpp"/>
+              <FILE id="UeiNOr" name="vector_float2_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_float2_precision.hpp"/>
+              <FILE id="wkTAxA" name="vector_float3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_float3.hpp"/>
+              <FILE id="iIkynd" name="vector_float3_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_float3_precision.hpp"/>
+              <FILE id="bvHprY" name="vector_float4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_float4.hpp"/>
+              <FILE id="fPR3Hg" name="vector_float4_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_float4_precision.hpp"/>
+              <FILE id="nO4uzg" name="vector_int1.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/ext/vector_int1.hpp"/>
+              <FILE id="QE78kA" name="vector_int1_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_int1_sized.hpp"/>
+              <FILE id="DLOsdN" name="vector_int2.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/ext/vector_int2.hpp"/>
+              <FILE id="gaowSH" name="vector_int2_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_int2_sized.hpp"/>
+              <FILE id="c1dIbN" name="vector_int3.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/ext/vector_int3.hpp"/>
+              <FILE id="a4XMbx" name="vector_int3_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_int3_sized.hpp"/>
+              <FILE id="ZX4tEs" name="vector_int4.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/ext/vector_int4.hpp"/>
+              <FILE id="amB2D5" name="vector_int4_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_int4_sized.hpp"/>
+              <FILE id="iRDZIG" name="vector_integer.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_integer.hpp"/>
+              <FILE id="p4ZewV" name="vector_integer.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_integer.inl"/>
+              <FILE id="zNmVba" name="vector_packing.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_packing.hpp"/>
+              <FILE id="yMWKI9" name="vector_packing.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_packing.inl"/>
+              <FILE id="Pcc8y3" name="vector_reciprocal.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_reciprocal.hpp"/>
+              <FILE id="lo6paf" name="vector_reciprocal.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_reciprocal.inl"/>
+              <FILE id="DaZiR0" name="vector_relational.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_relational.hpp"/>
+              <FILE id="TZ4dgz" name="vector_relational.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_relational.inl"/>
+              <FILE id="vP3So1" name="vector_uint1.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_uint1.hpp"/>
+              <FILE id="MecNiq" name="vector_uint1_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_uint1_sized.hpp"/>
+              <FILE id="q8inD3" name="vector_uint2.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_uint2.hpp"/>
+              <FILE id="Bw7G5Q" name="vector_uint2_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_uint2_sized.hpp"/>
+              <FILE id="iKSO7T" name="vector_uint3.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_uint3.hpp"/>
+              <FILE id="PBRVVH" name="vector_uint3_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_uint3_sized.hpp"/>
+              <FILE id="FCwhEJ" name="vector_uint4.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_uint4.hpp"/>
+              <FILE id="OspvXE" name="vector_uint4_sized.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/ext/vector_uint4_sized.hpp"/>
+              <FILE id="eAXQAu" name="vector_ulp.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/ext/vector_ulp.hpp"/>
+              <FILE id="En4eqM" name="vector_ulp.inl" compile="0" resource="0" file="Source/Libs/glm/glm/ext/vector_ulp.inl"/>
+            </GROUP>
+            <GROUP id="{54D85EC0-9552-D0AB-8AB2-A2170ED39EDD}" name="gtc">
+              <FILE id="B7Qksw" name="bitfield.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/bitfield.hpp"/>
+              <FILE id="WXL9NK" name="bitfield.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/bitfield.inl"/>
+              <FILE id="DhUR6b" name="color_space.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/color_space.hpp"/>
+              <FILE id="DRZoyX" name="color_space.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/color_space.inl"/>
+              <FILE id="jamyGp" name="constants.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/constants.hpp"/>
+              <FILE id="rBQzLV" name="constants.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/constants.inl"/>
+              <FILE id="vNGhuV" name="epsilon.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/epsilon.hpp"/>
+              <FILE id="EQDHob" name="epsilon.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/epsilon.inl"/>
+              <FILE id="QfDNOy" name="integer.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/integer.hpp"/>
+              <FILE id="JOOg36" name="integer.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/integer.inl"/>
+              <FILE id="Ipo04X" name="matrix_access.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtc/matrix_access.hpp"/>
+              <FILE id="l5LBOa" name="matrix_access.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtc/matrix_access.inl"/>
+              <FILE id="FXhowD" name="matrix_integer.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtc/matrix_integer.hpp"/>
+              <FILE id="Itiyy5" name="matrix_inverse.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtc/matrix_inverse.hpp"/>
+              <FILE id="vulaep" name="matrix_inverse.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtc/matrix_inverse.inl"/>
+              <FILE id="XrIQBj" name="matrix_transform.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtc/matrix_transform.hpp"/>
+              <FILE id="BkwKrj" name="matrix_transform.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtc/matrix_transform.inl"/>
+              <FILE id="sxAi4R" name="noise.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/noise.hpp"/>
+              <FILE id="HzK6uM" name="noise.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/noise.inl"/>
+              <FILE id="rOARB8" name="packing.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/packing.hpp"/>
+              <FILE id="PgBPf7" name="packing.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/packing.inl"/>
+              <FILE id="jJwrkc" name="quaternion.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/quaternion.hpp"/>
+              <FILE id="VRepgy" name="quaternion.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/quaternion.inl"/>
+              <FILE id="wP1jYf" name="quaternion_simd.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtc/quaternion_simd.inl"/>
+              <FILE id="Ce7sgz" name="random.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/random.hpp"/>
+              <FILE id="SExmJR" name="random.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/random.inl"/>
+              <FILE id="lnqZhs" name="reciprocal.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/reciprocal.hpp"/>
+              <FILE id="NQtWlJ" name="round.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/round.hpp"/>
+              <FILE id="Yon7M5" name="round.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/round.inl"/>
+              <FILE id="ydo86F" name="type_aligned.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtc/type_aligned.hpp"/>
+              <FILE id="UFF1Tn" name="type_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtc/type_precision.hpp"/>
+              <FILE id="VygA6c" name="type_precision.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtc/type_precision.inl"/>
+              <FILE id="ZhjzGs" name="type_ptr.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/type_ptr.hpp"/>
+              <FILE id="CRoiSq" name="type_ptr.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/type_ptr.inl"/>
+              <FILE id="HVnOKj" name="ulp.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/ulp.hpp"/>
+              <FILE id="SFUtkc" name="ulp.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/ulp.inl"/>
+              <FILE id="sobdIV" name="vec1.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtc/vec1.hpp"/>
+            </GROUP>
+            <GROUP id="{1F6FC8B6-5462-614C-D7C6-DCBD7D8D162A}" name="gtx">
+              <FILE id="XMWL6u" name="associated_min_max.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/associated_min_max.hpp"/>
+              <FILE id="WbnBRz" name="associated_min_max.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/associated_min_max.inl"/>
+              <FILE id="o4DpB7" name="bit.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/bit.hpp"/>
+              <FILE id="YHAKBK" name="bit.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/bit.inl"/>
+              <FILE id="nnFjPI" name="closest_point.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/closest_point.hpp"/>
+              <FILE id="yawAUD" name="closest_point.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/closest_point.inl"/>
+              <FILE id="WRKrU8" name="color_encoding.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/color_encoding.hpp"/>
+              <FILE id="Iffhdj" name="color_encoding.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/color_encoding.inl"/>
+              <FILE id="IXiVcP" name="color_space.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/color_space.hpp"/>
+              <FILE id="IjRSpn" name="color_space.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/color_space.inl"/>
+              <FILE id="VlNYA1" name="color_space_YCoCg.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/color_space_YCoCg.hpp"/>
+              <FILE id="KOJOMY" name="color_space_YCoCg.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/color_space_YCoCg.inl"/>
+              <FILE id="TZsUOK" name="common.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/common.hpp"/>
+              <FILE id="P15wtE" name="common.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/common.inl"/>
+              <FILE id="W7Jtxr" name="compatibility.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/compatibility.hpp"/>
+              <FILE id="kM53Nz" name="compatibility.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/compatibility.inl"/>
+              <FILE id="lfaadd" name="component_wise.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/component_wise.hpp"/>
+              <FILE id="Ftx31Q" name="component_wise.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/component_wise.inl"/>
+              <FILE id="LrUpI6" name="dual_quaternion.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/dual_quaternion.hpp"/>
+              <FILE id="Ecg44M" name="dual_quaternion.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/dual_quaternion.inl"/>
+              <FILE id="LLwf9c" name="easing.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/easing.hpp"/>
+              <FILE id="fFVuxz" name="easing.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/easing.inl"/>
+              <FILE id="K3I4Ry" name="euler_angles.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/euler_angles.hpp"/>
+              <FILE id="WxBv9J" name="euler_angles.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/euler_angles.inl"/>
+              <FILE id="Lb15uv" name="extend.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/extend.hpp"/>
+              <FILE id="jRWk6Q" name="extend.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/extend.inl"/>
+              <FILE id="kjt73Z" name="extended_min_max.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/extended_min_max.hpp"/>
+              <FILE id="wX9Jdx" name="extended_min_max.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/extended_min_max.inl"/>
+              <FILE id="eTIjuf" name="exterior_product.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/exterior_product.hpp"/>
+              <FILE id="H0aWJC" name="exterior_product.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/exterior_product.inl"/>
+              <FILE id="vHNJkU" name="fast_exponential.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/fast_exponential.hpp"/>
+              <FILE id="QZlBsn" name="fast_exponential.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/fast_exponential.inl"/>
+              <FILE id="t1O7Yw" name="fast_square_root.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/fast_square_root.hpp"/>
+              <FILE id="eu62nM" name="fast_square_root.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/fast_square_root.inl"/>
+              <FILE id="CMhUh4" name="fast_trigonometry.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/fast_trigonometry.hpp"/>
+              <FILE id="Rm6KY6" name="fast_trigonometry.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/fast_trigonometry.inl"/>
+              <FILE id="kl1HGi" name="float_notmalize.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/float_notmalize.inl"/>
+              <FILE id="OiEvCt" name="functions.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/functions.hpp"/>
+              <FILE id="qRBP2X" name="functions.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/functions.inl"/>
+              <FILE id="rYxIlS" name="gradient_paint.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/gradient_paint.hpp"/>
+              <FILE id="F7IE00" name="gradient_paint.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/gradient_paint.inl"/>
+              <FILE id="J3RVGr" name="handed_coordinate_space.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/handed_coordinate_space.hpp"/>
+              <FILE id="ef9RHJ" name="handed_coordinate_space.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/handed_coordinate_space.inl"/>
+              <FILE id="bpbNCF" name="hash.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/hash.hpp"/>
+              <FILE id="hQEP1I" name="hash.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/hash.inl"/>
+              <FILE id="Y6MWeV" name="integer.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/integer.hpp"/>
+              <FILE id="TXfE0o" name="integer.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/integer.inl"/>
+              <FILE id="vPJLbi" name="intersect.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/intersect.hpp"/>
+              <FILE id="D46tpj" name="intersect.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/intersect.inl"/>
+              <FILE id="sNlHhx" name="io.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/io.hpp"/>
+              <FILE id="u5WoNa" name="io.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/io.inl"/>
+              <FILE id="vCqABO" name="log_base.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/log_base.hpp"/>
+              <FILE id="zXbtT0" name="log_base.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/log_base.inl"/>
+              <FILE id="QLdwvL" name="matrix_cross_product.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_cross_product.hpp"/>
+              <FILE id="z59Cqr" name="matrix_cross_product.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_cross_product.inl"/>
+              <FILE id="vo94LM" name="matrix_decompose.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_decompose.hpp"/>
+              <FILE id="HFb0HQ" name="matrix_decompose.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_decompose.inl"/>
+              <FILE id="k6HcAj" name="matrix_factorisation.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_factorisation.hpp"/>
+              <FILE id="PsBXtZ" name="matrix_factorisation.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_factorisation.inl"/>
+              <FILE id="Hzq9XY" name="matrix_interpolation.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_interpolation.hpp"/>
+              <FILE id="wIuEGQ" name="matrix_interpolation.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_interpolation.inl"/>
+              <FILE id="D92zuU" name="matrix_major_storage.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_major_storage.hpp"/>
+              <FILE id="A8qzna" name="matrix_major_storage.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_major_storage.inl"/>
+              <FILE id="QEOnUp" name="matrix_operation.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_operation.hpp"/>
+              <FILE id="IqFOIm" name="matrix_operation.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_operation.inl"/>
+              <FILE id="DuHRlD" name="matrix_query.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_query.hpp"/>
+              <FILE id="Vm52FY" name="matrix_query.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_query.inl"/>
+              <FILE id="uFRiJq" name="matrix_transform_2d.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_transform_2d.hpp"/>
+              <FILE id="J8RD6b" name="matrix_transform_2d.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/matrix_transform_2d.inl"/>
+              <FILE id="s3naIR" name="mixed_product.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/mixed_product.hpp"/>
+              <FILE id="ouUMpn" name="mixed_product.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/mixed_product.inl"/>
+              <FILE id="fJjM1e" name="norm.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/norm.hpp"/>
+              <FILE id="ALWXEO" name="norm.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/norm.inl"/>
+              <FILE id="Y6h5Py" name="normal.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/normal.hpp"/>
+              <FILE id="yHsxgM" name="normal.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/normal.inl"/>
+              <FILE id="BtKljy" name="normalize_dot.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/normalize_dot.hpp"/>
+              <FILE id="zKCAkF" name="normalize_dot.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/normalize_dot.inl"/>
+              <FILE id="Ex7P6A" name="number_precision.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/number_precision.hpp"/>
+              <FILE id="khdMxt" name="optimum_pow.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/optimum_pow.hpp"/>
+              <FILE id="omqK0M" name="optimum_pow.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/optimum_pow.inl"/>
+              <FILE id="DDIWlD" name="orthonormalize.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/orthonormalize.hpp"/>
+              <FILE id="r76uzI" name="orthonormalize.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/orthonormalize.inl"/>
+              <FILE id="NqDyR9" name="pca.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/pca.hpp"/>
+              <FILE id="PBU806" name="pca.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/pca.inl"/>
+              <FILE id="nHDQH8" name="perpendicular.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/perpendicular.hpp"/>
+              <FILE id="KgARDO" name="perpendicular.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/perpendicular.inl"/>
+              <FILE id="homToC" name="polar_coordinates.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/polar_coordinates.hpp"/>
+              <FILE id="c9Kx5s" name="polar_coordinates.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/polar_coordinates.inl"/>
+              <FILE id="eX5ZrW" name="projection.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/projection.hpp"/>
+              <FILE id="HuJ62H" name="projection.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/projection.inl"/>
+              <FILE id="w9YseI" name="quaternion.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/quaternion.hpp"/>
+              <FILE id="C1obhk" name="quaternion.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/quaternion.inl"/>
+              <FILE id="PRE2aj" name="range.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/range.hpp"/>
+              <FILE id="iTiok7" name="raw_data.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/raw_data.hpp"/>
+              <FILE id="Sp3tQh" name="raw_data.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/raw_data.inl"/>
+              <FILE id="B5MiUf" name="rotate_normalized_axis.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/rotate_normalized_axis.hpp"/>
+              <FILE id="ScO4jy" name="rotate_normalized_axis.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/rotate_normalized_axis.inl"/>
+              <FILE id="lFBanx" name="rotate_vector.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/rotate_vector.hpp"/>
+              <FILE id="Bp1nnl" name="rotate_vector.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/rotate_vector.inl"/>
+              <FILE id="sHD4e5" name="scalar_multiplication.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/scalar_multiplication.hpp"/>
+              <FILE id="iijJfk" name="scalar_relational.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/scalar_relational.hpp"/>
+              <FILE id="i0ribf" name="scalar_relational.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/scalar_relational.inl"/>
+              <FILE id="n1domZ" name="spline.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/spline.hpp"/>
+              <FILE id="elW3bE" name="spline.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/spline.inl"/>
+              <FILE id="bywSwn" name="std_based_type.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/std_based_type.hpp"/>
+              <FILE id="U6A0yA" name="std_based_type.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/std_based_type.inl"/>
+              <FILE id="hQcchC" name="string_cast.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/string_cast.hpp"/>
+              <FILE id="DBrGzb" name="string_cast.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/string_cast.inl"/>
+              <FILE id="WbJNUi" name="texture.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/texture.hpp"/>
+              <FILE id="Gmr1ek" name="texture.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/texture.inl"/>
+              <FILE id="E8b40p" name="transform.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/transform.hpp"/>
+              <FILE id="viDxdf" name="transform.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/transform.inl"/>
+              <FILE id="RUfpFk" name="transform2.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/transform2.hpp"/>
+              <FILE id="uIBnSB" name="transform2.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/transform2.inl"/>
+              <FILE id="pUXdFi" name="type_aligned.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/type_aligned.hpp"/>
+              <FILE id="v3cbDS" name="type_aligned.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/type_aligned.inl"/>
+              <FILE id="Lsizuj" name="type_trait.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/type_trait.hpp"/>
+              <FILE id="TDw1Jh" name="type_trait.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/type_trait.inl"/>
+              <FILE id="eKIwns" name="vec_swizzle.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/vec_swizzle.hpp"/>
+              <FILE id="xaLLgj" name="vector_angle.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/vector_angle.hpp"/>
+              <FILE id="bb6eh8" name="vector_angle.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/vector_angle.inl"/>
+              <FILE id="SmrGiF" name="vector_query.hpp" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/vector_query.hpp"/>
+              <FILE id="aKrRvJ" name="vector_query.inl" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/gtx/vector_query.inl"/>
+              <FILE id="fKwVoF" name="wrap.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/wrap.hpp"/>
+              <FILE id="UTILUK" name="wrap.inl" compile="0" resource="0" file="Source/Libs/glm/glm/gtx/wrap.inl"/>
+            </GROUP>
+            <GROUP id="{C163727F-1D10-9B88-8A82-935442FAD2A8}" name="simd">
+              <FILE id="f4RWm7" name="common.h" compile="0" resource="0" file="Source/Libs/glm/glm/simd/common.h"/>
+              <FILE id="nK1OtM" name="exponential.h" compile="0" resource="0" file="Source/Libs/glm/glm/simd/exponential.h"/>
+              <FILE id="WFoZI1" name="geometric.h" compile="0" resource="0" file="Source/Libs/glm/glm/simd/geometric.h"/>
+              <FILE id="kezufJ" name="integer.h" compile="0" resource="0" file="Source/Libs/glm/glm/simd/integer.h"/>
+              <FILE id="caWHKc" name="matrix.h" compile="0" resource="0" file="Source/Libs/glm/glm/simd/matrix.h"/>
+              <FILE id="J8vRmQ" name="neon.h" compile="0" resource="0" file="Source/Libs/glm/glm/simd/neon.h"/>
+              <FILE id="c8ca0u" name="packing.h" compile="0" resource="0" file="Source/Libs/glm/glm/simd/packing.h"/>
+              <FILE id="iipq9Q" name="platform.h" compile="0" resource="0" file="Source/Libs/glm/glm/simd/platform.h"/>
+              <FILE id="iFlefy" name="trigonometric.h" compile="0" resource="0" file="Source/Libs/glm/glm/simd/trigonometric.h"/>
+              <FILE id="Tw2c15" name="vector_relational.h" compile="0" resource="0"
+                    file="Source/Libs/glm/glm/simd/vector_relational.h"/>
+            </GROUP>
+            <FILE id="v6bSmU" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/glm/glm/CMakeLists.txt"/>
+            <FILE id="wBbmQW" name="common.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/common.hpp"/>
+            <FILE id="ibm0Z7" name="exponential.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/exponential.hpp"/>
+            <FILE id="KloPGW" name="ext.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/ext.hpp"/>
+            <FILE id="USDH7z" name="fwd.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/fwd.hpp"/>
+            <FILE id="dMoUXy" name="geometric.hpp" compile="0" resource="0" file="Source/Libs/glm/glm/geometric.hpp"/>
+            <FILE id="stPbfD" name="glm.cppm" compile="0" resource="1" file="Source/Libs/glm/glm/glm.cppm"
+                  xcodeResource="1"/>
+            <FILE id="F8bKwq" name="glm.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/glm.hpp"
+                  xcodeResource="1"/>
+            <FILE id="zYMOZm" name="integer.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/integer.hpp"
+                  xcodeResource="1"/>
+            <FILE id="Oxn8Af" name="mat2x2.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/mat2x2.hpp"
+                  xcodeResource="1"/>
+            <FILE id="MJrYIf" name="mat2x3.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/mat2x3.hpp"
+                  xcodeResource="1"/>
+            <FILE id="lS6OEa" name="mat2x4.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/mat2x4.hpp"
+                  xcodeResource="1"/>
+            <FILE id="Somlsb" name="mat3x2.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/mat3x2.hpp"
+                  xcodeResource="1"/>
+            <FILE id="DpHwd7" name="mat3x3.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/mat3x3.hpp"
+                  xcodeResource="1"/>
+            <FILE id="aPDtwq" name="mat3x4.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/mat3x4.hpp"
+                  xcodeResource="1"/>
+            <FILE id="K4ZdEM" name="mat4x2.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/mat4x2.hpp"
+                  xcodeResource="1"/>
+            <FILE id="verIWg" name="mat4x3.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/mat4x3.hpp"
+                  xcodeResource="1"/>
+            <FILE id="X371Ta" name="mat4x4.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/mat4x4.hpp"
+                  xcodeResource="1"/>
+            <FILE id="KU2T0U" name="matrix.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/matrix.hpp"
+                  xcodeResource="1"/>
+            <FILE id="B4MsLp" name="packing.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/packing.hpp"
+                  xcodeResource="1"/>
+            <FILE id="PbR083" name="trigonometric.hpp" compile="0" resource="1"
+                  file="Source/Libs/glm/glm/trigonometric.hpp" xcodeResource="1"/>
+            <FILE id="zYOQn5" name="vec2.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/vec2.hpp"
+                  xcodeResource="1"/>
+            <FILE id="uxvKqE" name="vec3.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/vec3.hpp"
+                  xcodeResource="1"/>
+            <FILE id="XbXfhk" name="vec4.hpp" compile="0" resource="1" file="Source/Libs/glm/glm/vec4.hpp"
+                  xcodeResource="1"/>
+            <FILE id="j3vn1y" name="vector_relational.hpp" compile="0" resource="1"
+                  file="Source/Libs/glm/glm/vector_relational.hpp" xcodeResource="1"/>
+          </GROUP>
+          <GROUP id="{CC097C8F-04A8-9DCA-6B5C-549EF1F357B7}" name="test">
+            <GROUP id="{D7C18CF5-0A38-2D42-FD15-46CCD4826175}" name="bug">
+              <FILE id="GuErz9" name="bug_ms_vec_static.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/bug/bug_ms_vec_static.cpp"/>
+              <FILE id="PmybC8" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/glm/test/bug/CMakeLists.txt"/>
+            </GROUP>
+            <GROUP id="{47A6726B-7307-5240-763C-F8014F176C44}" name="cmake">
+              <FILE id="W1Up1p" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/glm/test/cmake/CMakeLists.txt"/>
+              <FILE id="jJVzCq" name="test_find_glm.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/cmake/test_find_glm.cpp"/>
+            </GROUP>
+            <GROUP id="{4B0C66C0-BB37-10FA-E405-A2778FBE6EC8}" name="core">
+              <FILE id="m1a48E" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/glm/test/core/CMakeLists.txt"/>
+              <FILE id="qz51lp" name="core_cpp_constexpr.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_cpp_constexpr.cpp"/>
+              <FILE id="rRXwX0" name="core_cpp_defaulted_ctor.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_cpp_defaulted_ctor.cpp"/>
+              <FILE id="gw1b6G" name="core_force_aligned_gentypes.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_force_aligned_gentypes.cpp"/>
+              <FILE id="WLAOhX" name="core_force_arch_unknown.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_arch_unknown.cpp"/>
+              <FILE id="NnmVji" name="core_force_compiler_unknown.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_force_compiler_unknown.cpp"/>
+              <FILE id="WfsJlc" name="core_force_ctor_init.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_ctor_init.cpp"/>
+              <FILE id="ZOKYdQ" name="core_force_cxx_unknown.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_cxx_unknown.cpp"/>
+              <FILE id="V1LwfL" name="core_force_cxx03.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_cxx03.cpp"/>
+              <FILE id="A0FEwk" name="core_force_cxx98.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_cxx98.cpp"/>
+              <FILE id="cgbWsA" name="core_force_depth_zero_to_one.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_force_depth_zero_to_one.cpp"/>
+              <FILE id="VNnT6f" name="core_force_explicit_ctor.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_explicit_ctor.cpp"/>
+              <FILE id="iNIqw0" name="core_force_inline.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_inline.cpp"/>
+              <FILE id="uWI1iJ" name="core_force_left_handed.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_left_handed.cpp"/>
+              <FILE id="oBfxk8" name="core_force_platform_unknown.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_force_platform_unknown.cpp"/>
+              <FILE id="NleNiZ" name="core_force_pure.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_pure.cpp"/>
+              <FILE id="gH3QsV" name="core_force_quat_wxyz.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_quat_wxyz.cpp"/>
+              <FILE id="vHJ5Ws" name="core_force_quat_xyzw.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_quat_xyzw.cpp"/>
+              <FILE id="d3SchA" name="core_force_size_t_length.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_size_t_length.cpp"/>
+              <FILE id="NpLPhO" name="core_force_unrestricted_gentype.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_force_unrestricted_gentype.cpp"/>
+              <FILE id="GYkNWQ" name="core_force_xyzw_only.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_force_xyzw_only.cpp"/>
+              <FILE id="w36eeE" name="core_func_common.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_func_common.cpp"/>
+              <FILE id="u1rKQr" name="core_func_exponential.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_func_exponential.cpp"/>
+              <FILE id="ZgYA5s" name="core_func_geometric.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_func_geometric.cpp"/>
+              <FILE id="A8AOD7" name="core_func_integer.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_func_integer.cpp"/>
+              <FILE id="HojqUE" name="core_func_integer_bit_count.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_func_integer_bit_count.cpp"/>
+              <FILE id="PraWRF" name="core_func_integer_find_lsb.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_func_integer_find_lsb.cpp"/>
+              <FILE id="lrkGmc" name="core_func_integer_find_msb.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_func_integer_find_msb.cpp"/>
+              <FILE id="W1JNLw" name="core_func_matrix.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_func_matrix.cpp"/>
+              <FILE id="guXx1Y" name="core_func_noise.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_func_noise.cpp"/>
+              <FILE id="KCCmcC" name="core_func_packing.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_func_packing.cpp"/>
+              <FILE id="X0qWhi" name="core_func_swizzle.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_func_swizzle.cpp"/>
+              <FILE id="oiZDTm" name="core_func_trigonometric.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_func_trigonometric.cpp"/>
+              <FILE id="SeBx98" name="core_func_vector_relational.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_func_vector_relational.cpp"/>
+              <FILE id="q21tIQ" name="core_setup_force_cxx_unknown.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_setup_force_cxx_unknown.cpp"/>
+              <FILE id="WjmQ7N" name="core_setup_force_cxx03.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_setup_force_cxx03.cpp"/>
+              <FILE id="jeYge4" name="core_setup_force_cxx98.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_setup_force_cxx98.cpp"/>
+              <FILE id="xFoSpB" name="core_setup_force_size_t_length.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_setup_force_size_t_length.cpp"/>
+              <FILE id="yJLFcV" name="core_setup_message.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_setup_message.cpp"/>
+              <FILE id="sIRHvN" name="core_setup_platform_unknown.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/core/core_setup_platform_unknown.cpp"/>
+              <FILE id="JJr7Z6" name="core_setup_precision.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_setup_precision.cpp"/>
+              <FILE id="TiTbGJ" name="core_type_aligned.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_aligned.cpp"/>
+              <FILE id="uPFoLQ" name="core_type_cast.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_cast.cpp"/>
+              <FILE id="KLewFg" name="core_type_ctor.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_ctor.cpp"/>
+              <FILE id="UsPxWE" name="core_type_int.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_int.cpp"/>
+              <FILE id="WAtqFO" name="core_type_length.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_length.cpp"/>
+              <FILE id="s6UIX6" name="core_type_mat2x2.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_mat2x2.cpp"/>
+              <FILE id="Ssbn84" name="core_type_mat2x3.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_mat2x3.cpp"/>
+              <FILE id="gEoTzk" name="core_type_mat2x4.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_mat2x4.cpp"/>
+              <FILE id="v1p7C9" name="core_type_mat3x2.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_mat3x2.cpp"/>
+              <FILE id="kNI3mx" name="core_type_mat3x3.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_mat3x3.cpp"/>
+              <FILE id="ELTPeN" name="core_type_mat3x4.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_mat3x4.cpp"/>
+              <FILE id="UoGf7h" name="core_type_mat4x2.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_mat4x2.cpp"/>
+              <FILE id="m54MQk" name="core_type_mat4x3.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_mat4x3.cpp"/>
+              <FILE id="wcZSnj" name="core_type_mat4x4.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_mat4x4.cpp"/>
+              <FILE id="wZuHlA" name="core_type_vec1.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_vec1.cpp"/>
+              <FILE id="uE5i7t" name="core_type_vec2.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_vec2.cpp"/>
+              <FILE id="NchRKs" name="core_type_vec3.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_vec3.cpp"/>
+              <FILE id="OpUvux" name="core_type_vec4.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/core/core_type_vec4.cpp"/>
+            </GROUP>
+            <GROUP id="{22491951-3C08-38FE-8B65-4A033B3A1608}" name="ext">
+              <FILE id="ZACrQw" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/glm/test/ext/CMakeLists.txt"/>
+              <FILE id="D2h5wd" name="ext_matrix_clip_space.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_clip_space.cpp"/>
+              <FILE id="ieIw8Z" name="ext_matrix_common.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_common.cpp"/>
+              <FILE id="lrG2Ib" name="ext_matrix_int2x2_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_int2x2_sized.cpp"/>
+              <FILE id="fqBGIz" name="ext_matrix_int2x3_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_int2x3_sized.cpp"/>
+              <FILE id="zW6ARJ" name="ext_matrix_int2x4_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_int2x4_sized.cpp"/>
+              <FILE id="GNKxIh" name="ext_matrix_int3x2_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_int3x2_sized.cpp"/>
+              <FILE id="p30MyE" name="ext_matrix_int3x3_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_int3x3_sized.cpp"/>
+              <FILE id="dYhZXL" name="ext_matrix_int3x4_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_int3x4_sized.cpp"/>
+              <FILE id="Xl54OX" name="ext_matrix_int4x2_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_int4x2_sized.cpp"/>
+              <FILE id="sCHR0i" name="ext_matrix_int4x3_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_int4x3_sized.cpp"/>
+              <FILE id="lQdkVa" name="ext_matrix_int4x4_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_int4x4_sized.cpp"/>
+              <FILE id="cHWsky" name="ext_matrix_integer.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_integer.cpp"/>
+              <FILE id="xn5WIG" name="ext_matrix_projection.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_projection.cpp"/>
+              <FILE id="zkJGld" name="ext_matrix_relational.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_relational.cpp"/>
+              <FILE id="e0hZ5h" name="ext_matrix_transform.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_transform.cpp"/>
+              <FILE id="wskJGf" name="ext_matrix_uint2x2_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_uint2x2_sized.cpp"/>
+              <FILE id="ji78UN" name="ext_matrix_uint2x3_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_uint2x3_sized.cpp"/>
+              <FILE id="qDEwjK" name="ext_matrix_uint2x4_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_uint2x4_sized.cpp"/>
+              <FILE id="dvgPve" name="ext_matrix_uint3x2_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_uint3x2_sized.cpp"/>
+              <FILE id="zm34Am" name="ext_matrix_uint3x3_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_uint3x3_sized.cpp"/>
+              <FILE id="tzjYjn" name="ext_matrix_uint3x4_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_uint3x4_sized.cpp"/>
+              <FILE id="auBmIN" name="ext_matrix_uint4x2_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_uint4x2_sized.cpp"/>
+              <FILE id="CxXEsu" name="ext_matrix_uint4x3_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_uint4x3_sized.cpp"/>
+              <FILE id="rW6Ckf" name="ext_matrix_uint4x4_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_matrix_uint4x4_sized.cpp"/>
+              <FILE id="YCdKXX" name="ext_quaternion_common.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_quaternion_common.cpp"/>
+              <FILE id="fFWIJt" name="ext_quaternion_exponential.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/ext/ext_quaternion_exponential.cpp"/>
+              <FILE id="qUd0xW" name="ext_quaternion_geometric.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_quaternion_geometric.cpp"/>
+              <FILE id="HnfDmq" name="ext_quaternion_relational.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/ext/ext_quaternion_relational.cpp"/>
+              <FILE id="aFP2AI" name="ext_quaternion_transform.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_quaternion_transform.cpp"/>
+              <FILE id="qDviMq" name="ext_quaternion_trigonometric.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/ext/ext_quaternion_trigonometric.cpp"/>
+              <FILE id="l4I3co" name="ext_quaternion_type.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_quaternion_type.cpp"/>
+              <FILE id="LJfUjU" name="ext_scalar_common.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_scalar_common.cpp"/>
+              <FILE id="aCklF5" name="ext_scalar_constants.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_scalar_constants.cpp"/>
+              <FILE id="arL1eF" name="ext_scalar_int_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_scalar_int_sized.cpp"/>
+              <FILE id="zy3FI1" name="ext_scalar_integer.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_scalar_integer.cpp"/>
+              <FILE id="GPdtBu" name="ext_scalar_packing.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_scalar_packing.cpp"/>
+              <FILE id="F6U2KO" name="ext_scalar_reciprocal.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_scalar_reciprocal.cpp"/>
+              <FILE id="avN0QB" name="ext_scalar_relational.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_scalar_relational.cpp"/>
+              <FILE id="YI61Du" name="ext_scalar_uint_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_scalar_uint_sized.cpp"/>
+              <FILE id="a40Wbc" name="ext_scalar_ulp.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_scalar_ulp.cpp"/>
+              <FILE id="J8rvNY" name="ext_vec1.cpp" compile="1" resource="0" file="Source/Libs/glm/test/ext/ext_vec1.cpp"/>
+              <FILE id="C9Wspd" name="ext_vector_bool1.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_bool1.cpp"/>
+              <FILE id="jJrr0P" name="ext_vector_common.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_common.cpp"/>
+              <FILE id="re0cYj" name="ext_vector_iec559.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_iec559.cpp"/>
+              <FILE id="WEn4rD" name="ext_vector_int1_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_int1_sized.cpp"/>
+              <FILE id="t2JBkQ" name="ext_vector_int2_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_int2_sized.cpp"/>
+              <FILE id="DPCdvf" name="ext_vector_int3_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_int3_sized.cpp"/>
+              <FILE id="y0Kpxi" name="ext_vector_int4_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_int4_sized.cpp"/>
+              <FILE id="MkMqrV" name="ext_vector_integer.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_integer.cpp"/>
+              <FILE id="cB2DB2" name="ext_vector_integer_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_integer_sized.cpp"/>
+              <FILE id="qbvS3Z" name="ext_vector_packing.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_packing.cpp"/>
+              <FILE id="VSb506" name="ext_vector_reciprocal.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_reciprocal.cpp"/>
+              <FILE id="uuZy19" name="ext_vector_relational.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_relational.cpp"/>
+              <FILE id="k88AvZ" name="ext_vector_uint1_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_uint1_sized.cpp"/>
+              <FILE id="ztYBLj" name="ext_vector_uint2_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_uint2_sized.cpp"/>
+              <FILE id="TwEEZA" name="ext_vector_uint3_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_uint3_sized.cpp"/>
+              <FILE id="Q0BcLo" name="ext_vector_uint4_sized.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_uint4_sized.cpp"/>
+              <FILE id="srevHm" name="ext_vector_ulp.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/ext/ext_vector_ulp.cpp"/>
+            </GROUP>
+            <GROUP id="{DE91A630-859C-BC1C-0C93-15C12CA8B88C}" name="gtc">
+              <FILE id="ypdP1E" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/glm/test/gtc/CMakeLists.txt"/>
+              <FILE id="W4iukP" name="gtc_bitfield.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_bitfield.cpp"/>
+              <FILE id="KVoWFj" name="gtc_color_space.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_color_space.cpp"/>
+              <FILE id="Rn2GOJ" name="gtc_constants.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_constants.cpp"/>
+              <FILE id="GQklPp" name="gtc_epsilon.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtc/gtc_epsilon.cpp"/>
+              <FILE id="VE55z4" name="gtc_integer.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtc/gtc_integer.cpp"/>
+              <FILE id="ubT8SY" name="gtc_matrix_access.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_matrix_access.cpp"/>
+              <FILE id="AS7wnI" name="gtc_matrix_integer.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_matrix_integer.cpp"/>
+              <FILE id="t8uZ29" name="gtc_matrix_inverse.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_matrix_inverse.cpp"/>
+              <FILE id="wegNkz" name="gtc_matrix_transform.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_matrix_transform.cpp"/>
+              <FILE id="NbxfpA" name="gtc_noise.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtc/gtc_noise.cpp"/>
+              <FILE id="IxzdTT" name="gtc_packing.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtc/gtc_packing.cpp"/>
+              <FILE id="CEKPdW" name="gtc_quaternion.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_quaternion.cpp"/>
+              <FILE id="FF9mbr" name="gtc_random.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtc/gtc_random.cpp"/>
+              <FILE id="QQYdN6" name="gtc_reciprocal.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_reciprocal.cpp"/>
+              <FILE id="vOacYq" name="gtc_round.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtc/gtc_round.cpp"/>
+              <FILE id="dcxs38" name="gtc_type_aligned.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_type_aligned.cpp"/>
+              <FILE id="Oxn3bv" name="gtc_type_precision.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_type_precision.cpp"/>
+              <FILE id="YRRM8b" name="gtc_type_ptr.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_type_ptr.cpp"/>
+              <FILE id="Ue7tT7" name="gtc_ulp.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtc/gtc_ulp.cpp"/>
+              <FILE id="OjNE5F" name="gtc_user_defined_types.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtc/gtc_user_defined_types.cpp"/>
+              <FILE id="tC1Yf8" name="gtc_vec1.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtc/gtc_vec1.cpp"/>
+            </GROUP>
+            <GROUP id="{1A3D9F76-8BE0-8FD7-3F4E-A817F2535EDD}" name="gtx">
+              <FILE id="rITuVI" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/glm/test/gtx/CMakeLists.txt"/>
+              <FILE id="GW8mzO" name="gtx.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx.cpp"/>
+              <FILE id="yRwn3L" name="gtx_associated_min_max.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_associated_min_max.cpp"/>
+              <FILE id="h7Aq4G" name="gtx_closest_point.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_closest_point.cpp"/>
+              <FILE id="JxCMrn" name="gtx_color_encoding.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_color_encoding.cpp"/>
+              <FILE id="ef9zmS" name="gtx_color_space.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_color_space.cpp"/>
+              <FILE id="KQX00S" name="gtx_color_space_YCoCg.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_color_space_YCoCg.cpp"/>
+              <FILE id="QWuw6r" name="gtx_common.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_common.cpp"/>
+              <FILE id="N8ZBS7" name="gtx_compatibility.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_compatibility.cpp"/>
+              <FILE id="lBELnw" name="gtx_component_wise.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_component_wise.cpp"/>
+              <FILE id="v1MgPG" name="gtx_dual_quaternion.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_dual_quaternion.cpp"/>
+              <FILE id="fLapdG" name="gtx_easing.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_easing.cpp"/>
+              <FILE id="LDfTxP" name="gtx_euler_angle.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_euler_angle.cpp"/>
+              <FILE id="CsyPCp" name="gtx_extend.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_extend.cpp"/>
+              <FILE id="FthQeZ" name="gtx_extended_min_max.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_extended_min_max.cpp"/>
+              <FILE id="hdGgw9" name="gtx_extented_min_max.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_extented_min_max.cpp"/>
+              <FILE id="v2Qx2U" name="gtx_exterior_product.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_exterior_product.cpp"/>
+              <FILE id="jgLJ5A" name="gtx_fast_exponential.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_fast_exponential.cpp"/>
+              <FILE id="JHErcz" name="gtx_fast_square_root.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_fast_square_root.cpp"/>
+              <FILE id="boshSu" name="gtx_fast_trigonometry.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_fast_trigonometry.cpp"/>
+              <FILE id="LsisOG" name="gtx_functions.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_functions.cpp"/>
+              <FILE id="xSmU4U" name="gtx_gradient_paint.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_gradient_paint.cpp"/>
+              <FILE id="myAfRA" name="gtx_handed_coordinate_space.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/gtx/gtx_handed_coordinate_space.cpp"/>
+              <FILE id="UlXv9V" name="gtx_hash.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_hash.cpp"/>
+              <FILE id="mlVPpw" name="gtx_int_10_10_10_2.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_int_10_10_10_2.cpp"/>
+              <FILE id="pEPEZK" name="gtx_integer.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_integer.cpp"/>
+              <FILE id="OdtoGq" name="gtx_intersect.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_intersect.cpp"/>
+              <FILE id="vzhGfU" name="gtx_io.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_io.cpp"/>
+              <FILE id="oVCGHP" name="gtx_load.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_load.cpp"/>
+              <FILE id="uYpCvT" name="gtx_log_base.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_log_base.cpp"/>
+              <FILE id="XJWk3h" name="gtx_matrix_cross_product.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_matrix_cross_product.cpp"/>
+              <FILE id="oHDw7s" name="gtx_matrix_decompose.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_matrix_decompose.cpp"/>
+              <FILE id="oXgVLR" name="gtx_matrix_factorisation.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_matrix_factorisation.cpp"/>
+              <FILE id="YEn0Kz" name="gtx_matrix_interpolation.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_matrix_interpolation.cpp"/>
+              <FILE id="xSRIGE" name="gtx_matrix_major_storage.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_matrix_major_storage.cpp"/>
+              <FILE id="SsvYb1" name="gtx_matrix_operation.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_matrix_operation.cpp"/>
+              <FILE id="FHD6pP" name="gtx_matrix_query.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_matrix_query.cpp"/>
+              <FILE id="sVPp4g" name="gtx_matrix_transform_2d.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_matrix_transform_2d.cpp"/>
+              <FILE id="ykpZgg" name="gtx_mixed_product.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_mixed_product.cpp"/>
+              <FILE id="YBuXBT" name="gtx_norm.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_norm.cpp"/>
+              <FILE id="d0V7JC" name="gtx_normal.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_normal.cpp"/>
+              <FILE id="cDNecV" name="gtx_normalize_dot.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_normalize_dot.cpp"/>
+              <FILE id="zRBVL9" name="gtx_number_precision.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_number_precision.cpp"/>
+              <FILE id="KEMUra" name="gtx_optimum_pow.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_optimum_pow.cpp"/>
+              <FILE id="IkDInK" name="gtx_orthonormalize.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_orthonormalize.cpp"/>
+              <FILE id="Bamwql" name="gtx_pca.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_pca.cpp"/>
+              <FILE id="HRzuVK" name="gtx_perpendicular.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_perpendicular.cpp"/>
+              <FILE id="Wp4Vk9" name="gtx_polar_coordinates.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_polar_coordinates.cpp"/>
+              <FILE id="h5bOZa" name="gtx_projection.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_projection.cpp"/>
+              <FILE id="LxmMHy" name="gtx_quaternion.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_quaternion.cpp"/>
+              <FILE id="lNAxcc" name="gtx_random.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_random.cpp"/>
+              <FILE id="Oa6QvJ" name="gtx_range.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_range.cpp"/>
+              <FILE id="kcCada" name="gtx_rotate_normalized_axis.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/gtx/gtx_rotate_normalized_axis.cpp"/>
+              <FILE id="nI0ivp" name="gtx_rotate_vector.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_rotate_vector.cpp"/>
+              <FILE id="hXO8Nb" name="gtx_scalar_multiplication.cpp" compile="1"
+                    resource="0" file="Source/Libs/glm/test/gtx/gtx_scalar_multiplication.cpp"/>
+              <FILE id="eQsQIc" name="gtx_scalar_relational.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_scalar_relational.cpp"/>
+              <FILE id="OqNbNL" name="gtx_simd_mat4.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_simd_mat4.cpp"/>
+              <FILE id="nS8E5X" name="gtx_simd_vec4.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_simd_vec4.cpp"/>
+              <FILE id="BOw0Or" name="gtx_spline.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_spline.cpp"/>
+              <FILE id="x9ctjm" name="gtx_string_cast.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_string_cast.cpp"/>
+              <FILE id="LqiCfT" name="gtx_texture.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_texture.cpp"/>
+              <FILE id="FkR7rN" name="gtx_type_aligned.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_type_aligned.cpp"/>
+              <FILE id="vV02DO" name="gtx_type_trait.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_type_trait.cpp"/>
+              <FILE id="qqSqeC" name="gtx_vec_swizzle.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_vec_swizzle.cpp"/>
+              <FILE id="G3S4OD" name="gtx_vector_angle.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_vector_angle.cpp"/>
+              <FILE id="erppTg" name="gtx_vector_query.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/gtx/gtx_vector_query.cpp"/>
+              <FILE id="T6qdah" name="gtx_wrap.cpp" compile="1" resource="0" file="Source/Libs/glm/test/gtx/gtx_wrap.cpp"/>
+            </GROUP>
+            <GROUP id="{2FF5B48A-8ECD-F932-207A-6CEA8836F9BD}" name="perf">
+              <FILE id="lKH86D" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/glm/test/perf/CMakeLists.txt"/>
+              <FILE id="IxsS5Z" name="perf_matrix_div.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/perf/perf_matrix_div.cpp"/>
+              <FILE id="WKaYjW" name="perf_matrix_inverse.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/perf/perf_matrix_inverse.cpp"/>
+              <FILE id="U8LWb0" name="perf_matrix_mul.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/perf/perf_matrix_mul.cpp"/>
+              <FILE id="mNpHon" name="perf_matrix_mul_vector.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/perf/perf_matrix_mul_vector.cpp"/>
+              <FILE id="CRW0mX" name="perf_matrix_transpose.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/perf/perf_matrix_transpose.cpp"/>
+              <FILE id="ovJjeu" name="perf_vector_mul_matrix.cpp" compile="1" resource="0"
+                    file="Source/Libs/glm/test/perf/perf_vector_mul_matrix.cpp"/>
+            </GROUP>
+            <FILE id="CpgJYb" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/glm/test/CMakeLists.txt"/>
+            <FILE id="NUkDDW" name="glm.cppcheck" compile="0" resource="1" file="Source/Libs/glm/test/glm.cppcheck"/>
+          </GROUP>
+          <GROUP id="{A370C912-EB26-E136-093C-2DFE7493AA4B}" name="util">
+            <FILE id="IBH50B" name="autoexp.txt" compile="0" resource="1" file="Source/Libs/glm/util/autoexp.txt"/>
+            <FILE id="by5SMM" name="autoexp.vc2010.dat" compile="0" resource="1"
+                  file="Source/Libs/glm/util/autoexp.vc2010.dat"/>
+            <FILE id="QAsYjT" name="glm.natvis" compile="0" resource="1" file="Source/Libs/glm/util/glm.natvis"/>
+            <FILE id="SnQWSk" name="usertype.dat" compile="0" resource="1" file="Source/Libs/glm/util/usertype.dat"/>
+          </GROUP>
+          <FILE id="b2pPuo" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/glm/CMakeLists.txt"
+                xcodeResource="1"/>
+          <FILE id="q3oxac" name="copying.txt" compile="0" resource="1" file="Source/Libs/glm/copying.txt"
+                xcodeResource="1"/>
+          <FILE id="vTrrjM" name="manual.md" compile="0" resource="1" file="Source/Libs/glm/manual.md"
+                xcodeResource="1"/>
+          <FILE id="GI9xD5" name="readme.md" compile="0" resource="1" file="Source/Libs/glm/readme.md"
+                xcodeResource="1"/>
+        </GROUP>
         <GROUP id="{D117A744-EA53-2A2F-5AB8-85F9CD30D199}" name="stk">
           <GROUP id="{E9CE9907-91C1-2EAC-1E3C-A32DA9C4E7DD}" name="bin">
             <FILE id="Q7pfnP" name="treesed" compile="0" resource="1" file="Source/Libs/stk/bin/treesed"/>
