@@ -136,7 +136,7 @@ void VirtualGramoAudioProcessorEditor::resized()
     wetDryParam.setBounds(wetDrySection); // Positions the mix slider.
 
 
-    std::string GramoSuite = "GramoSuite.fbx"; // Path to an FBX file
+    std::string GramoSuite = "../Source/UI/GramoSuite.fbx";
     //gramoModelLoader.importModel(GramoSuite); // Import the model from the specified path
     //gramoModelLoader.setBounds(pictureSection);
 }

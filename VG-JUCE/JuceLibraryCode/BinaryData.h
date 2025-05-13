@@ -8,6 +8,9 @@
 
 namespace BinaryData
 {
+    extern const char*   GramoSuite_fbx;
+    const int            GramoSuite_fbxSize = 22266768;
+
     extern const char*   frontpage1_png;
     const int            frontpage1_pngSize = 731902;
 
@@ -5807,15 +5810,6 @@ namespace BinaryData
     extern const char*   SECURITY_md;
     const int            SECURITY_mdSize = 391;
 
-    extern const char*   GramoModelLoader_cpp;
-    const int            GramoModelLoader_cppSize = 7228;
-
-    extern const char*   GramoModelLoader_h;
-    const int            GramoModelLoader_hSize = 2921;
-
-    extern const char*   GramoSuite_fbx;
-    const int            GramoSuite_fbxSize = 22266768;
-
     extern const char*   PluginProcessor_cpp;
     const int            PluginProcessor_cppSize = 11733;
 
@@ -5823,19 +5817,13 @@ namespace BinaryData
     const int            PluginProcessor_hSize = 4336;
 
     extern const char*   PluginEditor_cpp;
-    const int            PluginEditor_cppSize = 8508;
+    const int            PluginEditor_cppSize = 8492;
 
     extern const char*   PluginEditor_h;
     const int            PluginEditor_hSize = 4606;
 
-    extern const char*   InfoButton_cpp;
-    const int            InfoButton_cppSize = 1468;
-
-    extern const char*   InfoButton_h;
-    const int            InfoButton_hSize = 643;
-
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 1942;
+    const int namedResourceListSize = 1938;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

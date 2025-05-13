@@ -6,6 +6,19 @@
               headerPath="../source/Libs/assimp&#10;../source/LIbs/stk">
   <MAINGROUP id="ri06i3" name="VG-JUCE">
     <GROUP id="{C6B7CFA8-4DDD-C98A-6124-311CC2B0A917}" name="Source">
+      <GROUP id="{4127AA83-C225-CC84-3C12-9222C043A424}" name="Process">
+        <FILE id="OTxVFp" name="GramoVoice.cpp" compile="1" resource="0" file="Source/Process/GramoVoice.cpp"/>
+        <FILE id="gfNAEM" name="GramoVoice.h" compile="0" resource="0" file="Source/Process/GramoVoice.h"/>
+      </GROUP>
+      <GROUP id="{AE384994-363B-3893-0A95-E1953F6BA69B}" name="UI">
+        <FILE id="BnItlJ" name="GramoModelLoader.cpp" compile="1" resource="0"
+              file="Source/UI/GramoModelLoader.cpp"/>
+        <FILE id="I7iL8x" name="GramoModelLoader.h" compile="0" resource="0"
+              file="Source/UI/GramoModelLoader.h"/>
+        <FILE id="hJiP8K" name="GramoSuite.fbx" compile="0" resource="1" file="Source/UI/GramoSuite.fbx"/>
+        <FILE id="QY7z0W" name="InfoButton.cpp" compile="1" resource="0" file="Source/UI/InfoButton.cpp"/>
+        <FILE id="qFQCdn" name="InfoButton.h" compile="0" resource="0" file="Source/UI/InfoButton.h"/>
+      </GROUP>
       <GROUP id="{4552084B-C151-DAF9-EDCC-62B1C7A0014E}" name="Libs">
         <GROUP id="{A99AA1C1-121F-7C03-D1A3-561397A0DC82}" name="glm">
           <GROUP id="{8A345C94-5A9F-E0E5-DDA2-B28FAD115F44}" name="doc">
@@ -7685,14 +7698,6 @@
           <FILE id="INsiSD" name="SECURITY.md" compile="0" resource="1" file="Source/Libs/assimp/SECURITY.md"/>
         </GROUP>
       </GROUP>
-      <GROUP id="{085C03A2-0095-AD72-7A29-6F96DFE5D0D7}" name="UI">
-        <FILE id="zoACWK" name="GramoModelLoader.cpp" compile="1" resource="1"
-              file="Source/UI/GramoModelLoader.cpp" xcodeResource="1"/>
-        <FILE id="MGOOzg" name="GramoModelLoader.h" compile="0" resource="1"
-              file="Source/UI/GramoModelLoader.h" xcodeResource="1"/>
-      </GROUP>
-      <FILE id="C8zF6i" name="GramoSuite.fbx" compile="0" resource="1" file="Source/GramoSuite.fbx"
-            xcodeResource="1"/>
       <FILE id="jEn1Hj" name="PluginProcessor.cpp" compile="1" resource="1"
             file="Source/PluginProcessor.cpp" xcodeResource="1"/>
       <FILE id="jQqttb" name="PluginProcessor.h" compile="0" resource="1"
@@ -7700,10 +7705,6 @@
       <FILE id="QesAHY" name="PluginEditor.cpp" compile="1" resource="1"
             file="Source/PluginEditor.cpp" xcodeResource="1"/>
       <FILE id="GrCNxv" name="PluginEditor.h" compile="0" resource="1" file="Source/PluginEditor.h"
-            xcodeResource="1"/>
-      <FILE id="knJ5iI" name="InfoButton.cpp" compile="1" resource="1" file="Source/InfoButton.cpp"
-            xcodeResource="1"/>
-      <FILE id="CZcRgN" name="InfoButton.h" compile="0" resource="1" file="Source/InfoButton.h"
             xcodeResource="1"/>
     </GROUP>
   </MAINGROUP>
