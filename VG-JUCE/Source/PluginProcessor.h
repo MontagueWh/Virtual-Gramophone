@@ -9,7 +9,6 @@
 #pragma once // Ensures the file is included only once during compilation.
 
 #include <JuceHeader.h> // Includes the JUCE framework header file.
-// #include <stk/Brass.h> // Includes the STK Brass instrument header file.
 
 //==============================================================================
 /**

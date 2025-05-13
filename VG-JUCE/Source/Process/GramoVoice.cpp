@@ -10,43 +10,44 @@
 
 #include <JuceHeader.h>
 #include "GramoVoice.h"
-#include <../Source/Libs/stk/include/Brass.h>
 
 //==============================================================================
-Gramo::Gramo()
+GramoVoice::GramoVoice()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
 
+	Stk::setSampleRate(juce::AudioProcessor::getSampleRate());
 }
 
-Gramo::~Gramo()
+GramoVoice::~GramoVoice()
 {
 }
 
-void Gramo::paint (juce::Graphics& g)
+void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
+	// Use this method as the place to do any pre-playback
+	// initialisation that you need..
 
-       You should replace everything in this method with your own
-       drawing code..
-    */
 
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (juce::Colours::white);
-    g.setFont (juce::FontOptions (14.0f));
-    g.drawText ("Gramo", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
 }
 
-void Gramo::resized()
+void GramoVoice::releaseResources()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
+	// When playback stops, you can use this as an opportunity
+	// to free up any spare memory, etc.
+}
 
+void GramoVoice::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+{
+	// This function is called by the host when it's time to process some data.
+	// In this case, we are just filling the output buffer with a simple sine wave.
+	for (int channel = 0; channel < getTotalNumOutputChannels(); ++channel)
+	{
+		auto* channelData = buffer.getWritePointer(channel);
+		for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
+		{
+			channelData[sample] = 0.0f; // Clear the output buffer
+		}
+	}
 }
