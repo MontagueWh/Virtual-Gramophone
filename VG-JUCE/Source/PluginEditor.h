@@ -9,7 +9,7 @@
 #pragma once // Ensures the file is included only once during compilation.
 
 #include "PluginProcessor.h" // Includes the header file for the plugin processor.
-#include "InfoButton.h"      // Includes the header file for the InfoButton class.
+#include "UI/InfoButton.h"      // Includes the header file for the InfoButton class.
 #include <JuceHeader.h>      // Includes the JUCE framework header file.
 //#include <../Source/UI/GramoModelLoader.h>
 

@@ -10,6 +10,8 @@
 
 #include <JuceHeader.h> // Includes the JUCE framework header file.
 
+static const int MAX_CHANNELS = 64;
+
 //==============================================================================
 /**
  * The main audio processor class for the plugin.
@@ -70,10 +72,10 @@ private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameters();
 
     // DSP components used in the plugin.
-    juce::dsp::Chorus<float> chorus_; // Chorus effect processor.
-    juce::dsp::IIR::Filter<float> filter_ch1_; // Band-pass filter for channel 1.
-    juce::dsp::IIR::Filter<float> filter_ch2_; // Band-pass filter for channel 2.
-    juce::dsp::DryWetMixer<float> mix_; // Wet/dry mix processor.
+    juce::dsp::Chorus<float> chorus; // Chorus effect processor.
+    int filterCount;
+    std::vector<juce::dsp::IIR::Filter<float>> filters;
+    juce::dsp::DryWetMixer<float> mix; // Wet/dry mix processor.
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(VirtualGramoAudioProcessor)

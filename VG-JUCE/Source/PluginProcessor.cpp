@@ -15,17 +15,18 @@ constexpr float BP_FREQ = 2950.0f; // Defines a constant for the band-pass filte
 // Constructor for the plugin processor class.
 VirtualGramoAudioProcessor::VirtualGramoAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
-    : AudioProcessor(BusesProperties() // Initializes the audio processor with bus properties.
+    : AudioProcessor(BusesProperties() // Initialises the audio processor with bus properties.
 #if ! JucePlugin_IsMidiEffect
 #if ! JucePlugin_IsSynth
-        .withInput("Input", juce::AudioChannelSet::stereo(), true) // Adds a stereo input bus.
+        .withInput("Input", juce::AudioChannelSet::discreteChannels(MAX_CHANNELS), true) // Adds the number of input busses
 #endif
-        .withOutput("Output", juce::AudioChannelSet::stereo(), true) // Adds a stereo output bus.
+        .withOutput("Output", juce::AudioChannelSet::discreteChannels(MAX_CHANNELS), true) // Adds the number of output busses
 #endif
     ),
-    apvts(*this, nullptr, "Parameters", createParameters()) // Initializes the AudioProcessorValueTreeState for parameter management.
+    apvts(*this, nullptr, "Parameters", createParameters()) // Initialises the AudioProcessorValueTreeState for parameter management.
 #endif
 {
+	
 }
 
 VirtualGramoAudioProcessor::~VirtualGramoAudioProcessor()
@@ -112,18 +113,21 @@ void VirtualGramoAudioProcessor::prepareToPlay(double sampleRate, int samplesPer
     juce::dsp::ProcessSpec spec = { sampleRate, static_cast<juce::uint32>(samplesPerBlock),
                                     static_cast<juce::uint32>(getMainBusNumOutputChannels()) };
 
-    chorus_.prepare(spec); // Prepares the chorus effect with the processing spec.
-    mix_.prepare(spec);    // Prepares the wet/dry mix processor.
+    filterCount = getTotalNumInputChannels(); // Sets the number of filters to the number of input channels.
+	filters.resize(filterCount); // Resizes the filter vector to match the number of channels.
+
+    chorus.prepare(spec); // Prepares the chorus effect with the processing spec.
+    mix.prepare(spec);    // Prepares the wet/dry mix processor.
 
     // Retrieves the initial frequency value from the parameter tree.
     float frequency = apvts.getRawParameterValue("TONE")->load();
 
     // Prepares and configures the band-pass filters for each channel.
-    filter_ch1_.prepare(spec);
-    filter_ch1_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(sampleRate, frequency, 6.0f);
-
-    filter_ch2_.prepare(spec);
-    filter_ch2_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(sampleRate, frequency, 6.0f);
+	for (int i = 0; i < filterCount; ++i)
+	{
+		filters[i].prepare(spec); // Prepares each filter with the processing spec.
+		filters[i].coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(sampleRate, frequency, 6.0f); // Sets the filter coefficients.
+	}
 }
 
 // Releases resources when playback stops.
@@ -142,9 +146,11 @@ bool VirtualGramoAudioProcessor::isBusesLayoutSupported(const BusesLayout& layou
     juce::ignoreUnused(layouts);
     return true; // MIDI effects support all layouts.
 #else
-    // Only mono or stereo layouts are supported.
-    if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono()
-        && layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
+    // Allow any valid output channel configuration
+    const auto& outputSet = layouts.getMainOutputChannelSet();
+
+    // Ensure the layout is valid and not empty
+    if (outputSet.isDisabled())
         return false;
 
     // Ensures the input layout matches the output layout for non-synth plugins.
@@ -171,7 +177,7 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
         buffer.clear(i, 0, buffer.getNumSamples());
     }
 
-    mix_.pushDrySamples(buffer); // Pushes the dry signal into the mix processor.
+    mix.pushDrySamples(buffer); // Pushes the dry signal into the mix processor.
 
     // Processes each sample in the buffer.
     for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
@@ -179,33 +185,25 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
         for (int channel = 0; channel < totalNumInputChannels; ++channel)
         {            
             // Retrieves parameter values for compression and tone.
-            float treshold = apvts.getRawParameterValue("COMPRESS")->load();
+            float threshold = apvts.getRawParameterValue("COMPRESS")->load();
             float frequency = apvts.getRawParameterValue("TONE")->load();
 
-            // Applies compression to the signal based on the threshold.
-            if (*buffer.getReadPointer(channel, sample) >= treshold)
-            {
-                *buffer.getWritePointer(channel, sample) = (*buffer.getReadPointer(channel, sample) / 4) + (3 * treshold / 4);
-            }
-            else if (*buffer.getReadPointer(channel, sample) <= -treshold)
-            {
-                *buffer.getWritePointer(channel, sample) = (*buffer.getReadPointer(channel, sample) / 4) - (3 * treshold / 4);
-            }
+            // Apply compression
+            float in = buffer.getReadPointer(channel)[sample];
+            if (in >= threshold)
+                buffer.getWritePointer(channel)[sample] = (in / 4) + (3 * threshold / 4);
+            else if (in <= -threshold)
+                buffer.getWritePointer(channel)[sample] = (in / 4) - (3 * threshold / 4);
 
             // Applies makeup gain to the signal.
-            *buffer.getWritePointer(channel, sample) *= 5.0f - (11.0f * treshold * treshold);
+            *buffer.getWritePointer(channel, sample) *= 5.0f - (11.0f * threshold * threshold);
 
-            // Applies a band-pass filter to the signal for each channel.
-            if (channel == 0)
-            {
-                filter_ch1_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(getSampleRate(), frequency + 10.0f, 2.7f);
-                *buffer.getWritePointer(channel, sample) = filter_ch1_.processSample(*buffer.getReadPointer(channel, sample));
-            }
-            else if (channel == 1)
-            {
-                filter_ch2_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(getSampleRate(), frequency - 10.0f, 2.73f);
-                *buffer.getWritePointer(channel, sample) = filter_ch2_.processSample(*buffer.getReadPointer(channel, sample));
-            }
+            // Applies a band-pass filter to the signal for each channel
+			for (int i = 0; i < filterCount; ++i)
+			{
+				filters[i].coefficients = *juce::dsp::IIR::Coefficients<float>::makeBandPass(getSampleRate(), frequency, 2.7f);
+				buffer.getWritePointer(channel)[sample] = filters[i].processSample(buffer.getReadPointer(channel)[sample]);
+			}
         }
     }
 
@@ -214,16 +212,16 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
     auto contextToUse = juce::dsp::ProcessContextReplacing<float>(block);
 
     // Configures and processes the chorus effect.
-    chorus_.setRate(apvts.getRawParameterValue("VIBRATO_RATE")->load());
-    chorus_.setDepth(apvts.getRawParameterValue("VIBRATO")->load());
-    chorus_.setCentreDelay(1.0f);
-    chorus_.setFeedback(0.0f);
-    chorus_.setMix(1.0f);
-    chorus_.process(contextToUse);
+    chorus.setRate(apvts.getRawParameterValue("VIBRATO_RATE")->load());
+    chorus.setDepth(apvts.getRawParameterValue("VIBRATO")->load());
+    chorus.setCentreDelay(1.0f);
+    chorus.setFeedback(0.0f);
+    chorus.setMix(1.0f);
+    chorus.process(contextToUse);
 
     // Configures and applies the wet/dry mix.
-    mix_.setWetMixProportion(1.0f - apvts.getRawParameterValue("MIX")->load());
-    mix_.mixWetSamples(block);
+    mix.setWetMixProportion(1.0f - apvts.getRawParameterValue("MIX")->load());
+    mix.mixWetSamples(block);
 }
 
 //==============================================================================

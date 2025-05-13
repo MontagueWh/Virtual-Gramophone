@@ -5814,10 +5814,10 @@ namespace BinaryData
     const int            PluginProcessor_cppSize = 11733;
 
     extern const char*   PluginProcessor_h;
-    const int            PluginProcessor_hSize = 4336;
+    const int            PluginProcessor_hSize = 4260;
 
     extern const char*   PluginEditor_cpp;
-    const int            PluginEditor_cppSize = 8492;
+    const int            PluginEditor_cppSize = 8498;
 
     extern const char*   PluginEditor_h;
     const int            PluginEditor_hSize = 4606;
