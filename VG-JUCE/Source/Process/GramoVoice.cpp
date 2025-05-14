@@ -105,6 +105,20 @@ void GramoVoice::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToF
 
 }
 
+bool GramoVoice::isBusesLayoutSupported(const BusesLayout& layouts) const
+{
+	const auto& outputSet = layouts.getMainOutputChannelSet();
+	if (outputSet.isDisabled())
+		return false;
+
+#if ! JucePlugin_IsSynth
+	if (layouts.getMainOutputChannelSet() != layouts.getMainInputChannelSet())
+		return false;
+#endif
+
+	return true; // Allow all other valid layouts.
+}
+
 void GramoVoice::setHornLength(float length)
 {
 	hornLength = length; // Set the horn length

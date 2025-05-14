@@ -55,7 +55,7 @@ public:
     void changeProgramName(int index, const juce::String& newName) override {}
     void getStateInformation(juce::MemoryBlock& destData) override {}
     void setStateInformation(const void* data, int sizeInBytes) override {}
-    bool isBusesLayoutSupported(const BusesLayout& layouts) const override { return nullptr; }
+    bool isBusesLayoutSupported(const BusesLayout& layouts) const override;
 	bool hasEditor() const override { return nullptr; }
 	juce::AudioProcessorEditor* createEditor() override { return nullptr; }
 
