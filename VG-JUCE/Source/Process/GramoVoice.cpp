@@ -29,7 +29,7 @@ GramoVoice::~GramoVoice()
 {
 }
 
-void GramoVoice::prepareToPlay(int samplesPerBlock, double sampleRate)
+void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
 	// Use this method as the place to do any pre-playback
 	// initialisation that you need..
@@ -71,7 +71,7 @@ void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 			juce::dsp::Convolution::Trim::no,
 			impulseResponse.getNumSamples());*/
 
-		convolution.loadImpulseResponse(impulseResponse, sampleRate, 
+		//convolution.loadImpulseResponse(impulseResponse, sampleRate, 
 	}
 }
 
