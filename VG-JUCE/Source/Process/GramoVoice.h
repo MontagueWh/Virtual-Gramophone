@@ -23,6 +23,7 @@ public:
     ~GramoVoice() override;
 
 	void prepareToPlay(double sampleRate, int samplesPerBlock) override;
+	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
     void releaseResources() override;
     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;

@@ -29,6 +29,12 @@ GramoVoice::~GramoVoice()
 {
 }
 
+void GramoVoice::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+{
+	// This function is called before playback starts, and is where you can set up any
+	// resources that your audio source needs. For example, you might want to allocate
+	// memory for buffers or prepare any DSP objects that you are using.
+}
 void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
 	// Use this method as the place to do any pre-playback
@@ -40,38 +46,35 @@ void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 	handleImpulseResponse(sampleRate, samplesPerBlock); // Handle the impulse response
 }
 
-void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
-{
-	// This function is called to handle the impulse response of the system.
-	// You can use this to apply any effects or processing to the audio signal.
-	// For example, you could apply a convolution reverb effect here.
+void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock) {
+	audioFormatManager.registerBasicFormats();
+	juce::File irFile = /* your IR file path */;
+	juce::AudioFormatReader* reader = audioFormatManager.createReaderFor(irFile);
 
-	audioFormatManager.registerBasicFormats(); // Register basic audio formats
-	juce::File irFile(""); // Load the impulse response file
-	juce::AudioFormatReader* reader = audioFormatManager.createReaderFor(irFile); // Create a reader for the impulse response file
+	float numOutChannels = getTotalNumOutputChannels();
 
-	if (reader)
-	{
-		impulseResponse.setSize(1, reader->lengthInSamples); // Set the size of the impulse response buffer
-		reader->read(&impulseResponse, 0, reader->lengthInSamples, 0, true, true); // Read the impulse response data into the buffer
-		delete reader; // Delete the reader to free up memory
+	if (reader) {
+		impulseResponse.setSize(numOutChannels, reader->lengthInSamples);
+		reader->read(&impulseResponse, 0, reader->lengthInSamples, 0, true, true);
+		delete reader;
 
-		// Instead, use juce::dsp::ProcessSpec to configure the convolution processor
 		juce::dsp::ProcessSpec spec;
 		spec.sampleRate = sampleRate;
 		spec.maximumBlockSize = samplesPerBlock;
-		spec.numChannels = 1; // Adjust as needed for your use case
+		spec.numChannels = (juce::uint32)numOutChannels;
 
-		convolution.prepare(spec); // Prepare the convolution processor with the spec
+		convolution.prepare(spec);
 
-		// Set the impulse response for the convolution processor
-		/*convolution.loadImpulseResponse
-			(impulseResponse,
-			juce::dsp::Convolution::Stereo::no,
-			juce::dsp::Convolution::Trim::no,
-			impulseResponse.getNumSamples());*/
+		juce::dsp::Convolution::Stereo stereoMode = (numOutChannels == 1 && impulseResponse.getNumChannels() <= 2)
+			? juce::dsp::Convolution::Stereo::no
+			: juce::dsp::Convolution::Stereo::yes;
 
-		//convolution.loadImpulseResponse(impulseResponse, sampleRate, 
+		convolution.loadImpulseResponse(
+			impulseResponse,
+			impulseResponse.getNumChannels() > 1, // true for multichannel
+			false,                                // do not trim
+			impulseResponse.getNumSamples()
+		);
 	}
 }
 
@@ -134,7 +137,6 @@ float GramoVoice::gramoPressure()
 	float mouthPressure = 0.3 * breathPressure; // Mouth pressure is 30% of breath pressure
 	float borePressure = 0.85 * delayLine.lastOut(); // Bore pressure is 85% of the last output of the delay line
 	float deltaPressure = mouthPressure - borePressure; // Calculate the pressure difference
-	//stylusFilter.setCutoff(stylusFilterCutoff); // Use member variable
 	stylusFilter.setLowPass(stylusFilterCutoff, 0.75); // Set the cutoff frequency of the stylus filter
 	deltaPressure = stylusFilter.tick(deltaPressure);
 	

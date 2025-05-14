@@ -26,7 +26,6 @@ VirtualGramoAudioProcessor::VirtualGramoAudioProcessor()
     apvts(*this, nullptr, "Parameters", createParameters()) // Initialises the AudioProcessorValueTreeState for parameter management.
 #endif
 {
-    gramoVoice();
 }
 
 VirtualGramoAudioProcessor::~VirtualGramoAudioProcessor()
