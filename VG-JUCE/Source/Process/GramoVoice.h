@@ -16,32 +16,51 @@
 //==============================================================================
 /*
 */
-class GramoVoice : public juce::Component, public stk::Instrmnt, public juce::AudioProcessor, juce::AudioSource
+class GramoVoice : public juce::Component, public stk::Instrmnt, public juce::AudioProcessor, public juce::AudioSource
 {
 public:
     GramoVoice();
     ~GramoVoice() override;
 
-    void prepareToPlay(double sampleRate, int samplesPerBlock) override; // Prepares the processor for playback by initialising resources
-    void releaseResources() override; // Releases resources when playback stops.
-    void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override; // Processes audio and MIDI data for each block of samples
+    void prepareToPlay(int samplesPerBlock, double sampleRate) override;
+    void releaseResources() override;
+    void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
+    void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
 
     float gramoPressure();
-	void setHornLength(float length);
-	void setHornDiameter(float diameter);
-	void setHornStiffness(float stiffness);
-	void handleImpulseResponse(double sampleRate, int samplesPerBlock);
+    void setHornLength(float length);
+    void setHornDiameter(float diameter);
+    void setHornStiffness(float stiffness);
 
     void setStylusFilterCutoff(float cutoff);
     void setNonLinearity(float amount);
     void setNoiseLevel(float level);
 
-protected:
+    // Implement pure virtual methods
+	void noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) override;
+    void noteOff(stk::StkFloat amplitude) override;
+    stk::StkFloat tick(unsigned int channel = 0) override;
+    stk::StkFrames& tick(stk::StkFrames& frames, unsigned int channel = 0) override;
 
-    stk::DelayA   delayLine;
-    stk::BiQuad   stylusFilter;
+    // Implement pure virtual methods from juce::AudioProcessor  
+    const juce::String getName() const override { return "GramoVoice"; }
+    bool acceptsMidi() const override { return false; }
+    bool producesMidi() const override { return false; }
+    bool isMidiEffect() const override { return false; }
+    double getTailLengthSeconds() const override { return 0.0; }
+    int getNumPrograms() override { return 1; }
+    int getCurrentProgram() override { return 0; }
+    void setCurrentProgram(int index) override {}
+    const juce::String getProgramName(int index) override { return {}; }
+    void changeProgramName(int index, const juce::String& newName) override {}
+    void getStateInformation(juce::MemoryBlock& destData) override {}
+    void setStateInformation(const void* data, int sizeInBytes) override {}
+
+private:
+    stk::DelayA delayLine;
+    stk::BiQuad stylusFilter;
     stk::PoleZero dcBlock;
-    stk::ADSR     adsr;
+    stk::ADSR adsr;
     stk::SineWave vibrato;
 
     float lipTarget;
@@ -49,25 +68,23 @@ protected:
     float vibratoGain;
     float maxPressure;
 
-private:
-
     stk::Brass gramoHorn;
 
-	juce::dsp::Convolution convolution; // Convolution processor for impulse response
-	juce::AudioBuffer<float> impulseResponse; // Buffer for the impulse response
-	juce::AudioFormatManager audioFormatManager; // Manages audio file formats
+    juce::dsp::Convolution convolution;
+    juce::AudioBuffer<float> impulseResponse;
+    juce::AudioFormatManager audioFormatManager;
 
-    float startAmp = 0.8f; // Initial breath intensity
-    float attackRate = 20.f; // Rate of pressure increase
+    void handleImpulseResponse(double sampleRate, int samplesPerBlock);
 
-    float hornLength /*= 1.37f*/; // Length of the horn in meters
+    float startAmp = 0.8f;
+    float attackRate = 20.f;
+
+    float hornLength;
     float stylusFilterCutoff;
     float nonLinearityAmount;
-	float noiseLevel;
+    float noiseLevel;
     float hornDiameter;
-	float hornStiffness;
+    float hornStiffness;
 
-    float sampleRateVari;
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GramoVoice)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GramoVoice)
 };

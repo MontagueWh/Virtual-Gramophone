@@ -29,16 +29,50 @@ GramoVoice::~GramoVoice()
 {
 }
 
-void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
+void GramoVoice::prepareToPlay(int samplesPerBlock, double sampleRate)
 {
 	// Use this method as the place to do any pre-playback
 	// initialisation that you need..
 
-	sampleRateVari = sampleRate; // Store the sample rate
-	setSampleRate(sampleRateVari); // Set the sample rate
-	Stk::setSampleRate(getSampleRate()); // Set the sample rate for STK
+	setSampleRate(sampleRate); // Set the sample rate
+	Stk::setSampleRate(sampleRate); // Set the sample rate for STK
 
-	handleImpulseResponse(sampleRateVari, buffer.getNumSamples()); // Handle the impulse response
+	handleImpulseResponse(sampleRate, samplesPerBlock); // Handle the impulse response
+}
+
+void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
+{
+	// This function is called to handle the impulse response of the system.
+	// You can use this to apply any effects or processing to the audio signal.
+	// For example, you could apply a convolution reverb effect here.
+
+	audioFormatManager.registerBasicFormats(); // Register basic audio formats
+	juce::File irFile(""); // Load the impulse response file
+	juce::AudioFormatReader* reader = audioFormatManager.createReaderFor(irFile); // Create a reader for the impulse response file
+
+	if (reader)
+	{
+		impulseResponse.setSize(1, reader->lengthInSamples); // Set the size of the impulse response buffer
+		reader->read(&impulseResponse, 0, reader->lengthInSamples, 0, true, true); // Read the impulse response data into the buffer
+		delete reader; // Delete the reader to free up memory
+
+		// Instead, use juce::dsp::ProcessSpec to configure the convolution processor
+		juce::dsp::ProcessSpec spec;
+		spec.sampleRate = sampleRate;
+		spec.maximumBlockSize = samplesPerBlock;
+		spec.numChannels = 1; // Adjust as needed for your use case
+
+		convolution.prepare(spec); // Prepare the convolution processor with the spec
+
+		// Set the impulse response for the convolution processor
+		/*convolution.loadImpulseResponse
+			(impulseResponse,
+			juce::dsp::Convolution::Stereo::no,
+			juce::dsp::Convolution::Trim::no,
+			impulseResponse.getNumSamples());*/
+
+		convolution.loadImpulseResponse(impulseResponse, sampleRate, 
+	}
 }
 
 void GramoVoice::releaseResources()
@@ -66,38 +100,9 @@ void GramoVoice::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer
 	}
 }
 
-void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
+void GramoVoice::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
-	// This function is called to handle the impulse response of the system.
-	// You can use this to apply any effects or processing to the audio signal.
-	// For example, you could apply a convolution reverb effect here.
 
-	audioFormatManager.registerBasicFormats(); // Register basic audio formats
-	juce::File irFile(""); // Load the impulse response file
-	juce::AudioFormatReader* reader = audioFormatManager.createReaderFor(irFile); // Create a reader for the impulse response file
-	
-	if (reader)
-	{
-		impulseResponse.setSize(1, reader->lengthInSamples); // Set the size of the impulse response buffer
-		reader->read(&impulseResponse, 0, reader->lengthInSamples, 0, true, true); // Read the impulse response data into the buffer
-		delete reader; // Delete the reader to free up memory
-
-		// Instead, use juce::dsp::ProcessSpec to configure the convolution processor
-		juce::dsp::ProcessSpec spec;
-		spec.sampleRate = sampleRate;
-		spec.maximumBlockSize = samplesPerBlock;
-		spec.numChannels = 1; // Adjust as needed for your use case
-
-		convolution.prepare(spec); // Prepare the convolution processor with the spec
-
-		// Set the impulse response for the convolution processor
-		convolution.loadImpulseResponse(
-			impulseResponse,
-			juce::dsp::Convolution::Stereo::no, // or yes, if your IR is stereo
-			juce::dsp::Convolution::Trim::no,   // or yes, if you want to trim silence
-			impulseResponse.getNumSamples()
-		);
-	}
 }
 
 void GramoVoice::setHornLength(float length)
@@ -141,3 +146,23 @@ void GramoVoice::setNonLinearity(float amount) { nonLinearityAmount = amount; } 
 void GramoVoice::setNoiseLevel(float level) { noiseLevel = level; } // Set the noise level
 void GramoVoice::setHornDiameter(float diameter) { hornDiameter = diameter; }
 void GramoVoice::setHornStiffness(float stiffness) { hornStiffness = stiffness; }
+
+void GramoVoice::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
+	// Your implementation here
+	// e.g., gramoHorn.noteOn(frequency, amplitude);
+}
+
+void GramoVoice::noteOff(stk::StkFloat amplitude) {
+	// Your implementation here
+	// e.g., gramoHorn.noteOff(amplitude);
+}
+
+stk::StkFloat GramoVoice::tick(unsigned int channel) {
+	// Your implementation here
+	return 0.0; // Or the actual output
+}
+
+stk::StkFrames& GramoVoice::tick(stk::StkFrames& frames, unsigned int channel) {
+	// Your implementation here
+	return frames;
+}

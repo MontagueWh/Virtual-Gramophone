@@ -11,13 +11,16 @@
         <FILE id="gfNAEM" name="GramoVoice.h" compile="0" resource="0" file="Source/Process/GramoVoice.h"/>
       </GROUP>
       <GROUP id="{AE384994-363B-3893-0A95-E1953F6BA69B}" name="UI">
-        <FILE id="BnItlJ" name="GramoModelLoader.cpp" compile="1" resource="0"
-              file="Source/UI/GramoModelLoader.cpp"/>
-        <FILE id="I7iL8x" name="GramoModelLoader.h" compile="0" resource="0"
-              file="Source/UI/GramoModelLoader.h"/>
-        <FILE id="hJiP8K" name="GramoSuite.fbx" compile="0" resource="1" file="Source/UI/GramoSuite.fbx"/>
-        <FILE id="QY7z0W" name="InfoButton.cpp" compile="1" resource="0" file="Source/UI/InfoButton.cpp"/>
-        <FILE id="qFQCdn" name="InfoButton.h" compile="0" resource="0" file="Source/UI/InfoButton.h"/>
+        <FILE id="BnItlJ" name="GramoModelLoader.cpp" compile="1" resource="1"
+              file="Source/UI/GramoModelLoader.cpp" xcodeResource="1"/>
+        <FILE id="I7iL8x" name="GramoModelLoader.h" compile="0" resource="1"
+              file="Source/UI/GramoModelLoader.h" xcodeResource="1"/>
+        <FILE id="hJiP8K" name="GramoSuite.fbx" compile="0" resource="1" file="Source/UI/GramoSuite.fbx"
+              xcodeResource="1"/>
+        <FILE id="QY7z0W" name="InfoButton.cpp" compile="1" resource="1" file="Source/UI/InfoButton.cpp"
+              xcodeResource="1"/>
+        <FILE id="qFQCdn" name="InfoButton.h" compile="0" resource="1" file="Source/UI/InfoButton.h"
+              xcodeResource="1"/>
       </GROUP>
       <GROUP id="{4552084B-C151-DAF9-EDCC-62B1C7A0014E}" name="Libs">
         <GROUP id="{A99AA1C1-121F-7C03-D1A3-561397A0DC82}" name="glm">
