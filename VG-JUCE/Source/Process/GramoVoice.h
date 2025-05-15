@@ -16,7 +16,7 @@
 //==============================================================================
 /*
 */
-class GramoVoice : public juce::Component, public stk::Instrmnt, public juce::AudioProcessor, public juce::AudioSource
+class GramoVoice : public juce::Component, public stk::Instrmnt, public juce::AudioProcessor, public juce::AudioSource, public juce::OpenGLContext
 {
 public:
     GramoVoice();
@@ -29,9 +29,6 @@ public:
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
 
     float gramoPressure(float inputSample);
-    void setHornLength(float length);
-    void setHornDiameter(float diameter);
-    void setHornStiffness(float stiffness);
 
     void setStylusFilterCutoff(float cutoff);
     void setNonLinearity(float amount);
@@ -79,16 +76,14 @@ private:
     juce::AudioFormatManager audioFormatManager;
 
     void handleImpulseResponse(double sampleRate, int samplesPerBlock);
+    void openGlCalculator();
 
     float startAmp = 0.8f;
     float attackRate = 20.f;
 
-    float hornLength;
     float stylusFilterCutoff;
     float nonLinearityAmount;
     float noiseLevel;
-    float hornDiameter;
-    float hornStiffness;
 
     double sampleRateVal;
 

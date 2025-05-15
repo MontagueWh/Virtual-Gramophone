@@ -17,9 +17,11 @@ GramoVoice::GramoVoice()
 	// In your constructor, you should add any child components, and
 	// initialise any special settings that your component needs.
 
-	float wavelength = 2.f * hornLength; // Wavelength of the sound wave
+	float wavelength = 2.f * 0.25; // Wavelength of the sound wave
 	float soundSpeed = 343.0f; // Speed of sound in air in m/s
 	float freq = soundSpeed / wavelength; // Frequency of the sound wave
+
+	OpenGLContext::attachTo(*this); // Attach OpenGL context to this component
 
 	Stk::setSampleRate(sampleRateVal); // Or whatever default you want
 	gramoHorn.setFrequency(freq); // Set the frequency of the horn
@@ -27,6 +29,7 @@ GramoVoice::GramoVoice()
 
 GramoVoice::~GramoVoice()
 {
+	OpenGLContext::detach(); // Detach OpenGL context from this component
 }
 
 void GramoVoice::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
@@ -52,8 +55,6 @@ void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 	handleImpulseResponse(sampleRate, samplesPerBlock); // Handle the impulse response
 
 	// Initialise STK Brass parameters. These need replacing with working objects.
-	setHornDiameter(0.25);
-	setHornStiffness(4.5);
 }
 
 void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
@@ -153,21 +154,6 @@ void GramoVoice::setStylusFilterCutoff(float cutoff)
 } 
 void GramoVoice::setNonLinearity(float amount) { nonLinearityAmount = amount; } // Set the non-linearity amount
 void GramoVoice::setNoiseLevel(float level) { noiseLevel = level; } // Set the noise level
-void GramoVoice::setHornDiameter(float diameter)
-{
-	hornDiameter = diameter;
-	// stk has no diameter object. revise
-}
-void GramoVoice::setHornStiffness(float stiffness)
-{
-	hornStiffness = stiffness; 
-	// stk has no stiffness object. revise
-}
-void GramoVoice::setHornLength(float length)
-{ 
-	hornLength = length; // Set the horn length
-	// stk has no length object. revise
-}
 
 void GramoVoice::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
 	// Your implementation here
@@ -187,4 +173,13 @@ stk::StkFloat GramoVoice::tick(unsigned int channel) {
 stk::StkFrames& GramoVoice::tick(stk::StkFrames& frames, unsigned int channel) {
 	// Your implementation here
 	return frames;
+}
+
+void GramoVoice::openGlCalculator()
+{
+	OpenGLContext::makeActive(); // Make the OpenGL context active
+	
+	float hornDiameter = 0.25f; // Diameter of the horn
+	float hornStiffness = 4.5f; // Stiffness of the horn (brass)
+	float hornLength;
 }
