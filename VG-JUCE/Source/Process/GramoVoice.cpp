@@ -65,9 +65,10 @@ void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 
 	if (reader)
 	{
-		impulseResponse.setSize(1, reader->lengthInSamples); // Always mono
-		reader->read(&impulseResponse, 0, reader->lengthInSamples, 0, true, true);
-		delete reader;
+		// Load impulse response data (replace this with actual loading code)
+		impulseResponse.setSize(1, reader->lengthInSamples); // 1 channel, numSamples samples
+		for (int i = 0; i < reader->lengthInSamples; ++i)
+			impulseResponse.setSample(0, i, yourSampleData[i]); // Populate data
 
 		convolution.loadImpulseResponse(
 			impulseResponse,
@@ -181,5 +182,5 @@ void GramoVoice::openGlCalculator()
 	
 	float hornDiameter = 0.25f; // Diameter of the horn
 	float hornStiffness = 4.5f; // Stiffness of the horn (brass)
-	float hornLength;
+	float hornLength = 0.75;
 }
