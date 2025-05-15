@@ -65,10 +65,9 @@ void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 
 	if (reader)
 	{
-		// Load impulse response data (replace this with actual loading code)
-		impulseResponse.setSize(1, reader->lengthInSamples); // 1 channel, numSamples samples
-		for (int i = 0; i < reader->lengthInSamples; ++i)
-			impulseResponse.setSample(0, i, yourSampleData[i]); // Populate data
+		impulseResponse.setSize(1, reader->lengthInSamples); // Always mono
+		reader->read(&impulseResponse, 0, reader->lengthInSamples, 0, true, true);
+		delete reader;
 
 		convolution.loadImpulseResponse(
 			impulseResponse,
@@ -86,20 +85,13 @@ void GramoVoice::releaseResources()
 
 void GramoVoice::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
-	for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
+	juce::dsp::AudioBlock<float> audioBlock(buffer);
+	for (int channel = 0; channel < audioBlock.getNumChannels(); ++channel)
 	{
-		float input = buffer.getSample(0, sample); // Get the input signal value
-
-		float processedSound = gramoPressure(input); // Process with GramoVoice (including STK)
-
-		juce::dsp::AudioBlock<float> block(&processedSound, 1, 1);
-		juce::dsp::ProcessContextReplacing<float> context(block);
-		convolution.process(context);
-
-		// Output the processed sound to all output channels
-		for (int channel = 0; channel < buffer.getNumChannels(); ++channel)
+		auto* channelData = audioBlock.getChannelPointer(channel);
+		for (size_t sample = 0; sample < audioBlock.getNumSamples(); ++sample)
 		{
-			buffer.setSample(channel, sample, processedSound);
+			channelData[sample] = gramoPressure(channelData[sample]);
 		}
 	}
 }
@@ -147,14 +139,6 @@ float GramoVoice::gramoPressure(float inputSample)
 
 	return lastFrame_[0];
 }
-
-void GramoVoice::setStylusFilterCutoff(float cutoff)
-{
-	stylusFilterCutoff = cutoff; // Set the cutoff frequency of the stylus filter
-	stylusFilter.setLowPass(stylusFilterCutoff); // Set the low-pass filter cutoff frequency
-} 
-void GramoVoice::setNonLinearity(float amount) { nonLinearityAmount = amount; } // Set the non-linearity amount
-void GramoVoice::setNoiseLevel(float level) { noiseLevel = level; } // Set the noise level
 
 void GramoVoice::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
 	// Your implementation here

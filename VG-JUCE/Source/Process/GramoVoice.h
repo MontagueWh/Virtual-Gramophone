@@ -81,10 +81,6 @@ private:
     float startAmp = 0.8f;
     float attackRate = 20.f;
 
-    float stylusFilterCutoff;
-    float nonLinearityAmount;
-    float noiseLevel;
-
     double sampleRateVal;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GramoVoice)
