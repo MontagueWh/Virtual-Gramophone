@@ -21,8 +21,8 @@ GramoVoice::GramoVoice()
 	float soundSpeed = 343.0f; // Speed of sound in air in m/s
 	float freq = soundSpeed / wavelength; // Frequency of the sound wave
 
-	gramoHorn.startBlowing(startAmp, attackRate); // send sound through the gramophone horn
-	gramoHorn.noteOn(freq, startAmp); // make the gramophone horn permanently active
+	Stk::setSampleRate(sampleRateVal); // Or whatever default you want
+	gramoHorn.setFrequency(freq); // Set the frequency of the horn
 }
 
 GramoVoice::~GramoVoice()
@@ -31,50 +31,48 @@ GramoVoice::~GramoVoice()
 
 void GramoVoice::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
-	// This function is called before playback starts, and is where you can set up any
-	// resources that your audio source needs. For example, you might want to allocate
-	// memory for buffers or prepare any DSP objects that you are using.
+	// Prepare to play method for the audio processor JUCE method
 }
 void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
-	// Use this method as the place to do any pre-playback
-	// initialisation that you need..
+	// Prepare to play method for the audio source JUCE method
+	sampleRateVal = sampleRate; // Share the sample rate with other functions
 
 	setSampleRate(sampleRate); // Set the sample rate
 	Stk::setSampleRate(sampleRate); // Set the sample rate for STK
 
+	// Convolution setup
+	juce::dsp::ProcessSpec spec;
+	spec.sampleRate = sampleRate;
+	spec.maximumBlockSize = samplesPerBlock;
+	spec.numChannels = 1;
+
+	convolution.prepare(spec); // Prepare the convolution processor
+
 	handleImpulseResponse(sampleRate, samplesPerBlock); // Handle the impulse response
+
+	// Initialise STK Brass parameters. These need replacing with working objects.
+	setHornDiameter(0.25);
+	setHornStiffness(4.5);
 }
 
-void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock) {
+void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
+{
 	audioFormatManager.registerBasicFormats();
-	juce::File irFile = /* your IR file path */;
+	juce::File irFile = "";
 	juce::AudioFormatReader* reader = audioFormatManager.createReaderFor(irFile);
 
-	float numOutChannels = getTotalNumOutputChannels();
-
-	if (reader) {
-		impulseResponse.setSize(numOutChannels, reader->lengthInSamples);
+	if (reader)
+	{
+		impulseResponse.setSize(1, reader->lengthInSamples); // Always mono
 		reader->read(&impulseResponse, 0, reader->lengthInSamples, 0, true, true);
 		delete reader;
 
-		juce::dsp::ProcessSpec spec;
-		spec.sampleRate = sampleRate;
-		spec.maximumBlockSize = samplesPerBlock;
-		spec.numChannels = (juce::uint32)numOutChannels;
-
-		convolution.prepare(spec);
-
-		juce::dsp::Convolution::Stereo stereoMode = (numOutChannels == 1 && impulseResponse.getNumChannels() <= 2)
-			? juce::dsp::Convolution::Stereo::no
-			: juce::dsp::Convolution::Stereo::yes;
-
 		convolution.loadImpulseResponse(
 			impulseResponse,
-			impulseResponse.getNumChannels() > 1, // true for multichannel
-			false,                                // do not trim
-			impulseResponse.getNumSamples()
-		);
+			juce::dsp::Convolution::Stereo::no, // Always mono processing
+			juce::dsp::Convolution::Trim::no,
+			impulseResponse.getNumSamples());
 	}
 }
 
@@ -86,22 +84,24 @@ void GramoVoice::releaseResources()
 
 void GramoVoice::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
-	// This function is called by the host when it's time to process some data.
-	// In this case, we are just filling the output buffer with a simple sine wave.
-	for (int channel = 0; channel < getTotalNumOutputChannels(); ++channel)
+	for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
 	{
-		auto* channelData = buffer.getWritePointer(channel);
-		for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
-		{
-			// do something with gramoPressure
+		float input = buffer.getSample(0, sample); // Get the input signal value
 
-			juce::dsp::AudioBlock<float> block(buffer); // Wrap the buffer in an AudioBlock
-			juce::dsp::ProcessContextReplacing<float> context(block); // Create a process context for the block
-			
-			//channelData[sample] = 0.0f; // Clear the output buffer
+		float processedSound = gramoPressure(input); // Process with GramoVoice (including STK)
+
+		juce::dsp::AudioBlock<float> block(&processedSound, 1, 1);
+		juce::dsp::ProcessContextReplacing<float> context(block);
+		convolution.process(context);
+
+		// Output the processed sound to all output channels
+		for (int channel = 0; channel < buffer.getNumChannels(); ++channel)
+		{
+			buffer.setSample(channel, sample, processedSound);
 		}
 	}
 }
+
 
 void GramoVoice::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
@@ -122,33 +122,22 @@ bool GramoVoice::isBusesLayoutSupported(const BusesLayout& layouts) const
 	return true; // Allow all other valid layouts.
 }
 
-void GramoVoice::setHornLength(float length)
+float GramoVoice::gramoPressure(float inputSample)
 {
-	hornLength = length; // Set the horn length
+	// STK's internal variables
+	float breathPressure = maxPressure * adsr.tick();
+	breathPressure += vibratoGain * vibrato.tick();
 
-	//gramoHorn.setLength(Length); // Set the length of the horn in the STK model
-}
+	float mouthPressure = 0.3 * breathPressure;
+	float borePressure = 0.85 * delayLine.lastOut();
+	float deltaPressure = mouthPressure - borePressure; // Differential pressure.
 
-float GramoVoice::gramoPressure()
-{
-	float breathPressure = maxPressure * adsr.tick(); // Apply ADSR envelope to breath pressure
-	breathPressure += vibratoGain * vibrato.tick(); // Apply vibrato effect
+	// Apply stylus filter
+	stylusFilter.tick(deltaPressure); // Force - > position.
 
-	float mouthPressure = 0.3 * breathPressure; // Mouth pressure is 30% of breath pressure
-	float borePressure = 0.85 * delayLine.lastOut(); // Bore pressure is 85% of the last output of the delay line
-	float deltaPressure = mouthPressure - borePressure; // Calculate the pressure difference
-	stylusFilter.setLowPass(stylusFilterCutoff, 0.75); // Set the cutoff frequency of the stylus filter
-	deltaPressure = stylusFilter.tick(deltaPressure);
-	
-	// Non-linear saturation.
-	deltaPressure = powf(deltaPressure, 1.0f + nonLinearityAmount * 2.0f); // Apply non-linearity
-	deltaPressure = juce::jlimit(0.0f, 1.0f, deltaPressure); // Limit the pressure difference to a range of 0 to 1
-
-	// Noise shaping (simplified)
-	float noise = juce::Random::getSystemRandom().nextFloat() * noiseLevel; // Generate random noise
-	noise *= (1.0f - deltaPressure); // Less noise when pressure is high
-	if (juce::Random::getSystemRandom().nextFloat() < 0.01f) noise *= 5.0f; // Occasional crackle
-	deltaPressure += noise;
+	deltaPressure *= deltaPressure; // Basic position to area mapping.
+	if (deltaPressure > 1.0)
+		deltaPressure = 1.0; // Non-linear saturation.
 
 	// The following input scattering assumes the mouthPressure = area.
 	lastFrame_[0] = deltaPressure * mouthPressure + (1.0 - deltaPressure) * borePressure;
@@ -157,11 +146,28 @@ float GramoVoice::gramoPressure()
 	return lastFrame_[0];
 }
 
-void GramoVoice::setStylusFilterCutoff(float cutoff) {stylusFilterCutoff = cutoff;} // Set the cutoff frequency of the stylus filter
+void GramoVoice::setStylusFilterCutoff(float cutoff)
+{
+	stylusFilterCutoff = cutoff; // Set the cutoff frequency of the stylus filter
+	stylusFilter.setLowPass(stylusFilterCutoff); // Set the low-pass filter cutoff frequency
+} 
 void GramoVoice::setNonLinearity(float amount) { nonLinearityAmount = amount; } // Set the non-linearity amount
 void GramoVoice::setNoiseLevel(float level) { noiseLevel = level; } // Set the noise level
-void GramoVoice::setHornDiameter(float diameter) { hornDiameter = diameter; }
-void GramoVoice::setHornStiffness(float stiffness) { hornStiffness = stiffness; }
+void GramoVoice::setHornDiameter(float diameter)
+{
+	hornDiameter = diameter;
+	// stk has no diameter object. revise
+}
+void GramoVoice::setHornStiffness(float stiffness)
+{
+	hornStiffness = stiffness; 
+	// stk has no stiffness object. revise
+}
+void GramoVoice::setHornLength(float length)
+{ 
+	hornLength = length; // Set the horn length
+	// stk has no length object. revise
+}
 
 void GramoVoice::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
 	// Your implementation here

@@ -112,7 +112,7 @@ void VirtualGramoAudioProcessor::prepareToPlay(double sampleRate, int samplesPer
     juce::dsp::ProcessSpec spec = { sampleRate, static_cast<juce::uint32>(samplesPerBlock),
                                     static_cast<juce::uint32>(getMainBusNumOutputChannels()) };
 
-    filterCount = getTotalNumInputChannels(); // Sets the number of filters to the number of input channels.
+    filterCount = getTotalNumOutputChannels(); // Sets the number of filters to the number of output channels.
 	filters.resize(filterCount); // Resizes the filter vector to match the number of channels.
 
     chorus.prepare(spec); // Prepares the chorus effect with the processing spec.

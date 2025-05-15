@@ -28,7 +28,7 @@ public:
     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
 
-    float gramoPressure();
+    float gramoPressure(float inputSample);
     void setHornLength(float length);
     void setHornDiameter(float diameter);
     void setHornStiffness(float stiffness);
@@ -67,10 +67,10 @@ private:
     stk::ADSR adsr;
     stk::SineWave vibrato;
 
-    float lipTarget;
-    float slideTarget;
-    float vibratoGain;
-    float maxPressure;
+	float vinylTarget; // instead of lipTarget, in the context of a gramophone
+    float pitchShiftTarget; // Use for wow and flutter, instead of trombone slides
+    float vibratoGain; // Use for wow and flutter
+	float maxPressure; // Use for stylus pressure
 
     stk::Brass gramoHorn;
 
@@ -89,6 +89,8 @@ private:
     float noiseLevel;
     float hornDiameter;
     float hornStiffness;
+
+    double sampleRateVal;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GramoVoice)
 };
