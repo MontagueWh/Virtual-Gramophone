@@ -6,7 +6,6 @@
               headerPath="../../Source/Libs/assimp/include">
   <MAINGROUP id="ri06i3" name="VG-JUCE">
     <GROUP id="{C6B7CFA8-4DDD-C98A-6124-311CC2B0A917}" name="Source">
-      <GROUP id="{C1BCCB15-67AE-3C55-8065-A526D2D78436}" name="Libs"/>
       <GROUP id="{5F6B544F-0FC9-38DE-56E5-C69B1B2F559C}" name="Audio">
         <GROUP id="{4A89173B-1A98-AC28-D876-EB5DF38BC091}" name="Impulse Response Captures">
           <GROUP id="{9A009993-5A59-4C96-B75D-96B2C0030495}" name="Euphonium">

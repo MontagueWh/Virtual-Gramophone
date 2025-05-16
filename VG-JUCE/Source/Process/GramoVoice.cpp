@@ -95,6 +95,21 @@ void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 
 	juce::AudioFormatReader* reader = nullptr;
 
+	juce::File irFiles[11] =
+	{
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Initial Stage/Attack Initial Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Initial Stage/Attack Initial Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Halfway Stage/Halfway Attack Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Halfway Stage/Halfway Attack Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Decay/Decay Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Decay/Decay Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Sustain/Sustain Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Sustain/Sustain Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Release/Release Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav"
+	};
+
 	for (int i = 0; i < 11; ++i)
 	{
 		reader = audioFormatManager.createReaderFor(irFiles[i]);
@@ -181,16 +196,3 @@ void GramoVoice::updateHornParameters()
 
 
 }
-
-juce::File irFiles[11] = {
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Initial Stage/Attack Initial Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Initial Stage/Attack Initial Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Halfway Stage/Halfway Attack Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Halfway Stage/Halfway Attack Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Decay/Decay Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Decay/Decay Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Sustain/Sustain Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Sustain/Sustain Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Release/Release Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav" };
