@@ -5823,7 +5823,7 @@ namespace BinaryData
     const int            SECURITY_mdSize = 391;
 
     extern const char*   PluginProcessor_cpp;
-    const int            PluginProcessor_cppSize = 11405;
+    const int            PluginProcessor_cppSize = 11407;
 
     extern const char*   PluginProcessor_h;
     const int            PluginProcessor_hSize = 4390;

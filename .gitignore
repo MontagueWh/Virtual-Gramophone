@@ -73,3 +73,6 @@ crashlytics-build.properties
 /VG-Reaper
 /VG-JUCE/Builds
 /VG-JUCE/Source/The Synthesis Tookit
+*.aup3
+*.aup3-wal
+*.aup3-shm
