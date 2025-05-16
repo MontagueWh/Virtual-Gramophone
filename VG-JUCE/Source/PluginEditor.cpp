@@ -19,15 +19,8 @@ VirtualGramoAudioProcessorEditor::VirtualGramoAudioProcessorEditor(VirtualGramoA
 {
     constexpr int TEXT_BOX_SIZE = 25; // Defines the size of the text box for sliders.
 
-    SetupAdditionEffectsParameters(TEXT_BOX_SIZE);
-
-    // Add slider for the gramophone horn's stiffness
-    hornStiffnessParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    hornStiffnessParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    hornStiffnessParam.addListener(this);
-    addAndMakeVisible(hornStiffnessParam);
-	hornStiffnessAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "HORN_STIFFNESS", hornStiffnessParam);
-
+    additionalEffectsParamsSetup(TEXT_BOX_SIZE);
+    gramophoneHornParamsSetup(TEXT_BOX_SIZE);
     wetDryParamSetup(TEXT_BOX_SIZE);
 
     // Adds the info button to the editor.
@@ -56,25 +49,16 @@ void VirtualGramoAudioProcessorEditor::paint(juce::Graphics& g)
     g.setFont(40.0f);
     g.drawFittedText("Virtual Gramophone", getLocalBounds(), juce::Justification::centredTop, 1);
 
-    // Draw contours
-    g.setColour(juce::Colour(0xff123456));
-    DrawThreePointLine(g, 73.0f, 179.0f, 62.0f, 144.0f, 8.0f, 102.0f);
-    DrawThreePointLine(g, 85.0f, 189.0f, 83.0f, 133.0f, 43.0f, 48.0f);
-    DrawThreePointLine(g, 92.0f, 193.0f, 105.0f, 129.0f, 113.0f, 38.0f);
-    DrawThreePointLine(g, 101.0f, 201.0f, 144.0f, 126.0f, 194.0f, 55.0f);
-    DrawThreePointLine(g, 108.0f, 203.0f, 176.0f, 145.0f, 258.0f, 109.0f);
-    DrawThreePointLine(g, 122.0f, 209.0f, 188.0f, 179.0f, 279.0f, 171.0f);
-    DrawThreePointLine(g, 136.0f, 211.0f, 174.0f, 202.0f, 252.0f, 225.0f);
-    DrawThreePointLine(g, 108.0f, 203.0f, 144.0f, 215.0f, 174.0f, 245.0f);
-    DrawThreePointLine(g, 108.0f, 203.0f, 73.0f, 179.0f, 25.0f, 166.0f);
-    g.drawLine(juce::Line<float>(108.0f, 203.0f, 92.0f, 229.0f), LINE_THICKNESS);
+    setupSections();
 
-    SetupSections();
     g.setFont(18.0f);
     g.drawFittedText("COMP", compressTextSection, juce::Justification::left, 1);
     g.drawFittedText("TONE", toneTextSection, juce::Justification::left, 1);
     g.drawFittedText("VIBE", vibratoTextSection, juce::Justification::left, 1);
     g.drawFittedText("DRY", wetDryTextSection, juce::Justification::left, 1);
+    g.drawFittedText("HORN STIFFNESS", hornStiffnessTextSection, juce::Justification::left, 1);
+    g.drawFittedText("HORN DIAMETER", hornDiameterTextSection, juce::Justification::left, 1);
+    g.drawFittedText("HORN LENGTH", hornLengthTextSection, juce::Justification::left, 1);
 }
 
 // Converts a slider's value to an alpha (transparency) value.
@@ -84,25 +68,12 @@ float VirtualGramoAudioProcessorEditor::sliderToAplhaValue(juce::Slider& slider)
     return static_cast<float>((slider.getValue() - slider.getMinimum()) / range);
 }
 
-// Draws a line connecting three points.
-void VirtualGramoAudioProcessorEditor::DrawThreePointLine(juce::Graphics& g,
-    float x1,
-    float y1,
-    float x2,
-    float y2,
-    float x3,
-    float y3)
-{
-    g.drawLine(juce::Line<float>(x1, y1, x2, y2), LINE_THICKNESS);
-    g.drawLine(juce::Line<float>(x2, y2, x3, y3), LINE_THICKNESS);
-}
-
 // Handles resizing and layout of GUI components.
 void VirtualGramoAudioProcessorEditor::resized()
 {
     info_button_.button.setBounds(getWidth() - 35, 10, 20, 20); // Positions the info button.
     info_button_.info_text.setBounds(30, 50, getWidth() - 60, getHeight() - 100); // Positions the info text.
-    SetupSections(); // Updates the layout sections.
+    setupSections(); // Updates the layout sections.
     compressThreshParam.setBounds(compressSection); // Positions the compression slider.
     toneParam.setBounds(toneSection); // Positions the tone slider.
     vibratoDepthParam.setBounds(vibratoDepthSection); // Positions the vibrato slider.
@@ -116,32 +87,41 @@ void VirtualGramoAudioProcessorEditor::resized()
 }
 
 // Sets up the layout sections for the GUI.
-void VirtualGramoAudioProcessorEditor::SetupSections()
+void VirtualGramoAudioProcessorEditor::setupSections()
 {    
     juce::Rectangle<int> r = getLocalBounds(); // Gets the bounds of the editor.
     topSection = r.removeFromTop(50); // Allocates the top section.
     pictureSection = r.removeFromLeft(310); // Allocates the picture section.
 
     juce::Rectangle<int> interfaceSection = r; // Remaining area for the interface.
-    int section_height = interfaceSection.getHeight() / 4; // Divides the interface into four sections.
+    int sectionHeight = interfaceSection.getHeight() / 4; // Divides the interface into four sections.
     constexpr int textSectionWidth = 40; // Width for the text labels.
 
     // Allocates sections for sliders and their labels.
-    compressSection = interfaceSection.removeFromTop(section_height);
+    compressSection = interfaceSection.removeFromTop(sectionHeight);
     compressTextSection = compressSection.removeFromLeft(textSectionWidth);
 
-	toneSection = interfaceSection.removeFromTop(section_height);
+	toneSection = interfaceSection.removeFromTop(sectionHeight);
 	toneTextSection = toneSection.removeFromLeft(textSectionWidth);
 
-	vibratoDepthSection = interfaceSection.removeFromTop(section_height);
+	vibratoDepthSection = interfaceSection.removeFromTop(sectionHeight);
 	vibratoTextSection = vibratoDepthSection.removeFromLeft(textSectionWidth);
-	vibratoRateSection = interfaceSection.removeFromTop(section_height);
+	vibratoRateSection = interfaceSection.removeFromTop(sectionHeight);
 
     wetDrySection = interfaceSection;
     wetDrySection = interfaceSection.removeFromTop(textSectionWidth);
+
+    hornStiffnessSection = interfaceSection.removeFromTop(sectionHeight);
+    hornStiffnessTextSection = hornStiffnessSection.removeFromLeft(40);
+
+    hornDiameterSection = interfaceSection.removeFromTop(sectionHeight);
+    hornDiameterTextSection = hornDiameterSection.removeFromLeft(40);
+
+    hornLengthSection = interfaceSection.removeFromTop(sectionHeight);
+    hornLengthTextSection = hornLengthSection.removeFromLeft(40);
 }
 
-void VirtualGramoAudioProcessorEditor::SetupAdditionEffectsParameters(const int TEXT_BOX_SIZE)
+void VirtualGramoAudioProcessorEditor::additionalEffectsParamsSetup(const int TEXT_BOX_SIZE)
 {
     // Sets up the compression slider.
     compressThreshParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
@@ -181,6 +161,22 @@ void VirtualGramoAudioProcessorEditor::wetDryParamSetup(const int TEXT_BOX_SIZE)
     wetDryParam.addListener(this);
     addAndMakeVisible(wetDryParam);
     wetDryAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "MIX", wetDryParam);
+}
+
+void VirtualGramoAudioProcessorEditor::gramophoneHornParamsSetup(const int TEXT_BOX_SIZE)
+{
+    // Add slider for the gramophone horn's stiffness
+    hornStiffnessParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    hornStiffnessParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    hornStiffnessParam.addListener(this);
+    addAndMakeVisible(hornStiffnessParam);
+    hornStiffnessAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "HORN_STIFFNESS", hornStiffnessParam);
+
+    hornDiameterParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    hornDiameterParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    hornDiameterParam.addListener(this);
+    addAndMakeVisible(hornDiameterParam);
+    hornDiameterAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "HORN_DIAMETER", hornDiameterParam);
 }
 
 // Callback for when a slider's value changes.

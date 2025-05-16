@@ -55,7 +55,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endif // __cplusplus
 
 // Public ASSIMP data structures
-#include <../Source/Libs/assimp/include/assimp/types.h>
+#include <assimp/types.h>
 
 #include <exception>
 

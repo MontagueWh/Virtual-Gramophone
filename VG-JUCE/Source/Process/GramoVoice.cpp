@@ -160,25 +160,24 @@ stk::StkFrames& GramoVoice::tick(stk::StkFrames& frames, unsigned int channel) {
 	return frames;
 }
 
-void GramoVoice::openGlCalculator()
+void GramoVoice::updateHornParameters()
 {
 	OpenGLContext::makeActive(); // Make the OpenGL context active
-	
+
 	float hornDiameter = 0.25f; // Diameter of the horn
 	float hornStiffness = 4.5f; // Stiffness of the horn (brass)
 	float hornLength = 0.75;
-}
 
-void GramoVoice::updateHornParameters()
-{
 	float wavelength = 2.f * 0.25; // Wavelength of the sound wave
 	float soundSpeed = 343.0f; // Speed of sound in air in m/s
 	float freq = soundSpeed / wavelength; // Frequency of the sound wave
 
 	OpenGLContext::attachTo(*this); // Attach OpenGL context to this component
 
-	Stk::setSampleRate(sampleRateVal); // Or whatever default you want
-	gramoHorn.setFrequency(freq); // Set the frequency of the horn
+	float timbreModifier = hornDiameter / (hornStiffness * hornLength); // Timbre modifier based on horn parameters
+	float effectiveFreq = freq * timbreModifier; // Effective frequency based on the horn parameters
+
+	gramoHorn.setFrequency(effectiveFreq); // Set the frequency of the horn
 
 
 }

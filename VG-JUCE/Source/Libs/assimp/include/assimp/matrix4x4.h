@@ -51,9 +51,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #   pragma GCC system_header
 #endif
 
-#include <../Source/Libs/assimp/include/assimp/vector3.h>
-#include <../Source/Libs/assimp/include/assimp/defs.h>
-#include <../Source/Libs/assimp/include/assimp/config.h.in>
+#include <assimp/vector3.h>
+#include <assimp/defs.h>
+#include <assimp/config.h>
 
 #ifdef __cplusplus
 

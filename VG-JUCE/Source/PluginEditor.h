@@ -25,19 +25,19 @@ class VirtualGramoAudioProcessorEditor : public juce::AudioProcessorEditor,
 {
 public:
     explicit VirtualGramoAudioProcessorEditor(VirtualGramoAudioProcessor&); // Constructor that takes a reference to the audio processor.
+    void gramophoneHornParamsSetup(const int TEXT_BOX_SIZE);
     void wetDryParamSetup(const int TEXT_BOX_SIZE);
-    void SetupAdditionEffectsParameters(const int TEXT_BOX_SIZE);
+    void additionalEffectsParamsSetup(const int TEXT_BOX_SIZE);
     ~VirtualGramoAudioProcessorEditor() override; // Destructor for the editor.
 
     //==============================================================================
     void paint(juce::Graphics&) override; // Paints the editor's GUI components.
-    void DrawThreePointLine(juce::Graphics&, float x1, float y1, float x2, float y2, float x3, float y3); // Custom method to draw a line connecting three points.
     void resized() override; // Handles resizing and layout of GUI components.
 
 
 private:
     float sliderToAplhaValue(juce::Slider& slider); // Converts a slider's value to an alpha (transparency) value.
-    void SetupSections(); // Sets up the layout and sections of the GUI.
+    void setupSections(); // Sets up the layout and sections of the GUI.
     void sliderValueChanged(juce::Slider* slider) override; // Callback for when a slider's value changes.
 
     InfoButton info_button_; // Custom button for displaying information about the plugin.
@@ -64,6 +64,12 @@ private:
     juce::Slider hornStiffnessParam; // Slider for changing the stiffness of the gramophone's brass horn
 	SliderAttatchmentPtr hornStiffnessAttach; // Attachment to link the horn stiffness slider to the parameter tree.
 
+    juce::Slider hornDiameterParam; // Slider for changing the diameter of the gramophone's brass horn
+	SliderAttatchmentPtr hornDiameterAttach; // Attachment to link the horn diameter slider to the parameter tree.
+
+	juce::Slider hornLengthParam; // Slider for changing the length of the gramophone's brass horn
+	SliderAttatchmentPtr hornLengthAttach; // Attachment to link the horn length slider to the parameter tree.
+
     // Rectangles defining sections of the GUI layout.
     juce::Rectangle<int> topSection; // Rectangle for the top section of the GUI.
     juce::Rectangle<int> pictureSection; // Rectangle for the picture section of the GUI.
@@ -72,10 +78,20 @@ private:
     juce::Rectangle<int> vibratoDepthSection; // Rectangle for the vibrato slider section.
     juce::Rectangle<int> vibratoRateSection; // Rectangle for the vibrato rate slider section.
     juce::Rectangle<int> wetDrySection; // Rectangle for the mix slider section.
+
     juce::Rectangle<int> compressTextSection; // Rectangle for the compression text label section.
     juce::Rectangle<int> toneTextSection; // Rectangle for the tone text label section.
     juce::Rectangle<int> vibratoTextSection; // Rectangle for the vibrato text label section.
     juce::Rectangle<int> wetDryTextSection; // Rectangle for the mix text label section.
+
+
+	juce::Rectangle<int> hornStiffnessSection; // Rectangle for the horn stiffness text label section.
+	juce::Rectangle<int> hornDiameterSection; // Rectangle for the horn diameter text label section.
+	juce::Rectangle<int> hornLengthSection; // Rectangle for the horn length text label section.
+
+	juce::Rectangle<int> hornStiffnessTextSection; // Rectangle for the horn stiffness text label section.
+	juce::Rectangle<int> hornDiameterTextSection; // Rectangle for the horn diameter text label section.
+	juce::Rectangle<int> hornLengthTextSection; // Rectangle for the horn length text label section.
 
 	//GramoModelLoader gramoModelLoader; // Instance of the GramoModelLoader class for loading 3D models.
 

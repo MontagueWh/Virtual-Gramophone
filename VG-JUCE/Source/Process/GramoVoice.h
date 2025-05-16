@@ -11,7 +11,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include <../Source/Libs/stk/include/Brass.h>
+#include <../Source/Libs/stk_wrapper/stk/include/Brass.h>
 
 //==============================================================================
 /*
@@ -30,10 +30,6 @@ public:
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
 
     float gramoPressure(float inputSample);
-
-    void setStylusFilterCutoff(float cutoff);
-    void setNonLinearity(float amount);
-    void setNoiseLevel(float level);
 
     // Implement pure virtual methods
 	void noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) override;
@@ -79,7 +75,6 @@ private:
     juce::AudioFormatManager audioFormatManager;
 
     void handleImpulseResponse(double sampleRate, int samplesPerBlock);
-    void openGlCalculator();
 
     double sampleRateVal;
 
