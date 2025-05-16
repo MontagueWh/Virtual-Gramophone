@@ -60,20 +60,37 @@ void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 {
 	audioFormatManager.registerBasicFormats();
-	juce::File irFile = "";
-	juce::AudioFormatReader* reader = audioFormatManager.createReaderFor(irFile);
 
-	if (reader)
+	juce::File irFiles[11]; // Array of impulse response files
+	irFiles[0] = "../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Initial Stage/Attack Initial Quiet.wav"; // quiet attack initial impulse response
+	irFiles[1] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Initial Stage/Attack Initial Loud.wav"; // loud attack initial impulse response
+	irFiles[2] = "../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Halfway Stage/Halfway Attack Quiet.wav"; // quiet halfway attack impulse response
+	irFiles[3] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Halfway Stage/Halfway Attack Loud.wav"; // loud halfway attack impulse response
+	irFiles[4] = "../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Decay/Decay Quiet.wav"; // quiet decay impulse response
+	irFiles[5] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Decay/Decay Loud.wav"; // loud decay impulse response
+	irFiles[6] = "../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Sustain/Sustain Quiet.wav"; // quiet sustain impulse response
+	irFiles[7] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Sustain/Sustain Loud.wav"; // loud sustain impulse response
+	irFiles[8] = "../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Release/Release Quiet.wav"; // quiet release impulse response
+	irFiles[9] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav"; // loud halfway release impulse response
+	irFiles[10] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav"; // loud halfway release impulse response
+
+	juce::AudioFormatReader* reader[11];
+	for (int i = 0; i <= 11; i++)
 	{
-		impulseResponse.setSize(1, reader->lengthInSamples); // Always mono
-		reader->read(&impulseResponse, 0, reader->lengthInSamples, 0, true, true);
-		delete reader;
+		audioFormatManager.createReaderFor(irFiles[i]);
 
-		convolution.loadImpulseResponse(
-			impulseResponse,
-			juce::dsp::Convolution::Stereo::no, // Always mono processing
-			juce::dsp::Convolution::Trim::no,
-			impulseResponse.getNumSamples());
+		if (reader[i])
+		{
+			impulseResponse[i].setSize(1, reader[i]->lengthInSamples); // Always mono
+			reader[i]->read(&impulseResponse[i], 0, reader[i]->lengthInSamples, 0, true, true);
+			delete reader;
+
+			convolution[i].loadImpulseResponse(
+				impulseResponse[i],
+				juce::dsp::Convolution::Stereo::no, // Always mono processing
+				juce::dsp::Convolution::Trim::no,
+				impulseResponse[i].getNumSamples());
+		}
 	}
 }
 

@@ -57,6 +57,8 @@ public:
 	bool hasEditor() const override { return nullptr; }
 	juce::AudioProcessorEditor* createEditor() override { return nullptr; }
 
+
+
 private:
     stk::DelayA delayLine;
     stk::BiQuad stylusFilter;
@@ -71,15 +73,12 @@ private:
 
     stk::Brass gramoHorn;
 
-    juce::dsp::Convolution convolution;
-    juce::AudioBuffer<float> impulseResponse;
+    juce::dsp::Convolution convolution[11];
+    juce::AudioBuffer<float> impulseResponse[11];
     juce::AudioFormatManager audioFormatManager;
 
     void handleImpulseResponse(double sampleRate, int samplesPerBlock);
     void openGlCalculator();
-
-    float startAmp = 0.8f;
-    float attackRate = 20.f;
 
     double sampleRateVal;
 

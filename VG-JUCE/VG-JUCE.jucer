@@ -6,9 +6,75 @@
               headerPath="../source/Libs/assimp&#10;../source/LIbs/stk">
   <MAINGROUP id="ri06i3" name="VG-JUCE">
     <GROUP id="{C6B7CFA8-4DDD-C98A-6124-311CC2B0A917}" name="Source">
+      <GROUP id="{5F6B544F-0FC9-38DE-56E5-C69B1B2F559C}" name="Audio">
+        <GROUP id="{4A89173B-1A98-AC28-D876-EB5DF38BC091}" name="Impulse Response Captures">
+          <GROUP id="{9A009993-5A59-4C96-B75D-96B2C0030495}" name="Euphonium">
+            <GROUP id="{2652DA4C-8A2E-3A3A-9F81-5522B288D3EA}" name="Loud">
+              <GROUP id="{1E431DB3-CEDB-F746-1DF5-1A4B818239A4}" name="Attack">
+                <GROUP id="{D5EF4519-3D25-C090-7044-26EC285B1448}" name="Halfway Stage">
+                  <FILE id="eu6zKD" name="Halfway Attack Loud.wav" compile="0" resource="1"
+                        file="Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Halfway Stage/Halfway Attack Loud.wav"/>
+                </GROUP>
+                <GROUP id="{1C72F50F-13F8-17D9-0A60-E56421783FF4}" name="Initial Stage">
+                  <FILE id="yAjh2n" name="Attack Initial Loud.wav" compile="0" resource="1"
+                        file="Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Initial Stage/Attack Initial Loud.wav"/>
+                </GROUP>
+              </GROUP>
+              <GROUP id="{DED4145F-DEB0-FA70-FB44-84CE5A96B344}" name="Decay">
+                <FILE id="py1Xxi" name="Decay Loud.wav" compile="0" resource="1" file="Source/Audio/Impulse Response Captures/Euphonium/Loud/Decay/Decay Loud.wav"/>
+              </GROUP>
+              <GROUP id="{19F2ED86-4111-9E3F-CC99-7F4501B7B17F}" name="Release">
+                <GROUP id="{FA298725-645F-9571-03E7-F05F63D76824}" name="Halfway Stage">
+                  <FILE id="IedLVx" name="Halfway Release Loud.wav" compile="0" resource="1"
+                        file="Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav"/>
+                </GROUP>
+                <GROUP id="{D8945C41-458B-DEE0-B9D6-BAB031DD93E8}" name="Initial Stage">
+                  <FILE id="L1Wvle" name="Release Initial Loud.wav" compile="0" resource="1"
+                        file="Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav"/>
+                </GROUP>
+              </GROUP>
+              <GROUP id="{B1C04106-A336-16B2-9199-0D5195D30465}" name="Sustain">
+                <FILE id="i4Hu1x" name="Sustain Loud.wav" compile="0" resource="1"
+                      file="Source/Audio/Impulse Response Captures/Euphonium/Loud/Sustain/Sustain Loud.wav"/>
+              </GROUP>
+            </GROUP>
+            <GROUP id="{9D830AE1-8A59-CE5D-D816-653EB911CD55}" name="Medium">
+              <GROUP id="{A9853B44-A929-F646-F564-927246CA5939}" name="Attack"/>
+              <GROUP id="{F94B2A12-EA62-3E9D-0CB5-A9BE3E2482D3}" name="Decay"/>
+              <GROUP id="{A6AE798D-6D90-EE77-940B-964862CCDAEA}" name="Release"/>
+              <GROUP id="{EF7E96ED-ADE4-A62C-694E-51E6E297D8B0}" name="Sustain"/>
+            </GROUP>
+            <GROUP id="{A3DC6073-12A9-1423-6CBF-B251A3E19EAB}" name="Quiet">
+              <GROUP id="{71EFF0FF-6BBE-F7C3-87D7-FAE91BCE46AE}" name="Attack">
+                <GROUP id="{9C8DFBA9-5F82-763C-2806-6EAC37B90165}" name="Halfway Stage">
+                  <FILE id="Zc77fI" name="Halfway Attack Quiet.wav" compile="0" resource="1"
+                        file="Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Halfway Stage/Halfway Attack Quiet.wav"/>
+                </GROUP>
+                <GROUP id="{B96CE1F5-F238-4321-2AAB-FFCA4588236E}" name="Initial Stage">
+                  <FILE id="O1MWzm" name="Attack Initial Quiet.wav" compile="0" resource="1"
+                        file="Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Initial Stage/Attack Initial Quiet.wav"/>
+                </GROUP>
+              </GROUP>
+              <GROUP id="{B51A27DD-5DA1-3F9E-0AA5-70A73BAD9CE8}" name="Decay">
+                <FILE id="CRkJfU" name="Decay Quiet.wav" compile="0" resource="1" file="Source/Audio/Impulse Response Captures/Euphonium/Quiet/Decay/Decay Quiet.wav"/>
+              </GROUP>
+              <GROUP id="{F97A4E14-33DC-360E-2276-ACA0BC606B38}" name="Release">
+                <FILE id="FinsnJ" name="Release Quiet.wav" compile="0" resource="1"
+                      file="Source/Audio/Impulse Response Captures/Euphonium/Quiet/Release/Release Quiet.wav"/>
+              </GROUP>
+              <GROUP id="{A36ACAED-2D9E-9D31-FEE5-FE2A84C82028}" name="Sustain">
+                <FILE id="uyY8hy" name="Sustain Quiet.wav" compile="0" resource="1"
+                      file="Source/Audio/Impulse Response Captures/Euphonium/Quiet/Sustain/Sustain Quiet.wav"/>
+              </GROUP>
+            </GROUP>
+          </GROUP>
+        </GROUP>
+      </GROUP>
       <GROUP id="{4127AA83-C225-CC84-3C12-9222C043A424}" name="Process">
-        <FILE id="OTxVFp" name="GramoVoice.cpp" compile="1" resource="0" file="Source/Process/GramoVoice.cpp"/>
-        <FILE id="gfNAEM" name="GramoVoice.h" compile="0" resource="0" file="Source/Process/GramoVoice.h"/>
+        <FILE id="OTxVFp" name="GramoVoice.cpp" compile="1" resource="1" file="Source/Process/GramoVoice.cpp"
+              xcodeResource="1"/>
+        <FILE id="gfNAEM" name="GramoVoice.h" compile="0" resource="1" file="Source/Process/GramoVoice.h"
+              xcodeResource="1"/>
       </GROUP>
       <GROUP id="{AE384994-363B-3893-0A95-E1953F6BA69B}" name="UI">
         <FILE id="BnItlJ" name="GramoModelLoader.cpp" compile="1" resource="1"
