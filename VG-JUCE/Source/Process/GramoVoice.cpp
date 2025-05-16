@@ -67,22 +67,29 @@ void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 	irFiles[9] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav"; // loud halfway release impulse response
 	irFiles[10] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav"; // loud halfway release impulse response
 
-	juce::AudioFormatReader* reader[11];
-	for (int i = 0; i <= 11; i++)
+	juce::AudioFormatReader* reader[11] = { nullptr }; // Initialize reader array
+	for (int i = 0; i < 11; i++) // Ensure i < 11 for proper indexing
 	{
-		audioFormatManager.createReaderFor(irFiles[i]);
+		reader[i] = audioFormatManager.createReaderFor(irFiles[i]);
 
-		if (reader[i])
+		if (reader[i] != nullptr) // Check if reader[i] is valid
 		{
-			impulseResponse[i].setSize(1, reader[i]->lengthInSamples); // Always mono
-			reader[i]->read(&impulseResponse[i], 0, reader[i]->lengthInSamples, 0, true, true);
-			delete reader;
+			// Set buffer size to match the number of samples in the file
+			impulseResponse[i].setSize(1, static_cast<int>(reader[i]->lengthInSamples));
 
+			// Read the audio data into the buffer
+			reader[i]->read(&impulseResponse[i], 0, static_cast<int>(reader[i]->lengthInSamples), 0, true, true);
+
+			// Load the impulse response into the convolution processor
 			convolution[i].loadImpulseResponse(
 				impulseResponse[i],
 				juce::dsp::Convolution::Stereo::no, // Always mono processing
 				juce::dsp::Convolution::Trim::no,
-				impulseResponse[i].getNumSamples());
+				impulseResponse[i].getNumSamples()
+			);
+
+			delete reader[i]; // Free the allocated memory
+			reader[i] = nullptr; // Reset the pointer to avoid dangling references
 		}
 	}
 }

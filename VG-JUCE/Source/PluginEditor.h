@@ -25,6 +25,7 @@ class VirtualGramoAudioProcessorEditor : public juce::AudioProcessorEditor,
 {
 public:
     explicit VirtualGramoAudioProcessorEditor(VirtualGramoAudioProcessor&); // Constructor that takes a reference to the audio processor.
+    void SetupAdditionEffectsParameters(const int TEXT_BOX_SIZE);
     ~VirtualGramoAudioProcessorEditor() override; // Destructor for the editor.
 
     //==============================================================================

@@ -112,21 +112,7 @@ void VirtualGramoAudioProcessor::prepareToPlay(double sampleRate, int samplesPer
     juce::dsp::ProcessSpec spec = { sampleRate, static_cast<juce::uint32>(samplesPerBlock),
                                     static_cast<juce::uint32>(getMainBusNumOutputChannels()) };
 
-    filterCount = getTotalNumOutputChannels(); // Sets the number of filters to the number of output channels.
-	filters.resize(filterCount); // Resizes the filter vector to match the number of channels.
-
-    chorus.prepare(spec); // Prepares the chorus effect with the processing spec.
-    mix.prepare(spec);    // Prepares the wet/dry mix processor.
-
-    // Retrieves the initial frequency value from the parameter tree.
-    float frequency = apvts.getRawParameterValue("TONE")->load();
-
-    // Prepares and configures the band-pass filters for each channel.
-	for (int i = 0; i < filterCount; ++i)
-	{
-		filters[i].prepare(spec); // Prepares each filter with the processing spec.
-		filters[i].coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(sampleRate, frequency, 6.0f); // Sets the filter coefficients.
-	}
+    PrepareAdditionalEffects(spec, sampleRate);
 }
 
 // Releases resources when playback stops.
@@ -183,26 +169,7 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
     {
         for (int channel = 0; channel < totalNumInputChannels; ++channel)
         {            
-            // Retrieves parameter values for compression and tone.
-            float threshold = apvts.getRawParameterValue("COMPRESS")->load();
-            float frequency = apvts.getRawParameterValue("TONE")->load();
-
-            // Apply compression
-            float in = buffer.getReadPointer(channel)[sample];
-            if (in >= threshold)
-                buffer.getWritePointer(channel)[sample] = (in / 4) + (3 * threshold / 4);
-            else if (in <= -threshold)
-                buffer.getWritePointer(channel)[sample] = (in / 4) - (3 * threshold / 4);
-
-            // Applies makeup gain to the signal.
-            *buffer.getWritePointer(channel, sample) *= 5.0f - (11.0f * threshold * threshold);
-
-            // Applies a band-pass filter to the signal for each channel
-			for (int i = 0; i < filterCount; ++i)
-			{
-				filters[i].coefficients = *juce::dsp::IIR::Coefficients<float>::makeBandPass(getSampleRate(), frequency, 2.7f);
-				buffer.getWritePointer(channel)[sample] = filters[i].processSample(buffer.getReadPointer(channel)[sample]);
-			}
+            ProcessCompressionAndTone(buffer, channel, sample);
         }
     }
 
@@ -210,13 +177,7 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
     auto block = juce::dsp::AudioBlock<float>(buffer);
     auto contextToUse = juce::dsp::ProcessContextReplacing<float>(block);
 
-    // Configures and processes the chorus effect.
-    chorus.setRate(apvts.getRawParameterValue("VIBRATO_RATE")->load());
-    chorus.setDepth(apvts.getRawParameterValue("VIBRATO")->load());
-    chorus.setCentreDelay(1.0f);
-    chorus.setFeedback(0.0f);
-    chorus.setMix(1.0f);
-    chorus.process(contextToUse);
+    ProcessChorusEffect(contextToUse);
 
     // Configures and applies the wet/dry mix.
     mix.setWetMixProportion(1.0f - apvts.getRawParameterValue("MIX")->load());
@@ -274,4 +235,59 @@ juce::AudioProcessorValueTreeState::ParameterLayout VirtualGramoAudioProcessor::
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new VirtualGramoAudioProcessor(); // Creates and returns a new instance of the processor.
+}
+
+void VirtualGramoAudioProcessor::PrepareAdditionalEffects(juce::dsp::ProcessSpec& spec, double sampleRate)
+{
+    filterCount = getTotalNumOutputChannels(); // Sets the number of filters to the number of output channels.
+    filters.resize(filterCount); // Resizes the filter vector to match the number of channels.
+
+    chorus.prepare(spec); // Prepares the chorus effect with the processing spec.
+    mix.prepare(spec);    // Prepares the wet/dry mix processor.
+
+    // Retrieves the initial frequency value from the parameter tree.
+    float frequency = apvts.getRawParameterValue("TONE")->load();
+
+    // Prepares and configures the band-pass filters for each channel.
+    for (int i = 0; i < filterCount; ++i)
+    {
+        filters[i].prepare(spec); // Prepares each filter with the processing spec.
+        filters[i].coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(sampleRate, frequency, 6.0f); // Sets the filter coefficients.
+    }
+}
+
+
+void VirtualGramoAudioProcessor::ProcessChorusEffect(juce::dsp::ProcessContextReplacing<float>& contextToUse)
+{
+    // Configures and processes the chorus effect.
+    chorus.setRate(apvts.getRawParameterValue("VIBRATO_RATE")->load());
+    chorus.setDepth(apvts.getRawParameterValue("VIBRATO")->load());
+    chorus.setCentreDelay(1.0f);
+    chorus.setFeedback(0.0f);
+    chorus.setMix(1.0f);
+    chorus.process(contextToUse);
+}
+
+void VirtualGramoAudioProcessor::ProcessCompressionAndTone(juce::AudioSampleBuffer& buffer, int channel, int sample)
+{
+    // Retrieves parameter values for compression and tone.
+    float threshold = apvts.getRawParameterValue("COMPRESS")->load();
+    float frequency = apvts.getRawParameterValue("TONE")->load();
+
+    // Apply compression
+    float in = buffer.getReadPointer(channel)[sample];
+    if (in >= threshold)
+        buffer.getWritePointer(channel)[sample] = (in / 4) + (3 * threshold / 4);
+    else if (in <= -threshold)
+        buffer.getWritePointer(channel)[sample] = (in / 4) - (3 * threshold / 4);
+
+    // Applies makeup gain to the signal.
+    *buffer.getWritePointer(channel, sample) *= 5.0f - (11.0f * threshold * threshold);
+
+    // Applies a band-pass filter to the signal for each channel
+    for (int i = 0; i < filterCount; ++i)
+    {
+        filters[i].coefficients = *juce::dsp::IIR::Coefficients<float>::makeBandPass(getSampleRate(), frequency, 2.7f);
+        buffer.getWritePointer(channel)[sample] = filters[i].processSample(buffer.getReadPointer(channel)[sample]);
+    }
 }

@@ -19,35 +19,7 @@ VirtualGramoAudioProcessorEditor::VirtualGramoAudioProcessorEditor(VirtualGramoA
 {
     constexpr int TEXT_BOX_SIZE = 25; // Defines the size of the text box for sliders.
 
-    // Sets up the compression slider.
-    compressThreshParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
-    compressThreshParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
-    compressThreshParam.addListener(this); // Adds this editor as a listener for slider changes.
-    addAndMakeVisible(compressThreshParam); // Makes the slider visible in the editor.
-
-    // Links the compression slider to the "COMPRESS" parameter in the processor's parameter tree.
-    compressThreshAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "COMPRESS", compressThreshParam);
-
-    // Sets up the tone slider.
-    toneParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    toneParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    toneParam.addListener(this);
-    addAndMakeVisible(toneParam);
-    toneAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "TONE", toneParam);
-
-    // Sets up the vibrato slider.
-    vibratoDepthParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    vibratoDepthParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    vibratoDepthParam.addListener(this);
-    addAndMakeVisible(vibratoDepthParam);
-    vibratoDepthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_DEPTH", vibratoDepthParam);
-
-    // Sets up the vibrato rate slider.
-    vibratoRateParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    vibratoRateParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    vibratoRateParam.addListener(this);
-    addAndMakeVisible(vibratoRateParam);
-    vibratoRateAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_RATE", vibratoRateParam);
+    SetupAdditionEffectsParameters(TEXT_BOX_SIZE);
 
     // Sets up the mix slider.
     wetDryParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
@@ -165,6 +137,39 @@ void VirtualGramoAudioProcessorEditor::SetupSections()
 
     wetDrySection = interfaceSection;
     wetDrySection = interfaceSection.removeFromTop(textSectionWidth);
+}
+
+void VirtualGramoAudioProcessorEditor::SetupAdditionEffectsParameters(const int TEXT_BOX_SIZE)
+{
+    // Sets up the compression slider.
+    compressThreshParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
+    compressThreshParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
+    compressThreshParam.addListener(this); // Adds this editor as a listener for slider changes.
+    addAndMakeVisible(compressThreshParam); // Makes the slider visible in the editor.
+
+    // Links the compression slider to the "COMPRESS" parameter in the processor's parameter tree.
+    compressThreshAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "COMPRESS", compressThreshParam);
+
+    // Sets up the tone slider.
+    toneParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    toneParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    toneParam.addListener(this);
+    addAndMakeVisible(toneParam);
+    toneAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "TONE", toneParam);
+
+    // Sets up the vibrato slider.
+    vibratoDepthParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    vibratoDepthParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    vibratoDepthParam.addListener(this);
+    addAndMakeVisible(vibratoDepthParam);
+    vibratoDepthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_DEPTH", vibratoDepthParam);
+
+    // Sets up the vibrato rate slider.
+    vibratoRateParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    vibratoRateParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    vibratoRateParam.addListener(this);
+    addAndMakeVisible(vibratoRateParam);
+    vibratoRateAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_RATE", vibratoRateParam);
 }
 
 // Callback for when a slider's value changes.
