@@ -50,46 +50,6 @@ void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 	// Initialise STK Brass parameters. These need replacing with working objects.
 }
 
-void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
-{
-	audioFormatManager.registerBasicFormats();
-
-	juce::File irFiles[11] = {
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Initial Stage/Attack Initial Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Initial Stage/Attack Initial Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Halfway Stage/Halfway Attack Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Halfway Stage/Halfway Attack Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Decay/Decay Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Decay/Decay Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Sustain/Sustain Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Sustain/Sustain Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Release/Release Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav" };
-
-	juce::AudioFormatReader* reader = nullptr;
-
-	for (int i = 0; i < 11; ++i)
-	{
-		reader = audioFormatManager.createReaderFor(irFiles[i]);
-
-		if (reader != nullptr)
-		{
-			impulseResponse[i].setSize(1, static_cast<int>(reader->lengthInSamples));
-			reader->read(&impulseResponse[i], 0, static_cast<int>(reader->lengthInSamples), 0, true, true);
-
-			convolution[i].loadImpulseResponse(
-				std::move(impulseResponse[i]),
-				reader->sampleRate,
-				juce::dsp::Convolution::Stereo::no,
-				juce::dsp::Convolution::Trim::no,
-				juce::dsp::Convolution::Normalise::yes);
-
-			delete reader;
-		}
-	}
-}
-
 void GramoVoice::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
@@ -127,6 +87,33 @@ bool GramoVoice::isBusesLayoutSupported(const BusesLayout& layouts) const
 #endif
 
 	return true; // Allow all other valid layouts.
+}
+
+void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
+{
+	audioFormatManager.registerBasicFormats();
+
+	juce::AudioFormatReader* reader = nullptr;
+
+	for (int i = 0; i < 11; ++i)
+	{
+		reader = audioFormatManager.createReaderFor(irFiles[i]);
+
+		if (reader != nullptr)
+		{
+			impulseResponse[i].setSize(1, static_cast<int>(reader->lengthInSamples));
+			reader->read(&impulseResponse[i], 0, static_cast<int>(reader->lengthInSamples), 0, true, true);
+
+			convolution[i].loadImpulseResponse(
+				std::move(impulseResponse[i]),
+				reader->sampleRate,
+				juce::dsp::Convolution::Stereo::no,
+				juce::dsp::Convolution::Trim::no,
+				juce::dsp::Convolution::Normalise::yes);
+
+			delete reader;
+		}
+	}
 }
 
 float GramoVoice::gramoPressure(float inputSample)
@@ -192,4 +179,19 @@ void GramoVoice::updateHornParameters()
 
 	Stk::setSampleRate(sampleRateVal); // Or whatever default you want
 	gramoHorn.setFrequency(freq); // Set the frequency of the horn
+
+
 }
+
+juce::File irFiles[11] = {
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Initial Stage/Attack Initial Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Initial Stage/Attack Initial Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Halfway Stage/Halfway Attack Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Halfway Stage/Halfway Attack Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Decay/Decay Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Decay/Decay Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Sustain/Sustain Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Sustain/Sustain Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Release/Release Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav" };

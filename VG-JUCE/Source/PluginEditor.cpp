@@ -21,12 +21,14 @@ VirtualGramoAudioProcessorEditor::VirtualGramoAudioProcessorEditor(VirtualGramoA
 
     SetupAdditionEffectsParameters(TEXT_BOX_SIZE);
 
-    // Sets up the mix slider.
-    wetDryParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    wetDryParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    wetDryParam.addListener(this);
-    addAndMakeVisible(wetDryParam);
-    wetDryAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "MIX", wetDryParam);
+    // Add slider for the gramophone horn's stiffness
+    hornStiffnessParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    hornStiffnessParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    hornStiffnessParam.addListener(this);
+    addAndMakeVisible(hornStiffnessParam);
+	hornStiffnessAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "HORN_STIFFNESS", hornStiffnessParam);
+
+    wetDryParamSetup(TEXT_BOX_SIZE);
 
     // Adds the info button to the editor.
     info_button_.addToEditor(this);
@@ -170,6 +172,15 @@ void VirtualGramoAudioProcessorEditor::SetupAdditionEffectsParameters(const int 
     vibratoRateParam.addListener(this);
     addAndMakeVisible(vibratoRateParam);
     vibratoRateAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_RATE", vibratoRateParam);
+}
+void VirtualGramoAudioProcessorEditor::wetDryParamSetup(const int TEXT_BOX_SIZE)
+{
+    // Sets up the mix slider.
+    wetDryParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    wetDryParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    wetDryParam.addListener(this);
+    addAndMakeVisible(wetDryParam);
+    wetDryAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "MIX", wetDryParam);
 }
 
 // Callback for when a slider's value changes.

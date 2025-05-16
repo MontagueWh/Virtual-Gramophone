@@ -25,6 +25,7 @@ class VirtualGramoAudioProcessorEditor : public juce::AudioProcessorEditor,
 {
 public:
     explicit VirtualGramoAudioProcessorEditor(VirtualGramoAudioProcessor&); // Constructor that takes a reference to the audio processor.
+    void wetDryParamSetup(const int TEXT_BOX_SIZE);
     void SetupAdditionEffectsParameters(const int TEXT_BOX_SIZE);
     ~VirtualGramoAudioProcessorEditor() override; // Destructor for the editor.
 
@@ -59,6 +60,9 @@ private:
 
     juce::Slider wetDryParam; // Slider for controlling the wet/dry mix parameter.
     SliderAttatchmentPtr wetDryAttach; // Attachment to link the mix slider to the parameter tree.
+
+    juce::Slider hornStiffnessParam; // Slider for changing the stiffness of the gramophone's brass horn
+	SliderAttatchmentPtr hornStiffnessAttach; // Attachment to link the horn stiffness slider to the parameter tree.
 
     // Rectangles defining sections of the GUI layout.
     juce::Rectangle<int> topSection; // Rectangle for the top section of the GUI.

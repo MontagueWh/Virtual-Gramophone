@@ -42,10 +42,10 @@ namespace BinaryData
     const int            Sustain_Quiet_wavSize = 2386;
 
     extern const char*   GramoVoice_cpp;
-    const int            GramoVoice_cppSize = 7070;
+    const int            GramoVoice_cppSize = 6662;
 
     extern const char*   GramoVoice_h;
-    const int            GramoVoice_hSize = 3320;
+    const int            GramoVoice_hSize = 3354;
 
     extern const char*   GramoModelLoader_cpp;
     const int            GramoModelLoader_cppSize = 7228;
@@ -5862,16 +5862,16 @@ namespace BinaryData
     const int            SECURITY_mdSize = 391;
 
     extern const char*   PluginProcessor_cpp;
-    const int            PluginProcessor_cppSize = 11407;
+    const int            PluginProcessor_cppSize = 11846;
 
     extern const char*   PluginProcessor_h;
-    const int            PluginProcessor_hSize = 4390;
+    const int            PluginProcessor_hSize = 4658;
 
     extern const char*   PluginEditor_cpp;
-    const int            PluginEditor_cppSize = 8498;
+    const int            PluginEditor_cppSize = 9135;
 
     extern const char*   PluginEditor_h;
-    const int            PluginEditor_hSize = 4609;
+    const int            PluginEditor_hSize = 4882;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
     const int namedResourceListSize = 1955;
