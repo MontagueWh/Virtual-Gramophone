@@ -17,14 +17,7 @@ GramoVoice::GramoVoice()
 	// In your constructor, you should add any child components, and
 	// initialise any special settings that your component needs.
 
-	float wavelength = 2.f * 0.25; // Wavelength of the sound wave
-	float soundSpeed = 343.0f; // Speed of sound in air in m/s
-	float freq = soundSpeed / wavelength; // Frequency of the sound wave
-
-	OpenGLContext::attachTo(*this); // Attach OpenGL context to this component
-
-	Stk::setSampleRate(sampleRateVal); // Or whatever default you want
-	gramoHorn.setFrequency(freq); // Set the frequency of the horn
+	updateHornParameters();
 }
 
 GramoVoice::~GramoVoice()
@@ -50,7 +43,7 @@ void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 	spec.maximumBlockSize = samplesPerBlock;
 	spec.numChannels = 1;
 
-	convolution.prepare(spec); // Prepare the convolution processor
+	for (int i = 0; i <= 11; i++) convolution[i].prepare(spec); // Prepare the convolution processor
 
 	handleImpulseResponse(sampleRate, samplesPerBlock); // Handle the impulse response
 
@@ -184,4 +177,16 @@ void GramoVoice::openGlCalculator()
 	float hornDiameter = 0.25f; // Diameter of the horn
 	float hornStiffness = 4.5f; // Stiffness of the horn (brass)
 	float hornLength = 0.75;
+}
+
+void GramoVoice::updateHornParameters()
+{
+	float wavelength = 2.f * 0.25; // Wavelength of the sound wave
+	float soundSpeed = 343.0f; // Speed of sound in air in m/s
+	float freq = soundSpeed / wavelength; // Frequency of the sound wave
+
+	OpenGLContext::attachTo(*this); // Attach OpenGL context to this component
+
+	Stk::setSampleRate(sampleRateVal); // Or whatever default you want
+	gramoHorn.setFrequency(freq); // Set the frequency of the horn
 }

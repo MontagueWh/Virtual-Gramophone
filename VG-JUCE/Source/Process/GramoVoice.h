@@ -20,6 +20,7 @@ class GramoVoice : public juce::Component, public stk::Instrmnt, public juce::Au
 {
 public:
     GramoVoice();
+    void updateHornParameters();
     ~GramoVoice() override;
 
 	void prepareToPlay(double sampleRate, int samplesPerBlock) override;
