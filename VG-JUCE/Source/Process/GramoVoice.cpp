@@ -54,42 +54,38 @@ void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 {
 	audioFormatManager.registerBasicFormats();
 
-	juce::File irFiles[11]; // Array of impulse response files
-	irFiles[0] = "../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Initial Stage/Attack Initial Quiet.wav"; // quiet attack initial impulse response
-	irFiles[1] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Initial Stage/Attack Initial Loud.wav"; // loud attack initial impulse response
-	irFiles[2] = "../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Halfway Stage/Halfway Attack Quiet.wav"; // quiet halfway attack impulse response
-	irFiles[3] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Halfway Stage/Halfway Attack Loud.wav"; // loud halfway attack impulse response
-	irFiles[4] = "../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Decay/Decay Quiet.wav"; // quiet decay impulse response
-	irFiles[5] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Decay/Decay Loud.wav"; // loud decay impulse response
-	irFiles[6] = "../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Sustain/Sustain Quiet.wav"; // quiet sustain impulse response
-	irFiles[7] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Sustain/Sustain Loud.wav"; // loud sustain impulse response
-	irFiles[8] = "../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Release/Release Quiet.wav"; // quiet release impulse response
-	irFiles[9] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav"; // loud halfway release impulse response
-	irFiles[10] = "../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav"; // loud halfway release impulse response
+	juce::File irFiles[11] = {
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Initial Stage/Attack Initial Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Initial Stage/Attack Initial Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Halfway Stage/Halfway Attack Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Halfway Stage/Halfway Attack Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Decay/Decay Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Decay/Decay Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Sustain/Sustain Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Sustain/Sustain Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Release/Release Quiet.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav",
+		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav" };
 
-	juce::AudioFormatReader* reader[11] = { nullptr }; // Initialize reader array
-	for (int i = 0; i < 11; i++) // Ensure i < 11 for proper indexing
+	juce::AudioFormatReader* reader = nullptr;
+
+	for (int i = 0; i < 11; ++i)
 	{
-		reader[i] = audioFormatManager.createReaderFor(irFiles[i]);
+		reader = audioFormatManager.createReaderFor(irFiles[i]);
 
-		if (reader[i] != nullptr) // Check if reader[i] is valid
+		if (reader != nullptr)
 		{
-			// Set buffer size to match the number of samples in the file
-			impulseResponse[i].setSize(1, static_cast<int>(reader[i]->lengthInSamples));
+			impulseResponse[i].setSize(1, static_cast<int>(reader->lengthInSamples));
+			reader->read(&impulseResponse[i], 0, static_cast<int>(reader->lengthInSamples), 0, true, true);
 
-			// Read the audio data into the buffer
-			reader[i]->read(&impulseResponse[i], 0, static_cast<int>(reader[i]->lengthInSamples), 0, true, true);
-
-			// Load the impulse response into the convolution processor
 			convolution[i].loadImpulseResponse(
-				impulseResponse[i],
-				juce::dsp::Convolution::Stereo::no, // Always mono processing
+				std::move(impulseResponse[i]),
+				reader->sampleRate,
+				juce::dsp::Convolution::Stereo::no,
 				juce::dsp::Convolution::Trim::no,
-				impulseResponse[i].getNumSamples()
-			);
+				juce::dsp::Convolution::Normalise::yes);
 
-			delete reader[i]; // Free the allocated memory
-			reader[i] = nullptr; // Reset the pointer to avoid dangling references
+			delete reader;
 		}
 	}
 }
