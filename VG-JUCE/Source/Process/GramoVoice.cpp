@@ -32,18 +32,14 @@ void GramoVoice::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
 	// Prepare to play method for the audio source JUCE method
-	sampleRateVal = sampleRate; // Share the sample rate with other functions
+	sampleRateVal = sampleRate;
 
-	setSampleRate(sampleRate); // Set the sample rate
-	Stk::setSampleRate(sampleRate); // Set the sample rate for STK
+	setSampleRate(sampleRate);
+	Stk::setSampleRate(sampleRate);
 
-	// Convolution setup
-	juce::dsp::ProcessSpec spec;
-	spec.sampleRate = sampleRate;
-	spec.maximumBlockSize = samplesPerBlock;
-	spec.numChannels = 1;
+	juce::dsp::ProcessSpec spec{ sampleRate, static_cast<juce::uint32>(samplesPerBlock), 1 };
 
-	for (int i = 0; i <= 11; i++) convolution[i].prepare(spec); // Prepare the convolution processor
+	for (auto& conv : convolution) conv.prepare(spec); // Prepare the convolution objects
 
 	handleImpulseResponse(sampleRate, samplesPerBlock); // Handle the impulse response
 
