@@ -6,6 +6,20 @@
               headerPath="../../Source/Libs/assimp/include">
   <MAINGROUP id="ri06i3" name="VG-JUCE">
     <GROUP id="{C6B7CFA8-4DDD-C98A-6124-311CC2B0A917}" name="Source">
+      <GROUP id="{48B51FB5-C00C-5CB1-2671-3065A6E5CB48}" name="Libs">
+        <GROUP id="{1D02E388-06BA-D792-A6D1-04035AF73022}" name="assimp">
+          <FILE id="MqaLh7" name="camera.h" compile="0" resource="1" file="Source/Libs/assimp/include/assimp/camera.h"
+                xcodeResource="1"/>
+          <FILE id="mvZu9B" name="Importer.hpp" compile="0" resource="1" file="Source/Libs/assimp/include/assimp/Importer.hpp"
+                xcodeResource="1"/>
+          <FILE id="fabfby" name="mesh.h" compile="0" resource="1" file="Source/Libs/assimp/include/assimp/mesh.h"
+                xcodeResource="1"/>
+          <FILE id="Q4a7dt" name="postprocess.h" compile="0" resource="1" file="Source/Libs/assimp/include/assimp/postprocess.h"
+                xcodeResource="1"/>
+          <FILE id="J1nrUz" name="scene.h" compile="0" resource="1" file="Source/Libs/assimp/include/assimp/scene.h"
+                xcodeResource="1"/>
+        </GROUP>
+      </GROUP>
       <GROUP id="{5F6B544F-0FC9-38DE-56E5-C69B1B2F559C}" name="Audio">
         <GROUP id="{4A89173B-1A98-AC28-D876-EB5DF38BC091}" name="Impulse Response Captures">
           <GROUP id="{9A009993-5A59-4C96-B75D-96B2C0030495}" name="Euphonium">

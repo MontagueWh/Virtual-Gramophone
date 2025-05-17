@@ -8,6 +8,21 @@
 
 namespace BinaryData
 {
+    extern const char*   camera_h;
+    const int            camera_hSize = 8109;
+
+    extern const char*   Importer_hpp;
+    const int            Importer_hppSize = 31287;
+
+    extern const char*   mesh_h;
+    const int            mesh_hSize = 38946;
+
+    extern const char*   postprocess_h;
+    const int            postprocess_hSize = 33714;
+
+    extern const char*   scene_h;
+    const int            scene_hSize = 17564;
+
     extern const char*   Halfway_Attack_Loud_wav;
     const int            Halfway_Attack_Loud_wavSize = 3346;
 
@@ -75,7 +90,7 @@ namespace BinaryData
     const int            PluginEditor_hSize = 5864;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 22;
+    const int namedResourceListSize = 27;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

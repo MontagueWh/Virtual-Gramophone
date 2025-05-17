@@ -113,6 +113,8 @@ void VirtualGramoAudioProcessor::prepareToPlay(double sampleRate, int samplesPer
                                     static_cast<juce::uint32>(getMainBusNumOutputChannels()) };
 
     PrepareAdditionalEffects(spec, sampleRate);
+
+	gramoVoice.prepareToPlay(sampleRate, samplesPerBlock); // Prepares the GramoVoice for playback.
 }
 
 // Releases resources when playback stops.
@@ -150,18 +152,13 @@ bool VirtualGramoAudioProcessor::isBusesLayoutSupported(const BusesLayout& layou
 #endif
 
 // Processes audio and MIDI data for each block of samples.
-void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midiMessages*/)
+void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals; // Ensures denormalized numbers are handled correctly.
     auto totalNumInputChannels = getTotalNumInputChannels(); // Gets the number of input channels.
     auto totalNumOutputChannels = getTotalNumOutputChannels(); // Gets the number of output channels.
 
-    // Clears any output channels that don't have corresponding input channels.
-    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-    {
-        buffer.clear(i, 0, buffer.getNumSamples());
-    }
-
+    gramoVoice.processBlock(buffer, midiMessages); // Processes the audio data using the GramoVoice.
     mix.pushDrySamples(buffer); // Pushes the dry signal into the mix processor.
 
     // Processes each sample in the buffer.

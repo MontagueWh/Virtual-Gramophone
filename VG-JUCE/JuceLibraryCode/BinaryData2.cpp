@@ -10,7 +10,7 @@ namespace BinaryData
 {
 
 //================== InfoButton.cpp ==================
-static const unsigned char temp_binary_data_16[] =
+static const unsigned char temp_binary_data_21[] =
 "#include \"InfoButton.h\"\n"
 "\n"
 "InfoButton::InfoButton (juce::Colour colour)\n"
@@ -60,10 +60,10 @@ static const unsigned char temp_binary_data_16[] =
 "{\n"
 "}\n";
 
-const char* InfoButton_cpp = (const char*) temp_binary_data_16;
+const char* InfoButton_cpp = (const char*) temp_binary_data_21;
 
 //================== InfoButton.h ==================
-static const unsigned char temp_binary_data_17[] =
+static const unsigned char temp_binary_data_22[] =
 "#pragma once\n"
 "\n"
 "#include <JuceHeader.h>\n"
@@ -84,10 +84,10 @@ static const unsigned char temp_binary_data_17[] =
 "    juce::Label info_text;\n"
 "};\n";
 
-const char* InfoButton_h = (const char*) temp_binary_data_17;
+const char* InfoButton_h = (const char*) temp_binary_data_22;
 
 //================== PluginProcessor.cpp ==================
-static const unsigned char temp_binary_data_18[] =
+static const unsigned char temp_binary_data_23[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -382,10 +382,10 @@ static const unsigned char temp_binary_data_18[] =
 "    }\n"
 "}";
 
-const char* PluginProcessor_cpp = (const char*) temp_binary_data_18;
+const char* PluginProcessor_cpp = (const char*) temp_binary_data_23;
 
 //================== PluginProcessor.h ==================
-static const unsigned char temp_binary_data_19[] =
+static const unsigned char temp_binary_data_24[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -479,10 +479,10 @@ static const unsigned char temp_binary_data_19[] =
 "        // Macro to prevent copying and enable leak detection for the class.\n"
 "};";
 
-const char* PluginProcessor_h = (const char*) temp_binary_data_19;
+const char* PluginProcessor_h = (const char*) temp_binary_data_24;
 
 //================== PluginEditor.cpp ==================
-static const unsigned char temp_binary_data_20[] =
+static const unsigned char temp_binary_data_25[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -670,10 +670,10 @@ static const unsigned char temp_binary_data_20[] =
 "    repaint(); // Repaints the editor to reflect the updated slider value.\n"
 "}";
 
-const char* PluginEditor_cpp = (const char*) temp_binary_data_20;
+const char* PluginEditor_cpp = (const char*) temp_binary_data_25;
 
 //================== PluginEditor.h ==================
-static const unsigned char temp_binary_data_21[] =
+static const unsigned char temp_binary_data_26[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -777,5 +777,5 @@ static const unsigned char temp_binary_data_21[] =
 "        // Macro to prevent copying and enable leak detection for the class.\n"
 "};\n";
 
-const char* PluginEditor_h = (const char*) temp_binary_data_21;
+const char* PluginEditor_h = (const char*) temp_binary_data_26;
 }
