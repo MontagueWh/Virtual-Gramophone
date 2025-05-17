@@ -63,22 +63,22 @@ namespace BinaryData
     const int            CabinetEmulation_hSize = 674;
 
     extern const char*   GramoVoice_cpp;
-    const int            GramoVoice_cppSize = 8815;
+    const int            GramoVoice_cppSize = 2609;
 
     extern const char*   GramoVoice_h;
-    const int            GramoVoice_hSize = 3558;
+    const int            GramoVoice_hSize = 2164;
 
     extern const char*   HornEmulation_cpp;
-    const int            HornEmulation_cppSize = 1513;
+    const int            HornEmulation_cppSize = 6050;
 
     extern const char*   HornEmulation_h;
-    const int            HornEmulation_hSize = 659;
+    const int            HornEmulation_hSize = 1612;
 
     extern const char*   StylusEmulation_cpp;
-    const int            StylusEmulation_cppSize = 1531;
+    const int            StylusEmulation_cppSize = 3180;
 
     extern const char*   StylusEmulation_h;
-    const int            StylusEmulation_hSize = 669;
+    const int            StylusEmulation_hSize = 1099;
 
     extern const char*   GramoModelLoader_cpp;
     const int            GramoModelLoader_cppSize = 7228;
@@ -99,7 +99,7 @@ namespace BinaryData
     const int            PluginProcessor_cppSize = 11864;
 
     extern const char*   PluginProcessor_h;
-    const int            PluginProcessor_hSize = 4658;
+    const int            PluginProcessor_hSize = 4982;
 
     extern const char*   PluginEditor_cpp;
     const int            PluginEditor_cppSize = 9390;

@@ -17,11 +17,7 @@ HornEmulation::HornEmulation()
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
 
-    setupBodyResonance(); // Initialise body resonance filter	
-
-    // Low-Pass Filter Setup
-    lowPassFilter.prepare(spec);
-    lowPassFilter.coefficients = juce::dsp::IIR::Coefficients<float>::makeLowPass(sampleRate, 6000.0f); // Adjust frequency as needed
+	updateHornParameters();
 
     // ADSR Setup for brass stk
     adsr.setTarget(1.0);
@@ -35,6 +31,32 @@ HornEmulation::HornEmulation()
 
 HornEmulation::~HornEmulation()
 {
+}
+
+void HornEmulation::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+{
+	Stk::setSampleRate(sampleRate);
+
+	// Convolution setup
+	juce::dsp::ProcessSpec specConvolution;
+	specConvolution.sampleRate = sampleRate;
+	specConvolution.maximumBlockSize = samplesPerBlockExpected;
+	specConvolution.numChannels = 1;
+
+	for (int i = 0; i <= 10; i++) convolution[i].prepare(specConvolution); // Prepare the convolution processor
+
+	handleImpulseResponse(sampleRate, samplesPerBlockExpected); // Handle the impulse response
+}
+
+void HornEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+{
+	// This function is called by the host to fill the output buffer with audio data.
+}
+
+void HornEmulation::releaseResources()
+{
+	// When playback stops, you can use this as an opportunity
+	// to free up any spare memory, etc.
 }
 
 void HornEmulation::paint (juce::Graphics& g)
@@ -66,12 +88,12 @@ void HornEmulation::resized()
 
 void HornEmulation::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
     // Your implementation here
-    // e.g., gramoHorn.noteOn(frequency, amplitude);
+    // e.g., brassHorn.noteOn(frequency, amplitude);
 }
 
 void HornEmulation::noteOff(stk::StkFloat amplitude) {
     // Your implementation here
-    // e.g., gramoHorn.noteOff(amplitude);
+    // e.g., brassHorn.noteOff(amplitude);
 }
 
 stk::StkFloat HornEmulation::tick(unsigned int channel) {
@@ -114,7 +136,7 @@ void HornEmulation::updateHornParameters()
 	float timbreModifier = hornDiameter / (hornStiffness * hornLength); // Timbre modifier based on horn parameters
 	float effectiveFreq = freq * timbreModifier; // Effective frequency based on the horn parameters
 
-	gramoHorn.setFrequency(effectiveFreq); // Set the frequency of the horn
+	brassHorn.setFrequency(effectiveFreq); // Set the frequency of the horn
 
 	DBG("Horn Stiffness: " << hornStiffness);
 	DBG("Horn Frequency: " << effectiveFreq);

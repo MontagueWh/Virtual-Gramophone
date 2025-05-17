@@ -16,17 +16,21 @@
 //==============================================================================
 /*
 */
-class HornEmulation  : public juce::Component, public stk::Instrmnt
+class HornEmulation  : public juce::Component, public stk::Instrmnt, juce::AudioSource
 {
 public:
 
     HornEmulation();
     ~HornEmulation() override;
 
+	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
+    void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
+    void releaseResources() override;
+
     void paint (juce::Graphics&) override;
     void resized() override;
 
-    // Implement pure virtual methods
+	// Stk pure virtual methods
     void noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) override;
     void noteOff(stk::StkFloat amplitude) override;
     stk::StkFloat tick(unsigned int channel = 0) override;
@@ -36,22 +40,25 @@ public:
     void handleImpulseResponse(double sampleRate, int samplesPerBlock);
     void updateHornParameters();
 
+    // Waveguide synthesis variables
+    stk::ADSR adsr;
+    //stk::DelayA delayLine;
+
+    // Brass synthesis variables
+    stk::Brass brassHorn;
+    float frequency;
+    bool noteOn;
+
 private:
 
-    stk::DelayA delayLine;
-    stk::BiQuad stylusFilter;
-    stk::PoleZero dcBlock;
-    stk::ADSR adsr;
-    stk::SineWave vibrato;
+    //stk::PoleZero dcBlock;
 
     // Bandwidth Limiting
     juce::dsp::IIR::Filter<float> lowPassFilter;
 
-    stk::Brass gramoHorn;
-
     float brassMixLevel;
 
-    juce::AudioFormatManager audioFormatManager;
+    //juce::AudioFormatManager audioFormatManager;
     juce::AudioBuffer<float> iRs[11];
     juce::dsp::Convolution convolution[11];
 

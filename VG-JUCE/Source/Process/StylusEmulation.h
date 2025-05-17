@@ -15,24 +15,30 @@
 //==============================================================================
 /*
 */
-class StylusEmulation  : public juce::Component
+class StylusEmulation  : public juce::Component, public juce::AudioSource
 {
 public:
 
     StylusEmulation();
     ~StylusEmulation() override;
 
+	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
+	void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
+    void releaseResources() override;
+
     void paint (juce::Graphics&) override;
     void resized() override;
 
     void addedNoiseSetup(juce::dsp::ProcessSpec& spec, double sampleRate, int samplesPerBlock);
-    float excitationSetup();
     float stylusPressure(float inputSample);
+
+    float maxPressure; // Use for stylus pressure
+    stk::SineWave vibrato;
+    stk::BiQuad stylusFilter;
 
 private:
 
     float vinylTarget; // instead of lipTarget, in the context of a gramophone
-	float maxPressure; // Use for stylus pressure
 
     // Noise Source for Stylus Vibration
     stk::Noise noiseSource;

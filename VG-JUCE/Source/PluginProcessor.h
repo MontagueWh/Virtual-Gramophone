@@ -10,9 +10,6 @@
 
 #include <JuceHeader.h> // Includes the JUCE framework header file.
 #include "Process/GramoVoice.h" // Includes the GramoVoice class header file for audio processing.
-#include "Process/CabinetEmulation.h" // Includes the CabinetEmulation class header file for cabinet emulation.
-#include "Process/HornEmulation.h" // Includes the HornEmulation class header file for horn emulation.
-#include "Process/StylusEmulation.h" // Includes the StylusEmulation class header file for stylus emulation.
 
 static const int MAX_CHANNELS = 64;
 

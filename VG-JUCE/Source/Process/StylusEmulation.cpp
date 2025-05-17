@@ -23,6 +23,24 @@ StylusEmulation::~StylusEmulation()
 {
 }
 
+void StylusEmulation::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+{
+    juce::dsp::ProcessSpec spec{ sampleRate, static_cast<juce::uint32>(samplesPerBlockExpected), 1};
+    
+    addedNoiseSetup(spec, sampleRate, samplesPerBlockExpected);
+}
+
+void StylusEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+{
+    // This function is called by the host to fill the output buffer with audio data.
+}
+
+void StylusEmulation::releaseResources()
+{
+    // When playback stops, you can use this as an opportunity
+    // to free up any spare memory, etc.
+}
+
 void StylusEmulation::paint (juce::Graphics& g)
 {
     /* This demo code just fills the component's background and
@@ -46,37 +64,13 @@ void StylusEmulation::paint (juce::Graphics& g)
 void StylusEmulation::resized()
 {
     // This method is where you should set the bounds of any child
-    // components that your component contains..
-
-}
-
-
-float StylusEmulation::excitationSetup()
-{
-    float excitationPressure = maxPressure * adsr.tick();
-    excitationPressure += vibratoGain * vibrato.tick();
-
-    float stylusPressure = 0.3 * excitationPressure;
-    float borePressure = 0.85 * delayLine.lastOut(); // the pressure exerted by compressed air within a cylindrical bore/cavity, such as the gramophone horn
-    float deltaPressure = stylusPressure - borePressure; // Differential pressure.
-
-    // Apply stylus filter
-    deltaPressure = stylusFilter.tick(deltaPressure); // Force - > position.
-
-    deltaPressure *= deltaPressure; // Basic position to area mapping.
-    if (deltaPressure > 1.0) deltaPressure = 1.0; // Non-linear saturation.
-
-    // The following input scattering assumes the stylusPressure = area.
-    lastFrame_[0] = deltaPressure * stylusPressure + (1.0 - deltaPressure) * borePressure;
-    lastFrame_[0] = delayLine.tick(dcBlock.tick(lastFrame_[0]));
-
-    return lastFrame_[0];
+    // components that your component contains...
 }
 
 float StylusEmulation::stylusPressure(float inputSample)
 {
     // 1. Stylus Vibration (Filtered Noise)
-    float stylusVibration = noiseSource.tick(inputSample);
+	float stylusVibration = noiseSource.tick(); // Add noise to the input sample
     stylusVibration = noiseFilter.processSample(stylusVibration);
 }
 

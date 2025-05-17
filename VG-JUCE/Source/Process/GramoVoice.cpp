@@ -16,8 +16,6 @@ GramoVoice::GramoVoice()
 {
 	// In your constructor, you should add any child components, and
 	// initialise any special settings that your component needs.
-
-	updateHornParameters();
 }
 
 GramoVoice::~GramoVoice()
@@ -28,46 +26,11 @@ void GramoVoice::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
 	// Prepare to play method for the audio processor JUCE method
 }
-void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
-{
-	// Prepare to play method for the audio source JUCE method
-	sampleRateVal = sampleRate;
-
-	setSampleRate(sampleRate);
-	Stk::setSampleRate(sampleRate);
-
-	juce::dsp::ProcessSpec spec{ sampleRate, static_cast<juce::uint32>(samplesPerBlock), 1 };
-
-	addedNoiseSetup(spec, sampleRate, samplesPerBlock);
-
-	// Convolution setup
-	juce::dsp::ProcessSpec specConvolution;
-	specConvolution.sampleRate = sampleRate;
-	specConvolution.maximumBlockSize = samplesPerBlock;
-	specConvolution.numChannels = 1;
-
-	for (int i = 0; i <= 10; i++) convolution[i].prepare(specConvolution); // Prepare the convolution processor
-
-	handleImpulseResponse(sampleRate, samplesPerBlock); // Handle the impulse response
-}
 
 void GramoVoice::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
-}
-
-void GramoVoice::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
-{
-	juce::dsp::AudioBlock<float> audioBlock(buffer);
-	for (int channel = 0; channel < audioBlock.getNumChannels(); ++channel)
-	{
-		auto* channelData = audioBlock.getChannelPointer(channel);
-		for (size_t sample = 0; sample < audioBlock.getNumSamples(); ++sample)
-		{
-			channelData[sample] = stylusPressure(channelData[sample]);
-		}
-	}
 }
 
 
@@ -76,16 +39,25 @@ void GramoVoice::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToF
 
 }
 
-bool GramoVoice::isBusesLayoutSupported(const BusesLayout& layouts) const
+
+/*float GramoVoice::excitationSetup()
 {
-	const auto& outputSet = layouts.getMainOutputChannelSet();
-	if (outputSet.isDisabled())
-		return false;
+	float excitationPressure = gramoStylus.maxPressure * gramoHorn.adsr.tick();
+	excitationPressure += vibratoGain * gramoStylus.vibrato.tick();
 
-#if ! JucePlugin_IsSynth
-	if (layouts.getMainOutputChannelSet() != layouts.getMainInputChannelSet())
-		return false;
-#endif
+	float stylusPressure = 0.3 * excitationPressure;
+	float borePressure = 0.85 * gramoHorn.delayLine.lastOut(); // The pressure exerted by compressed air within a cylindrical bore/cavity, which in this case is the gramophone horn
+	float deltaPressure = stylusPressure - borePressure; // Differential pressure.
 
-	return true; // Allow all other valid layouts.
-}
+	// Apply stylus filter
+	deltaPressure = gramoStylus.stylusFilter.tick(deltaPressure); // Force - > position.
+
+	deltaPressure *= deltaPressure; // Basic position to area mapping.
+	if (deltaPressure > 1.0) deltaPressure = 1.0; // Non-linear saturation.
+
+	// The following input scattering assumes the stylusPressure = area.
+	lastFrame_[0] = deltaPressure * stylusPressure + (1.0 - deltaPressure) * borePressure;
+	lastFrame_[0] = delayLine.tick(dcBlock.tick(lastFrame_[0]));
+
+	return lastFrame_[0];
+}*/
