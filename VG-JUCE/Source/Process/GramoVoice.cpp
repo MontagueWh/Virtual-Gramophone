@@ -22,7 +22,6 @@ GramoVoice::GramoVoice()
 
 GramoVoice::~GramoVoice()
 {
-	OpenGLContext::detach(); // Detach OpenGL context from this component
 }
 
 void GramoVoice::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
@@ -112,11 +111,11 @@ void GramoVoice::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 
 		if (reader != nullptr)
 		{
-			impulseResponse[i].setSize(1, static_cast<int>(reader->lengthInSamples));
-			reader->read(&impulseResponse[i], 0, static_cast<int>(reader->lengthInSamples), 0, true, true);
+			iRs[i].setSize(1, static_cast<int>(reader->lengthInSamples));
+			reader->read(&iRs[i], 0, static_cast<int>(reader->lengthInSamples), 0, true, true);
 
 			convolution[i].loadImpulseResponse(
-				std::move(impulseResponse[i]),
+				std::move(iRs[i]),
 				reader->sampleRate,
 				juce::dsp::Convolution::Stereo::no,
 				juce::dsp::Convolution::Trim::no,
@@ -134,7 +133,7 @@ float GramoVoice::gramoPressure(float inputSample)
 	breathPressure += vibratoGain * vibrato.tick();
 
 	float mouthPressure = 0.3 * breathPressure;
-	float borePressure = 0.85 * delayLine.lastOut();
+	float borePressure = 0.85 * delayLine.lastOut(); // Previous output of the delay line.
 	float deltaPressure = mouthPressure - borePressure; // Differential pressure.
 
 	// Apply stylus filter
@@ -173,22 +172,28 @@ stk::StkFrames& GramoVoice::tick(stk::StkFrames& frames, unsigned int channel) {
 
 void GramoVoice::updateHornParameters()
 {
-	OpenGLContext::makeActive(); // Make the OpenGL context active
-
+	constexpr float brassYoungModulus = 10.0e10f; // Young's modulus for brass in Pascals
+	constexpr float airDensity = 1.2f; // Density of air in kg/m^3
+	constexpr float soundSpeed = 343.0f; // Speed of sound in air in m/s
+	
 	float hornDiameter = 0.25f; // Diameter of the horn
-	float hornStiffness = 4.5f; // Stiffness of the horn (brass)
 	float hornLength = 0.75;
+	float hornWallThickness = 0.04f; // Wall thickness of the horn
 
+	float hornStiffness = (brassYoungModulus * hornWallThickness) /
+		(hornDiameter * hornLength); // Simplified stiffness model for a thin-walled brass tube
+
+	// Calculate timbre modifier based on geometry
 	float wavelength = 2.f * 0.25; // Wavelength of the sound wave
-	float soundSpeed = 343.0f; // Speed of sound in air in m/s
 	float freq = soundSpeed / wavelength; // Frequency of the sound wave
 
-	OpenGLContext::attachTo(*this); // Attach OpenGL context to this component
-
+	// Calculate a timbre modifier proportional to horn stiffness and geometry
 	float timbreModifier = hornDiameter / (hornStiffness * hornLength); // Timbre modifier based on horn parameters
 	float effectiveFreq = freq * timbreModifier; // Effective frequency based on the horn parameters
 
 	gramoHorn.setFrequency(effectiveFreq); // Set the frequency of the horn
 
-
+	DBG("Horn Stiffness: " << hornStiffness);
+	DBG("Horn Frequency: " << effectiveFreq);
+	DBG("Horn Diameter: " << hornDiameter);
 }

@@ -16,7 +16,7 @@
 //==============================================================================
 /*
 */
-class GramoVoice : public juce::Component, public stk::Instrmnt, public juce::AudioProcessor, public juce::AudioSource, public juce::OpenGLContext
+class GramoVoice : public juce::Component, public stk::Instrmnt, public juce::AudioProcessor, public juce::AudioSource
 {
 public:
     GramoVoice();
@@ -71,7 +71,7 @@ private:
     stk::Brass gramoHorn;
 
     juce::dsp::Convolution convolution[11];
-    juce::AudioBuffer<float> impulseResponse[11];
+    juce::AudioBuffer<float> iRs[11];
     juce::AudioFormatManager audioFormatManager;
 
     void handleImpulseResponse(double sampleRate, int samplesPerBlock);
