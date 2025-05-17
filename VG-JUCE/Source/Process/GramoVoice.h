@@ -70,12 +70,18 @@ private:
 	float maxPressure; // Use for stylus pressure
 
     stk::Brass gramoHorn;
+    float brassMixLevel;
 
     juce::dsp::Convolution convolution[11];
     juce::AudioBuffer<float> iRs[11];
     juce::AudioFormatManager audioFormatManager;
 
     void handleImpulseResponse(double sampleRate, int samplesPerBlock);
+
+    stk::Noise noiseSource;
+    juce::dsp::IIR::Filter<float> noiseFilter;
+
+	juce::dsp::IIR::Filter<float> lowPassFilter;
 
     double sampleRateVal;
 

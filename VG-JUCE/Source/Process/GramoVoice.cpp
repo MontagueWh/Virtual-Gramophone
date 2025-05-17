@@ -31,12 +31,21 @@ void GramoVoice::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
 	// Prepare to play method for the audio source JUCE method
-	this->sampleRateVal = sampleRate;
+	sampleRateVal = sampleRate;
 
 	setSampleRate(sampleRate);
 	Stk::setSampleRate(sampleRate);
 
 	juce::dsp::ProcessSpec spec{ sampleRate, static_cast<juce::uint32>(samplesPerBlock), 1 };
+
+	// Noise Source Setup
+	juce::dsp::ProcessSpec spec;
+	spec.sampleRate = sampleRate;
+	spec.maximumBlockSize = samplesPerBlock;
+	spec.numChannels = 1;
+
+	noiseFilter.prepare(spec);
+	noiseFilter.coefficients = juce::dsp::IIR::Coefficients<float>::makeLowPass(sampleRate, 4000.0f);
 
 	for (auto& conv : convolution) conv.prepare(spec); // Prepare the convolution objects
 	setupBodyResonance(); // Initialise body resonance filter	
