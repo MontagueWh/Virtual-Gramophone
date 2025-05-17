@@ -31,7 +31,7 @@ void GramoVoice::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
 	// Prepare to play method for the audio source JUCE method
-	sampleRateVal = sampleRate;
+	this->sampleRateVal = sampleRate;
 
 	setSampleRate(sampleRate);
 	Stk::setSampleRate(sampleRate);
@@ -39,10 +39,8 @@ void GramoVoice::prepareToPlay(double sampleRate, int samplesPerBlock)
 	juce::dsp::ProcessSpec spec{ sampleRate, static_cast<juce::uint32>(samplesPerBlock), 1 };
 
 	for (auto& conv : convolution) conv.prepare(spec); // Prepare the convolution objects
-
+	setupBodyResonance(); // Initialise body resonance filter	
 	handleImpulseResponse(sampleRate, samplesPerBlock); // Handle the impulse response
-
-	// Initialise STK Brass parameters. These need replacing with working objects.
 }
 
 void GramoVoice::releaseResources()
@@ -137,11 +135,10 @@ float GramoVoice::gramoPressure(float inputSample)
 	float deltaPressure = mouthPressure - borePressure; // Differential pressure.
 
 	// Apply stylus filter
-	stylusFilter.tick(deltaPressure); // Force - > position.
+	deltaPressure = stylusFilter.tick(deltaPressure); // Force - > position.
 
 	deltaPressure *= deltaPressure; // Basic position to area mapping.
-	if (deltaPressure > 1.0)
-		deltaPressure = 1.0; // Non-linear saturation.
+	if (deltaPressure > 1.0) deltaPressure = 1.0; // Non-linear saturation.
 
 	// The following input scattering assumes the mouthPressure = area.
 	lastFrame_[0] = deltaPressure * mouthPressure + (1.0 - deltaPressure) * borePressure;
@@ -196,4 +193,13 @@ void GramoVoice::updateHornParameters()
 	DBG("Horn Stiffness: " << hornStiffness);
 	DBG("Horn Frequency: " << effectiveFreq);
 	DBG("Horn Diameter: " << hornDiameter);
+}
+
+void GramoVoice::setupBodyResonance()
+{
+	// Configure a body resonance filter (BP filter)
+	stk::BiQuad bodyFilter;
+	float bodyFrequency = 500.0f; // Resonant frequency in Hz
+	float bodyQfactor = 1.5f; // Q factor for the body resonance filter
+	bodyFilter.setResonance(bodyFrequency, bodyQfactor, true); // Set the resonance filter
 }
