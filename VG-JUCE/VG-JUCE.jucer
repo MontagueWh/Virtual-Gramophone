@@ -85,10 +85,22 @@
         </GROUP>
       </GROUP>
       <GROUP id="{4127AA83-C225-CC84-3C12-9222C043A424}" name="Process">
+        <FILE id="JALyeu" name="CabinetEmulation.cpp" compile="1" resource="1"
+              file="Source/Process/CabinetEmulation.cpp" xcodeResource="1"/>
+        <FILE id="AAcD3G" name="CabinetEmulation.h" compile="0" resource="1"
+              file="Source/Process/CabinetEmulation.h" xcodeResource="1"/>
         <FILE id="OTxVFp" name="GramoVoice.cpp" compile="1" resource="1" file="Source/Process/GramoVoice.cpp"
               xcodeResource="1"/>
         <FILE id="gfNAEM" name="GramoVoice.h" compile="0" resource="1" file="Source/Process/GramoVoice.h"
               xcodeResource="1"/>
+        <FILE id="W33UoU" name="HornEmulation.cpp" compile="1" resource="1"
+              file="Source/Process/HornEmulation.cpp" xcodeResource="1"/>
+        <FILE id="jHb1ES" name="HornEmulation.h" compile="0" resource="1" file="Source/Process/HornEmulation.h"
+              xcodeResource="1"/>
+        <FILE id="ddlh6N" name="StylusEmulation.cpp" compile="1" resource="1"
+              file="Source/Process/StylusEmulation.cpp" xcodeResource="1"/>
+        <FILE id="LT293q" name="StylusEmulation.h" compile="0" resource="1"
+              file="Source/Process/StylusEmulation.h" xcodeResource="1"/>
       </GROUP>
       <GROUP id="{AE384994-363B-3893-0A95-E1953F6BA69B}" name="UI">
         <FILE id="BnItlJ" name="GramoModelLoader.cpp" compile="1" resource="1"

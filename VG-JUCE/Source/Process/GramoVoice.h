@@ -11,32 +11,22 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include <../Source/Libs/stk_wrapper/stk/include/Brass.h>
 
 //==============================================================================
 /*
 */
-class GramoVoice : public juce::Component, public stk::Instrmnt, public juce::AudioProcessor, public juce::AudioSource
+class GramoVoice : public juce::Component, public juce::AudioProcessor, public juce::AudioSource
 {
 public:
     GramoVoice();
-    void updateHornParameters();
     ~GramoVoice() override;
 
 	void prepareToPlay(double sampleRate, int samplesPerBlock) override;
-    void setupBodyResonance();
 	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
     void releaseResources() override;
     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
 
-    float gramoPressure(float inputSample);
-
-    // Implement pure virtual methods
-	void noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) override;
-    void noteOff(stk::StkFloat amplitude) override;
-    stk::StkFloat tick(unsigned int channel = 0) override;
-    stk::StkFrames& tick(stk::StkFrames& frames, unsigned int channel = 0) override;
 
     // Implement pure virtual methods from juce::AudioProcessor  
     const juce::String getName() const override { return "GramoVoice"; }
@@ -58,32 +48,9 @@ public:
 
 
 private:
-    stk::DelayA delayLine;
-    stk::BiQuad stylusFilter;
-    stk::PoleZero dcBlock;
-    stk::ADSR adsr;
-    stk::SineWave vibrato;
 
-	float vinylTarget; // instead of lipTarget, in the context of a gramophone
     float pitchShiftTarget; // Use for wow and flutter, instead of trombone slides
     float vibratoGain; // Use for wow and flutter
-	float maxPressure; // Use for stylus pressure
-
-    stk::Brass gramoHorn;
-    float brassMixLevel;
-
-    juce::dsp::Convolution convolution[11];
-    juce::AudioBuffer<float> iRs[11];
-    juce::AudioFormatManager audioFormatManager;
-
-    void handleImpulseResponse(double sampleRate, int samplesPerBlock);
-
-    stk::Noise noiseSource;
-    juce::dsp::IIR::Filter<float> noiseFilter;
-
-	juce::dsp::IIR::Filter<float> lowPassFilter;
-
-    double sampleRateVal;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GramoVoice)
 };

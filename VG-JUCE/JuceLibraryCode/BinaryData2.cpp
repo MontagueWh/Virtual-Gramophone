@@ -10,7 +10,7 @@ namespace BinaryData
 {
 
 //================== InfoButton.cpp ==================
-static const unsigned char temp_binary_data_21[] =
+static const unsigned char temp_binary_data_27[] =
 "#include \"InfoButton.h\"\n"
 "\n"
 "InfoButton::InfoButton (juce::Colour colour)\n"
@@ -60,10 +60,10 @@ static const unsigned char temp_binary_data_21[] =
 "{\n"
 "}\n";
 
-const char* InfoButton_cpp = (const char*) temp_binary_data_21;
+const char* InfoButton_cpp = (const char*) temp_binary_data_27;
 
 //================== InfoButton.h ==================
-static const unsigned char temp_binary_data_22[] =
+static const unsigned char temp_binary_data_28[] =
 "#pragma once\n"
 "\n"
 "#include <JuceHeader.h>\n"
@@ -84,10 +84,10 @@ static const unsigned char temp_binary_data_22[] =
 "    juce::Label info_text;\n"
 "};\n";
 
-const char* InfoButton_h = (const char*) temp_binary_data_22;
+const char* InfoButton_h = (const char*) temp_binary_data_28;
 
 //================== PluginProcessor.cpp ==================
-static const unsigned char temp_binary_data_23[] =
+static const unsigned char temp_binary_data_29[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -203,6 +203,8 @@ static const unsigned char temp_binary_data_23[] =
 "                                    static_cast<juce::uint32>(getMainBusNumOutputChannels()) };\n"
 "\n"
 "    PrepareAdditionalEffects(spec, sampleRate);\n"
+"\n"
+"\tgramoVoice.prepareToPlay(sampleRate, samplesPerBlock); // Prepares the GramoVoice for playback.\n"
 "}\n"
 "\n"
 "// Releases resources when playback stops.\n"
@@ -240,18 +242,14 @@ static const unsigned char temp_binary_data_23[] =
 "#endif\n"
 "\n"
 "// Processes audio and MIDI data for each block of samples.\n"
-"void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midiMessages*/)\n"
+"void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)\n"
 "{\n"
 "    juce::ScopedNoDenormals noDenormals; // Ensures denormalized numbers are handled correctly.\n"
 "    auto totalNumInputChannels = getTotalNumInputChannels(); // Gets the number of input channels.\n"
 "    auto totalNumOutputChannels = getTotalNumOutputChannels(); // Gets the number of output channels.\n"
 "\n"
-"    // Clears any output channels that don't have corresponding input channels.\n"
-"    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)\n"
-"    {\n"
-"        buffer.clear(i, 0, buffer.getNumSamples());\n"
-"    }\n"
-"\n"
+"    gramoVoice.processInputAudio(buffer);\n"
+"    gramoVoice.processBlock(buffer, midiMessages); // Processes the audio data using the GramoVoice.\n"
 "    mix.pushDrySamples(buffer); // Pushes the dry signal into the mix processor.\n"
 "\n"
 "    // Processes each sample in the buffer.\n"
@@ -382,10 +380,10 @@ static const unsigned char temp_binary_data_23[] =
 "    }\n"
 "}";
 
-const char* PluginProcessor_cpp = (const char*) temp_binary_data_23;
+const char* PluginProcessor_cpp = (const char*) temp_binary_data_29;
 
 //================== PluginProcessor.h ==================
-static const unsigned char temp_binary_data_24[] =
+static const unsigned char temp_binary_data_30[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -479,10 +477,10 @@ static const unsigned char temp_binary_data_24[] =
 "        // Macro to prevent copying and enable leak detection for the class.\n"
 "};";
 
-const char* PluginProcessor_h = (const char*) temp_binary_data_24;
+const char* PluginProcessor_h = (const char*) temp_binary_data_30;
 
 //================== PluginEditor.cpp ==================
-static const unsigned char temp_binary_data_25[] =
+static const unsigned char temp_binary_data_31[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -670,10 +668,10 @@ static const unsigned char temp_binary_data_25[] =
 "    repaint(); // Repaints the editor to reflect the updated slider value.\n"
 "}";
 
-const char* PluginEditor_cpp = (const char*) temp_binary_data_25;
+const char* PluginEditor_cpp = (const char*) temp_binary_data_31;
 
 //================== PluginEditor.h ==================
-static const unsigned char temp_binary_data_26[] =
+static const unsigned char temp_binary_data_32[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -777,5 +775,5 @@ static const unsigned char temp_binary_data_26[] =
 "        // Macro to prevent copying and enable leak detection for the class.\n"
 "};\n";
 
-const char* PluginEditor_h = (const char*) temp_binary_data_26;
+const char* PluginEditor_h = (const char*) temp_binary_data_32;
 }

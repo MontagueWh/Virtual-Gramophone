@@ -56,11 +56,29 @@ namespace BinaryData
     extern const char*   Sustain_Quiet_wav;
     const int            Sustain_Quiet_wavSize = 2386;
 
+    extern const char*   CabinetEmulation_cpp;
+    const int            CabinetEmulation_cppSize = 1540;
+
+    extern const char*   CabinetEmulation_h;
+    const int            CabinetEmulation_hSize = 674;
+
     extern const char*   GramoVoice_cpp;
-    const int            GramoVoice_cppSize = 6778;
+    const int            GramoVoice_cppSize = 8815;
 
     extern const char*   GramoVoice_h;
-    const int            GramoVoice_hSize = 3208;
+    const int            GramoVoice_hSize = 3558;
+
+    extern const char*   HornEmulation_cpp;
+    const int            HornEmulation_cppSize = 1513;
+
+    extern const char*   HornEmulation_h;
+    const int            HornEmulation_hSize = 659;
+
+    extern const char*   StylusEmulation_cpp;
+    const int            StylusEmulation_cppSize = 1531;
+
+    extern const char*   StylusEmulation_h;
+    const int            StylusEmulation_hSize = 669;
 
     extern const char*   GramoModelLoader_cpp;
     const int            GramoModelLoader_cppSize = 7228;
@@ -78,7 +96,7 @@ namespace BinaryData
     const int            InfoButton_hSize = 643;
 
     extern const char*   PluginProcessor_cpp;
-    const int            PluginProcessor_cppSize = 11846;
+    const int            PluginProcessor_cppSize = 11864;
 
     extern const char*   PluginProcessor_h;
     const int            PluginProcessor_hSize = 4658;
@@ -90,7 +108,7 @@ namespace BinaryData
     const int            PluginEditor_hSize = 5864;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 27;
+    const int namedResourceListSize = 33;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];
