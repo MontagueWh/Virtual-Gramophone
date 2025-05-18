@@ -10,7 +10,7 @@ namespace BinaryData
 {
 
 //================== InfoButton.cpp ==================
-static const unsigned char temp_binary_data_27[] =
+static const unsigned char temp_binary_data_29[] =
 "#include \"InfoButton.h\"\n"
 "\n"
 "InfoButton::InfoButton (juce::Colour colour)\n"
@@ -60,10 +60,10 @@ static const unsigned char temp_binary_data_27[] =
 "{\n"
 "}\n";
 
-const char* InfoButton_cpp = (const char*) temp_binary_data_27;
+const char* InfoButton_cpp = (const char*) temp_binary_data_29;
 
 //================== InfoButton.h ==================
-static const unsigned char temp_binary_data_28[] =
+static const unsigned char temp_binary_data_30[] =
 "#pragma once\n"
 "\n"
 "#include <JuceHeader.h>\n"
@@ -84,10 +84,10 @@ static const unsigned char temp_binary_data_28[] =
 "    juce::Label info_text;\n"
 "};\n";
 
-const char* InfoButton_h = (const char*) temp_binary_data_28;
+const char* InfoButton_h = (const char*) temp_binary_data_30;
 
 //================== PluginProcessor.cpp ==================
-static const unsigned char temp_binary_data_29[] =
+static const unsigned char temp_binary_data_31[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -380,10 +380,10 @@ static const unsigned char temp_binary_data_29[] =
 "    }\n"
 "}";
 
-const char* PluginProcessor_cpp = (const char*) temp_binary_data_29;
+const char* PluginProcessor_cpp = (const char*) temp_binary_data_31;
 
 //================== PluginProcessor.h ==================
-static const unsigned char temp_binary_data_30[] =
+static const unsigned char temp_binary_data_32[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -396,9 +396,6 @@ static const unsigned char temp_binary_data_30[] =
 "\n"
 "#include <JuceHeader.h> // Includes the JUCE framework header file.\n"
 "#include \"Process/GramoVoice.h\" // Includes the GramoVoice class header file for audio processing.\n"
-"#include \"Process/CabinetEmulation.h\" // Includes the CabinetEmulation class header file for cabinet emulation.\n"
-"#include \"Process/HornEmulation.h\" // Includes the HornEmulation class header file for horn emulation.\n"
-"#include \"Process/StylusEmulation.h\" // Includes the StylusEmulation class header file for stylus emulation.\n"
 "\n"
 "static const int MAX_CHANNELS = 64;\n"
 "\n"
@@ -480,10 +477,10 @@ static const unsigned char temp_binary_data_30[] =
 "        // Macro to prevent copying and enable leak detection for the class.\n"
 "};";
 
-const char* PluginProcessor_h = (const char*) temp_binary_data_30;
+const char* PluginProcessor_h = (const char*) temp_binary_data_32;
 
 //================== PluginEditor.cpp ==================
-static const unsigned char temp_binary_data_31[] =
+static const unsigned char temp_binary_data_33[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -671,10 +668,10 @@ static const unsigned char temp_binary_data_31[] =
 "    repaint(); // Repaints the editor to reflect the updated slider value.\n"
 "}";
 
-const char* PluginEditor_cpp = (const char*) temp_binary_data_31;
+const char* PluginEditor_cpp = (const char*) temp_binary_data_33;
 
 //================== PluginEditor.h ==================
-static const unsigned char temp_binary_data_32[] =
+static const unsigned char temp_binary_data_34[] =
 "/*\n"
 "  ==============================================================================\n"
 "\n"
@@ -778,5 +775,5 @@ static const unsigned char temp_binary_data_32[] =
 "        // Macro to prevent copying and enable leak detection for the class.\n"
 "};\n";
 
-const char* PluginEditor_h = (const char*) temp_binary_data_32;
+const char* PluginEditor_h = (const char*) temp_binary_data_34;
 }

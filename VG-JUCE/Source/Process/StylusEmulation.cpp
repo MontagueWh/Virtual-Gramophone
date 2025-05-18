@@ -17,6 +17,10 @@ StylusEmulation::StylusEmulation()
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
 
+    vinylTarget = 0.0f;
+    stylusOutput = 0.0f;
+    stylusFilterState[0] = 0.0f;
+    stylusFilterState[1] = 0.0f;
 }
 
 StylusEmulation::~StylusEmulation()
@@ -25,9 +29,6 @@ StylusEmulation::~StylusEmulation()
 
 void StylusEmulation::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
-    juce::dsp::ProcessSpec spec{ sampleRate, static_cast<juce::uint32>(samplesPerBlockExpected), 1};
-    
-    addedNoiseSetup(spec, sampleRate, samplesPerBlockExpected);
 }
 
 void StylusEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
@@ -39,6 +40,8 @@ void StylusEmulation::releaseResources()
 {
     // When playback stops, you can use this as an opportunity
     // to free up any spare memory, etc.
+
+	for (int i = 0; i <= 2; i++) stylusFilterState[1] = 0.0f;
 }
 
 void StylusEmulation::paint (juce::Graphics& g)
@@ -51,14 +54,6 @@ void StylusEmulation::paint (juce::Graphics& g)
     */
 
     g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (juce::Colours::white);
-    g.setFont (juce::FontOptions (14.0f));
-    g.drawText ("StylusEmulation", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
 }
 
 void StylusEmulation::resized()
@@ -67,21 +62,9 @@ void StylusEmulation::resized()
     // components that your component contains...
 }
 
-float StylusEmulation::stylusPressure(float inputSample)
+void StylusEmulation::processPressureDifference(float pressureDiff)
 {
-    // 1. Stylus Vibration (Filtered Noise)
-	float stylusVibration = noiseSource.tick(); // Add noise to the input sample
-    stylusVibration = noiseFilter.processSample(stylusVibration);
-}
-
-void StylusEmulation::addedNoiseSetup(juce::dsp::ProcessSpec& spec, double sampleRate, int samplesPerBlock)
-{
-    // Noise Source Setup
-    juce::dsp::ProcessSpec spec;
-    spec.sampleRate = sampleRate;
-    spec.maximumBlockSize = samplesPerBlock;
-    spec.numChannels = 1;
-
-    noiseFilter.prepare(spec);
-    noiseFilter.coefficients = juce::dsp::IIR::Coefficients<float>::makeLowPass(sampleRate, 4000.0f);
+    float filterOutput = 0.7f * stylusFilterState[0] + 0.3f * pressureDiff;
+    stylusFilterState[0] = filterOutput;
+    stylusFilterState[1] = pressureDiff;
 }

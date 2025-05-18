@@ -32,8 +32,6 @@ public:
 
 private:
 
-    float pitchShiftTarget; // Use for wow and flutter, instead of trombone slides
-    float vibratoGain; // Use for wow and flutter
     StylusEmulation gramoStylus;
 	HornEmulation gramoHorn;
 

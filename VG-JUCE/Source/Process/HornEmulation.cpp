@@ -145,7 +145,7 @@ void HornEmulation::updateHornParameters()
 
 void HornEmulation::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 {
-	audioFormatManager.registerBasicFormats();
+	//audioFormatManager.registerBasicFormats();
 
 	juce::AudioFormatReader* reader = nullptr;
 

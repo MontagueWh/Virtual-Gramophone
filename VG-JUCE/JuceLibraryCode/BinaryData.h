@@ -63,22 +63,28 @@ namespace BinaryData
     const int            CabinetEmulation_hSize = 674;
 
     extern const char*   GramoVoice_cpp;
-    const int            GramoVoice_cppSize = 2609;
+    const int            GramoVoice_cppSize = 980;
 
     extern const char*   GramoVoice_h;
-    const int            GramoVoice_hSize = 2164;
+    const int            GramoVoice_hSize = 988;
 
     extern const char*   HornEmulation_cpp;
-    const int            HornEmulation_cppSize = 6050;
+    const int            HornEmulation_cppSize = 6681;
 
     extern const char*   HornEmulation_h;
-    const int            HornEmulation_hSize = 1612;
+    const int            HornEmulation_hSize = 1789;
+
+    extern const char*   SoundboxEmulation_cpp;
+    const int            SoundboxEmulation_cppSize = 1550;
+
+    extern const char*   SoundboxEmulation_h;
+    const int            SoundboxEmulation_hSize = 797;
 
     extern const char*   StylusEmulation_cpp;
-    const int            StylusEmulation_cppSize = 3180;
+    const int            StylusEmulation_cppSize = 2394;
 
     extern const char*   StylusEmulation_h;
-    const int            StylusEmulation_hSize = 1099;
+    const int            StylusEmulation_hSize = 1355;
 
     extern const char*   GramoModelLoader_cpp;
     const int            GramoModelLoader_cppSize = 7228;
@@ -99,7 +105,7 @@ namespace BinaryData
     const int            PluginProcessor_cppSize = 11864;
 
     extern const char*   PluginProcessor_h;
-    const int            PluginProcessor_hSize = 4982;
+    const int            PluginProcessor_hSize = 4658;
 
     extern const char*   PluginEditor_cpp;
     const int            PluginEditor_cppSize = 9390;
@@ -108,7 +114,7 @@ namespace BinaryData
     const int            PluginEditor_hSize = 5864;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 33;
+    const int namedResourceListSize = 35;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

@@ -29,20 +29,16 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
 
-    void addedNoiseSetup(juce::dsp::ProcessSpec& spec, double sampleRate, int samplesPerBlock);
-    float stylusPressure(float inputSample);
+    void setVinyFilter(float frequency);
+    void processPressureDifference(float pressureDiff);
+    float getFilterOutput() const { return stylusFilterState[0]; }
 
-    float maxPressure; // Use for stylus pressure
-    stk::SineWave vibrato;
-    stk::BiQuad stylusFilter;
 
 private:
 
-    float vinylTarget; // instead of lipTarget, in the context of a gramophone
-
-    // Noise Source for Stylus Vibration
-    stk::Noise noiseSource;
-    juce::dsp::IIR::Filter<float> noiseFilter;
+    float vinylTarget;
+    float stylusOutput;
+    float stylusFilterState[2];
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StylusEmulation)
 };

@@ -38,26 +38,3 @@ void GramoVoice::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToF
 {
 
 }
-
-
-/*float GramoVoice::excitationSetup()
-{
-	float excitationPressure = gramoStylus.maxPressure * gramoHorn.adsr.tick();
-	excitationPressure += vibratoGain * gramoStylus.vibrato.tick();
-
-	float stylusPressure = 0.3 * excitationPressure;
-	float borePressure = 0.85 * gramoHorn.delayLine.lastOut(); // The pressure exerted by compressed air within a cylindrical bore/cavity, which in this case is the gramophone horn
-	float deltaPressure = stylusPressure - borePressure; // Differential pressure.
-
-	// Apply stylus filter
-	deltaPressure = gramoStylus.stylusFilter.tick(deltaPressure); // Force - > position.
-
-	deltaPressure *= deltaPressure; // Basic position to area mapping.
-	if (deltaPressure > 1.0) deltaPressure = 1.0; // Non-linear saturation.
-
-	// The following input scattering assumes the stylusPressure = area.
-	lastFrame_[0] = deltaPressure * stylusPressure + (1.0 - deltaPressure) * borePressure;
-	lastFrame_[0] = delayLine.tick(dcBlock.tick(lastFrame_[0]));
-
-	return lastFrame_[0];
-}*/

@@ -11,7 +11,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include <../Source/Libs/stk_wrapper/stk/include/Brass.h>
+#include "StylusEmulation.h"
 
 //==============================================================================
 /*
@@ -51,16 +51,13 @@ public:
 
 private:
 
-    //stk::PoleZero dcBlock;
-
-    // Bandwidth Limiting
-    juce::dsp::IIR::Filter<float> lowPassFilter;
-
     float brassMixLevel;
 
     //juce::AudioFormatManager audioFormatManager;
     juce::AudioBuffer<float> iRs[11];
     juce::dsp::Convolution convolution[11];
+
+    StylusEmulation gramoStylus;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HornEmulation)
 };
