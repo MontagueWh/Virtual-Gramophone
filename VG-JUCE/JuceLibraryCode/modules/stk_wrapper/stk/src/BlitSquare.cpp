@@ -19,7 +19,7 @@
     to half the sample rate.  Note, however, that this setting may
     produce aliasing in the signal when the frequency is changing (no
     automatic modification of the number of harmonics is performed by
-    the setFrequency() function).  Also note that the harmonics of a
+    the freqSetup() function).  Also note that the harmonics of a
     square wave fall at odd integer multiples of the fundamental, so
     aliasing will happen with a lower fundamental than with the other
     Blit waveforms.  This class is not guaranteed to be well behaved
@@ -61,7 +61,7 @@ void BlitSquare :: reset()
 void BlitSquare :: setFrequency( StkFloat frequency )
 {
   if ( frequency <= 0.0 ) {
-    oStream_ << "BlitSquare::setFrequency: argument (" << frequency << ") must be positive!";
+    oStream_ << "BlitSquare::freqSetup: argument (" << frequency << ") must be positive!";
     handleError( StkError::WARNING ); return;
   }
 

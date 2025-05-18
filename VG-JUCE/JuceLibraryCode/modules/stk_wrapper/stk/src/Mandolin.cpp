@@ -106,7 +106,7 @@ void Mandolin :: setFrequency( StkFloat frequency )
 {
 #if defined(_STK_DEBUG_)
   if ( frequency <= 0.0 ) {
-    oStream_ << "Mandolin::setFrequency: argument is less than or equal to zero!";
+    oStream_ << "Mandolin::freqSetup: argument is less than or equal to zero!";
     handleError( StkError::WARNING ); return;
   }
 #endif

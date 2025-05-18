@@ -156,7 +156,7 @@ public:
     when the rate changes so that internal class data can be
     appropriately updated.  However, this has not been fully
     implemented.  Specifically, classes that appropriately update
-    their own data when either a setFrequency() or noteOn() function
+    their own data when either a freqSetup() or noteOn() function
     is called do not currently receive the automatic notification of
     rate change.  If the user wants a specific class instance to
     ignore such notifications, perhaps in a multi-rate context, the

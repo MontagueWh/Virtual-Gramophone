@@ -33,12 +33,15 @@ public:
     stk::StkFloat tick(unsigned int channel = 0) override;
     stk::StkFrames& tick(stk::StkFrames& frames, unsigned int channel = 0) override;
 
-    void updateHornParameters();
+    int selectConvolutionIndex(float amplitude, float adsrValue);
+    float freqSetup();
+    void setPitchShift(float position);
+
+    stk::ADSR adsr;
 
     // Brass synthesis variables
     stk::Brass brassHorn;
     float frequency;
-    void setPitchShift(float position);
 
 
     class waveguideSynthesis : public juce::Component, juce::AudioSource
@@ -55,14 +58,13 @@ public:
         void setupBodyResonances();
         void handleImpulseResponse(double sampleRate, int samplesPerBlock);
 
-        // Waveguide synthesis variables
-        stk::ADSR adsr;
-        juce::dsp::Convolution convolution[11];
+        juce::AudioFormatReader* reader;
+        juce::AudioFormatManager audioFormatManager;
+        juce::AudioBuffer<float> iRs[11];
+        juce::File irFiles[11]
 
     private:
 
-        juce::AudioFormatManager audioFormatManager;
-        juce::AudioBuffer<float> iRs[11];
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(waveguideSynthesis)
     };
@@ -80,12 +82,13 @@ private:
     float sampleRate;
     float outputGain;
     float inputGain;
-    float dryWetMix;
 
-    float brassMixLevel;
+    float lowestFrequency = 8.0f;
 
     StylusEmulation gramoStylus;
 	waveguideSynthesis waveguideSynthesis;
+
+    juce::dsp::Convolution convolution[11];
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (brassSynthesis)
 };

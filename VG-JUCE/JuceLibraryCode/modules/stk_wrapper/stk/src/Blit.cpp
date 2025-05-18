@@ -14,7 +14,7 @@
     to half the sample rate.  Note, however, that this setting may
     produce aliasing in the signal when the frequency is changing (no
     automatic modification of the number of harmonics is performed by
-    the setFrequency() function).
+    the freqSetup() function).
 
     Original code by Robin Davies, 2005.
     Revisions by Gary Scavone for STK, 2005.
@@ -50,7 +50,7 @@ void Blit :: reset()
 void Blit :: setFrequency( StkFloat frequency )
 {
   if ( frequency <= 0.0 ) {
-    oStream_ << "Blit::setFrequency: argument (" << frequency << ") must be positive!";
+    oStream_ << "Blit::freqSetup: argument (" << frequency << ") must be positive!";
     handleError( StkError::WARNING ); return;
   }
 

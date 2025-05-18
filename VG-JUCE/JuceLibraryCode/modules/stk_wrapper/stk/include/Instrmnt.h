@@ -81,7 +81,7 @@ class Instrmnt : public Stk
 
 inline void Instrmnt :: setFrequency( StkFloat frequency )
 {
-  oStream_ << "Instrmnt::setFrequency: virtual setFrequency function call!";
+  oStream_ << "Instrmnt::freqSetup: virtual freqSetup function call!";
   handleError( StkError::WARNING );
 }
 

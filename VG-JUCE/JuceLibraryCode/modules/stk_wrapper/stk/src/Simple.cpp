@@ -63,7 +63,7 @@ void Simple :: setFrequency( StkFloat frequency )
 {
 #if defined(_STK_DEBUG_)
   if ( frequency <= 0.0 ) {
-    oStream_ << "Simple::setFrequency: argument is less than or equal to zero!";
+    oStream_ << "Simple::freqSetup: argument is less than or equal to zero!";
     handleError( StkError::WARNING ); return;
   }
 #endif

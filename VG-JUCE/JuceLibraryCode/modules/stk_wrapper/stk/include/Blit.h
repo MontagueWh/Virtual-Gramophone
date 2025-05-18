@@ -23,7 +23,7 @@ namespace stk {
     to half the sample rate.  Note, however, that this setting may
     produce aliasing in the signal when the frequency is changing (no
     automatic modification of the number of harmonics is performed by
-    the setFrequency() function).
+    the freqSetup() function).
 
     Original code by Robin Davies, 2005.
     Revisions by Gary Scavone for STK, 2005.

@@ -12,7 +12,7 @@
     to half the sample rate.  Note, however, that this setting may
     produce aliasing in the signal when the frequency is changing (no
     automatic modification of the number of harmonics is performed by
-    the setFrequency() function).
+    the freqSetup() function).
 
     Based on initial code of Robin Davies, 2005.
     Modified algorithm code by Gary Scavone, 2005.
@@ -49,7 +49,7 @@ void BlitSaw :: reset()
 void BlitSaw :: setFrequency( StkFloat frequency )
 {
   if ( frequency <= 0.0 ) {
-    oStream_ << "BlitSaw::setFrequency: argument (" << frequency << ") must be positive!";
+    oStream_ << "BlitSaw::freqSetup: argument (" << frequency << ") must be positive!";
     handleError( StkError::WARNING ); return;
   }
 
@@ -71,7 +71,7 @@ void BlitSaw :: setHarmonics( unsigned int nHarmonics )
   // struggled a bit to decide where best to put this and finally
   // settled on here.  In general, the user shouldn't be messing with
   // the number of harmonics once the oscillator is running because
-  // this is automatically taken care of in the setFrequency()
+  // this is automatically taken care of in the freqSetup()
   // function.  (GPS - 1 October 2005)
   state_ = -0.5 * a_;
 }
