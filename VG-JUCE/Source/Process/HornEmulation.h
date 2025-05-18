@@ -38,7 +38,7 @@ public:
     // Brass synthesis variables
     stk::Brass brassHorn;
     float frequency;
-    void setSlide(float position);
+    void setPitchShift(float position);
 
 
     class waveguideSynthesis : public juce::Component, juce::AudioSource
@@ -69,7 +69,7 @@ public:
 
 private:
 
-    float slideTarget;
+    float pitchShiftTarget;
     float maxDelay;
 
     stk::Delay delayLine[2048];

@@ -86,20 +86,40 @@ void brassSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRat
 	setFrequency(440.0f);
 }
 
+stk::StkFloat brassSynthesis::tick(unsigned int channel)
+{
+	float input = gramoStylus.getFilterOutput(); // Get the input from the stylus
+	float brassOutput = brassHorn.tick(); // Mix with waveguide synthesis output
+}
+
 void brassSynthesis::waveguideSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
 	// This function is called by the host to fill the output buffer with audio data.
+}
+
+void brassSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+{
+	// This function is called by the host to fill the output buffer with audio data.
+	for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel) {
+		float* channelData = bufferToFill.buffer->getWritePointer(channel, bufferToFill.startSample);
+
+		for (int sample = 0; sample < bufferToFill.numSamples; ++sample) {
+			// Process input through both brass and waveguide models
+			float input = channelData[sample] * inputGain;
+
+			// Process through brass model
+			float output = processSample(input);
+
+			// Apply dry/wet mix
+			channelData[sample] = input * (1.0f - dryWetMix) + output * dryWetMix;
+		}
+	}
 }
 
 void brassSynthesis::waveguideSynthesis::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
-}
-
-void brassSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
-{
-	// This function is called by the host to fill the output buffer with audio data.
 }
 
 void brassSynthesis::releaseResources()
@@ -114,18 +134,8 @@ void brassSynthesis::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
 }
 
 void brassSynthesis::noteOff(stk::StkFloat amplitude) {
-    // Your implementation here
-    // e.g., brassHorn.noteOff(amplitude);
-}
-
-stk::StkFloat brassSynthesis::tick(unsigned int channel) {
-    // Your implementation here
-    return 0.0; // Or the actual output
-}
-
-stk::StkFrames& brassSynthesis::tick(stk::StkFrames& frames, unsigned int channel) {
-    // Your implementation here
-    return frames;
+	// Your implementation here
+	// e.g., brassHorn.noteOff(amplitude);
 }
 
 void brassSynthesis::waveguideSynthesis::setupBodyResonances()
