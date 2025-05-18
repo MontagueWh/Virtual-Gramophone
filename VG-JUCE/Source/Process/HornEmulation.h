@@ -61,7 +61,7 @@ public:
         juce::AudioFormatReader* reader;
         juce::AudioFormatManager audioFormatManager;
         juce::AudioBuffer<float> iRs[11];
-        juce::File irFiles[11]
+        juce::File irFiles[11];
 
     private:
 
