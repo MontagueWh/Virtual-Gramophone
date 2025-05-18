@@ -48,7 +48,7 @@ brassSynthesis::waveguideSynthesis::~waveguideSynthesis()
 	adsr.setSustainLevel(0.0); // Set sustain level to 0.0 to stop the envelope
 }
 
-void brassSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+void brassSynthesis::waveguideSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
 	Stk::setSampleRate(sampleRate);
 
@@ -58,9 +58,43 @@ void brassSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRat
 	specConvolution.maximumBlockSize = samplesPerBlockExpected;
 	specConvolution.numChannels = 1;
 
-	for (int i = 0; i <= 10; i++) waveguideSynthesis.convolution[i].prepare(specConvolution); // Prepare the convolution processor
+	for (int i = 0; i <= 10; i++) convolution[i].prepare(specConvolution); // Prepare the convolution processor
 
-	waveguideSynthesis.handleImpulseResponse(sampleRate, samplesPerBlockExpected); // Handle the impulse response
+	handleImpulseResponse(sampleRate, samplesPerBlockExpected); // Handle the impulse response
+}
+
+void brassSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+{
+	pitchShiftTarget = 0.0f;
+
+	// Calculate delay buffer length based on lowest frequency
+	maxDelay = sampleRate / lowestFrequency + 1;
+	delayLength = maxDelay;
+
+	// Initialize delay line
+	for (int i = 0; i < 2048; i++)
+		delayLine[i] = 0.0f;
+
+	readPtr = 0;
+	writePtr = delayLength;
+
+	outputGain = 1.0f;
+	inputGain = 0.5f;
+	dryWetMix = 0.7f;
+
+	// Default frequency
+	setFrequency(440.0f);
+}
+
+void brassSynthesis::waveguideSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+{
+	// This function is called by the host to fill the output buffer with audio data.
+}
+
+void brassSynthesis::waveguideSynthesis::releaseResources()
+{
+	// When playback stops, you can use this as an opportunity
+	// to free up any spare memory, etc.
 }
 
 void brassSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
@@ -72,33 +106,6 @@ void brassSynthesis::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
-}
-
-void brassSynthesis::paint (juce::Graphics& g)
-{
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (juce::Colours::white);
-    g.setFont (juce::FontOptions (14.0f));
-    g.drawText ("brassSynthesis", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
-}
-
-void brassSynthesis::resized()
-{
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
-
 }
 
 void brassSynthesis::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {

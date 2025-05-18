@@ -63,28 +63,28 @@ namespace BinaryData
     const int            CabinetEmulation_hSize = 674;
 
     extern const char*   GramoVoice_cpp;
-    const int            GramoVoice_cppSize = 980;
+    const int            GramoVoice_cppSize = 1251;
 
     extern const char*   GramoVoice_h;
-    const int            GramoVoice_hSize = 988;
+    const int            GramoVoice_hSize = 1083;
 
     extern const char*   HornEmulation_cpp;
-    const int            HornEmulation_cppSize = 6681;
+    const int            HornEmulation_cppSize = 7247;
 
     extern const char*   HornEmulation_h;
-    const int            HornEmulation_hSize = 1789;
+    const int            HornEmulation_hSize = 2507;
 
     extern const char*   SoundboxEmulation_cpp;
-    const int            SoundboxEmulation_cppSize = 1550;
+    const int            SoundboxEmulation_cppSize = 2679;
 
     extern const char*   SoundboxEmulation_h;
-    const int            SoundboxEmulation_hSize = 797;
+    const int            SoundboxEmulation_hSize = 1598;
 
     extern const char*   StylusEmulation_cpp;
-    const int            StylusEmulation_cppSize = 2394;
+    const int            StylusEmulation_cppSize = 2032;
 
     extern const char*   StylusEmulation_h;
-    const int            StylusEmulation_hSize = 1355;
+    const int            StylusEmulation_hSize = 1159;
 
     extern const char*   GramoModelLoader_cpp;
     const int            GramoModelLoader_cppSize = 7228;
@@ -102,16 +102,16 @@ namespace BinaryData
     const int            InfoButton_hSize = 643;
 
     extern const char*   PluginProcessor_cpp;
-    const int            PluginProcessor_cppSize = 11864;
+    const int            PluginProcessor_cppSize = 11721;
 
     extern const char*   PluginProcessor_h;
-    const int            PluginProcessor_hSize = 4658;
+    const int            PluginProcessor_hSize = 4657;
 
     extern const char*   PluginEditor_cpp;
-    const int            PluginEditor_cppSize = 9390;
+    const int            PluginEditor_cppSize = 13195;
 
     extern const char*   PluginEditor_h;
-    const int            PluginEditor_hSize = 5864;
+    const int            PluginEditor_hSize = 6816;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
     const int namedResourceListSize = 35;

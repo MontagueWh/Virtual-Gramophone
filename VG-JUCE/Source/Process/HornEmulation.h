@@ -27,9 +27,6 @@ public:
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
     void releaseResources() override;
 
-    void paint(juce::Graphics&) override;
-    void resized() override;
-
 	// Stk pure virtual methods
     void noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) override;
     void noteOff(stk::StkFloat amplitude) override;
@@ -41,14 +38,19 @@ public:
     // Brass synthesis variables
     stk::Brass brassHorn;
     float frequency;
+    void setSlide(float position);
 
 
-    class waveguideSynthesis : public juce::Component
+    class waveguideSynthesis : public juce::Component, juce::AudioSource
     {
     public:
 
         waveguideSynthesis();
         ~waveguideSynthesis() override;
+
+		void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
+        void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
+        void releaseResources() override;
 
         void setupBodyResonances();
         void handleImpulseResponse(double sampleRate, int samplesPerBlock);
@@ -66,6 +68,19 @@ public:
     };
 
 private:
+
+    float slideTarget;
+    float maxDelay;
+
+    stk::Delay delayLine[2048];
+    int delayLength;
+    int readPtr;
+    int writePtr;
+
+    float sampleRate;
+    float outputGain;
+    float inputGain;
+    float dryWetMix;
 
     float brassMixLevel;
 
