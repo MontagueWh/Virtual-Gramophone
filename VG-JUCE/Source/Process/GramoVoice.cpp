@@ -38,3 +38,15 @@ void GramoVoice::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToF
 {
 
 }
+
+void GramoVoice::paint(juce::Graphics& g)
+{
+	// This demo code just fills the component's background and
+	// draws some placeholder text to get you started.
+	g.fillAll(juce::Colours::beige);
+}
+
+void GramoVoice::sliderValueChanged(juce::Slider* slider)
+{
+	
+}

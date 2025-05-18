@@ -20,6 +20,11 @@ SoundboxEmulation::SoundboxEmulation()
     vibratoFrequency = 5.925f;
     vibratoGain = 0.1f;
     vibratoPhase = 0.0f;
+
+    maxPressure = 0.05f;
+    soundboxPressure = 0.0f;
+    soundboxGain = 0.0f;
+    noiseGain = 0.2f;
 }
 
 SoundboxEmulation::~SoundboxEmulation()
@@ -28,29 +33,20 @@ SoundboxEmulation::~SoundboxEmulation()
 
 void SoundboxEmulation::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
-    configureVibrato(sampleRate);
+    vibratoEffect = configureVibrato(sampleRate);
 }
 
 void SoundboxEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
 	// This function is called by the host to fill the output buffer with audio data.
 
-    juce::ScopedNoDenormals noDenormals;
-    auto totalNumInputChannels  = getTotalNumInputChannels();
-    auto totalNumOutputChannels = getTotalNumOutputChannels();
-    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        bufferToFill.buffer->clear (i, bufferToFill.startSample, bufferToFill.numSamples);
-    // Process the audio data here
-    for (int sample = 0; sample < bufferToFill.numSamples; ++sample)
-    {
-        float vibratoEffect = configureVibrato(getSampleRate());
-        // Apply the vibrato effect to the audio buffer
-        for (int channel = 0; channel < totalNumInputChannels; ++channel)
-        {
-            auto* channelData = bufferToFill.buffer->getWritePointer (channel, bufferToFill.startSample);
-            channelData[sample] += vibratoEffect;
-        }
-    }
+    //vibratoMix = bufferToFill.buffer->
+
+        // Update breath pressure
+    if (soundboxPressure < soundboxGain)
+        soundboxPressure += 0.001f;
+    if (soundboxPressure > soundboxGain)
+        soundboxPressure = soundboxGain;
 }
 
 void SoundboxEmulation::releaseResources()
@@ -59,6 +55,8 @@ void SoundboxEmulation::releaseResources()
 	// to free up any spare memory, etc.
 
     vibratoPhase = 0.0f;
+
+	soundboxPressure = 0.0f;
 }
 
 void SoundboxEmulation::paint (juce::Graphics& g)
@@ -80,9 +78,19 @@ void SoundboxEmulation::resized()
 
 }
 
+void SoundboxEmulation::startAirShift(float amplitude, float rate)
+{
+    soundboxGain = amplitude * maxPressure;
+}
+
 float SoundboxEmulation::configureVibrato(double sampleRate)
 {
     vibratoPhase += vibratoFrequency / sampleRate;
     if (vibratoPhase >= 1.0f) vibratoPhase -= 1.0f;
     return vibratoGain * std::sin(2.0f * std::numbers::pi * vibratoPhase);
+}
+
+float SoundboxEmulation::generateNoise() const
+{
+    return noiseGain * (2.0f * rand() / static_cast<float>(RAND_MAX) - 1.0f);
 }

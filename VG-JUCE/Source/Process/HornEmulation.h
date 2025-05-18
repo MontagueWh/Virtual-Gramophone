@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    HornEmulation.h
+    brassSynthesis.h
     Created: 17 May 2025 6:50:39pm
     Author:  monty
 
@@ -16,18 +16,18 @@
 //==============================================================================
 /*
 */
-class HornEmulation  : public juce::Component, public stk::Instrmnt, juce::AudioSource
+class brassSynthesis : public juce::Component, public stk::Instrmnt, public juce::AudioSource
 {
 public:
 
-    HornEmulation();
-    ~HornEmulation() override;
+    brassSynthesis();
+    ~brassSynthesis() override;
 
-	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
+    void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
     void releaseResources() override;
 
-    void paint (juce::Graphics&) override;
+    void paint(juce::Graphics&) override;
     void resized() override;
 
 	// Stk pure virtual methods
@@ -36,28 +36,42 @@ public:
     stk::StkFloat tick(unsigned int channel = 0) override;
     stk::StkFrames& tick(stk::StkFrames& frames, unsigned int channel = 0) override;
 
-    void setupBodyResonance();
-    void handleImpulseResponse(double sampleRate, int samplesPerBlock);
     void updateHornParameters();
-
-    // Waveguide synthesis variables
-    stk::ADSR adsr;
-    //stk::DelayA delayLine;
 
     // Brass synthesis variables
     stk::Brass brassHorn;
     float frequency;
-    bool noteOn;
+
+
+    class waveguideSynthesis : public juce::Component
+    {
+    public:
+
+        waveguideSynthesis();
+        ~waveguideSynthesis() override;
+
+        void setupBodyResonances();
+        void handleImpulseResponse(double sampleRate, int samplesPerBlock);
+
+        // Waveguide synthesis variables
+        stk::ADSR adsr;
+        juce::dsp::Convolution convolution[11];
+
+    private:
+
+        juce::AudioFormatManager audioFormatManager;
+        juce::AudioBuffer<float> iRs[11];
+
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(waveguideSynthesis)
+    };
 
 private:
 
     float brassMixLevel;
 
-    //juce::AudioFormatManager audioFormatManager;
-    juce::AudioBuffer<float> iRs[11];
-    juce::dsp::Convolution convolution[11];
-
     StylusEmulation gramoStylus;
+	waveguideSynthesis waveguideSynthesis;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HornEmulation)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (brassSynthesis)
 };
+

@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    HornEmulation.cpp
+    brassSynthesis.cpp
     Created: 17 May 2025 6:50:39pm
     Author:  monty
 
@@ -12,28 +12,43 @@
 #include "HornEmulation.h"
 
 //==============================================================================
-HornEmulation::HornEmulation()
+brassSynthesis::brassSynthesis()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
 
 	updateHornParameters();
-
-    // ADSR Setup for brass stk
-    adsr.setTarget(1.0);
-    adsr.setAttackRate(0.02);
-    adsr.setDecayRate(0.2);
-    adsr.setSustainLevel(0.6);
-
-
-    setupBodyResonance(); // Initialise body resonance filter
 }
 
-HornEmulation::~HornEmulation()
+brassSynthesis::waveguideSynthesis::waveguideSynthesis()
+{
+	// In your constructor, you should add any child components, and
+	// initialise any special settings that your component needs.
+
+	// ADSR Setup for brass stk
+	adsr.setTarget(1.0);
+	adsr.setAttackRate(0.02);
+	adsr.setDecayRate(0.2);
+	adsr.setSustainLevel(0.6);
+
+
+	setupBodyResonances(); // Initialise body resonance filter
+}
+
+brassSynthesis::~brassSynthesis()
 {
 }
 
-void HornEmulation::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+
+brassSynthesis::waveguideSynthesis::~waveguideSynthesis()
+{
+	// Destructor for waveguide synthesis
+	adsr.setTarget(0.0); // Set target to 0.0 to stop the envelope
+	adsr.setDecayRate(0.0); // Set decay rate to 0.0 to stop the envelope
+	adsr.setSustainLevel(0.0); // Set sustain level to 0.0 to stop the envelope
+}
+
+void brassSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
 	Stk::setSampleRate(sampleRate);
 
@@ -43,23 +58,23 @@ void HornEmulation::prepareToPlay(int samplesPerBlockExpected, double sampleRate
 	specConvolution.maximumBlockSize = samplesPerBlockExpected;
 	specConvolution.numChannels = 1;
 
-	for (int i = 0; i <= 10; i++) convolution[i].prepare(specConvolution); // Prepare the convolution processor
+	for (int i = 0; i <= 10; i++) waveguideSynthesis.convolution[i].prepare(specConvolution); // Prepare the convolution processor
 
-	handleImpulseResponse(sampleRate, samplesPerBlockExpected); // Handle the impulse response
+	waveguideSynthesis.handleImpulseResponse(sampleRate, samplesPerBlockExpected); // Handle the impulse response
 }
 
-void HornEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+void brassSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
 	// This function is called by the host to fill the output buffer with audio data.
 }
 
-void HornEmulation::releaseResources()
+void brassSynthesis::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
 }
 
-void HornEmulation::paint (juce::Graphics& g)
+void brassSynthesis::paint (juce::Graphics& g)
 {
     /* This demo code just fills the component's background and
        draws some placeholder text to get you started.
@@ -75,38 +90,38 @@ void HornEmulation::paint (juce::Graphics& g)
 
     g.setColour (juce::Colours::white);
     g.setFont (juce::FontOptions (14.0f));
-    g.drawText ("HornEmulation", getLocalBounds(),
+    g.drawText ("brassSynthesis", getLocalBounds(),
                 juce::Justification::centred, true);   // draw some placeholder text
 }
 
-void HornEmulation::resized()
+void brassSynthesis::resized()
 {
     // This method is where you should set the bounds of any child
     // components that your component contains..
 
 }
 
-void HornEmulation::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
+void brassSynthesis::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
     // Your implementation here
     // e.g., brassHorn.noteOn(frequency, amplitude);
 }
 
-void HornEmulation::noteOff(stk::StkFloat amplitude) {
+void brassSynthesis::noteOff(stk::StkFloat amplitude) {
     // Your implementation here
     // e.g., brassHorn.noteOff(amplitude);
 }
 
-stk::StkFloat HornEmulation::tick(unsigned int channel) {
+stk::StkFloat brassSynthesis::tick(unsigned int channel) {
     // Your implementation here
     return 0.0; // Or the actual output
 }
 
-stk::StkFrames& HornEmulation::tick(stk::StkFrames& frames, unsigned int channel) {
+stk::StkFrames& brassSynthesis::tick(stk::StkFrames& frames, unsigned int channel) {
     // Your implementation here
     return frames;
 }
 
-void HornEmulation::setupBodyResonance()
+void brassSynthesis::waveguideSynthesis::setupBodyResonances()
 {
 	// Configure a body resonance filter (BP filter)
 	stk::BiQuad bodyFilter;
@@ -115,7 +130,7 @@ void HornEmulation::setupBodyResonance()
 	bodyFilter.setResonance(bodyFrequency, bodyQfactor, true); // Set the resonance filter
 }
 
-void HornEmulation::updateHornParameters()
+void brassSynthesis::updateHornParameters()
 {
 	constexpr float brassYoungModulus = 10.0e10f; // Young's modulus for brass in Pascals
 	constexpr float airDensity = 1.2f; // Density of air in kg/m^3
@@ -137,31 +152,27 @@ void HornEmulation::updateHornParameters()
 	float effectiveFreq = freq * timbreModifier; // Effective frequency based on the horn parameters
 
 	brassHorn.setFrequency(effectiveFreq); // Set the frequency of the horn
-
-	DBG("Horn Stiffness: " << hornStiffness);
-	DBG("Horn Frequency: " << effectiveFreq);
-	DBG("Horn Diameter: " << hornDiameter);
 }
 
-void HornEmulation::handleImpulseResponse(double sampleRate, int samplesPerBlock)
+void brassSynthesis::waveguideSynthesis::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 {
-	//audioFormatManager.registerBasicFormats();
+	audioFormatManager.registerBasicFormats();
 
 	juce::AudioFormatReader* reader = nullptr;
 
 	juce::File irFiles[11] =
 	{
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Initial Stage/Attack Initial Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Initial Stage/Attack Initial Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Halfway Stage/Halfway Attack Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Halfway Stage/Halfway Attack Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Decay/Decay Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Decay/Decay Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Sustain/Sustain Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Sustain/Sustain Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Release/Release Quiet.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav",
-		"../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav"
+	   juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Initial Stage/Attack Initial Quiet.wav"),
+	   juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Initial Stage/Attack Initial Loud.wav"),
+	   juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Attack/Halfway Stage/Halfway Attack Quiet.wav"),
+	   juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Halfway Stage/Halfway Attack Loud.wav"),
+	   juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Decay/Decay Quiet.wav"),
+	   juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Loud/Decay/Decay Loud.wav"),
+	   juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Sustain/Sustain Quiet.wav"),
+	   juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Loud/Sustain/Sustain Loud.wav"),
+	   juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Quiet/Release/Release Quiet.wav"),
+	   juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav"),
+	   juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav")
 	};
 
 	for (int i = 0; i < 11; ++i)

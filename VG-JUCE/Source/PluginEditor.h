@@ -12,6 +12,7 @@
 #include "UI/InfoButton.h"      // Includes the header file for the InfoButton class.
 #include <JuceHeader.h>      // Includes the JUCE framework header file.
 //#include <../Source/UI/GramoModelLoader.h>
+#include "Process/GramoVoice.h" // Includes the header file for the GramoVoice class for audio processing.
 
 
 //==============================================================================
@@ -25,7 +26,7 @@ class VirtualGramoAudioProcessorEditor : public juce::AudioProcessorEditor,
 {
 public:
     explicit VirtualGramoAudioProcessorEditor(VirtualGramoAudioProcessor&); // Constructor that takes a reference to the audio processor.
-    void gramophoneHornParamsSetup(const int TEXT_BOX_SIZE);
+    void gramophoneParametersSetup(const int TEXT_BOX_SIZE);
     void wetDryParamSetup(const int TEXT_BOX_SIZE);
     void additionalEffectsParamsSetup(const int TEXT_BOX_SIZE);
     ~VirtualGramoAudioProcessorEditor() override; // Destructor for the editor.
@@ -33,6 +34,8 @@ public:
     //==============================================================================
     void paint(juce::Graphics&) override; // Paints the editor's GUI components.
     void resized() override; // Handles resizing and layout of GUI components.
+
+    void gramophoneHornParamsSetup(const int TEXT_BOX_SIZE);
 
 
 private:
@@ -61,15 +64,6 @@ private:
     juce::Slider wetDryParam; // Slider for controlling the wet/dry mix parameter.
     SliderAttatchmentPtr wetDryAttach; // Attachment to link the mix slider to the parameter tree.
 
-    juce::Slider hornStiffnessParam; // Slider for changing the stiffness of the gramophone's brass horn
-	SliderAttatchmentPtr hornStiffnessAttach; // Attachment to link the horn stiffness slider to the parameter tree.
-
-    juce::Slider hornDiameterParam; // Slider for changing the diameter of the gramophone's brass horn
-	SliderAttatchmentPtr hornDiameterAttach; // Attachment to link the horn diameter slider to the parameter tree.
-
-	juce::Slider hornLengthParam; // Slider for changing the length of the gramophone's brass horn
-	SliderAttatchmentPtr hornLengthAttach; // Attachment to link the horn length slider to the parameter tree.
-
     // Rectangles defining sections of the GUI layout.
     juce::Rectangle<int> topSection; // Rectangle for the top section of the GUI.
     juce::Rectangle<int> pictureSection; // Rectangle for the picture section of the GUI.
@@ -85,15 +79,37 @@ private:
     juce::Rectangle<int> wetDryTextSection; // Rectangle for the mix text label section.
 
 
-	juce::Rectangle<int> hornStiffnessSection; // Rectangle for the horn stiffness text label section.
-	juce::Rectangle<int> hornDiameterSection; // Rectangle for the horn diameter text label section.
-	juce::Rectangle<int> hornLengthSection; // Rectangle for the horn length text label section.
+    SliderAttatchmentPtr hornStiffnessAttach; // Attachment to link the horn stiffness slider to the parameter tree.
+    SliderAttatchmentPtr hornDiameterAttach; // Attachment to link the horn diameter slider to the parameter tree.
+    SliderAttatchmentPtr hornLengthAttach; // Attachment to link the horn length slider to the parameter tree.
 
-	juce::Rectangle<int> hornStiffnessTextSection; // Rectangle for the horn stiffness text label section.
-	juce::Rectangle<int> hornDiameterTextSection; // Rectangle for the horn diameter text label section.
-	juce::Rectangle<int> hornLengthTextSection; // Rectangle for the horn length text label section.
+    juce::Rectangle<int> hornStiffnessSection; // Rectangle for the horn stiffness text label section.
+    juce::Rectangle<int> hornDiameterSection; // Rectangle for the horn diameter text label section.
+    juce::Rectangle<int> hornLengthSection; // Rectangle for the horn length text label section.
 
-	//GramoModelLoader gramoModelLoader; // Instance of the GramoModelLoader class for loading 3D models.
+    juce::Rectangle<int> hornStiffnessTextSection; // Rectangle for the horn stiffness text label section.
+    juce::Rectangle<int> hornDiameterTextSection; // Rectangle for the horn diameter text label section.
+    juce::Rectangle<int> hornLengthTextSection; // Rectangle for the horn length text label section.
+
+    juce::Slider hornStiffnessParam; // Slider for changing the stiffness of the gramophone's brass horn
+    juce::Slider hornDiameterParam; // Slider for changing the diameter of the gramophone's brass horn
+    juce::Slider hornLengthParam; // Slider for changing the length of the gramophone's brass horn
+    juce::Slider frequencySlider;
+    juce::Slider pressureParam;
+    juce::Slider inputGainParam;
+    juce::Slider mixParam;
+    juce::Slider vibratoFreqParam;
+    juce::Slider vibratoGainParam;
+    juce::Slider pitchShiftParam;
+
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> pressureAttach;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> inputGainAttach;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> mixAttach;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> vibratoFreqAttach;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> vibratoGainAttach;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> pitchShiftAttach;
+
+	GramoVoice gramoVoice; // Instance of the GramoVoice class for audio processing.
 
     VirtualGramoAudioProcessor& audioProcessor; // Reference to the audio processor instance.
 

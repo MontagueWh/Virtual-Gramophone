@@ -20,8 +20,9 @@ VirtualGramoAudioProcessorEditor::VirtualGramoAudioProcessorEditor(VirtualGramoA
     constexpr int TEXT_BOX_SIZE = 25; // Defines the size of the text box for sliders.
 
     additionalEffectsParamsSetup(TEXT_BOX_SIZE);
-    gramophoneHornParamsSetup(TEXT_BOX_SIZE);
     wetDryParamSetup(TEXT_BOX_SIZE);
+
+    gramophoneParametersSetup(TEXT_BOX_SIZE);
 
     // Adds the info button to the editor.
     info_button_.addToEditor(this);
@@ -51,11 +52,14 @@ void VirtualGramoAudioProcessorEditor::paint(juce::Graphics& g)
 
     setupSections();
 
+    constexpr int TEXT_BOX_SIZE = 25; // Defines the size of the text box for sliders.
+    gramophoneHornParamsSetup(TEXT_BOX_SIZE);
+
     g.setFont(18.0f);
-    g.drawFittedText("COMP", compressTextSection, juce::Justification::left, 1);
     g.drawFittedText("TONE", toneTextSection, juce::Justification::left, 1);
     g.drawFittedText("VIBE", vibratoTextSection, juce::Justification::left, 1);
     g.drawFittedText("DRY", wetDryTextSection, juce::Justification::left, 1);
+
     g.drawFittedText("HORN STIFFNESS", hornStiffnessTextSection, juce::Justification::left, 1);
     g.drawFittedText("HORN DIAMETER", hornDiameterTextSection, juce::Justification::left, 1);
     g.drawFittedText("HORN LENGTH", hornLengthTextSection, juce::Justification::left, 1);
@@ -81,9 +85,41 @@ void VirtualGramoAudioProcessorEditor::resized()
     wetDryParam.setBounds(wetDrySection); // Positions the mix slider.
 
 
+    frequencyLabel.setBounds(freqArea.removeFromTop(20));
+    frequencySlider.setBounds(freqArea);
+
+    auto pressureArea = row1.removeFromLeft(knobWidth);
+    pressureLabel.setBounds(pressureArea.removeFromTop(20));
+    pressureSlider.setBounds(pressureArea);
+
+    auto inputGainArea = row1.removeFromLeft(knobWidth);
+    inputGainLabel.setBounds(inputGainArea.removeFromTop(20));
+    inputGainSlider.setBounds(inputGainArea);
+
+    auto mixArea = row1;
+    mixLabel.setBounds(mixArea.removeFromTop(20));
+    mixSlider.setBounds(mixArea);
+
+    area.removeFromTop(20);
+
+    // Second row - 3 controls
+    auto row2 = area.removeFromTop(150);
+    knobWidth = row2.getWidth() / 3;
+
+    auto vibratoFreqArea = row2.removeFromLeft(knobWidth);
+    vibratoFreqLabel.setBounds(vibratoFreqArea.removeFromTop(20));
+    vibratoFreqSlider.setBounds(vibratoFreqArea);
+
+    auto vibratoGainArea = row2.removeFromLeft(knobWidth);
+    vibratoGainLabel.setBounds(vibratoGainArea.removeFromTop(20));
+    vibratoGainSlider.setBounds(vibratoGainArea);
+
+    auto slideArea = row2;
+    slideLabel.setBounds(slideArea.removeFromTop(20));
+    slideSlider.setBounds(slideArea);
+
+
     std::string GramoSuite = "../Source/UI/GramoSuite.fbx";
-    //gramoModelLoader.importModel(GramoSuite); // Import the model from the specified path
-    //gramoModelLoader.setBounds(pictureSection);
 }
 
 // Sets up the layout sections for the GUI.
@@ -119,6 +155,57 @@ void VirtualGramoAudioProcessorEditor::setupSections()
 
     hornLengthSection = interfaceSection.removeFromTop(sectionHeight);
     hornLengthTextSection = hornLengthSection.removeFromLeft(40);
+}
+
+void VirtualGramoAudioProcessorEditor::gramophoneParametersSetup(const int TEXT_BOX_SIZE)
+{
+    // Set up slider appearances
+    pressureParam.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    pressureParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    pressureParam.addListener(this);
+
+    inputGainParam.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    inputGainParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    inputGainParam.addListener(this);
+
+    mixParam.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    mixParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    mixParam.addListener(this);
+
+    vibratoFreqParam.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    vibratoFreqParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    vibratoFreqParam.addListener(this);
+
+    vibratoGainParam.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    vibratoGainParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    vibratoGainParam.addListener(this);
+
+    pitchShiftParam.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    pitchShiftParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    pitchShiftParam.addListener(this);
+
+    // Add components
+    addAndMakeVisible(pressureParam);
+    addAndMakeVisible(inputGainParam);
+    addAndMakeVisible(mixParam);
+    addAndMakeVisible(vibratoFreqParam);
+    addAndMakeVisible(vibratoGainParam);
+    addAndMakeVisible(pitchShiftParam);
+
+    addAndMakeVisible(pressureLabel);
+    addAndMakeVisible(inputGainLabel);
+    addAndMakeVisible(mixLabel);
+    addAndMakeVisible(vibratoFreqLabel);
+    addAndMakeVisible(vibratoGainLabel);
+    addAndMakeVisible(pitchShiftLabel);
+
+    // Parameter attachments
+    pressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "PRESSURE", pressureParam);
+    inputGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "INPUT_GAIN", inputGainParam);
+    mixAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "MIX", mixParam);
+    vibratoFreqAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_FREQ", vibratoFreqParam);
+    vibratoGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_GAIN", vibratoGainParam);
+    pitchShiftAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "PITCH_SHIFT", pitchShiftParam);
 }
 
 void VirtualGramoAudioProcessorEditor::additionalEffectsParamsSetup(const int TEXT_BOX_SIZE)

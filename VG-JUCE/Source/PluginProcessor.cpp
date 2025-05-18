@@ -158,8 +158,6 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
     auto totalNumInputChannels = getTotalNumInputChannels(); // Gets the number of input channels.
     auto totalNumOutputChannels = getTotalNumOutputChannels(); // Gets the number of output channels.
 
-    gramoVoice.processInputAudio(buffer);
-    gramoVoice.processBlock(buffer, midiMessages); // Processes the audio data using the GramoVoice.
     mix.pushDrySamples(buffer); // Pushes the dry signal into the mix processor.
 
     // Processes each sample in the buffer.

@@ -28,8 +28,6 @@ public:
 
     //==============================================================================
     void prepareToPlay(double sampleRate, int samplesPerBlock) override; // Prepares the processor for playback by initialising resources
-
-    void PrepareAdditionalEffects(juce::dsp::ProcessSpec& spec, double sampleRate);
     
     void releaseResources() override; // Releases resources when playback stops.
 
@@ -38,10 +36,6 @@ public:
 #endif
     
     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override; // Processes audio and MIDI data for each block of samples
-
-    void ProcessChorusEffect(juce::dsp::ProcessContextReplacing<float>& contextToUse);
-
-    void ProcessCompressionAndTone(juce::AudioSampleBuffer& buffer, int channel, int sample);
 
     //==============================================================================
     juce::AudioProcessorEditor* createEditor() override; // Creates and returns the plugin editor (GUI)
@@ -71,6 +65,11 @@ public:
     void setStateInformation(const void* data, int sizeInBytes) override; // Restores the plugin's state from a memory block
 
     juce::AudioProcessorValueTreeState apvts; // Manages the plugin's parameters using a value tree state.
+
+
+    void PrepareAdditionalEffects(juce::dsp::ProcessSpec& spec, double sampleRate);
+    void ProcessChorusEffect(juce::dsp::ProcessContextReplacing<float>& contextToUse);
+    void ProcessCompressionAndTone(juce::AudioSampleBuffer& buffer, int channel, int sample);
 
 private:
 

@@ -29,9 +29,17 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
 
-    void setVibratoFrequency(float frequency);
-    void setVibratoGain(float gain);
     float configureVibrato(double sampleRate);
+
+    void startAirShift(float amplitude, float rate = 0.1f);
+    void stopAirShift(float rate = 0.1f);
+
+    float getsoundboxPressure() const { return soundboxPressure; }
+    float generateNoise() const;
+
+    void setMaxPressure(float pressure);
+    float getMaxPressure() const { return maxPressure; }
+    void setNoiseGain(float gain);
 
 private:
 
@@ -39,10 +47,15 @@ private:
     float soundboxPressure;
     float soundboxGain;
     float sounxboxTarget;
+    float maxPressure;
+
+    float noiseGain;
 
     float vibratoFrequency;
     float vibratoGain;
     float vibratoPhase;
+    float vibratoEffect;
+	float vibratoMix;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SoundboxEmulation)
 };

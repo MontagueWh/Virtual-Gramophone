@@ -18,7 +18,7 @@
 //==============================================================================
 /*
 */
-class GramoVoice : public juce::Component, public juce::AudioSource
+class GramoVoice : public juce::Component, public juce::AudioSource, public juce::Slider::Listener
 {
 public:
     GramoVoice();
@@ -27,13 +27,13 @@ public:
 	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
     void releaseResources() override;
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
-
-    // float excitationSetup();
+	void paint(juce::Graphics&) override;
+	void sliderValueChanged(juce::Slider* slider) override;
 
 private:
 
     StylusEmulation gramoStylus;
-	HornEmulation gramoHorn;
+	brassSynthesis gramoHorn;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GramoVoice)
 };
