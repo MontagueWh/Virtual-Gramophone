@@ -43,6 +43,9 @@ public:
     stk::Brass brassHorn;
     float frequency;
 
+    float rmsLevel;
+    float rmsAlpha;
+
 
     class waveguideSynthesis : public juce::Component, juce::AudioSource
     {
@@ -65,8 +68,6 @@ public:
 
     private:
 
-        float rmsLevel;
-        float rmsAlpha;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(waveguideSynthesis)
     };

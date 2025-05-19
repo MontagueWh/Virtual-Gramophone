@@ -23,6 +23,21 @@ hornEmulation::hornEmulation()
 	adsr.setDecayRate(0.2);
 	adsr.setSustainLevel(0.9);
 	adsr.setReleaseRate(0.1);
+
+	// Initialise member variables to avoid warning C26495
+	pitchShiftTarget = 0.0f;
+	maxDelay = 0.0f;
+	delayLength = 0;
+	readPtr = 0;
+	writePtr = 0;
+	sampleRate = 44100.0f;  // Default, will be overridden in prepareToPlay
+	outputGain = 1.0f;
+	inputGain = 0.5f;
+	frequency = 440.0f;  // Default A4, will be overridden
+
+	// Initialise RMS tracking
+	rmsLevel = 0.0f;
+	rmsAlpha = 0.99f;  // Smoothing factor (adjust as needed)
 }
 
 hornEmulation::waveguideSynthesis::waveguideSynthesis()
@@ -30,11 +45,9 @@ hornEmulation::waveguideSynthesis::waveguideSynthesis()
 	// In your constructor, you should add any child components, and
 	// initialise any special settings that your component needs.
 
-	// Initialise RMS tracking
-	rmsLevel = 0.0f;
-	rmsAlpha = 0.99f;  // Smoothing factor (adjust as needed)
-	
-	setupBodyResonances(); // Initialise body resonance filter
+	reader = nullptr;
+	audioFormatManager.registerBasicFormats(); // Register basic audio formats
+	setupBodyResonances(); // Initialise body resonances
 }
 
 hornEmulation::~hornEmulation()
@@ -134,6 +147,7 @@ stk::StkFrames& hornEmulation::tick(stk::StkFrames& frames, unsigned int channel
 void hornEmulation::waveguideSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
 	// This function is called by the host to fill the output buffer with audio data.
+	bufferToFill.clearActiveBufferRegion(); // Clear the buffer region
 }
 
 void hornEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
@@ -177,6 +191,7 @@ void hornEmulation::waveguideSynthesis::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
+	for (int i = 0; i <= 11; ++i) iRs[i].setSize(0, 0);
 }
 
 void hornEmulation::releaseResources()
