@@ -152,6 +152,9 @@ void hornEmulation::waveguideSynthesis::getNextAudioBlock(const juce::AudioSourc
 
 void hornEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
+	float incomingAmplitude = 0.0f;
+	int sampleCount = 0;
+
 	// This function is called by the host to fill the output buffer with audio data.
 	for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel) {
 		float* channelData = bufferToFill.buffer->getWritePointer(channel, bufferToFill.startSample);
@@ -170,16 +173,20 @@ void hornEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
 			// Use the STK tick method to get the processed sample
 			float outputSample = brassHorn.tick();
 
-			// Apply wet/dry mix
 			channelData[sample] = outputSample;
+
+			incomingAmplitude = pow(channelData[sample], 2.0f);
+			sampleCount++;
 		}
 	}
 
-	float amplitude = brassHorn.lastOut();
+	rmsLevel = sqrt(incomingAmplitude / sampleCount); // Calculate RMS level
+
+	incomingAmplitude += brassHorn.lastOut();
 	float adsrValue = adsr.tick();
 
 	// Determine which convolution to use
-	int convIndex = selectConvolutionIndex(amplitude, adsrValue);
+	int convIndex = selectConvolutionIndex(incomingAmplitude, adsrValue);
 
 	// Process through the selected convolution
 	auto block = juce::dsp::AudioBlock<float>(*bufferToFill.buffer);
@@ -191,7 +198,7 @@ void hornEmulation::waveguideSynthesis::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
-	for (int i = 0; i <= 11; ++i) iRs[i].setSize(0, 0);
+	for (int i = 0; i <= 10; ++i) iRs[i].setSize(0, 0);
 }
 
 void hornEmulation::releaseResources()
@@ -284,7 +291,7 @@ int hornEmulation::selectConvolutionIndex(float amplitude, float adsrValue)
 {
 	// Determine if we're using "loud" or "quiet" IRs
 	const float LoudnessThresh = 0.3f; // Threshold for loudness
-	bool isLoud = amplitude > 0.5f;
+	bool isLoud = amplitude > 0.6f;
 
 	// Get the current ADSR state (STK uses integers 0-4 for its states)
 	int state = adsr.getState();

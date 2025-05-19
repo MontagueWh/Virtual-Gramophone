@@ -156,12 +156,12 @@ void Guitar :: setFrequency( StkFloat frequency, unsigned int string )
 {
 #if defined(_STK_DEBUG_)
   if ( frequency <= 0.0 ) {
-    oStream_ << "Guitar::freqSetup: frequency parameter is less than or equal to zero!";
+    oStream_ << "Guitar::setFrequency: frequency parameter is less than or equal to zero!";
     handleError( StkError::WARNING ); return;
   }
 
   if ( string >= strings_.size() ) {
-    oStream_ << "Guitar::freqSetup: string parameter is greater than number of strings!";
+    oStream_ << "Guitar::setFrequency: string parameter is greater than number of strings!";
     handleError( StkError::WARNING ); return;
   }
 #endif

@@ -48,7 +48,7 @@ void Moog :: setFrequency( StkFloat frequency )
 {
 #if defined(_STK_DEBUG_)
   if ( frequency <= 0.0 ) {
-    oStream_ << "Moog::freqSetup: parameter is less than or equal to zero!";
+    oStream_ << "Moog::setFrequency: parameter is less than or equal to zero!";
     handleError( StkError::WARNING ); return;
   }
 #endif

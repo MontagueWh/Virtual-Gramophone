@@ -67,7 +67,7 @@ void Modal :: setFrequency( StkFloat frequency )
 {
 #if defined(_STK_DEBUG_)
   if ( frequency <= 0.0 ) {
-    oStream_ << "Modal::freqSetup: argument is less than or equal to zero!";
+    oStream_ << "Modal::setFrequency: argument is less than or equal to zero!";
     handleError( StkError::WARNING ); return;
   }
 #endif
