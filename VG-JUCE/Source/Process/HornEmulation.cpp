@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    brassSynthesis.cpp
+    hornEmulation.cpp
     Created: 17 May 2025 6:50:39pm
     Author:  monty
 
@@ -12,7 +12,7 @@
 #include "HornEmulation.h"
 
 //==============================================================================
-brassSynthesis::brassSynthesis()
+hornEmulation::hornEmulation()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
@@ -21,10 +21,11 @@ brassSynthesis::brassSynthesis()
 	adsr.setTarget(1.0);
 	adsr.setAttackRate(0.02);
 	adsr.setDecayRate(0.2);
-	adsr.setSustainLevel(0.6);
+	adsr.setSustainLevel(0.9);
+	adsr.setReleaseRate(0.1);
 }
 
-brassSynthesis::waveguideSynthesis::waveguideSynthesis()
+hornEmulation::waveguideSynthesis::waveguideSynthesis()
 {
 	// In your constructor, you should add any child components, and
 	// initialise any special settings that your component needs.
@@ -33,7 +34,7 @@ brassSynthesis::waveguideSynthesis::waveguideSynthesis()
 	setupBodyResonances(); // Initialise body resonance filter
 }
 
-brassSynthesis::~brassSynthesis()
+hornEmulation::~hornEmulation()
 {
 	// Destructor for waveguide synthesis
 	adsr.setTarget(0.0); // Set target to 0.0 to stop the envelope
@@ -42,17 +43,17 @@ brassSynthesis::~brassSynthesis()
 }
 
 
-brassSynthesis::waveguideSynthesis::~waveguideSynthesis()
+hornEmulation::waveguideSynthesis::~waveguideSynthesis()
 {
 
 }
 
-void brassSynthesis::waveguideSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+void hornEmulation::waveguideSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
 	handleImpulseResponse(sampleRate, samplesPerBlockExpected); // Handle the impulse response
 }
 
-void brassSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+void hornEmulation::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
 	pitchShiftTarget = 0.0f;
 
@@ -60,7 +61,7 @@ void brassSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRat
 	maxDelay = sampleRate / lowestFrequency + 1;
 	delayLength = maxDelay;
 
-	// Initialize delay line
+	// Initialise delay line
 	for (int i = 0; i < 2048; i++)
 		delayLine[i] = 0.0f;
 
@@ -81,9 +82,32 @@ void brassSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRat
 	specConvolution.numChannels = 1;
 
 	for (int i = 0; i <= 10; i++) convolution[i].prepare(specConvolution); // Prepare the convolution processor
+
+	waveguideSynthesis.prepareToPlay(samplesPerBlockExpected, sampleRate); // Initialise the waveguide synthesis
+
+	for (int i = 0; i < 11; ++i) // Load impulses responses into convolution method
+	{
+		waveguideSynthesis.reader = waveguideSynthesis.audioFormatManager.createReaderFor(waveguideSynthesis.irFiles[i]);
+
+		if (waveguideSynthesis.reader != nullptr)
+		{
+			waveguideSynthesis.iRs[i].setSize(1, static_cast<int>(waveguideSynthesis.reader->lengthInSamples));
+			waveguideSynthesis.reader->read(&waveguideSynthesis.iRs[i], 0, static_cast<int>(waveguideSynthesis.reader->lengthInSamples), 0, true, true);
+
+			convolution[i].loadImpulseResponse(
+				std::move(waveguideSynthesis.iRs[i]),
+				waveguideSynthesis.reader->sampleRate,
+				juce::dsp::Convolution::Stereo::no,
+				juce::dsp::Convolution::Trim::no,
+				juce::dsp::Convolution::Normalise::yes);
+
+			delete waveguideSynthesis.reader;
+			waveguideSynthesis.reader = nullptr;
+		}
+	}
 }
 
-stk::StkFloat brassSynthesis::tick(unsigned int channel)
+stk::StkFloat hornEmulation::tick(unsigned int channel)
 {
 	float input = gramoStylus.getFilterOutput(); // Get the input from the stylus
 
@@ -94,7 +118,7 @@ stk::StkFloat brassSynthesis::tick(unsigned int channel)
 	return output;
 }
 
-stk::StkFrames& brassSynthesis::tick(stk::StkFrames& frames, unsigned int channel) {
+stk::StkFrames& hornEmulation::tick(stk::StkFrames& frames, unsigned int channel) {
 	// Process each sample in the frame
 	for (unsigned int i = 0; i < frames.frames(); i++) {
 		frames(i, channel) = tick();
@@ -102,12 +126,12 @@ stk::StkFrames& brassSynthesis::tick(stk::StkFrames& frames, unsigned int channe
 	return frames;
 }
 
-void brassSynthesis::waveguideSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+void hornEmulation::waveguideSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
 	// This function is called by the host to fill the output buffer with audio data.
 }
 
-void brassSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+void hornEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
 	// This function is called by the host to fill the output buffer with audio data.
 	for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel) {
@@ -132,45 +156,11 @@ void brassSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffe
 		}
 	}
 
-	float amplitude;
-	float adsrValue;
-
-	// Determine if we're using "loud" or "quiet" IRs
-	bool isLoud = amplitude > 0.5f;
-
-	// Get the current ADSR state
-	int state = adsr.getState();
-
-	// Default to the first IR
-	int convolutionIndex = 0;
-
-	waveguideSynthesis.handleImpulseResponse(sampleRate, bufferToFill.numSamples); // Handle the impulse response
-	
-	for (int i = 0; i < 11; ++i)
-	{
-		waveguideSynthesis.reader = waveguideSynthesis.audioFormatManager.createReaderFor(waveguideSynthesis.irFiles[i]);
-
-		if (waveguideSynthesis.reader != nullptr)
-		{
-			waveguideSynthesis.iRs[i].setSize(1, static_cast<int>(waveguideSynthesis.reader->lengthInSamples));
-			waveguideSynthesis.reader->read(&waveguideSynthesis.iRs[i], 0, static_cast<int>(waveguideSynthesis.reader->lengthInSamples), 0, true, true);
-
-			convolution[i].loadImpulseResponse(
-				std::move(waveguideSynthesis.iRs[i]),
-				waveguideSynthesis.reader->sampleRate,
-				juce::dsp::Convolution::Stereo::no,
-				juce::dsp::Convolution::Trim::no,
-				juce::dsp::Convolution::Normalise::yes);
-
-			delete waveguideSynthesis.reader;
-		}
-	}
-
-	float adsrValue = adsr.tick(); // Get the current ADSR value
-	float currentAmplitude = brassHorn.lastOut(); // Get the last output of the brass synthesis
+	float amplitude = brassHorn.lastOut();
+	float adsrValue = adsr.tick();
 
 	// Determine which convolution to use
-	int convIndex = selectConvolutionIndex(currentAmplitude, adsrValue);
+	int convIndex = selectConvolutionIndex(amplitude, adsrValue);
 
 	// Process through the selected convolution
 	auto block = juce::dsp::AudioBlock<float>(*bufferToFill.buffer);
@@ -178,35 +168,34 @@ void brassSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffe
 	convolution[convIndex].process(context);
 }
 
-void brassSynthesis::waveguideSynthesis::releaseResources()
+void hornEmulation::waveguideSynthesis::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
 }
 
-void brassSynthesis::releaseResources()
+void hornEmulation::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
 }
 
-void brassSynthesis::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
+void hornEmulation::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
     // Your implementation here
     // e.g., brassHorn.noteOn(frequency, amplitude);
 
-	freqSetup(); // Set the frequency of the brass synthesis
-
+	frequency = freqSetup(); // Set the frequency of the brass synthesis
 	brassHorn.startBlowing(amplitude, 0.1);
 	adsr.keyOn();
 }
 
-void brassSynthesis::noteOff(stk::StkFloat amplitude) {
+void hornEmulation::noteOff(stk::StkFloat amplitude) {
 	brassHorn.setFrequency(freqSetup()); // Set the frequency of the brass synthesis
 	brassHorn.stopBlowing(amplitude);
 	adsr.keyOff(); // Release the ADSR envelope
 }
 
-void brassSynthesis::waveguideSynthesis::setupBodyResonances()
+void hornEmulation::waveguideSynthesis::setupBodyResonances()
 {
 	// Configure a body resonance filter (BP filter)
 	stk::BiQuad bodyFilter;
@@ -215,7 +204,7 @@ void brassSynthesis::waveguideSynthesis::setupBodyResonances()
 	bodyFilter.setResonance(bodyFrequency, bodyQfactor, true); // Set the resonance filter
 }
 
-float brassSynthesis::freqSetup()
+float hornEmulation::freqSetup()
 {
 	constexpr float brassYoungModulus = 10.0e10f; // Young's modulus for brass in Pascals
 	constexpr float airDensity = 1.2f; // Density of air in kg/m^3
@@ -238,7 +227,7 @@ float brassSynthesis::freqSetup()
 	return effectiveFreq;
 }
 
-void brassSynthesis::waveguideSynthesis::handleImpulseResponse(double sampleRate, int samplesPerBlock)
+void hornEmulation::waveguideSynthesis::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 {
 	audioFormatManager.registerBasicFormats();
 
@@ -257,9 +246,9 @@ void brassSynthesis::waveguideSynthesis::handleImpulseResponse(double sampleRate
 	irFiles[10] = juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav");
 }
 
-void brassSynthesis::setPitchShift(float position)
+void hornEmulation::setPitchShift(float position)
 {
-	pitchShiftTarget = position * 100.0f; // Convert slide position to frequency shift
+	pitchShiftTarget = position * 100.0f; // Convert slide position to pitch shift
 
 	// Update the frequency if the brass instrument is active
 	// Check if ADSR is in a non-idle state (states 0-3 are active states)
@@ -271,7 +260,7 @@ void brassSynthesis::setPitchShift(float position)
 	}
 }
 
-int brassSynthesis::selectConvolutionIndex(float amplitude, float adsrValue)
+int hornEmulation::selectConvolutionIndex(float amplitude, float adsrValue)
 {
 	// Determine if we're using "loud" or "quiet" IRs
 	bool isLoud = amplitude > 0.5f;

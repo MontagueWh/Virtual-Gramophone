@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    brassSynthesis.h
+    hornEmulation.h
     Created: 17 May 2025 6:50:39pm
     Author:  monty
 
@@ -16,12 +16,12 @@
 //==============================================================================
 /*
 */
-class brassSynthesis : public juce::Component, public stk::Instrmnt, public juce::AudioSource
+class hornEmulation : public juce::Component, public stk::Instrmnt, public juce::AudioSource
 {
 public:
 
-    brassSynthesis();
-    ~brassSynthesis() override;
+    hornEmulation();
+    ~hornEmulation() override;
 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
@@ -90,6 +90,6 @@ private:
 
     juce::dsp::Convolution convolution[11];
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (brassSynthesis)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (hornEmulation)
 };
 

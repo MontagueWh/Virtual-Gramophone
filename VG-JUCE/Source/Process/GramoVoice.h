@@ -33,7 +33,7 @@ public:
 private:
 
     StylusEmulation gramoStylus;
-	brassSynthesis gramoHorn;
+	hornEmulation gramoHorn;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GramoVoice)
 };
