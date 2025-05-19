@@ -181,12 +181,12 @@ void hornEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
 	}
 
 	rmsLevel = sqrt(incomingAmplitude / sampleCount); // Calculate RMS level
+	rmsLevel = (rmsAlpha * rmsLevel) + (1.0f - rmsAlpha) * incomingAmplitude; // Apply smoothing
 
 	incomingAmplitude += brassHorn.lastOut();
-	float adsrValue = adsr.tick();
 
 	// Determine which convolution to use
-	int convIndex = selectConvolutionIndex(incomingAmplitude, adsrValue);
+	int convIndex = selectConvolutionIndex(incomingAmplitude, adsr.tick());
 
 	// Process through the selected convolution
 	auto block = juce::dsp::AudioBlock<float>(*bufferToFill.buffer);
