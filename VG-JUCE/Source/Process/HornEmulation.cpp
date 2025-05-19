@@ -30,16 +30,21 @@ hornEmulation::waveguideSynthesis::waveguideSynthesis()
 	// In your constructor, you should add any child components, and
 	// initialise any special settings that your component needs.
 
-
+	// Initialise RMS tracking
+	rmsLevel = 0.0f;
+	rmsAlpha = 0.99f;  // Smoothing factor (adjust as needed)
+	
 	setupBodyResonances(); // Initialise body resonance filter
 }
 
 hornEmulation::~hornEmulation()
 {
 	// Destructor for waveguide synthesis
-	adsr.setTarget(0.0); // Set target to 0.0 to stop the envelope
-	adsr.setDecayRate(0.0); // Set decay rate to 0.0 to stop the envelope
-	adsr.setSustainLevel(0.0); // Set sustain level to 0.0 to stop the envelope
+	adsr.setTarget(10.0); // Set target to 10.0 to avoid any abrupt changes
+	adsr.setAttackRate(0.1); // Set attack rate to 0.2 to simulate sound passing through the horn
+	adsr.setDecayRate(0.0); //	No decay
+	adsr.setSustainLevel(10.0);
+	adsr.setReleaseRate(0.1); // To simulate post-audio brass vibrations
 }
 
 
@@ -263,6 +268,7 @@ void hornEmulation::setPitchShift(float position)
 int hornEmulation::selectConvolutionIndex(float amplitude, float adsrValue)
 {
 	// Determine if we're using "loud" or "quiet" IRs
+	const float LoudnessThresh = 0.3f; // Threshold for loudness
 	bool isLoud = amplitude > 0.5f;
 
 	// Get the current ADSR state (STK uses integers 0-4 for its states)

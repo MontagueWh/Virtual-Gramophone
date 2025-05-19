@@ -65,6 +65,8 @@ public:
 
     private:
 
+        float rmsLevel;
+        float rmsAlpha;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(waveguideSynthesis)
     };
