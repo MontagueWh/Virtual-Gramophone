@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    GramoVoice.cpp
+    GramoMain.cpp
     Created: 13 May 2025 11:10:55am
     Author:  monty
 
@@ -9,13 +9,15 @@
 */
 
 #include <JuceHeader.h>
-#include "GramoVoice.h"
+#include "GramoMain.h"
 
 //==============================================================================
-GramoVoice::GramoVoice()
+GramoMain::GramoMain()
 {
 	// In your constructor, you should add any child components, and
 	// initialise any special settings that your component needs.
+
+    setupSections();
 
     constexpr int TEXT_BOX_SIZE = 25; // Defines the size of the text box for sliders.
     gramophoneParametersSetup(TEXT_BOX_SIZE);
@@ -25,11 +27,11 @@ GramoVoice::GramoVoice()
 	gramoHorn;
 }
 
-GramoVoice::~GramoVoice()
+GramoMain::~GramoMain()
 {
 }
 
-void GramoVoice::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+void GramoMain::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
 	// Use this method as the place to do any pre-playback
 	// initialisation that you need..
@@ -38,7 +40,7 @@ void GramoVoice::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 	gramoHorn.prepareToPlay(samplesPerBlockExpected, sampleRate);
 }
 
-void GramoVoice::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+void GramoMain::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
 
 	// Process the audio data through the components
@@ -47,12 +49,12 @@ void GramoVoice::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToF
 	gramoHorn.getNextAudioBlock(bufferToFill);
 }
 
-void GramoVoice::sliderValueChanged(juce::Slider* slider)
+void GramoMain::sliderValueChanged(juce::Slider* slider)
 {
 
 }
 
-void GramoVoice::releaseResources()
+void GramoMain::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
@@ -62,15 +64,14 @@ void GramoVoice::releaseResources()
 	gramoHorn.releaseResources();
 }
 
-void GramoVoice::paint(juce::Graphics& g)
+void GramoMain::paint(juce::Graphics& g)
 {
-    
     g.drawFittedText("HORN STIFFNESS", hornStiffnessTextSection, juce::Justification::left, 1);
     g.drawFittedText("HORN DIAMETER", hornDiameterTextSection, juce::Justification::left, 1);
     g.drawFittedText("HORN LENGTH", hornLengthTextSection, juce::Justification::left, 1);
 }
 
-void GramoVoice::setupSections()
+void GramoMain::setupSections()
 {
     hornStiffnessSection = interfaceSection.removeFromTop(sectionHeight);
     hornStiffnessTextSection = hornStiffnessSection.removeFromLeft(40);
@@ -82,7 +83,7 @@ void GramoVoice::setupSections()
     hornLengthTextSection = hornLengthSection.removeFromLeft(40);
 }
 
-void GramoVoice::resized()
+void GramoMain::resized()
 {
     // This method is called when the component is resized.
     // Use this to lay out any child components that you want to add.
@@ -119,7 +120,7 @@ void GramoVoice::resized()
     std::string GramoSuite = "../Source/UI/GramoSuite.fbx";
 }
 
-void GramoVoice::gramophoneParametersSetup(const int TEXT_BOX_SIZE)
+void GramoMain::gramophoneParametersSetup(const int TEXT_BOX_SIZE)
 {
     // Set up slider appearances
     pressureParam.setSliderStyle(juce::Slider::RotaryVerticalDrag);
@@ -170,7 +171,7 @@ void GramoVoice::gramophoneParametersSetup(const int TEXT_BOX_SIZE)
     pitchShiftAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "PITCH_SHIFT", pitchShiftParam);
 }
 
-void GramoVoice::gramophoneParametersSetup(const int TEXT_BOX_SIZE)
+void GramoMain::gramophoneParametersSetup(const int TEXT_BOX_SIZE)
 {
     // Add slider for the gramophone horn's stiffness
     hornStiffnessParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);

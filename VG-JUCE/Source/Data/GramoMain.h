@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    GramoVoice.h
+    GramoMain.h
     Created: 13 May 2025 11:10:55am
     Author:  monty
 
@@ -18,11 +18,11 @@
 //==============================================================================
 /*
 */
-class GramoVoice : public juce::Component, juce::AudioSource, juce::Slider::Listener
+class GramoMain : public juce::Component, juce::AudioSource, juce::Slider::Listener
 {
 public:
-    GramoVoice();
-    ~GramoVoice() override;
+    GramoMain();
+    ~GramoMain() override;
 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
@@ -76,5 +76,5 @@ private:
 	HornEmulation gramoHorn;
     SoundboxEmulation gramoSoundbox;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GramoVoice)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GramoMain)
 };

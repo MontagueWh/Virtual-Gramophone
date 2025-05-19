@@ -114,7 +114,7 @@ void VirtualGramoAudioProcessor::prepareToPlay(double sampleRate, int samplesPer
 
     PrepareAdditionalEffects(spec, sampleRate);
 
-	gramoVoice.prepareToPlay(sampleRate, samplesPerBlock); // Prepares the GramoVoice for playback.
+	gramoVoice.prepareToPlay(sampleRate, samplesPerBlock); // Prepares the GramoMain for playback.
 }
 
 // Releases resources when playback stops.
@@ -171,7 +171,7 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
 
     // Process the audio data through the components
     juce::AudioSourceChannelInfo channelInfo(buffer); // Wrap the bufferToFill in a juce::AudioSourceChannelInfo object
-    gramoVoice.getNextAudioBlock(channelInfo); // Process the audio data through the GramoVoice.
+    gramoVoice.getNextAudioBlock(channelInfo); // Process the audio data through the GramoMain.
 
     // Wraps the buffer in an AudioBlock for further processing.
     auto block = juce::dsp::AudioBlock<float>(buffer);

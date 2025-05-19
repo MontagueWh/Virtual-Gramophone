@@ -12,7 +12,7 @@
 #include "UI/InfoButton.h"      // Includes the header file for the InfoButton class.
 #include <JuceHeader.h>      // Includes the JUCE framework header file.
 //#include <../Source/UI/GramoModelLoader.h>
-#include "Process/GramoVoice.h" // Includes the header file for the GramoVoice class for audio processing.
+#include "Data/GramoMain.h"
 
 
 //==============================================================================
@@ -75,7 +75,7 @@ private:
     juce::Rectangle<int> vibratoTextSection; // Rectangle for the vibrato text label section.
     juce::Rectangle<int> wetDryTextSection; // Rectangle for the mix text label section.
 
-	GramoVoice gramoVoice; // Instance of the GramoVoice class for audio processing.
+	GramoMain gramoVoice; // Instance of the GramoMain class for audio processing.
 
     VirtualGramoAudioProcessor& audioProcessor; // Reference to the audio processor instance.
 

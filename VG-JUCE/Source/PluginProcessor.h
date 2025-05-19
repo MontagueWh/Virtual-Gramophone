@@ -9,7 +9,7 @@
 #pragma once // Ensures the file is included only once during compilation.
 
 #include <JuceHeader.h> // Includes the JUCE framework header file.
-#include "Process/GramoVoice.h" // Includes the GramoVoice class header file for audio processing.
+#include "Data/GramoMain.h"
 
 static const int MAX_CHANNELS = 64;
 
@@ -83,7 +83,7 @@ private:
     std::vector<juce::dsp::IIR::Filter<float>> filters;
     juce::dsp::DryWetMixer<float> mix; // Wet/dry mix processor.
 
-	GramoVoice gramoVoice; // Instance of the GramoVoice class for audio processing.
+	GramoMain gramoVoice; // Instance of the GramoMain class for audio processing.
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(VirtualGramoAudioProcessor)

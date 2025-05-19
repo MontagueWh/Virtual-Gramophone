@@ -62,11 +62,11 @@ namespace BinaryData
     extern const char*   CabinetEmulation_h;
     const int            CabinetEmulation_hSize = 674;
 
-    extern const char*   GramoVoice_cpp;
-    const int            GramoVoice_cppSize = 1168;
+    extern const char*   GramoMain_cpp;
+    const int            GramoMain_cppSize = 7511;
 
-    extern const char*   GramoVoice_h;
-    const int            GramoVoice_hSize = 917;
+    extern const char*   GramoMain_h;
+    const int            GramoMain_hSize = 3802;
 
     extern const char*   HornEmulation_cpp;
     const int            HornEmulation_cppSize = 12574;
@@ -102,16 +102,16 @@ namespace BinaryData
     const int            InfoButton_hSize = 643;
 
     extern const char*   PluginProcessor_cpp;
-    const int            PluginProcessor_cppSize = 11721;
+    const int            PluginProcessor_cppSize = 11990;
 
     extern const char*   PluginProcessor_h;
-    const int            PluginProcessor_hSize = 4657;
+    const int            PluginProcessor_hSize = 4584;
 
     extern const char*   PluginEditor_cpp;
-    const int            PluginEditor_cppSize = 13195;
+    const int            PluginEditor_cppSize = 7327;
 
     extern const char*   PluginEditor_h;
-    const int            PluginEditor_hSize = 6816;
+    const int            PluginEditor_hSize = 4562;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
     const int namedResourceListSize = 35;
