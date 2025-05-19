@@ -63,19 +63,19 @@ namespace BinaryData
     const int            CabinetEmulation_hSize = 674;
 
     extern const char*   GramoVoice_cpp;
-    const int            GramoVoice_cppSize = 1251;
+    const int            GramoVoice_cppSize = 1168;
 
     extern const char*   GramoVoice_h;
-    const int            GramoVoice_hSize = 1082;
+    const int            GramoVoice_hSize = 917;
 
     extern const char*   HornEmulation_cpp;
-    const int            HornEmulation_cppSize = 12385;
+    const int            HornEmulation_cppSize = 12574;
 
     extern const char*   HornEmulation_h;
-    const int            HornEmulation_hSize = 2629;
+    const int            HornEmulation_hSize = 2606;
 
     extern const char*   SoundboxEmulation_cpp;
-    const int            SoundboxEmulation_cppSize = 2679;
+    const int            SoundboxEmulation_cppSize = 2281;
 
     extern const char*   SoundboxEmulation_h;
     const int            SoundboxEmulation_hSize = 1598;

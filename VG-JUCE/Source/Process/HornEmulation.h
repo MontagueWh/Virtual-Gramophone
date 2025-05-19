@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    hornEmulation.h
+    HornEmulation.h
     Created: 17 May 2025 6:50:39pm
     Author:  monty
 
@@ -16,12 +16,12 @@
 //==============================================================================
 /*
 */
-class hornEmulation : public juce::Component, public stk::Instrmnt, public juce::AudioSource
+class HornEmulation : public juce::Component, public stk::Instrmnt, public juce::AudioSource
 {
 public:
 
-    hornEmulation();
-    ~hornEmulation() override;
+    HornEmulation();
+    ~HornEmulation() override;
 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
@@ -47,12 +47,12 @@ public:
     float rmsAlpha;
 
 
-    class waveguideSynthesis : public juce::Component, juce::AudioSource
+    class WaveguideSynthesis : public juce::Component, juce::AudioSource
     {
     public:
 
-        waveguideSynthesis();
-        ~waveguideSynthesis() override;
+        WaveguideSynthesis();
+        ~WaveguideSynthesis() override;
 
 		void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
         void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
@@ -69,7 +69,7 @@ public:
     private:
 
 
-        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(waveguideSynthesis)
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(WaveguideSynthesis)
     };
 
 private:
@@ -82,17 +82,16 @@ private:
     int readPtr;
     int writePtr;
 
-    float sampleRate;
     float outputGain;
     float inputGain;
 
     float lowestFrequency = 8.0f;
 
     StylusEmulation gramoStylus;
-	waveguideSynthesis waveguideSynthesis;
+	WaveguideSynthesis waveguideSynthesis;
 
     juce::dsp::Convolution convolution[11];
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (hornEmulation)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HornEmulation)
 };
 

@@ -169,6 +169,10 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
         }
     }
 
+    // Process the audio data through the components
+    juce::AudioSourceChannelInfo channelInfo(buffer); // Wrap the bufferToFill in a juce::AudioSourceChannelInfo object
+    gramoVoice.getNextAudioBlock(channelInfo); // Process the audio data through the GramoVoice.
+
     // Wraps the buffer in an AudioBlock for further processing.
     auto block = juce::dsp::AudioBlock<float>(buffer);
     auto contextToUse = juce::dsp::ProcessContextReplacing<float>(block);

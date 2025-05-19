@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    hornEmulation.cpp
+    HornEmulation.cpp
     Created: 17 May 2025 6:50:39pm
     Author:  monty
 
@@ -12,7 +12,7 @@
 #include "HornEmulation.h"
 
 //==============================================================================
-hornEmulation::hornEmulation()
+HornEmulation::HornEmulation()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
@@ -30,7 +30,6 @@ hornEmulation::hornEmulation()
 	delayLength = 0;
 	readPtr = 0;
 	writePtr = 0;
-	sampleRate = 44100.0f;  // Default, will be overridden in prepareToPlay
 	outputGain = 1.0f;
 	inputGain = 0.5f;
 	frequency = 440.0f;  // Default A4, will be overridden
@@ -40,7 +39,7 @@ hornEmulation::hornEmulation()
 	rmsAlpha = 0.99f;  // Smoothing factor (adjust as needed)
 }
 
-hornEmulation::waveguideSynthesis::waveguideSynthesis()
+HornEmulation::WaveguideSynthesis::WaveguideSynthesis()
 {
 	// In your constructor, you should add any child components, and
 	// initialise any special settings that your component needs.
@@ -50,7 +49,7 @@ hornEmulation::waveguideSynthesis::waveguideSynthesis()
 	setupBodyResonances(); // Initialise body resonances
 }
 
-hornEmulation::~hornEmulation()
+HornEmulation::~HornEmulation()
 {
 	// Destructor for waveguide synthesis
 	adsr.setTarget(10.0); // Set target to 10.0 to avoid any abrupt changes
@@ -61,17 +60,17 @@ hornEmulation::~hornEmulation()
 }
 
 
-hornEmulation::waveguideSynthesis::~waveguideSynthesis()
+HornEmulation::WaveguideSynthesis::~WaveguideSynthesis()
 {
 
 }
 
-void hornEmulation::waveguideSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+void HornEmulation::WaveguideSynthesis::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
 	handleImpulseResponse(sampleRate, samplesPerBlockExpected); // Handle the impulse response
 }
 
-void hornEmulation::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+void HornEmulation::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
 	pitchShiftTarget = 0.0f;
 
@@ -125,7 +124,7 @@ void hornEmulation::prepareToPlay(int samplesPerBlockExpected, double sampleRate
 	}
 }
 
-stk::StkFloat hornEmulation::tick(unsigned int channel)
+stk::StkFloat HornEmulation::tick(unsigned int channel)
 {
 	float input = gramoStylus.getFilterOutput(); // Get the input from the stylus
 
@@ -136,7 +135,7 @@ stk::StkFloat hornEmulation::tick(unsigned int channel)
 	return output;
 }
 
-stk::StkFrames& hornEmulation::tick(stk::StkFrames& frames, unsigned int channel) {
+stk::StkFrames& HornEmulation::tick(stk::StkFrames& frames, unsigned int channel) {
 	// Process each sample in the frame
 	for (unsigned int i = 0; i < frames.frames(); i++) {
 		frames(i, channel) = tick();
@@ -144,13 +143,13 @@ stk::StkFrames& hornEmulation::tick(stk::StkFrames& frames, unsigned int channel
 	return frames;
 }
 
-void hornEmulation::waveguideSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+void HornEmulation::WaveguideSynthesis::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
 	// This function is called by the host to fill the output buffer with audio data.
 	bufferToFill.clearActiveBufferRegion(); // Clear the buffer region
 }
 
-void hornEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+void HornEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
 	float incomingAmplitude = 0.0f;
 	int sampleCount = 0;
@@ -194,20 +193,20 @@ void hornEmulation::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
 	convolution[convIndex].process(context);
 }
 
-void hornEmulation::waveguideSynthesis::releaseResources()
+void HornEmulation::WaveguideSynthesis::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
 	for (int i = 0; i <= 10; ++i) iRs[i].setSize(0, 0);
 }
 
-void hornEmulation::releaseResources()
+void HornEmulation::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
 }
 
-void hornEmulation::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
+void HornEmulation::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
     // Your implementation here
     // e.g., brassHorn.noteOn(frequency, amplitude);
 
@@ -216,13 +215,13 @@ void hornEmulation::noteOn(stk::StkFloat frequency, stk::StkFloat amplitude) {
 	adsr.keyOn();
 }
 
-void hornEmulation::noteOff(stk::StkFloat amplitude) {
+void HornEmulation::noteOff(stk::StkFloat amplitude) {
 	brassHorn.setFrequency(freqSetup()); // Set the frequency of the brass synthesis
 	brassHorn.stopBlowing(amplitude);
 	adsr.keyOff(); // Release the ADSR envelope
 }
 
-void hornEmulation::waveguideSynthesis::setupBodyResonances()
+void HornEmulation::WaveguideSynthesis::setupBodyResonances()
 {
 	// Configure a body resonance filter (BP filter)
 	stk::BiQuad bodyFilter;
@@ -231,7 +230,7 @@ void hornEmulation::waveguideSynthesis::setupBodyResonances()
 	bodyFilter.setResonance(bodyFrequency, bodyQfactor, true); // Set the resonance filter
 }
 
-float hornEmulation::freqSetup()
+float HornEmulation::freqSetup()
 {
 	constexpr float brassYoungModulus = 10.0e10f; // Young's modulus for brass in Pascals
 	constexpr float airDensity = 1.2f; // Density of air in kg/m^3
@@ -254,7 +253,7 @@ float hornEmulation::freqSetup()
 	return effectiveFreq;
 }
 
-void hornEmulation::waveguideSynthesis::handleImpulseResponse(double sampleRate, int samplesPerBlock)
+void HornEmulation::WaveguideSynthesis::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 {
 	audioFormatManager.registerBasicFormats();
 
@@ -273,7 +272,7 @@ void hornEmulation::waveguideSynthesis::handleImpulseResponse(double sampleRate,
 	irFiles[10] = juce::File("../Source/Audio/Impulse Response Captures/Euphonium/Loud/Release/Halfway Stage/Halfway Release Loud.wav");
 }
 
-void hornEmulation::setPitchShift(float position)
+void HornEmulation::setPitchShift(float position)
 {
 	pitchShiftTarget = position * 100.0f; // Convert slide position to pitch shift
 
@@ -287,7 +286,7 @@ void hornEmulation::setPitchShift(float position)
 	}
 }
 
-int hornEmulation::selectConvolutionIndex(float amplitude, float adsrValue)
+int HornEmulation::selectConvolutionIndex(float amplitude, float adsrValue)
 {
 	// Determine if we're using "loud" or "quiet" IRs
 	const float LoudnessThresh = 0.3f; // Threshold for loudness
