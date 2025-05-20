@@ -59,13 +59,6 @@ void SoundboxEmulation::releaseResources()
 	soundboxPressure = 0.0f;
 }
 
-void SoundboxEmulation::resized()
-{
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
-
-}
-
 void SoundboxEmulation::startAirShift(float amplitude, float rate)
 {
     soundboxGain = amplitude * maxPressure;

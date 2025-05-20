@@ -14,6 +14,7 @@
 #include "StylusEmulation.h"
 #include "HornEmulation.h"
 #include "SoundboxEmulation.h"
+#include "../Source/PluginProcessor.h"
 
 //==============================================================================
 /*
@@ -22,6 +23,9 @@ class GramoMain : public juce::Component, juce::AudioSource, juce::Slider::Liste
 {
 public:
     GramoMain();
+    void setupStylusParams(const int TEXT_BOX_SIZE);
+    void setupSoundboxParams(const int TEXT_BOX_SIZE);
+    void setupHornParams(const int TEXT_BOX_SIZE);
     ~GramoMain() override;
 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
@@ -31,50 +35,107 @@ public:
 	void paint(juce::Graphics& g) override; // Paints the editor's GUI components.
     void resized() override; // Handles resizing and layout of GUI components.
 
-    void gramophoneParametersSetup(const int TEXT_BOX_SIZE); // Sets up the parameters for the gramophone.
+    juce::Rectangle<int> pictureSection; // Rectangle for the picture section of the GUI.
 
 private:
 
     void sliderValueChanged(juce::Slider* slider) override; // Callback for when a slider's value changes.
 	void setupSections(); // Sets up the layout and sections of the GUI.
 
+    void stylusUiComponent(juce::Rectangle<int>& interfaceSection, int sectionHeight, const int textSectionWidth);
+    void soundboxUiComponent(juce::Rectangle<int>& interfaceSection, int sectionHeight, const int textSectionWidth);
+    void hornUiComponent(juce::Rectangle<int>& interfaceSection, int sectionHeight, const int textSectionWidth);
+
     // Type alias for a unique pointer to a SliderAttachment.
     typedef std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> SliderAttatchmentPtr;
 
+    // Horn parameters
+    juce::Slider hornStiffnessParam; // Slider for controlling the stiffness of the gramophone's brass horn.
     SliderAttatchmentPtr hornStiffnessAttach; // Attachment to link the horn stiffness slider to the parameter tree.
+
+    juce::Slider hornDiameterParam; // Slider for controlling the diameter of the gramophone's brass horn.
     SliderAttatchmentPtr hornDiameterAttach; // Attachment to link the horn diameter slider to the parameter tree.
+
+    juce::Slider hornLengthParam; // Slider for controlling the length of the gramophone's brass horn.
     SliderAttatchmentPtr hornLengthAttach; // Attachment to link the horn length slider to the parameter tree.
 
-    juce::Rectangle<int> hornStiffnessSection; // Rectangle for the horn stiffness text label section.
-    juce::Rectangle<int> hornDiameterSection; // Rectangle for the horn diameter text label section.
-    juce::Rectangle<int> hornLengthSection; // Rectangle for the horn length text label section.
-    juce::Rectangle<int> hornFreqSection; // Rectangle for the horn frequency text label section.
+    // Soundbox parameters
+    juce::Slider soundboxPressureParam; // Slider for controlling the soundbox pressure.
+    SliderAttatchmentPtr soundboxPressureAttach; // Attachment to link the soundbox pressure slider to the parameter tree.
 
-    juce::Rectangle<int> hornStiffnessTextSection; // Rectangle for the horn stiffness text label section.
-    juce::Rectangle<int> hornDiameterTextSection; // Rectangle for the horn diameter text label section.
-    juce::Rectangle<int> hornLengthTextSection; // Rectangle for the horn length text label section.
+    juce::Slider noiseGainParam; // Slider for controlling the noise gain in the soundbox.
+    SliderAttatchmentPtr noiseGainAttach; // Attachment to link the noise gain slider to the parameter tree.
 
-    juce::Slider hornStiffnessParam; // Slider for changing the stiffness of the gramophone's brass horn
-    juce::Slider hornDiameterParam; // Slider for changing the diameter of the gramophone's brass horn
-    juce::Slider hornLengthParam; // Slider for changing the length of the gramophone's brass horn
-    juce::Slider frequencyParam;
-    juce::Slider pressureParam;
-    juce::Slider inputGainParam;
-    juce::Slider mixParam;
-    juce::Slider vibratoFreqParam;
-    juce::Slider vibratoGainParam;
-    juce::Slider pitchShiftParam;
+    juce::Slider vibratoDepthParam; // Slider for controlling the depth of the vibrato effect.
+    SliderAttatchmentPtr vibratoDepthAttach; // Attachment to link the vibrato depth slider to the parameter tree.
 
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> pressureAttach;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> inputGainAttach;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> mixAttach;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> vibratoFreqAttach;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> vibratoGainAttach;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> pitchShiftAttach;
+    juce::Slider vibratoFreqParam; // Slider for controlling the vibrato frequency.
+    SliderAttatchmentPtr vibratoFreqAttach; // Attachment to link the vibrato frequency slider to the parameter tree.
+
+    juce::Slider vibratoGainParam; // Slider for controlling the vibrato gain.
+    SliderAttatchmentPtr vibratoGainAttach; // Attachment to link the vibrato gain slider to the parameter tree.
+
+    juce::Slider vibratoMixParam; // Slider for controlling the vibrato mix.
+    SliderAttatchmentPtr vibratoMixAttach; // Attachment to link the vibrato mix slider to the parameter tree.
+
+    // Stylus parameters
+    juce::Slider stylusPressureParam; // Slider for controlling the pressure of the stylus on the record.
+    SliderAttatchmentPtr stylusPressureAttach; // Attachment to link the stylus pressure slider to the parameter tree.
+
+    juce::Slider vinylFilterFreqParam; // Slider for controlling the vinyl filter frequency.
+    SliderAttatchmentPtr vinylFilterFreqAttach; // Attachment to link the vinyl filter frequency slider to the parameter tree.
+
+    // Global parameters
+    juce::Slider pitchShiftParam; // Slider for controlling the pitch shift.
+    SliderAttatchmentPtr pitchShiftAttach; // Attachment to link the pitch shift slider to the parameter tree.
+
+    
+    // Rectangles defining sections of the GUI layout.
+
+	// Rectangles for the interface horn sections.
+	juce::Rectangle<int> hornStiffnessSection; // Rectangle for the horn stiffness section of the GUI.
+	juce::Rectangle<int> hornStiffnessTextSection; // Rectangle for the text label of the horn stiffness section.
+
+	juce::Rectangle<int> hornDiameterSection; // Rectangle for the horn diameter section of the GUI.
+	juce::Rectangle<int> hornDiameterTextSection; // Rectangle for the text label of the horn diameter section.
+
+	juce::Rectangle<int> hornLengthSection; // Rectangle for the horn length section of the GUI.
+	juce::Rectangle<int> hornLengthTextSection; // Rectangle for the text label of the horn length section.
+
+	// Rectangles for the interface soundbox sections.
+	juce::Rectangle<int> soundboxPressureSection; // Rectangle for the soundbox pressure section of the GUI.
+	juce::Rectangle<int> soundboxPressureTextSection; // Rectangle for the text label of the soundbox pressure section.
+
+	juce::Rectangle<int> noiseGainSection; // Rectangle for the noise gain section of the GUI.
+	juce::Rectangle<int> noiseGainTextSection; // Rectangle for the text label of the noise gain section.
+
+	juce::Rectangle<int> vibratoDepthSection; // Rectangle for the vibrato depth section of the GUI.
+	juce::Rectangle<int> vibratoDepthTextSection; // Rectangle for the text label of the vibrato depth section.
+
+	juce::Rectangle<int> vibratoFreqSection; // Rectangle for the vibrato frequency section of the GUI.
+	juce::Rectangle<int> vibratoFreqTextSection; // Rectangle for the text label of the vibrato frequency section.
+
+	juce::Rectangle<int> vibratoGainSection; // Rectangle for the vibrato gain section of the GUI.
+	juce::Rectangle<int> vibratoGainTextSection; // Rectangle for the text label of the vibrato gain section.
+
+	juce::Rectangle<int> vibratoMixSection; // Rectangle for the vibrato mix section of the GUI.
+	juce::Rectangle<int> vibratoMixTextSection; // Rectangle for the text label of the vibrato mix section.
+
+	// Rectangles for the interface stylus sections.
+	juce::Rectangle<int> stylusPressureSection; // Rectangle for the stylus pressure section of the GUI.
+	juce::Rectangle<int> stylusPressureTextSection; // Rectangle for the text label of the stylus pressure section.
+
+	juce::Rectangle<int> vinylFilterFreqSection; // Rectangle for the vinyl filter frequency section of the GUI.
+	juce::Rectangle<int> vinylFilterFreqTextSection; // Rectangle for the text label of the vinyl filter frequency section.
+
+	juce::Rectangle<int> pitchShiftSection; // Rectangle for the pitch shift section of the GUI.
+	juce::Rectangle<int> pitchShiftTextSection; // Rectangle for the text label of the pitch shift section.
 
     StylusEmulation gramoStylus;
 	HornEmulation gramoHorn;
     SoundboxEmulation gramoSoundbox;
+
+	VirtualGramoAudioProcessor* processor; // Reference to the audio processor.
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GramoMain)
 };

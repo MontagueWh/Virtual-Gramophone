@@ -63,10 +63,10 @@ namespace BinaryData
     const int            CabinetEmulation_hSize = 674;
 
     extern const char*   GramoMain_cpp;
-    const int            GramoMain_cppSize = 7511;
+    const int            GramoMain_cppSize = 13973;
 
     extern const char*   GramoMain_h;
-    const int            GramoMain_hSize = 3802;
+    const int            GramoMain_hSize = 7664;
 
     extern const char*   HornEmulation_cpp;
     const int            HornEmulation_cppSize = 12574;
@@ -75,25 +75,16 @@ namespace BinaryData
     const int            HornEmulation_hSize = 2606;
 
     extern const char*   SoundboxEmulation_cpp;
-    const int            SoundboxEmulation_cppSize = 2281;
+    const int            SoundboxEmulation_cppSize = 2118;
 
     extern const char*   SoundboxEmulation_h;
-    const int            SoundboxEmulation_hSize = 1598;
+    const int            SoundboxEmulation_hSize = 1401;
 
     extern const char*   StylusEmulation_cpp;
     const int            StylusEmulation_cppSize = 2032;
 
     extern const char*   StylusEmulation_h;
     const int            StylusEmulation_hSize = 1159;
-
-    extern const char*   GramoModelLoader_cpp;
-    const int            GramoModelLoader_cppSize = 7228;
-
-    extern const char*   GramoModelLoader_h;
-    const int            GramoModelLoader_hSize = 2921;
-
-    extern const char*   GramoSuite_fbx;
-    const int            GramoSuite_fbxSize = 22266768;
 
     extern const char*   InfoButton_cpp;
     const int            InfoButton_cppSize = 1468;
@@ -108,13 +99,13 @@ namespace BinaryData
     const int            PluginProcessor_hSize = 4584;
 
     extern const char*   PluginEditor_cpp;
-    const int            PluginEditor_cppSize = 7327;
+    const int            PluginEditor_cppSize = 7248;
 
     extern const char*   PluginEditor_h;
-    const int            PluginEditor_hSize = 4562;
+    const int            PluginEditor_hSize = 4479;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 35;
+    const int namedResourceListSize = 32;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

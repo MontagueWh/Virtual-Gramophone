@@ -78,10 +78,9 @@ void VirtualGramoAudioProcessorEditor::resized()
 
 // Sets up the layout sections for the GUI.
 void VirtualGramoAudioProcessorEditor::setupSections()
-{    
+{
     juce::Rectangle<int> r = getLocalBounds(); // Gets the bounds of the editor.
     topSection = r.removeFromTop(50); // Allocates the top section.
-    pictureSection = r.removeFromLeft(310); // Allocates the picture section.
 
     juce::Rectangle<int> interfaceSection = r; // Remaining area for the interface.
     int sectionHeight = interfaceSection.getHeight() / 4; // Divides the interface into four sections.
@@ -95,8 +94,8 @@ void VirtualGramoAudioProcessorEditor::setupSections()
 	toneTextSection = toneSection.removeFromLeft(textSectionWidth);
 
 	vibratoDepthSection = interfaceSection.removeFromTop(sectionHeight);
+    vibratoRateSection = interfaceSection.removeFromTop(sectionHeight);
 	vibratoTextSection = vibratoDepthSection.removeFromLeft(textSectionWidth);
-	vibratoRateSection = interfaceSection.removeFromTop(sectionHeight);
 
     wetDrySection = interfaceSection;
     wetDrySection = interfaceSection.removeFromTop(textSectionWidth);

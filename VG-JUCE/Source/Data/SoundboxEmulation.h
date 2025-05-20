@@ -26,20 +26,14 @@ public:
 	void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
 	void releaseResources() override;
 
-    void paint (juce::Graphics&) override;
-    void resized() override;
-
     float configureVibrato(double sampleRate);
 
     void startAirShift(float amplitude, float rate = 0.1f);
-    void stopAirShift(float rate = 0.1f);
 
     float getsoundboxPressure() const { return soundboxPressure; }
     float generateNoise() const;
 
-    void setMaxPressure(float pressure);
     float getMaxPressure() const { return maxPressure; }
-    void setNoiseGain(float gain);
 
 private:
 

@@ -63,7 +63,7 @@ private:
 
     // Rectangles defining sections of the GUI layout.
     juce::Rectangle<int> topSection; // Rectangle for the top section of the GUI.
-    juce::Rectangle<int> pictureSection; // Rectangle for the picture section of the GUI.
+
     juce::Rectangle<int> compressSection; // Rectangle for the compression slider section.
     juce::Rectangle<int> toneSection; // Rectangle for the tone slider section.
     juce::Rectangle<int> vibratoDepthSection; // Rectangle for the vibrato slider section.
