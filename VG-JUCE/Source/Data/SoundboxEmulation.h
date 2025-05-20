@@ -40,7 +40,7 @@ private:
     // soundbox air parameters
     float soundboxPressure;
     float soundboxGain;
-    float sounxboxTarget;
+    float soundboxTarget;
     float maxPressure;
 
     float noiseGain;

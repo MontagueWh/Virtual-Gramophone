@@ -23,8 +23,8 @@ class GramoMain : public juce::Component, juce::AudioSource, juce::Slider::Liste
 {
 public:
     GramoMain();
+    void initaliseGramoVoice();
     void setupStylusParams(const int TEXT_BOX_SIZE);
-    void attachToApvts(juce::AudioProcessorValueTreeState& apvts);
     void setupSoundboxParams(const int TEXT_BOX_SIZE);
     void setupHornParams(const int TEXT_BOX_SIZE);
     ~GramoMain() override;
@@ -34,26 +34,13 @@ public:
     void releaseResources() override;
 
 	void paint(juce::Graphics& g) override; // Paints the editor's GUI components.
+    void drawUiText(juce::Graphics& g);
     void resized() override; // Handles resizing and layout of GUI components.
 
     juce::Rectangle<int> pictureSection; // Rectangle for the picture section of the GUI.
 
     // Type alias for a unique pointer to a SliderAttachment.
     typedef std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> SliderAttatchmentPtr;
-
-    SliderAttatchmentPtr attachToApvts(juce::AudioProcessorValueTreeState& apvts, juce::String displayName, juce::Slider parameter);
-
-
-    SliderAttatchmentPtr stylusPressureAttach; // Attachment to link the stylus pressure slider to the parameter tree.
-
-private:
-
-    void sliderValueChanged(juce::Slider* slider) override; // Callback for when a slider's value changes.
-	void setupSections(); // Sets up the layout and sections of the GUI.
-
-    void stylusUiComponent(juce::Rectangle<int>& interfaceSection, int sectionHeight, const int textSectionWidth);
-    void soundboxUiComponent(juce::Rectangle<int>& interfaceSection, int sectionHeight, const int textSectionWidth);
-    void hornUiComponent(juce::Rectangle<int>& interfaceSection, int sectionHeight, const int textSectionWidth);
 
     // Horn parameters
     juce::Slider hornStiffnessParam; // Slider for controlling the stiffness of the gramophone's brass horn.
@@ -75,8 +62,8 @@ private:
     juce::Slider vibratoDepthParam; // Slider for controlling the depth of the vibrato effect.
     SliderAttatchmentPtr vibratoDepthAttach; // Attachment to link the vibrato depth slider to the parameter tree.
 
-    juce::Slider vibratoFreqParam; // Slider for controlling the vibrato frequency.
-    SliderAttatchmentPtr vibratoFreqAttach; // Attachment to link the vibrato frequency slider to the parameter tree.
+    juce::Slider vibratoRateParam; // Slider for controlling the vibrato frequency.
+    SliderAttatchmentPtr vibratoRateAttach; // Attachment to link the vibrato frequency slider to the parameter tree.
 
     juce::Slider vibratoGainParam; // Slider for controlling the vibrato gain.
     SliderAttatchmentPtr vibratoGainAttach; // Attachment to link the vibrato gain slider to the parameter tree.
@@ -86,6 +73,7 @@ private:
 
     // Stylus parameters
     juce::Slider stylusPressureParam; // Slider for controlling the pressure of the stylus on the record.
+    SliderAttatchmentPtr stylusPressureAttach; // Attachment to link the stylus pressure slider to the parameter tree.
 
     juce::Slider vinylFilterFreqParam; // Slider for controlling the vinyl filter frequency.
     SliderAttatchmentPtr vinylFilterFreqAttach; // Attachment to link the vinyl filter frequency slider to the parameter tree.
@@ -93,6 +81,15 @@ private:
     // Global parameters
     juce::Slider pitchShiftParam; // Slider for controlling the pitch shift.
     SliderAttatchmentPtr pitchShiftAttach; // Attachment to link the pitch shift slider to the parameter tree.
+
+private:
+
+    void sliderValueChanged(juce::Slider* slider) override; // Callback for when a slider's value changes.
+	void setupSections(); // Sets up the layout and sections of the GUI.
+
+    void stylusUiComponent(juce::Rectangle<int>& interfaceSection, int sectionHeight, const int textSectionWidth);
+    void soundboxUiComponent(juce::Rectangle<int>& interfaceSection, int sectionHeight, const int textSectionWidth);
+    void hornUiComponent(juce::Rectangle<int>& interfaceSection, int sectionHeight, const int textSectionWidth);
 
     
     // Rectangles defining sections of the GUI layout.
@@ -117,8 +114,8 @@ private:
 	juce::Rectangle<int> vibratoDepthSection; // Rectangle for the vibrato depth section of the GUI.
 	juce::Rectangle<int> vibratoDepthTextSection; // Rectangle for the text label of the vibrato depth section.
 
-	juce::Rectangle<int> vibratoFreqSection; // Rectangle for the vibrato frequency section of the GUI.
-	juce::Rectangle<int> vibratoFreqTextSection; // Rectangle for the text label of the vibrato frequency section.
+	juce::Rectangle<int> vibratoRateSection; // Rectangle for the vibrato frequency section of the GUI.
+	juce::Rectangle<int> vibratoRateTextSection; // Rectangle for the text label of the vibrato frequency section.
 
 	juce::Rectangle<int> vibratoGainSection; // Rectangle for the vibrato gain section of the GUI.
 	juce::Rectangle<int> vibratoGainTextSection; // Rectangle for the text label of the vibrato gain section.

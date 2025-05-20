@@ -17,8 +17,12 @@ GramoMain::GramoMain()
 	// In your constructor, you should add any child components, and
 	// initialise any special settings that your component needs.
 
+	initaliseGramoVoice();
+}
 
-    constexpr int TEXT_BOX_SIZE = 25; // Defines the size of the text box for sliders.
+void GramoMain::initaliseGramoVoice()
+{
+	constexpr int TEXT_BOX_SIZE = 25; // Defines the size of the text box for sliders.
 
 	setupStylusParams(TEXT_BOX_SIZE);
 	setupSoundboxParams(TEXT_BOX_SIZE);
@@ -57,27 +61,15 @@ void GramoMain::releaseResources()
 {
 	// When playback stops, you can use this as an opportunity
 	// to free up any spare memory, etc.
+	gramoStylus.releaseResources();
+	gramoSoundbox.releaseResources();
+	gramoHorn.releaseResources();
 }
 
 void GramoMain::paint(juce::Graphics& g)
 {
     setupSections();
-
-	g.setFont(18.0f); // Sets the font size for the text.
-	g.drawFittedText("STYLUS_PRESSURE", stylusPressureTextSection, juce::Justification::left, 1); // Draws the text for the stylus pressure section.
-	g.drawFittedText("VINYL_FILTER_FREQ", vinylFilterFreqTextSection, juce::Justification::left, 1); // Draws the text for the vinyl filter frequency section.
-	g.drawFittedText("PITCH_SHIFT", pitchShiftTextSection, juce::Justification::left, 1); // Draws the text for the pitch shift section.
-	
-	g.drawFittedText("SOUNDBOX_PRESSURE", soundboxPressureTextSection, juce::Justification::left, 1); // Draws the text for the soundbox pressure section.
-	g.drawFittedText("NOISE_GAIN", noiseGainTextSection, juce::Justification::left, 1); // Draws the text for the noise gain section.
-	g.drawFittedText("VIBRATO_DEPTH", vibratoDepthTextSection, juce::Justification::left, 1); // Draws the text for the vibrato depth section.
-	g.drawFittedText("VIBRATO_FREQ", vibratoFreqTextSection, juce::Justification::left, 1); // Draws the text for the vibrato frequency section.
-	g.drawFittedText("VIBRATO_GAIN", vibratoGainTextSection, juce::Justification::left, 1); // Draws the text for the vibrato gain section.
-	g.drawFittedText("VIBRATO_MIX", vibratoMixTextSection, juce::Justification::left, 1); // Draws the text for the vibrato mix section.
-
-	g.drawFittedText("HORN_STIFFNESS", hornStiffnessTextSection, juce::Justification::left, 1); // Draws the text for the horn stiffness section.
-	g.drawFittedText("HORN_DIAMETER", hornDiameterTextSection, juce::Justification::left, 1); // Draws the text for the horn diameter section.
-	g.drawFittedText("HORN_LENGTH", hornLengthTextSection, juce::Justification::left, 1); // Draws the text for the horn length section.
+	drawUiText(g);
 }
 
 void GramoMain::setupSections()
@@ -93,6 +85,26 @@ void GramoMain::setupSections()
 	soundboxUiComponent(interfaceSection, sectionHeight, textSectionWidth); // Sets up the soundbox UI sections.
     hornUiComponent(interfaceSection, sectionHeight, textSectionWidth); // Sets up the horn UI sections.
 }
+
+void GramoMain::drawUiText(juce::Graphics& g)
+{
+	g.setFont(18.0f); // Sets the font size for the text.
+	g.drawFittedText("STYLUS_PRESSURE", stylusPressureTextSection, juce::Justification::left, 1); // Draws the text for the stylus pressure section.
+	g.drawFittedText("VINYL_FILTER_FREQ", vinylFilterFreqTextSection, juce::Justification::left, 1); // Draws the text for the vinyl filter frequency section.
+	g.drawFittedText("PITCH_SHIFT", pitchShiftTextSection, juce::Justification::left, 1); // Draws the text for the pitch shift section.
+
+	g.drawFittedText("SOUNDBOX_PRESSURE", soundboxPressureTextSection, juce::Justification::left, 1); // Draws the text for the soundbox pressure section.
+	g.drawFittedText("NOISE_GAIN", noiseGainTextSection, juce::Justification::left, 1); // Draws the text for the noise gain section.
+	g.drawFittedText("VIBRATO_DEPTH", vibratoDepthTextSection, juce::Justification::left, 1); // Draws the text for the vibrato depth section.
+	g.drawFittedText("VIBRATO_FREQ", vibratoRateTextSection, juce::Justification::left, 1); // Draws the text for the vibrato frequency section.
+	g.drawFittedText("VIBRATO_GAIN", vibratoGainTextSection, juce::Justification::left, 1); // Draws the text for the vibrato gain section.
+	g.drawFittedText("VIBRATO_MIX", vibratoMixTextSection, juce::Justification::left, 1); // Draws the text for the vibrato mix section.
+
+	g.drawFittedText("HORN_STIFFNESS", hornStiffnessTextSection, juce::Justification::left, 1); // Draws the text for the horn stiffness section.
+	g.drawFittedText("HORN_DIAMETER", hornDiameterTextSection, juce::Justification::left, 1); // Draws the text for the horn diameter section.
+	g.drawFittedText("HORN_LENGTH", hornLengthTextSection, juce::Justification::left, 1); // Draws the text for the horn length section.
+}
+
 
 void GramoMain::stylusUiComponent(juce::Rectangle<int>& interfaceSection, int sectionHeight, const int textSectionWidth)
 {
@@ -117,8 +129,8 @@ void GramoMain::soundboxUiComponent(juce::Rectangle<int>& interfaceSection, int 
     vibratoDepthSection = interfaceSection.removeFromTop(sectionHeight);
     vibratoDepthTextSection = vibratoDepthSection.removeFromRight(textSectionWidth);
 
-    vibratoFreqSection = interfaceSection.removeFromTop(sectionHeight);
-    vibratoFreqTextSection = vibratoFreqSection.removeFromRight(textSectionWidth);
+    vibratoRateSection = interfaceSection.removeFromTop(sectionHeight);
+    vibratoRateTextSection = vibratoRateSection.removeFromRight(textSectionWidth);
 
     vibratoGainSection = interfaceSection.removeFromTop(sectionHeight);
     vibratoGainTextSection = vibratoGainSection.removeFromRight(textSectionWidth);
@@ -147,26 +159,16 @@ void GramoMain::setupStylusParams(const int TEXT_BOX_SIZE)
 	stylusPressureParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	stylusPressureParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(stylusPressureParam); // Makes the slider visible in the editor.
-	stylusPressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "stylusPressure", stylusPressureParam); // Attach the slider to the parameter tree.
 
 	vinylFilterFreqParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	vinylFilterFreqParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	vinylFilterFreqParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(vinylFilterFreqParam); // Makes the slider visible in the editor.
-	vinylFilterFreqAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "vinylFilterFreq", vinylFilterFreqParam); // Attach the slider to the parameter tree.
 
 	pitchShiftParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	pitchShiftParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	pitchShiftParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(pitchShiftParam); // Makes the slider visible in the editor.
-	pitchShiftAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "pitchShift", pitchShiftParam); // Attach the slider to the parameter tree.
-}
-
-GramoMain::SliderAttatchmentPtr attachToApvts(juce::AudioProcessorValueTreeState& apvts, juce::String displayName, juce::Slider parameter)
-{
-	GramoMain::SliderAttatchmentPtr attachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, displayName , parameter); // Attach the slider to the parameter tree.
-	
-	return attachment;
 }
 
 void GramoMain::setupHornParams(const int TEXT_BOX_SIZE)
@@ -176,19 +178,16 @@ void GramoMain::setupHornParams(const int TEXT_BOX_SIZE)
 	hornStiffnessParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	hornStiffnessParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(hornStiffnessParam); // Makes the slider visible in the editor.
-	hornStiffnessAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "hornStiffness", hornStiffnessParam); // Attach the slider to the parameter tree.
 
 	hornDiameterParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	hornDiameterParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	hornDiameterParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(hornDiameterParam); // Makes the slider visible in the editor.
-	hornDiameterAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "hornDiameter", hornDiameterParam); // Attach the slider to the parameter tree.
 
 	hornLengthParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	hornLengthParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	hornLengthParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(hornLengthParam); // Makes the slider visible in the editor.
-	hornLengthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "hornLength", hornLengthParam); // Attach the slider to the parameter tree.
 }
 
 void GramoMain::setupSoundboxParams(const int TEXT_BOX_SIZE)
@@ -198,31 +197,26 @@ void GramoMain::setupSoundboxParams(const int TEXT_BOX_SIZE)
 	soundboxPressureParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	soundboxPressureParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(soundboxPressureParam); // Makes the slider visible in the editor.
-	soundboxPressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "soundboxPressure", soundboxPressureParam); // Attach the slider to the parameter tree.
 
 	noiseGainParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	noiseGainParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	noiseGainParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(noiseGainParam); // Makes the slider visible in the editor.
-	noiseGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "noiseGain", noiseGainParam); // Attach the slider to the parameter tree.
 
 	vibratoDepthParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	vibratoDepthParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	vibratoDepthParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(vibratoDepthParam); // Makes the slider visible in the editor.
-	vibratoDepthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "vibratoDepth", vibratoDepthParam); // Attach the slider to the parameter tree.
 
-	vibratoFreqParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
-	vibratoFreqParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
-	vibratoFreqParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
-	addAndMakeVisible(vibratoFreqParam); // Makes the slider visible in the editor.
-	vibratoFreqAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "vibratoFreq", vibratoFreqParam); // Attach the slider to the parameter tree.
+	vibratoRateParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
+	vibratoRateParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
+	vibratoRateParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
+	addAndMakeVisible(vibratoRateParam); // Makes the slider visible in the editor.
 
 	vibratoGainParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	vibratoGainParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	vibratoGainParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(vibratoGainParam); // Makes the slider visible in the editor.
-	vibratoGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "vibratoGain", vibratoGainParam); // Attach the slider to the parameter tree.
 }
 
 void GramoMain::resized()

@@ -26,6 +26,7 @@ VirtualGramoAudioProcessor::VirtualGramoAudioProcessor()
     apvts(*this, nullptr, "Parameters", createParameters()) // Initialises the AudioProcessorValueTreeState for parameter management.
 #endif
 {
+	gramoVoice.initaliseGramoVoice(); // Initialises the GramoVoice component.
 }
 
 VirtualGramoAudioProcessor::~VirtualGramoAudioProcessor()
@@ -122,7 +123,7 @@ void VirtualGramoAudioProcessor::releaseResources()
 {
     // Frees up any resources or memory used during playback.
 
-    
+	gramoVoice.releaseResources(); // Releases resources for the GramoMain.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -221,6 +222,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout VirtualGramoAudioProcessor::
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> parameters; // Stores the parameters.
 
+    createGramophoneParams(parameters);
+
     // Adds parameters for compression, vibrato, tone, and mix.
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("COMPRESS", "Compress", 0.04f, 0.45f, 0.1f));
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VIBRATO", "Vibrato", 0.0f, 0.33f, 0.01f));
@@ -228,6 +231,27 @@ juce::AudioProcessorValueTreeState::ParameterLayout VirtualGramoAudioProcessor::
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("TONE", "Tone", 320.1f, 4700.0f, 2000.0f));
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("MIX", "Mix", 0.0f, 0.5f, 0.0f));
     return { parameters.begin(), parameters.end() }; // Returns the parameter layout.
+}
+
+void VirtualGramoAudioProcessor::createGramophoneParams(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& parameters)
+{
+    // Adds parameters for vinyl sub-component
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("STYLUS_PRESSURE", "Stylus Pressure", 0.0f, 1.0f, 0.5f)); // Adds a parameter for stylus pressure.
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VINYL_FILTER_FREQ", "Vinyl Filter Frequency", 0.0f, 1.0f, 0.5f)); // Adds a parameter for vinyl filter frequency.
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("PITCH_SHIFT", "Pitch Shift", 0.0f, 1.0f, 0.5f)); // Adds a parameter for pitch shift.
+
+    // Adds parameters for soundbox sub-component
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("SOUNDBOX_PRESSURE", "Soundbox Pressure", 0.0f, 1.0f, 0.5f)); // Adds a parameter for soundbox pressure.
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("NOISE_GAIN", "Noise Gain", 0.0f, 1.0f, 0.5f)); // Adds a parameter for noise gain.
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VIBRATO_DEPTH", "Vibrato Depth", 0.0f, 1.0f, 0.5f)); // Adds a parameter for vibrato depth.
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VIBRATO_RATE", "Vibrato Rate", 0.0f, 1.0f, 0.5f)); // Adds a parameter for vibrato rate.
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VIBRATO_GAIN", "Vibrato Gain", 0.0f, 1.0f, 0.5f)); // Adds a parameter for vibrato gain.
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VIBRATO_MIX", "Vibrato Mix", 0.0f, 1.0f, 0.5f)); // Adds a parameter for vibrato mix.
+
+    // Adds parameters for horn sub-component
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("HORN_STIFFNESS", "Horn Stiffness", 0.0f, 1.0f, 0.5f)); // Adds a parameter for horn stiffness.
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("HORN_DIAMETER", "Horn Diameter", 0.0f, 1.0f, 0.5f)); // Adds a parameter for horn diameter.
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("HORN_LENGTH", "Horn Length", 0.0f, 1.0f, 0.5f)); // Adds a parameter for horn length.
 }
 
 //==============================================================================

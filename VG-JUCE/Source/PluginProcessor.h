@@ -77,6 +77,8 @@ private:
     // Creates and returns the parameter layout for the plugin.
     juce::AudioProcessorValueTreeState::ParameterLayout createParameters();
 
+    void createGramophoneParams(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& parameters);
+
     // DSP components used in the plugin.
     juce::dsp::Chorus<float> chorus; // Chorus effect processor.
     int filterCount;
