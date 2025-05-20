@@ -31,28 +31,6 @@ GramoMain::GramoMain()
 	//std::string GramoSuite = "../Source/UI/GramoSuite.fbx";
 }
 
-void GramoMain::setupStylusParams(const int TEXT_BOX_SIZE)
-{
-	// Set up for the stylus parameters
-	stylusPressureParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
-	stylusPressureParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
-	stylusPressureParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
-	addAndMakeVisible(stylusPressureParam); // Makes the slider visible in the editor.
-	stylusPressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processor.apvts, "stylusPressure", stylusPressureParam); // Attach the slider to the parameter tree.
-
-	vinylFilterFreqParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
-	vinylFilterFreqParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
-	vinylFilterFreqParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
-	addAndMakeVisible(vinylFilterFreqParam); // Makes the slider visible in the editor.
-	vinylFilterFreqAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processor.apvts, "vinylFilterFreq", vinylFilterFreqParam); // Attach the slider to the parameter tree.
-
-	pitchShiftParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
-	pitchShiftParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
-	pitchShiftParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
-	addAndMakeVisible(pitchShiftParam); // Makes the slider visible in the editor.
-	pitchShiftAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processor.apvts, "pitchShift", pitchShiftParam); // Attach the slider to the parameter tree.
-}
-
 GramoMain::~GramoMain()
 {
 }
@@ -162,6 +140,35 @@ void GramoMain::hornUiComponent(juce::Rectangle<int>& interfaceSection, int sect
     hornLengthTextSection = hornLengthSection.removeFromRight(textSectionWidth);
 }
 
+void GramoMain::setupStylusParams(const int TEXT_BOX_SIZE)
+{
+	// Set up for the stylus parameters
+	stylusPressureParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
+	stylusPressureParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
+	stylusPressureParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
+	addAndMakeVisible(stylusPressureParam); // Makes the slider visible in the editor.
+	stylusPressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "stylusPressure", stylusPressureParam); // Attach the slider to the parameter tree.
+
+	vinylFilterFreqParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
+	vinylFilterFreqParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
+	vinylFilterFreqParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
+	addAndMakeVisible(vinylFilterFreqParam); // Makes the slider visible in the editor.
+	vinylFilterFreqAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "vinylFilterFreq", vinylFilterFreqParam); // Attach the slider to the parameter tree.
+
+	pitchShiftParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
+	pitchShiftParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
+	pitchShiftParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
+	addAndMakeVisible(pitchShiftParam); // Makes the slider visible in the editor.
+	pitchShiftAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "pitchShift", pitchShiftParam); // Attach the slider to the parameter tree.
+}
+
+GramoMain::SliderAttatchmentPtr attachToApvts(juce::AudioProcessorValueTreeState& apvts, juce::String displayName, juce::Slider parameter)
+{
+	GramoMain::SliderAttatchmentPtr attachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, displayName , parameter); // Attach the slider to the parameter tree.
+	
+	return attachment;
+}
+
 void GramoMain::setupHornParams(const int TEXT_BOX_SIZE)
 {
 	// Set up for the horn parameters	
@@ -169,19 +176,19 @@ void GramoMain::setupHornParams(const int TEXT_BOX_SIZE)
 	hornStiffnessParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	hornStiffnessParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(hornStiffnessParam); // Makes the slider visible in the editor.
-	hornStiffnessAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processor.apvts, "hornStiffness", hornStiffnessParam); // Attach the slider to the parameter tree.
+	hornStiffnessAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "hornStiffness", hornStiffnessParam); // Attach the slider to the parameter tree.
 
 	hornDiameterParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	hornDiameterParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	hornDiameterParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(hornDiameterParam); // Makes the slider visible in the editor.
-	hornDiameterAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processor.apvts, "hornDiameter", hornDiameterParam); // Attach the slider to the parameter tree.
+	hornDiameterAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "hornDiameter", hornDiameterParam); // Attach the slider to the parameter tree.
 
 	hornLengthParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	hornLengthParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	hornLengthParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(hornLengthParam); // Makes the slider visible in the editor.
-	hornLengthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processor.apvts, "hornLength", hornLengthParam); // Attach the slider to the parameter tree.
+	hornLengthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "hornLength", hornLengthParam); // Attach the slider to the parameter tree.
 }
 
 void GramoMain::setupSoundboxParams(const int TEXT_BOX_SIZE)
@@ -191,31 +198,31 @@ void GramoMain::setupSoundboxParams(const int TEXT_BOX_SIZE)
 	soundboxPressureParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	soundboxPressureParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(soundboxPressureParam); // Makes the slider visible in the editor.
-	soundboxPressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processor.apvts, "soundboxPressure", soundboxPressureParam); // Attach the slider to the parameter tree.
+	soundboxPressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "soundboxPressure", soundboxPressureParam); // Attach the slider to the parameter tree.
 
 	noiseGainParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	noiseGainParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	noiseGainParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(noiseGainParam); // Makes the slider visible in the editor.
-	noiseGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processor.apvts, "noiseGain", noiseGainParam); // Attach the slider to the parameter tree.
+	noiseGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "noiseGain", noiseGainParam); // Attach the slider to the parameter tree.
 
 	vibratoDepthParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	vibratoDepthParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	vibratoDepthParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(vibratoDepthParam); // Makes the slider visible in the editor.
-	vibratoDepthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processor.apvts, "vibratoDepth", vibratoDepthParam); // Attach the slider to the parameter tree.
+	vibratoDepthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "vibratoDepth", vibratoDepthParam); // Attach the slider to the parameter tree.
 
 	vibratoFreqParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	vibratoFreqParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	vibratoFreqParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(vibratoFreqParam); // Makes the slider visible in the editor.
-	vibratoFreqAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processor.apvts, "vibratoFreq", vibratoFreqParam); // Attach the slider to the parameter tree.
+	vibratoFreqAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "vibratoFreq", vibratoFreqParam); // Attach the slider to the parameter tree.
 
 	vibratoGainParam.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag); // Rotary slider style.
 	vibratoGainParam.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE); // No text box for the slider.
 	vibratoGainParam.setRange(0.0f, 1.0f); // Sets the range of the slider.
 	addAndMakeVisible(vibratoGainParam); // Makes the slider visible in the editor.
-	vibratoGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processor.apvts, "vibratoGain", vibratoGainParam); // Attach the slider to the parameter tree.
+	vibratoGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "vibratoGain", vibratoGainParam); // Attach the slider to the parameter tree.
 }
 
 void GramoMain::resized()

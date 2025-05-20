@@ -22,6 +22,8 @@ VirtualGramoAudioProcessorEditor::VirtualGramoAudioProcessorEditor(VirtualGramoA
     additionalEffectsParamsSetup(TEXT_BOX_SIZE);
     wetDryParamSetup(TEXT_BOX_SIZE);
 
+    gramoVoice.stylusPressureAttach
+
     // Adds the info button to the editor.
     info_button_.addToEditor(this);
 
