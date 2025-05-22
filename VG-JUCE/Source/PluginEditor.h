@@ -76,9 +76,8 @@ private:
     juce::Rectangle<int> vibratoTextSection; // Rectangle for the vibrato text label section.
     juce::Rectangle<int> wetDryTextSection; // Rectangle for the mix text label section.
 
-	GramoMain gramoVoice; // Instance of the GramoMain class for audio processing.
-
     VirtualGramoAudioProcessor& audioProcessor; // Reference to the audio processor instance.
+	GramoMain& gramoVoice; // Reference to the GramoMain instance for audio processing.
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(VirtualGramoAudioProcessorEditor)
         // Macro to prevent copying and enable leak detection for the class.

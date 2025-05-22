@@ -15,7 +15,7 @@ constexpr float LINE_THICKNESS = 4.0f; // Defines the thickness of lines drawn i
 //==============================================================================
 // Constructor for the plugin editor.
 VirtualGramoAudioProcessorEditor::VirtualGramoAudioProcessorEditor(VirtualGramoAudioProcessor& p)
-    : AudioProcessorEditor(&p), audioProcessor(p), info_button_(juce::Colours::darkgrey)
+   : AudioProcessorEditor(&p), audioProcessor(p), gramoVoice(p.gramoVoice), info_button_(juce::Colours::darkgrey)
 {
     constexpr int TEXT_BOX_SIZE = 25; // Defines the size of the text box for sliders.
 

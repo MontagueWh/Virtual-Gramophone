@@ -161,6 +161,10 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
 
     mix.pushDrySamples(buffer); // Pushes the dry signal into the mix processor.
 
+    // Process the audio data through gramophone components.
+    juce::AudioSourceChannelInfo info(&buffer, 0, buffer.getNumSamples()); // Creates an AudioSourceChannelInfo object for the buffer.
+    gramoVoice.getNextAudioBlock(info); // Process the audio data through the GramoMain.
+
     // Processes each sample in the buffer.
     for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
     {
@@ -169,10 +173,6 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
             ProcessCompressionAndTone(buffer, channel, sample);
         }
     }
-
-    // Process the audio data through the components
-    juce::AudioSourceChannelInfo channelInfo(buffer); // Wrap the bufferToFill in a juce::AudioSourceChannelInfo object
-    gramoVoice.getNextAudioBlock(channelInfo); // Process the audio data through the GramoMain.
 
     // Wraps the buffer in an AudioBlock for further processing.
     auto block = juce::dsp::AudioBlock<float>(buffer);
