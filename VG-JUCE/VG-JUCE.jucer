@@ -107,6 +107,11 @@
               file="Source/Data/StylusEmulation.h" xcodeResource="1"/>
       </GROUP>
       <GROUP id="{AE384994-363B-3893-0A95-E1953F6BA69B}" name="UI">
+        <FILE id="DlVi9z" name="GramoModelLoader.cpp" compile="1" resource="0"
+              file="Source/UI/GramoModelLoader.cpp"/>
+        <FILE id="gyxrFO" name="GramoModelLoader.h" compile="0" resource="0"
+              file="Source/UI/GramoModelLoader.h"/>
+        <FILE id="TLVWTR" name="GramoSuite.fbx" compile="0" resource="1" file="Source/UI/GramoSuite.fbx"/>
         <FILE id="QY7z0W" name="InfoButton.cpp" compile="1" resource="1" file="Source/UI/InfoButton.cpp"
               xcodeResource="1"/>
         <FILE id="qFQCdn" name="InfoButton.h" compile="0" resource="1" file="Source/UI/InfoButton.h"

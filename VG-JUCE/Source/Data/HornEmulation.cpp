@@ -254,7 +254,11 @@ float HornEmulation::freqSetup()
 
 void HornEmulation::WaveguideSynthesis::handleImpulseResponse(double sampleRate, int samplesPerBlock)
 {
-	audioFormatManager.registerBasicFormats();
+	// Only register formats if none are registered yet
+	if (audioFormatManager.getNumKnownFormats() == 0)
+	{
+		audioFormatManager.registerBasicFormats();
+	}
 
 	reader = nullptr;
 

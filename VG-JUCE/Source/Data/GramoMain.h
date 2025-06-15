@@ -14,7 +14,6 @@
 #include "StylusEmulation.h"
 #include "HornEmulation.h"
 #include "SoundboxEmulation.h"
-#include "../Source/PluginProcessor.h"
 
 //==============================================================================
 /*

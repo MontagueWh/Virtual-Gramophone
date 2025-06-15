@@ -15,7 +15,7 @@ constexpr float LINE_THICKNESS = 4.0f; // Defines the thickness of lines drawn i
 //==============================================================================
 // Constructor for the plugin editor.
 VirtualGramoAudioProcessorEditor::VirtualGramoAudioProcessorEditor(VirtualGramoAudioProcessor& p)
-   : AudioProcessorEditor(&p), audioProcessor(p), gramoVoice(p.gramoVoice), info_button_(juce::Colours::darkgrey)
+   : AudioProcessorEditor(&p), audioProcessor(p), info_button_(juce::Colours::darkgrey)
 {
     constexpr int TEXT_BOX_SIZE = 25; // Defines the size of the text box for sliders.
 
@@ -34,27 +34,27 @@ VirtualGramoAudioProcessorEditor::VirtualGramoAudioProcessorEditor(VirtualGramoA
 
 void VirtualGramoAudioProcessorEditor::gramoParamSetup()
 {
-    gramoVoice.initaliseGramoVoice(); // Initialise the gramophone component.
+    gramoVoiceEditor.initaliseGramoVoice(); // Initialise the gramophone component.
 
     // Sets up the stylus parameters.
-    gramoVoice.stylusPressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "STYLUS_PRESSURE", gramoVoice.stylusPressureParam); // Attach the stylus pressure slider to the parameter tree.
-    gramoVoice.vinylFilterFreqAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VINYL_FILTER_FREQ", gramoVoice.vinylFilterFreqParam); // Attach the vinyl filter frequency slider to the parameter tree.
-    gramoVoice.pitchShiftAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "PITCH_SHIFT", gramoVoice.pitchShiftParam); // Attach the pitch shift slider to the parameter tree.
+    gramoVoiceEditor.stylusPressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "STYLUS_PRESSURE", gramoVoiceEditor.stylusPressureParam); // Attach the stylus pressure slider to the parameter tree.
+    gramoVoiceEditor.vinylFilterFreqAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VINYL_FILTER_FREQ", gramoVoiceEditor.vinylFilterFreqParam); // Attach the vinyl filter frequency slider to the parameter tree.
+    gramoVoiceEditor.pitchShiftAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "PITCH_SHIFT", gramoVoiceEditor.pitchShiftParam); // Attach the pitch shift slider to the parameter tree.
 
     // Sets up the soundbox parameters.
-    gramoVoice.soundboxPressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "SOUNDBOX_PRESSURE", gramoVoice.soundboxPressureParam); // Attach the soundbox pressure slider to the parameter tree.
-    gramoVoice.noiseGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "NOISE_GAIN", gramoVoice.noiseGainParam); // Attach the noise gain slider to the parameter tree.
-    gramoVoice.vibratoDepthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_DEPTH", gramoVoice.vibratoDepthParam); // Attach the vibrato depth slider to the parameter tree.
-    gramoVoice.vibratoRateAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_RATE", gramoVoice.vibratoRateParam); // Attach the vibrato frequency slider to the parameter tree.
-    gramoVoice.vibratoGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_GAIN", gramoVoice.vibratoGainParam); // Attach the vibrato gain slider to the parameter tree.
-    gramoVoice.vibratoMixAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_MIX", gramoVoice.vibratoMixParam); // Attach the vibrato mix slider to the parameter tree.
+    gramoVoiceEditor.soundboxPressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "SOUNDBOX_PRESSURE", gramoVoiceEditor.soundboxPressureParam); // Attach the soundbox pressure slider to the parameter tree.
+    gramoVoiceEditor.noiseGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "NOISE_GAIN", gramoVoiceEditor.noiseGainParam); // Attach the noise gain slider to the parameter tree.
+    gramoVoiceEditor.vibratoDepthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_DEPTH", gramoVoiceEditor.vibratoDepthParam); // Attach the vibrato depth slider to the parameter tree.
+    gramoVoiceEditor.vibratoRateAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_RATE", gramoVoiceEditor.vibratoRateParam); // Attach the vibrato frequency slider to the parameter tree.
+    gramoVoiceEditor.vibratoGainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_GAIN", gramoVoiceEditor.vibratoGainParam); // Attach the vibrato gain slider to the parameter tree.
+    gramoVoiceEditor.vibratoMixAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "VIBRATO_MIX", gramoVoiceEditor.vibratoMixParam); // Attach the vibrato mix slider to the parameter tree.
 
     // Sets up the horn parameters.
-    gramoVoice.hornStiffnessAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "HORN_STIFFNESS", gramoVoice.hornStiffnessParam); // Attach the horn stiffness slider to the parameter tree.
-    gramoVoice.hornDiameterAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "HORN_DIAMETER", gramoVoice.hornDiameterParam); // Attach the horn diameter slider to the parameter tree.
-    gramoVoice.hornLengthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "HORN_LENGTH", gramoVoice.hornLengthParam); // Attach the horn length slider to the parameter tree.
+    gramoVoiceEditor.hornStiffnessAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "HORN_STIFFNESS", gramoVoiceEditor.hornStiffnessParam); // Attach the horn stiffness slider to the parameter tree.
+    gramoVoiceEditor.hornDiameterAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "HORN_DIAMETER", gramoVoiceEditor.hornDiameterParam); // Attach the horn diameter slider to the parameter tree.
+    gramoVoiceEditor.hornLengthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "HORN_LENGTH", gramoVoiceEditor.hornLengthParam); // Attach the horn length slider to the parameter tree.
 
-	addAndMakeVisible(gramoVoice); // Makes the GramoVoice component visible in the editor.
+	addAndMakeVisible(gramoVoiceEditor); // Makes the GramoVoice component visible in the editor.
 }
 
 // Destructor for the plugin editor.
@@ -80,7 +80,7 @@ void VirtualGramoAudioProcessorEditor::paint(juce::Graphics& g)
     g.drawFittedText("VIBE", vibratoTextSection, juce::Justification::left, 1);
     g.drawFittedText("DRY", wetDryTextSection, juce::Justification::left, 1);
 
-	gramoVoice.paint(g); // Calls the paint method of the GramoVoice instance to draw its components.
+	gramoVoiceEditor.paint(g); // Calls the paint method of the GramoVoice instance to draw its components.
 }
 
 // Converts a slider's value to an alpha (transparency) value.
@@ -102,7 +102,7 @@ void VirtualGramoAudioProcessorEditor::resized()
     vibratoRateParam.setBounds(vibratoRateSection); // Positions the vibrato rate slider.
     wetDryParam.setBounds(wetDrySection); // Positions the mix slider.
 
-	gramoVoice.resized(); // Calls the resized method of the GramoVoice instance to update its layout.
+	gramoVoiceEditor.resized(); // Calls the resized method of the GramoVoice instance to update its layout.
 }
 
 // Sets up the layout sections for the GUI.

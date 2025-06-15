@@ -71,8 +71,6 @@ public:
     void ProcessChorusEffect(juce::dsp::ProcessContextReplacing<float>& contextToUse);
     void ProcessCompressionAndTone(juce::AudioSampleBuffer& buffer, int channel, int sample);
 
-    GramoMain& gramoVoice; // Instance of the GramoMain class for audio processing.
-
 private:
 
 	//==============================================================================
@@ -87,6 +85,7 @@ private:
     std::vector<juce::dsp::IIR::Filter<float>> filters;
     juce::dsp::DryWetMixer<float> mix; // Wet/dry mix processor.
 
+    GramoMain gramoVoiceProcessor; // Instance of the GramoMain class for audio processing.
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(VirtualGramoAudioProcessor)
         // Macro to prevent copying and enable leak detection for the class.

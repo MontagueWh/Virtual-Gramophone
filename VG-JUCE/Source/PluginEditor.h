@@ -77,7 +77,7 @@ private:
     juce::Rectangle<int> wetDryTextSection; // Rectangle for the mix text label section.
 
     VirtualGramoAudioProcessor& audioProcessor; // Reference to the audio processor instance.
-	GramoMain& gramoVoice; // Reference to the GramoMain instance for audio processing.
+	GramoMain gramoVoiceEditor; // Reference to the GramoMain instance for audio processing.
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(VirtualGramoAudioProcessorEditor)
         // Macro to prevent copying and enable leak detection for the class.

@@ -26,7 +26,6 @@ VirtualGramoAudioProcessor::VirtualGramoAudioProcessor()
     apvts(*this, nullptr, "Parameters", createParameters()) // Initialises the AudioProcessorValueTreeState for parameter management.
 #endif
 {
-	gramoVoice.initaliseGramoVoice(); // Initialises the GramoVoice component.
 }
 
 VirtualGramoAudioProcessor::~VirtualGramoAudioProcessor()
@@ -114,8 +113,7 @@ void VirtualGramoAudioProcessor::prepareToPlay(double sampleRate, int samplesPer
                                     static_cast<juce::uint32>(getMainBusNumOutputChannels()) };
 
     PrepareAdditionalEffects(spec, sampleRate);
-
-	gramoVoice.prepareToPlay(sampleRate, samplesPerBlock); // Prepares the GramoMain for playback.
+	gramoVoiceProcessor.prepareToPlay(sampleRate, samplesPerBlock); // Prepares the GramoMain component for playback.
 }
 
 // Releases resources when playback stops.
@@ -123,7 +121,7 @@ void VirtualGramoAudioProcessor::releaseResources()
 {
     // Frees up any resources or memory used during playback.
 
-	gramoVoice.releaseResources(); // Releases resources for the GramoMain.
+	gramoVoiceProcessor.releaseResources(); // Releases resources for the GramoMain component.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -161,15 +159,15 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
 
     mix.pushDrySamples(buffer); // Pushes the dry signal into the mix processor.
 
-    // Process the audio data through gramophone components.
+    //// Process the audio data through gramophone components.
     juce::AudioSourceChannelInfo info(&buffer, 0, buffer.getNumSamples()); // Creates an AudioSourceChannelInfo object for the buffer.
-    gramoVoice.getNextAudioBlock(info); // Process the audio data through the GramoMain.
 
     // Processes each sample in the buffer.
     for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
     {
         for (int channel = 0; channel < totalNumInputChannels; ++channel)
-        {            
+        {
+            gramoVoiceProcessor.getNextAudioBlock(info); // Process the audio data through the GramoMain.
             ProcessCompressionAndTone(buffer, channel, sample);
         }
     }
@@ -221,13 +219,12 @@ void VirtualGramoAudioProcessor::setStateInformation(const void* data, int sizeI
 juce::AudioProcessorValueTreeState::ParameterLayout VirtualGramoAudioProcessor::createParameters()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> parameters; // Stores the parameters.
-
-    createGramophoneParams(parameters);
+	createGramophoneParams(parameters); // Calls the function to create parameters for the gramophone.
 
     // Adds parameters for compression, vibrato, tone, and mix.
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("COMPRESS", "Compress", 0.04f, 0.45f, 0.1f));
-    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VIBRATO", "Vibrato", 0.0f, 0.33f, 0.01f));
-    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VIBRATO_RATE", "Rate", 0.5f, 4.0f, 2.0f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("POST-PROCESS_VIBRATO_MIX", "Post-Process Vibrato Mix", 0.0f, 0.33f, 0.01f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("POST-PROCESS_VIBRATO_RATE", "Post-Process Vibrato Rate", 0.5f, 4.0f, 2.0f));
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("TONE", "Tone", 320.1f, 4700.0f, 2000.0f));
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("MIX", "Mix", 0.0f, 0.5f, 0.0f));
     return { parameters.begin(), parameters.end() }; // Returns the parameter layout.
