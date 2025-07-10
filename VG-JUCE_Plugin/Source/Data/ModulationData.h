@@ -1,4 +1,4 @@
-﻿/*
+/*
   ==============================================================================
 
     ModulationData.h
@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "libs/stretch/SignalsmithStretch.h"
+#include "../Libs/stretch/signalsmith-stretch.h"
 
 class Modulation
 {
@@ -85,4 +85,6 @@ public:
             warp.reset();
         }
     };
+
+	const float M_PI = juce::MathConstants<float>::pi;
 };

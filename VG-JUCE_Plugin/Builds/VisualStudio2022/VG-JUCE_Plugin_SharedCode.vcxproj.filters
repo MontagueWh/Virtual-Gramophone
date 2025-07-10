@@ -62,9 +62,6 @@
     <Filter Include="VG-JUCE_Plugin\Source\Assets">
       <UniqueIdentifier>{BF2F0960-6A28-2B38-AD87-D66C173F8C3E}</UniqueIdentifier>
     </Filter>
-    <Filter Include="VG-JUCE_Plugin\Source\Data">
-      <UniqueIdentifier>{8EEC3E3B-DFAC-503D-FDE6-20AE60589DC2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="VG-JUCE_Plugin\Source\Libs\apdi">
       <UniqueIdentifier>{60F30284-158A-0534-C479-EA639C89C595}</UniqueIdentifier>
     </Filter>
@@ -1642,6 +1639,27 @@
     </Filter>
     <Filter Include="VG-JUCE_Plugin\Source\Libs">
       <UniqueIdentifier>{E92BC79A-1328-E700-AA1E-CE79248C61B3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VG-JUCE_Plugin\Source\UI\linear\include\signalsmith-linear">
+      <UniqueIdentifier>{C37314E8-2ED5-0C18-A3EF-E0C2C7081C84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VG-JUCE_Plugin\Source\UI\linear\include">
+      <UniqueIdentifier>{94BAE6E0-D9C9-E575-3705-22E3D687B3A4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VG-JUCE_Plugin\Source\UI\linear\platform">
+      <UniqueIdentifier>{13F64F75-B283-A940-BA69-AB90117A3A77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VG-JUCE_Plugin\Source\UI\linear\tests\others">
+      <UniqueIdentifier>{994BB594-6842-8D6D-DA57-564A3C329BB8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VG-JUCE_Plugin\Source\UI\linear\tests">
+      <UniqueIdentifier>{0A795838-8DEC-2868-D57E-BE127BEB1DE6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VG-JUCE_Plugin\Source\UI\linear">
+      <UniqueIdentifier>{2E161742-F3FC-E2AC-7931-3A5D9DC5F2B5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VG-JUCE_Plugin\Source\UI">
+      <UniqueIdentifier>{E2A83D35-B606-699E-58F9-D85E6F88BEAE}</UniqueIdentifier>
     </Filter>
     <Filter Include="VG-JUCE_Plugin\Source">
       <UniqueIdentifier>{DC61DFB5-FF0A-F21A-940B-7D16046091B0}</UniqueIdentifier>
@@ -4942,6 +4960,12 @@
     <ClCompile Include="..\..\Source\Libs\include.cpp">
       <Filter>VG-JUCE_Plugin\Source\Libs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Libs\linear\tests\main.cpp">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UI\InfoButtonUI.cpp">
+      <Filter>VG-JUCE_Plugin\Source\UI</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>VG-JUCE_Plugin\Source</Filter>
     </ClCompile>
@@ -8178,9 +8202,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Data\DynamicsData.h">
-      <Filter>VG-JUCE_Plugin\Source\Data</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Libs\apdi\Helpers.h">
       <Filter>VG-JUCE_Plugin\Source\Libs\apdi</Filter>
     </ClInclude>
@@ -10770,11 +10791,56 @@
     <ClInclude Include="..\..\Source\Libs\stretch\include\signalsmith-stretch\signalsmith-stretch.h">
       <Filter>VG-JUCE_Plugin\Source\Libs\stretch\include\signalsmith-stretch</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Libs\stretch\signalsmith-stretch.h">
-      <Filter>VG-JUCE_Plugin\Source\Libs\stretch</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Libs\stk.h">
       <Filter>VG-JUCE_Plugin\Source\Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\include\signalsmith-linear\fft.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\include\signalsmith-linear</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\include\signalsmith-linear\linear.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\include\signalsmith-linear</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\include\signalsmith-linear\stft.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\include\signalsmith-linear</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\platform\fft-accelerate.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\platform\fft-ipp.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\platform\linear-accelerate.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\others\signalsmith-fft.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\tests\others</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\stop-denormals.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\stopwatch.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\test-ffts.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\test-linear.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\test-runner.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\test-stfts.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\fft.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\linear.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Libs\linear\stft.h">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>VG-JUCE_Plugin\Source</Filter>
@@ -15067,9 +15133,6 @@
     </None>
     <None Include="..\..\Source\Assets\Audio\Impulse Response Captures\Euphonium\Quiet\Sustain\Sustain Quiet.wav">
       <Filter>VG-JUCE_Plugin\Source\Assets\Audio\Impulse Response Captures\Euphonium\Quiet\Sustain</Filter>
-    </None>
-    <None Include="..\..\Source\Assets\GramoSuite.fbx">
-      <Filter>VG-JUCE_Plugin\Source\Assets</Filter>
     </None>
     <None Include="..\..\Source\Libs\assimp\cmake-modules\assimp-hunter-config.cmake.in">
       <Filter>VG-JUCE_Plugin\Source\Libs\assimp\cmake-modules</Filter>
@@ -19783,6 +19846,24 @@
     </None>
     <None Include="..\..\Source\Libs\stretch\README.md">
       <Filter>VG-JUCE_Plugin\Source\Libs\stretch</Filter>
+    </None>
+    <None Include="..\..\Source\Libs\linear\tests\CMakeLists.txt">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\tests</Filter>
+    </None>
+    <None Include="..\..\Source\Libs\linear\tests\Makefile">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear\tests</Filter>
+    </None>
+    <None Include="..\..\Source\Libs\linear\CMakeLists.txt">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear</Filter>
+    </None>
+    <None Include="..\..\Source\Libs\linear\LICENSE.txt">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear</Filter>
+    </None>
+    <None Include="..\..\Source\Libs\linear\README.md">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear</Filter>
+    </None>
+    <None Include="..\..\Source\Libs\linear\SUPPORT.txt">
+      <Filter>VG-JUCE_Plugin\Source\UI\linear</Filter>
     </None>
     <None Include="..\..\..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\src\common\README.md">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\common</Filter>

@@ -998,6 +998,8 @@
     <ClCompile Include="..\..\Source\Libs\stretch\cmd\main.cpp"/>
     <ClCompile Include="..\..\Source\Libs\stretch\web\emscripten\main.cpp"/>
     <ClCompile Include="..\..\Source\Libs\include.cpp"/>
+    <ClCompile Include="..\..\Source\Libs\linear\tests\main.cpp"/>
+    <ClCompile Include="..\..\Source\UI\InfoButtonUI.cpp"/>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
     <ClCompile Include="..\..\Source\PluginEditor.cpp"/>
     <ClCompile Include="..\..\..\..\..\..\..\JUCE\modules\juce_animation\animation\juce_Animator.cpp">
@@ -3944,7 +3946,6 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_opengl.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Data\DynamicsData.h"/>
     <ClInclude Include="..\..\Source\Libs\apdi\Helpers.h"/>
     <ClInclude Include="..\..\Source\Libs\apdi\Plugin.h"/>
     <ClInclude Include="..\..\Source\Libs\assimp\code\AssetLib\3DS\3DSExporter.h"/>
@@ -4808,8 +4809,23 @@
     <ClInclude Include="..\..\Source\Libs\stretch\cmd\util\stopwatch.h"/>
     <ClInclude Include="..\..\Source\Libs\stretch\cmd\util\wav.h"/>
     <ClInclude Include="..\..\Source\Libs\stretch\include\signalsmith-stretch\signalsmith-stretch.h"/>
-    <ClInclude Include="..\..\Source\Libs\stretch\signalsmith-stretch.h"/>
     <ClInclude Include="..\..\Source\Libs\stk.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\include\signalsmith-linear\fft.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\include\signalsmith-linear\linear.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\include\signalsmith-linear\stft.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\platform\fft-accelerate.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\platform\fft-ipp.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\platform\linear-accelerate.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\others\signalsmith-fft.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\stop-denormals.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\stopwatch.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\test-ffts.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\test-linear.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\test-runner.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\tests\test-stfts.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\fft.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\linear.h"/>
+    <ClInclude Include="..\..\Source\Libs\linear\stft.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
     <ClInclude Include="..\..\..\..\..\..\..\JUCE\modules\juce_animation\animation\juce_Animator.h"/>
@@ -6242,7 +6258,6 @@
     <None Include="..\..\Source\Assets\Audio\Impulse Response Captures\Euphonium\Quiet\Decay\Decay Quiet.wav"/>
     <None Include="..\..\Source\Assets\Audio\Impulse Response Captures\Euphonium\Quiet\Release\Release Quiet.wav"/>
     <None Include="..\..\Source\Assets\Audio\Impulse Response Captures\Euphonium\Quiet\Sustain\Sustain Quiet.wav"/>
-    <None Include="..\..\Source\Assets\GramoSuite.fbx"/>
     <None Include="..\..\Source\Libs\assimp\cmake-modules\assimp-hunter-config.cmake.in"/>
     <None Include="..\..\Source\Libs\assimp\cmake-modules\assimp-plain-config.cmake.in"/>
     <None Include="..\..\Source\Libs\assimp\cmake-modules\cmake_uninstall.cmake.in"/>
@@ -7814,6 +7829,12 @@
     <None Include="..\..\Source\Libs\stretch\CMakeLists.txt"/>
     <None Include="..\..\Source\Libs\stretch\LICENSE.txt"/>
     <None Include="..\..\Source\Libs\stretch\README.md"/>
+    <None Include="..\..\Source\Libs\linear\tests\CMakeLists.txt"/>
+    <None Include="..\..\Source\Libs\linear\tests\Makefile"/>
+    <None Include="..\..\Source\Libs\linear\CMakeLists.txt"/>
+    <None Include="..\..\Source\Libs\linear\LICENSE.txt"/>
+    <None Include="..\..\Source\Libs\linear\README.md"/>
+    <None Include="..\..\Source\Libs\linear\SUPPORT.txt"/>
     <None Include="..\..\..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\src\common\README.md"/>
     <None Include="..\..\..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\resampler\README.md"/>
     <None Include="..\..\..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\CMakeLists.txt"/>

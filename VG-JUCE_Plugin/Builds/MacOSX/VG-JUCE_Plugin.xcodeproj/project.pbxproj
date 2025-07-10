@@ -135,6 +135,7 @@
 		1DE5378EDDEA1162D19C9596 /* inffas8664.c */ = {isa = PBXBuildFile; fileRef = DB7F186FCFAECF23FC5BE3DA; };
 		1E27771F8D421ACD0BEFF968 /* light_test.cc */ = {isa = PBXBuildFile; fileRef = 4F38DAECD128D5004AC0EC50; };
 		1E390144C1A79206D49EB9A5 /* OpenGEXImporter.cpp */ = {isa = PBXBuildFile; fileRef = CE07740601ABA35172504F07; };
+		1E4DBBB295CD2940444D1228 /* DynamicsData.h */ = {isa = PBXBuildFile; fileRef = 1E6B4541F3CCA53487059E4B; };
 		1EC779BAD4CDD7C95E4F1B5F /* encoder_webidl_wrapper.cc */ = {isa = PBXBuildFile; fileRef = 78E4364D7DB93D059E4EBABF; };
 		1F42581C807AD884FE8B6055 /* Background.cpp */ = {isa = PBXBuildFile; fileRef = 7F5271530FDBB0CE2F8BDFCF; };
 		2027092BE5C93683D2132C83 /* Iir.cpp */ = {isa = PBXBuildFile; fileRef = A23B579CC77FE50D20F54963; };
@@ -223,6 +224,7 @@
 		37BC64D3241ED98CAE9EDE18 /* Noise.cpp */ = {isa = PBXBuildFile; fileRef = A592021753F8A10718441547; };
 		37D396FF1073D24D09493797 /* ModalBar.cpp */ = {isa = PBXBuildFile; fileRef = 40E7B08C097B0754A8F1F5EB; };
 		3862E96405F90E31C09945A4 /* utTypes.cpp */ = {isa = PBXBuildFile; fileRef = 9200464F6EA73432B4745893; };
+		38BB4FA7C6F3E9272D4B1B08 /* WowAndFlutterUI.h */ = {isa = PBXBuildFile; fileRef = 67F2FEB13D0C57D405FD0EAF; };
 		3934BBFE6177290B3891F2D1 /* OpenDDLCommon.cpp */ = {isa = PBXBuildFile; fileRef = 2F648E052795A7963CE5C906; };
 		39B837486CAAE17E5B2E0882 /* FileLoop.cpp */ = {isa = PBXBuildFile; fileRef = 2CFB431DEFCD67B8AB0C3A8F; };
 		39F67414486C0D7936DF1378 /* mesh_test.cc */ = {isa = PBXBuildFile; fileRef = AA2617C66C4BD4B79F536730; };
@@ -251,6 +253,7 @@
 		3E932BFB400CA628846EDA07 /* trees.c */ = {isa = PBXBuildFile; fileRef = 2E73F1AE29E9E9A7090313E6; };
 		3EA5B345226BA825F0952543 /* attribute_quantization_transform.cc */ = {isa = PBXBuildFile; fileRef = 6DA194E3DB457E232E2F0362; };
 		3EBD1E80B0317147E380C097 /* gvmat64.S */ = {isa = PBXBuildFile; fileRef = F23B39F730BCA3D71C1CEE54; };
+		3EF38149ADCB97FAE31DAF22 /* signalsmith-stretch.h */ = {isa = PBXBuildFile; fileRef = 6C6EE5B1DEEA93ACB687C7A6; };
 		3F73DA0BF4A9BF328F54737E /* DDLNode.cpp */ = {isa = PBXBuildFile; fileRef = 5E57E98188B7C72A1AF76300; };
 		3F9BED8E89A882BFBD6261BC /* TwoZero.cpp */ = {isa = PBXBuildFile; fileRef = 801EC99FEE4CAB973582285E; };
 		403C7E846366F926AD6D0B4E /* Info.cpp */ = {isa = PBXBuildFile; fileRef = 00C9199C2F9194B7AAD5254B; };
@@ -282,6 +285,7 @@
 		46C50D04A877E09124C30B46 /* PluginEditor.cpp */ = {isa = PBXBuildFile; fileRef = D106472753DAFB11AC770763; };
 		46EEE3942F0A37D3C2924D7D /* CoreAudio.framework */ = {isa = PBXBuildFile; fileRef = 64991531110639DBB01E3E15; };
 		475EF5C8C450E73800FD82BA /* point_cloud_io_test.cc */ = {isa = PBXBuildFile; fileRef = 8EDE093D46A5E5558A6B98BD; };
+		47A03ACC6B1F4112FD0E5F7D /* ModulationUI.h */ = {isa = PBXBuildFile; fileRef = 7AE020B5C488DA26EAC60D06; };
 		47A66706B61470A7542D9334 /* pugixml.cpp */ = {isa = PBXBuildFile; fileRef = 2074E9E12E65B84978F37045; };
 		47CE5B9F0EB59DB33B185152 /* RemoveRedundantMaterials.cpp */ = {isa = PBXBuildFile; fileRef = 410AF6BA6176652D6D702165; };
 		47FD49E00B43F75BB6C2D749 /* VertexTriangleAdjacency.cpp */ = {isa = PBXBuildFile; fileRef = 61EF4AEBA5A3EA97BBD370CD; };
@@ -391,6 +395,7 @@
 		63D89EA4F1CDF396991766A2 /* googletest-failfast-unittest_.cc */ = {isa = PBXBuildFile; fileRef = FEE95CCE030B7AC4B157ABA7; };
 		640010F6C869F198084DF75F /* utDefaultIOStream.cpp */ = {isa = PBXBuildFile; fileRef = 08D42C2AF3F0952929278823; };
 		641025927B8D65104A51EA1F /* utScenePreprocessor.cpp */ = {isa = PBXBuildFile; fileRef = F9FA97D313792296276E0BF8; };
+		642851DD391B7436D5D5284E /* InfoButtonUI.h */ = {isa = PBXBuildFile; fileRef = BF81778BBD563E865B49C396; };
 		646A5A18D93EE03E837FBB67 /* infback9.c */ = {isa = PBXBuildFile; fileRef = FCFAF162E9335DD1D287F377; };
 		646F5F570C9B70034B177ED2 /* unzip.c */ = {isa = PBXBuildFile; fileRef = BABE81AACED8B7835DBF3FE9; };
 		64C9872979FA7B121B7F6D7F /* RawLoader.cpp */ = {isa = PBXBuildFile; fileRef = E48FFD4EDA3E3550519E869E; };
@@ -425,6 +430,7 @@
 		6BC7CA3429E6ACD1DB477DF6 /* point_cloud_kd_tree_encoder.cc */ = {isa = PBXBuildFile; fileRef = 5B415B8CCA3EB0CCF9BC02AB; };
 		6BD87B9116B6E6A7CD046A17 /* googletest-param-test-invalid-name1-test_.cc */ = {isa = PBXBuildFile; fileRef = 264BA8D091DD26DC1BC390F6; };
 		6CB2C9BBA696A3B2580017D3 /* light.cc */ = {isa = PBXBuildFile; fileRef = A087F4903C22A96276E4C688; };
+		6CBAEDA6C2143F7F8082EA47 /* InfoButtonUI.cpp */ = {isa = PBXBuildFile; fileRef = B8F0B2790EDC38467A4B008D; };
 		6D1E6BD5C103225CC3E0105F /* BaseImporter.cpp */ = {isa = PBXBuildFile; fileRef = B19709B39829FD3E28A4A513; };
 		6D387F2DFC18639363EB8DF0 /* draco_mesh_decoder_without_dequantization_fuzzer.cc */ = {isa = PBXBuildFile; fileRef = 5DAE48283D053D8039B56373; };
 		6D95C99DC26FACFCF55CD032 /* HMPLoader.cpp */ = {isa = PBXBuildFile; fileRef = D5FDD762C4E8315D7D09E96D; };
@@ -706,6 +712,7 @@
 		B55B2333009E6BA27E6CAC12 /* OpenDDLParser.cpp */ = {isa = PBXBuildFile; fileRef = 260C479594F71A82DFABF9F3; };
 		B55DEB6B9C56587FA54FDCE6 /* texture_transform_test.cc */ = {isa = PBXBuildFile; fileRef = E79049C3215931CF1A1928EF; };
 		B573FB48C2A1E740A7C03751 /* ASELoader.cpp */ = {isa = PBXBuildFile; fileRef = 76919477BA7730300CF6F351; };
+		B585C84A512A178B77BFF07A /* main.cpp */ = {isa = PBXBuildFile; fileRef = 0B33FA9253B43FE774855E3E; };
 		B5CA61C1A39BF69B6FC0BD76 /* float_points_tree_encoder.cc */ = {isa = PBXBuildFile; fileRef = 858A3A702A8A7D58572CEA54; };
 		B66ED760D452D3697782438B /* ColladaParser.cpp */ = {isa = PBXBuildFile; fileRef = B8A4CAEE4F9211ED5DD703AC; };
 		B67FD65B428A38F5E818EEEB /* FBXModel.cpp */ = {isa = PBXBuildFile; fileRef = C46017C663060E1127B4518F; };
@@ -730,6 +737,7 @@
 		BCFF120E5FE398DF8833A07F /* Q3BSPFileParser.cpp */ = {isa = PBXBuildFile; fileRef = 07C2BE39985D974CCED043D1; };
 		BD2EA5A1B68BA96F3C7FC24D /* test_entry.c */ = {isa = PBXBuildFile; fileRef = FB530C4BA87EB98DA9A4BFE8; };
 		BD42F3EB971FB79928610D2F /* SpatialSort.cpp */ = {isa = PBXBuildFile; fileRef = 2645CC79B412C473D0C226CF; };
+		BD6B1AEB88231046E508FA53 /* GramoSuite.fbx */ = {isa = PBXBuildFile; fileRef = 0CDCFFE9352EFDC52F9FE2B1; };
 		BD78BC378B9E8461B4F9D659 /* ConvertToLHProcess.cpp */ = {isa = PBXBuildFile; fileRef = 029EE4F45415DA1D1AC08906; };
 		BD8C6B787E200CC692C9EDD1 /* decode_test.cc */ = {isa = PBXBuildFile; fileRef = 851FF3C80D0FB674308C13E2; };
 		BDABC4FC3B08919E7BC913E4 /* gtest-unittest-api_test.cc */ = {isa = PBXBuildFile; fileRef = E52D4DEF3BD55059E5A784EF; };
@@ -808,6 +816,7 @@
 		CEC42E8068C43D39E959CD3D /* sequential_quantization_attribute_encoder.cc */ = {isa = PBXBuildFile; fileRef = 4EAC06A2182CB690D1D139F1; };
 		CEDCE78285907DB491EFE023 /* gmock-spec-builders_test.cc */ = {isa = PBXBuildFile; fileRef = D787F4B8ECD0407C8723B252; };
 		CEFB2DE1E92904FB3D54785C /* glTFExporter.cpp */ = {isa = PBXBuildFile; fileRef = 74FA9198FE2DE4D11597E41D; };
+		CF46DC73E79478630448A5EB /* DynamicsUI.h */ = {isa = PBXBuildFile; fileRef = 312D94E56B6D6E6AC40580D9; };
 		CFB26E0CA1E8DCF9DBEEE5B7 /* Q3BSPFileImporter.cpp */ = {isa = PBXBuildFile; fileRef = EDDE1427DBA14BBA5285ABC1; };
 		D0A68CE79F73294325F31866 /* obj_encoder_test.cc */ = {isa = PBXBuildFile; fileRef = 95A2B9ACEE5AF9E987DF4D09; };
 		D0BCD377D640156734EF91BC /* utSharedPPData.cpp */ = {isa = PBXBuildFile; fileRef = 527C6620345992938A0C6C03; };
@@ -993,6 +1002,7 @@
 		002290EAB9410CD694944F0A /* sample2.cc */ /* sample2.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = sample2.cc; path = ../../Source/Libs/assimp/contrib/googletest/googletest/samples/sample2.cc; sourceTree = SOURCE_ROOT; };
 		0032539F446389177FD2B795 /* Bowed.h */ /* Bowed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Bowed.h; path = ../../Source/Libs/stk/Bowed.h; sourceTree = SOURCE_ROOT; };
 		00697D243A3754D9383CF143 /* prediction_scheme_factory.h */ /* prediction_scheme_factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = prediction_scheme_factory.h; path = ../../Source/Libs/assimp/contrib/draco/src/draco/compression/attributes/prediction_schemes/prediction_scheme_factory.h; sourceTree = SOURCE_ROOT; };
+		0079AB619C4AF8CB07B09B1C /* stopwatch.h */ /* stopwatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stopwatch.h; path = ../../Source/Libs/linear/tests/stopwatch.h; sourceTree = SOURCE_ROOT; };
 		007FE748AB511461BDEA592F /* X3DImporter_Rendering.cpp */ /* X3DImporter_Rendering.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = X3DImporter_Rendering.cpp; path = ../../Source/Libs/assimp/code/AssetLib/X3D/X3DImporter_Rendering.cpp; sourceTree = SOURCE_ROOT; };
 		00A0562523F7CFDDFC798883 /* utNoBoostTest.cpp */ /* utNoBoostTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = utNoBoostTest.cpp; path = ../../Source/Libs/assimp/test/unit/utNoBoostTest.cpp; sourceTree = SOURCE_ROOT; };
 		00A25CFD61D7B798A1CD1A34 /* CREDITS */ /* CREDITS */ = {isa = PBXFileReference; lastKnownFileType = file; name = CREDITS; path = ../../Source/Libs/assimp/CREDITS; sourceTree = SOURCE_ROOT; };
@@ -1106,6 +1116,7 @@
 		092759A75CB39C7E8735E2DB /* aiVector3D.pas */ /* aiVector3D.pas */ = {isa = PBXFileReference; lastKnownFileType = file.pas; name = aiVector3D.pas; path = ../../Source/Libs/assimp/port/AssimpDelphi/aiVector3D.pas; sourceTree = SOURCE_ROOT; };
 		093CF89BE5C4CACCCDFD3FE8 /* SGSpatialSort.cpp */ /* SGSpatialSort.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SGSpatialSort.cpp; path = ../../Source/Libs/assimp/code/Common/SGSpatialSort.cpp; sourceTree = SOURCE_ROOT; };
 		09545231C7C27C77305402DD /* ioapi.c */ /* ioapi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = ../../Source/Libs/assimp/contrib/unzip/ioapi.c; sourceTree = SOURCE_ROOT; };
+		097C6BF1C592DCE0D2700092 /* linear-accelerate.h */ /* linear-accelerate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "linear-accelerate.h"; path = "../../Source/Libs/linear/platform/linear-accelerate.h"; sourceTree = SOURCE_ROOT; };
 		0983F16777372E7F296EE726 /* IPHONESIMULATOR_X86_64_TOOLCHAIN.cmake */ /* IPHONESIMULATOR_X86_64_TOOLCHAIN.cmake */ = {isa = PBXFileReference; lastKnownFileType = file.cmake; name = IPHONESIMULATOR_X86_64_TOOLCHAIN.cmake; path = ../../Source/Libs/assimp/port/iOS/IPHONESIMULATOR_X86_64_TOOLCHAIN.cmake; sourceTree = SOURCE_ROOT; };
 		0987E2D3E82EDBB1D227E5D2 /* AssbinFileWriter.cpp */ /* AssbinFileWriter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AssbinFileWriter.cpp; path = ../../Source/Libs/assimp/code/AssetLib/Assbin/AssbinFileWriter.cpp; sourceTree = SOURCE_ROOT; };
 		09998043906B9AD2B53A85B1 /* StringUtils.h */ /* StringUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StringUtils.h; path = ../../Source/Libs/assimp/include/assimp/StringUtils.h; sourceTree = SOURCE_ROOT; };
@@ -1129,6 +1140,7 @@
 		0B05125E832EFBFAB1C33A76 /* zlibvc.def */ /* zlibvc.def */ = {isa = PBXFileReference; lastKnownFileType = file.def; name = zlibvc.def; path = ../../Source/Libs/assimp/contrib/zlib/contrib/vstudio/vc14/zlibvc.def; sourceTree = SOURCE_ROOT; };
 		0B210F93D720DAE668518609 /* __init__.py */ /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = file.py; name = __init__.py; path = ../../Source/Libs/assimp/port/PyAssimp/pyassimp/__init__.py; sourceTree = SOURCE_ROOT; };
 		0B22BDFEBF0323BD6CAB82B6 /* UglyVertexColors.lwo */ /* UglyVertexColors.lwo */ = {isa = PBXFileReference; lastKnownFileType = file.lwo; name = UglyVertexColors.lwo; path = ../../Source/Libs/assimp/test/models/LWO/LWO2/UglyVertexColors.lwo; sourceTree = SOURCE_ROOT; };
+		0B33FA9253B43FE774855E3E /* main.cpp */ /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../Source/Libs/linear/tests/main.cpp; sourceTree = SOURCE_ROOT; };
 		0B3753B7715C678D006D6C86 /* Effect.h */ /* Effect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Effect.h; path = ../../Source/Libs/stk/Effect.h; sourceTree = SOURCE_ROOT; };
 		0B4E1A50461681E8DDD40E55 /* FindDegenerates.h */ /* FindDegenerates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FindDegenerates.h; path = ../../Source/Libs/assimp/code/PostProcessing/FindDegenerates.h; sourceTree = SOURCE_ROOT; };
 		0B51C902ACE13D2B2C6992EA /* sphere_with_mat_gloss_10pc.zgl */ /* sphere_with_mat_gloss_10pc.zgl */ = {isa = PBXFileReference; lastKnownFileType = file.zgl; name = sphere_with_mat_gloss_10pc.zgl; path = ../../Source/Libs/assimp/test/models/XGL/sphere_with_mat_gloss_10pc.zgl; sourceTree = SOURCE_ROOT; };
@@ -1325,6 +1337,7 @@
 		19C05035B84268C57B229B0F /* texture-cat.jpg */ /* texture-cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "texture-cat.jpg"; path = "../../Source/Libs/assimp/test/models-nonbsd/USD/usdc/textures/texture-cat.jpg"; sourceTree = SOURCE_ROOT; };
 		19C8387D473EEBB5A9CD365D /* LICENSE */ /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = file; name = LICENSE; path = ../../Source/Libs/assimp/contrib/zlib/LICENSE; sourceTree = SOURCE_ROOT; };
 		19D0E0F2871A4719C6240E31 /* meta.rs */ /* meta.rs */ = {isa = PBXFileReference; lastKnownFileType = file.rs; name = meta.rs; path = ../../Source/Libs/assimp/port/assimp_rs/src/structs/meta/meta.rs; sourceTree = SOURCE_ROOT; };
+		19E47AC80E3809E776E32233 /* test-runner.h */ /* test-runner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "test-runner.h"; path = "../../Source/Libs/linear/tests/test-runner.h"; sourceTree = SOURCE_ROOT; };
 		19E8F6B1D49F803B08416718 /* scene.d */ /* scene.d */ = {isa = PBXFileReference; lastKnownFileType = file.d; name = scene.d; path = ../../Source/Libs/assimp/port/dAssimp/assimp/scene.d; sourceTree = SOURCE_ROOT; };
 		1A01B0F815AA129D39366A93 /* build.sh */ /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = file.sh; name = build.sh; path = ../../Source/Libs/assimp/port/iOS/build.sh; sourceTree = SOURCE_ROOT; };
 		1A151B905BAAAC25DC2F81D7 /* LICENSE */ /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = file; name = LICENSE; path = ../../Source/Libs/assimp/port/PyAssimp/LICENSE; sourceTree = SOURCE_ROOT; };
@@ -1469,6 +1482,7 @@
 		24B0901D59A336447B447273 /* Readme.txt */ /* Readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = Readme.txt; path = ../../Source/Libs/assimp/port/AssimpDelphi/Readme.txt; sourceTree = SOURCE_ROOT; };
 		24C832EC4F7CA124FE5D8AF6 /* issue623.ply */ /* issue623.ply */ = {isa = PBXFileReference; lastKnownFileType = file.ply; name = issue623.ply; path = ../../Source/Libs/assimp/test/models/PLY/issue623.ply; sourceTree = SOURCE_ROOT; };
 		24D36A135F5A02BB2AACBAC2 /* test5.amf */ /* test5.amf */ = {isa = PBXFileReference; lastKnownFileType = file.amf; name = test5.amf; path = ../../Source/Libs/assimp/test/models/AMF/test5.amf; sourceTree = SOURCE_ROOT; };
+		24E3168CE1862A16A9DF83F8 /* test-ffts.h */ /* test-ffts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "test-ffts.h"; path = "../../Source/Libs/linear/tests/test-ffts.h"; sourceTree = SOURCE_ROOT; };
 		24E43C59F386407342D8E610 /* mod.rs */ /* mod.rs */ = {isa = PBXFileReference; lastKnownFileType = file.rs; name = mod.rs; path = ../../Source/Libs/assimp/port/assimp_rs/src/structs/key/mod.rs; sourceTree = SOURCE_ROOT; };
 		24FBFB705B1E574D2CDD6536 /* utBaseProcess.cpp */ /* utBaseProcess.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = utBaseProcess.cpp; path = ../../Source/Libs/assimp/test/unit/Common/utBaseProcess.cpp; sourceTree = SOURCE_ROOT; };
 		250134CF817E2F61A35E3960 /* earth_spherical_z.lwo */ /* earth_spherical_z.lwo */ = {isa = PBXFileReference; lastKnownFileType = file.lwo; name = earth_spherical_z.lwo; path = ../../Source/Libs/assimp/test/models/LWO/LWO2/MappingModes/earth_spherical_z.lwo; sourceTree = SOURCE_ROOT; };
@@ -1642,6 +1656,7 @@
 		30E2D55B0938DF6006A3E2F7 /* dwarf.jpg */ /* dwarf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = dwarf.jpg; path = ../../Source/Libs/assimp/test/models/IRR/assets/dwarf.jpg; sourceTree = SOURCE_ROOT; };
 		30E735F47DC7C6DD71303E0E /* TexturedPlane_ImageUv_248.blend */ /* TexturedPlane_ImageUv_248.blend */ = {isa = PBXFileReference; lastKnownFileType = file.blend; name = TexturedPlane_ImageUv_248.blend; path = ../../Source/Libs/assimp/test/models/BLEND/TexturedPlane_ImageUv_248.blend; sourceTree = SOURCE_ROOT; };
 		30F872C092A1A80D167397FA /* qnan.h */ /* qnan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = qnan.h; path = ../../Source/Libs/assimp/include/assimp/qnan.h; sourceTree = SOURCE_ROOT; };
+		312D94E56B6D6E6AC40580D9 /* DynamicsUI.h */ /* DynamicsUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DynamicsUI.h; path = ../../Source/UI/DynamicsUI.h; sourceTree = SOURCE_ROOT; };
 		313764ED51EB8F94E2EE5320 /* XMLTools.h */ /* XMLTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XMLTools.h; path = ../../Source/Libs/assimp/include/assimp/XMLTools.h; sourceTree = SOURCE_ROOT; };
 		3137D8CB15F1D5F2454BC81E /* utMD3Importer.cpp */ /* utMD3Importer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = utMD3Importer.cpp; path = ../../Source/Libs/assimp/test/unit/ImportExport/utMD3Importer.cpp; sourceTree = SOURCE_ROOT; };
 		314811948EA30FB507631CFE /* ply_reader_test.cc */ /* ply_reader_test.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ply_reader_test.cc; path = ../../Source/Libs/assimp/contrib/draco/src/draco/io/ply_reader_test.cc; sourceTree = SOURCE_ROOT; };
@@ -1666,6 +1681,7 @@
 		32D2988B079CB1B213F5427B /* earthCylindric.jpg */ /* earthCylindric.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = earthCylindric.jpg; path = ../../Source/Libs/assimp/test/models/LWO/LWO2/MappingModes/earthCylindric.jpg; sourceTree = SOURCE_ROOT; };
 		32F485B024C662F113C8D626 /* mesh_attribute_corner_table.cc */ /* mesh_attribute_corner_table.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = mesh_attribute_corner_table.cc; path = ../../Source/Libs/assimp/contrib/draco/src/draco/mesh/mesh_attribute_corner_table.cc; sourceTree = SOURCE_ROOT; };
 		32FED06D292FA8C3B55D65F3 /* euro_frnt_2.tga */ /* euro_frnt_2.tga */ = {isa = PBXFileReference; lastKnownFileType = file.tga; name = euro_frnt_2.tga; path = "../../Source/Libs/assimp/test/models-nonbsd/MD3/q3root/models/mapobjects/kt_kubalwagon/euro_frnt_2.tga"; sourceTree = SOURCE_ROOT; };
+		3302B4A0A6F04592DD4B4B7B /* CMakeLists.txt */ /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = CMakeLists.txt; path = ../../Source/Libs/linear/tests/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		3307ED20ACA67550B0F61225 /* CMakeLists.txt */ /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = CMakeLists.txt; path = ../../Source/Libs/assimp/tools/assimp_cmd/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		33169A03E6ABBA2A9F8A182D /* utMDLImporter_HL1_ImportSettings.cpp */ /* utMDLImporter_HL1_ImportSettings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = utMDLImporter_HL1_ImportSettings.cpp; path = ../../Source/Libs/assimp/test/unit/ImportExport/MDL/utMDLImporter_HL1_ImportSettings.cpp; sourceTree = SOURCE_ROOT; };
 		331CF03E46BABEB7803E09F5 /* MMDPmxParser.cpp */ /* MMDPmxParser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MMDPmxParser.cpp; path = ../../Source/Libs/assimp/code/AssetLib/MMD/MMDPmxParser.cpp; sourceTree = SOURCE_ROOT; };
@@ -1775,6 +1791,7 @@
 		3A0AA507304B5FAEB321B4C0 /* Testwuson_X_anim_Wuson_Run.gif */ /* Testwuson_X_anim_Wuson_Run.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Testwuson_X_anim_Wuson_Run.gif; path = ../../Source/Libs/assimp/test/models/X/ref/screenshots/Testwuson_X_anim_Wuson_Run.gif; sourceTree = SOURCE_ROOT; };
 		3A3E2E2A950C7DB9EEDB99A4 /* mesh_sequential_decoder.h */ /* mesh_sequential_decoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mesh_sequential_decoder.h; path = ../../Source/Libs/assimp/contrib/draco/src/draco/compression/mesh/mesh_sequential_decoder.h; sourceTree = SOURCE_ROOT; };
 		3A5624DBB30A3F43ED9EE4FF /* scenegraphAnim.irr */ /* scenegraphAnim.irr */ = {isa = PBXFileReference; lastKnownFileType = file.irr; name = scenegraphAnim.irr; path = ../../Source/Libs/assimp/test/models/IRR/scenegraphAnim.irr; sourceTree = SOURCE_ROOT; };
+		3A66A78CF609BF7C8E2E1D01 /* LICENSE.txt */ /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = LICENSE.txt; path = ../../Source/Libs/linear/LICENSE.txt; sourceTree = SOURCE_ROOT; };
 		3A7A7DFB09876775380B3F2C /* mesh_splitter.h */ /* mesh_splitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mesh_splitter.h; path = ../../Source/Libs/assimp/code/AssetLib/Assjson/mesh_splitter.h; sourceTree = SOURCE_ROOT; };
 		3A8F04222A22E5E60188DACA /* unnamed_sequence_groups08.mdl */ /* unnamed_sequence_groups08.mdl */ = {isa = PBXFileReference; lastKnownFileType = file.mdl; name = unnamed_sequence_groups08.mdl; path = "../../Source/Libs/assimp/test/models/MDL/MDL (HL1)/unnamed_sequence_groups/unnamed_sequence_groups08.mdl"; sourceTree = SOURCE_ROOT; };
 		3A98B864DF22AFCFA90DB5DF /* SceneCombiner.cpp */ /* SceneCombiner.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneCombiner.cpp; path = ../../Source/Libs/assimp/code/Common/SceneCombiner.cpp; sourceTree = SOURCE_ROOT; };
@@ -1877,6 +1894,7 @@
 		4194BBBA7371B10270808999 /* bottom.tga */ /* bottom.tga */ = {isa = PBXFileReference; lastKnownFileType = file.tga; name = bottom.tga; path = ../../Source/Libs/assimp/test/models/X/bottom.tga; sourceTree = SOURCE_ROOT; };
 		41A54F7C32860C9975F6AB45 /* OgreMaterial.cpp */ /* OgreMaterial.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OgreMaterial.cpp; path = ../../Source/Libs/assimp/code/AssetLib/Ogre/OgreMaterial.cpp; sourceTree = SOURCE_ROOT; };
 		41AE728ED72CF01E8914070A /* adler32.c */ /* adler32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = adler32.c; path = ../../Source/Libs/assimp/contrib/zlib/adler32.c; sourceTree = SOURCE_ROOT; };
+		41AF49ED685E37C5739B4C7F /* README.md */ /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = README.md; path = ../../Source/Libs/linear/README.md; sourceTree = SOURCE_ROOT; };
 		41B8351C2C3955336B1F68B0 /* pyramob.3DS */ /* pyramob.3DS */ = {isa = PBXFileReference; lastKnownFileType = file.3DS; name = pyramob.3DS; path = "../../Source/Libs/assimp/test/models-nonbsd/3DS/pyramob.3DS"; sourceTree = SOURCE_ROOT; };
 		41BFDDA393017BF26F026A16 /* CODE_OF_CONDUCT.md */ /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = CODE_OF_CONDUCT.md; path = ../../Source/Libs/assimp/CODE_OF_CONDUCT.md; sourceTree = SOURCE_ROOT; };
 		41C088E6A49E8F5741411C43 /* faerie_md2.png */ /* faerie_md2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = faerie_md2.png; path = ../../Source/Libs/assimp/test/models/MD2/ref/screenshots/faerie_md2.png; sourceTree = SOURCE_ROOT; };
@@ -2143,6 +2161,7 @@
 		54815139673BC8C645F929E7 /* matrix.rs */ /* matrix.rs */ = {isa = PBXFileReference; lastKnownFileType = file.rs; name = matrix.rs; path = ../../Source/Libs/assimp/port/assimp_rs/src/structs/matrix/matrix.rs; sourceTree = SOURCE_ROOT; };
 		549AA20C9FFABBDB87F58E68 /* triangle_with_empty_solid.stl */ /* triangle_with_empty_solid.stl */ = {isa = PBXFileReference; lastKnownFileType = file.stl; name = triangle_with_empty_solid.stl; path = ../../Source/Libs/assimp/test/models/STL/triangle_with_empty_solid.stl; sourceTree = SOURCE_ROOT; };
 		54A11490FC5FC003850CEA28 /* test2.amf */ /* test2.amf */ = {isa = PBXFileReference; lastKnownFileType = file.amf; name = test2.amf; path = ../../Source/Libs/assimp/test/models/AMF/test2.amf; sourceTree = SOURCE_ROOT; };
+		54C632A0D1DEE72590E12080 /* test-stfts.h */ /* test-stfts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "test-stfts.h"; path = "../../Source/Libs/linear/tests/test-stfts.h"; sourceTree = SOURCE_ROOT; };
 		54CA1998B9FBF7E56714F605 /* README.md */ /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = README.md; path = ../../Source/Libs/assimp/port/iOS/README.md; sourceTree = SOURCE_ROOT; };
 		54E42B998537CAE16E164C2B /* AiVector.java */ /* AiVector.java */ = {isa = PBXFileReference; lastKnownFileType = file.java; name = AiVector.java; path = ../../Source/Libs/assimp/port/jassimp/jassimp/src/jassimp/AiVector.java; sourceTree = SOURCE_ROOT; };
 		54E842A76468D25F9E4B7422 /* Subdivision.cpp */ /* Subdivision.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Subdivision.cpp; path = ../../Source/Libs/assimp/code/Common/Subdivision.cpp; sourceTree = SOURCE_ROOT; };
@@ -2340,6 +2359,7 @@
 		6398B217C15A89098F69413E /* configure.ac */ /* configure.ac */ = {isa = PBXFileReference; lastKnownFileType = file.ac; name = configure.ac; path = ../../Source/Libs/assimp/contrib/zlib/contrib/minizip/configure.ac; sourceTree = SOURCE_ROOT; };
 		63AAE8E95121D96D269CB952 /* UnrealLoader.cpp */ /* UnrealLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = UnrealLoader.cpp; path = ../../Source/Libs/assimp/code/AssetLib/Unreal/UnrealLoader.cpp; sourceTree = SOURCE_ROOT; };
 		63F301EAC1FEF250C650A5CB /* README.md */ /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = README.md; path = ../../Source/Libs/assimp/contrib/openddlparser/README.md; sourceTree = SOURCE_ROOT; };
+		641F93B4247C3EDB9F08FDAC /* stop-denormals.h */ /* stop-denormals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "stop-denormals.h"; path = "../../Source/Libs/linear/tests/stop-denormals.h"; sourceTree = SOURCE_ROOT; };
 		6430C7514C6C1D61E24362DD /* Mesh_PrimitiveMode_08.bin */ /* Mesh_PrimitiveMode_08.bin */ = {isa = PBXFileReference; lastKnownFileType = file.bin; name = Mesh_PrimitiveMode_08.bin; path = "../../Source/Libs/assimp/test/models/glTF2/glTF-Asset-Generator/Mesh_PrimitiveMode/Mesh_PrimitiveMode_08.bin"; sourceTree = SOURCE_ROOT; };
 		6432276C8E6654E284DBE17C /* LICENSE_1_0.txt */ /* LICENSE_1_0.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = LICENSE_1_0.txt; path = ../../Source/Libs/assimp/contrib/zlib/contrib/dotzlib/LICENSE_1_0.txt; sourceTree = SOURCE_ROOT; };
 		6479101DF359017B53FBBA7D /* mesh_prediction_scheme_tex_coords_decoder.h */ /* mesh_prediction_scheme_tex_coords_decoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mesh_prediction_scheme_tex_coords_decoder.h; path = ../../Source/Libs/assimp/contrib/draco/src/draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_tex_coords_decoder.h; sourceTree = SOURCE_ROOT; };
@@ -2400,6 +2420,7 @@
 		67DD0A8CA73F20E066C1D679 /* swap.h */ /* swap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = swap.h; path = ../../Source/Libs/assimp/contrib/rapidjson/include/rapidjson/internal/swap.h; sourceTree = SOURCE_ROOT; };
 		67EA43DAA3D601E8922DE18B /* lights.dae */ /* lights.dae */ = {isa = PBXFileReference; lastKnownFileType = file.dae; name = lights.dae; path = ../../Source/Libs/assimp/test/models/Collada/lights.dae; sourceTree = SOURCE_ROOT; };
 		67F078BC2F19625C621F7462 /* zlibd32.mak */ /* zlibd32.mak */ = {isa = PBXFileReference; lastKnownFileType = file.mak; name = zlibd32.mak; path = ../../Source/Libs/assimp/contrib/zlib/contrib/delphi/zlibd32.mak; sourceTree = SOURCE_ROOT; };
+		67F2FEB13D0C57D405FD0EAF /* WowAndFlutterUI.h */ /* WowAndFlutterUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WowAndFlutterUI.h; path = ../../Source/UI/WowAndFlutterUI.h; sourceTree = SOURCE_ROOT; };
 		681334D42A61B6294C585BBB /* BinaryData44.cpp */ /* BinaryData44.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData44.cpp; path = ../../JuceLibraryCode/BinaryData44.cpp; sourceTree = SOURCE_ROOT; };
 		6817A293582E0063B6D1ECA9 /* LICENSE.md */ /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = LICENSE.md; path = ../../Source/Libs/assimp/test/models/glTF2/MorphStressTest/LICENSE.md; sourceTree = SOURCE_ROOT; };
 		68212970F98AA1008D2DA727 /* BaseProcess.h */ /* BaseProcess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BaseProcess.h; path = ../../Source/Libs/assimp/code/Common/BaseProcess.h; sourceTree = SOURCE_ROOT; };
@@ -2428,6 +2449,7 @@
 		6A6673AA6CF491FEAF19256F /* FindInstancesProcess.cpp */ /* FindInstancesProcess.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FindInstancesProcess.cpp; path = ../../Source/Libs/assimp/code/PostProcessing/FindInstancesProcess.cpp; sourceTree = SOURCE_ROOT; };
 		6A9FC8961D60D9FF538DEBC6 /* prediction_scheme_delta_decoder.h */ /* prediction_scheme_delta_decoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = prediction_scheme_delta_decoder.h; path = ../../Source/Libs/assimp/contrib/draco/src/draco/compression/attributes/prediction_schemes/prediction_scheme_delta_decoder.h; sourceTree = SOURCE_ROOT; };
 		6AD0FED93DA35F6477D98D62 /* Release Initial Loud.wav */ /* Release Initial Loud.wav */ = {isa = PBXFileReference; lastKnownFileType = file.wav; name = "Release Initial Loud.wav"; path = "../../Source/Assets/Audio/Impulse Response Captures/Euphonium/Loud/Release/Initial Stage/Release Initial Loud.wav"; sourceTree = SOURCE_ROOT; };
+		6AD8190D1F598B40C47D549F /* stft.h */ /* stft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stft.h; path = ../../Source/Libs/linear/stft.h; sourceTree = SOURCE_ROOT; };
 		6ADA60057BD062180BC5EB37 /* README.md */ /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = README.md; path = "../../Source/Libs/assimp/test/models-nonbsd/HMP/ref/README.md"; sourceTree = SOURCE_ROOT; };
 		6ADBFD7D6232EFC7A24DE8D5 /* Messager.cpp */ /* Messager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Messager.cpp; path = ../../Source/Libs/stk/Messager.cpp; sourceTree = SOURCE_ROOT; };
 		6AE1BB03F0C3A1BAA09790BA /* PlasticWrap_normals.jpg */ /* PlasticWrap_normals.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = PlasticWrap_normals.jpg; path = "../../Source/Libs/assimp/test/models/glTF2/ClearCoat-glTF/PlasticWrap_normals.jpg"; sourceTree = SOURCE_ROOT; };
@@ -2506,6 +2528,7 @@
 		6FA10EB15D42BB6E3AE5A1D7 /* X3DImporter_Networking.cpp */ /* X3DImporter_Networking.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = X3DImporter_Networking.cpp; path = ../../Source/Libs/assimp/code/AssetLib/X3D/X3DImporter_Networking.cpp; sourceTree = SOURCE_ROOT; };
 		6FCE154444319BA1281F88C1 /* realFresnel.lwo */ /* realFresnel.lwo */ = {isa = PBXFileReference; lastKnownFileType = file.lwo; name = realFresnel.lwo; path = ../../Source/Libs/assimp/test/models/LWO/LWO2/shader_test/realFresnel.lwo; sourceTree = SOURCE_ROOT; };
 		6FFA8049958213305F2E1487 /* IQMImporter.cpp */ /* IQMImporter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = IQMImporter.cpp; path = ../../Source/Libs/assimp/code/AssetLib/IQM/IQMImporter.cpp; sourceTree = SOURCE_ROOT; };
+		701385158E0A8F6391408B5D /* signalsmith-fft.h */ /* signalsmith-fft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "signalsmith-fft.h"; path = "../../Source/Libs/linear/tests/others/signalsmith-fft.h"; sourceTree = SOURCE_ROOT; };
 		70344629D4BC8BEF8D3690AB /* ColladaParser.h */ /* ColladaParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ColladaParser.h; path = ../../Source/Libs/assimp/code/AssetLib/Collada/ColladaParser.h; sourceTree = SOURCE_ROOT; };
 		704D7205A08BD639E9E2A028 /* instance_array.h */ /* instance_array.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = instance_array.h; path = ../../Source/Libs/assimp/contrib/draco/src/draco/scene/instance_array.h; sourceTree = SOURCE_ROOT; };
 		70555AE260168267B91671E8 /* StandardShapes.cpp */ /* StandardShapes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StandardShapes.cpp; path = ../../Source/Libs/assimp/code/Common/StandardShapes.cpp; sourceTree = SOURCE_ROOT; };
@@ -2585,6 +2608,7 @@
 		76AC5532B4D4BFBC5F96E1BA /* SplitByBoneCountProcess.cpp */ /* SplitByBoneCountProcess.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SplitByBoneCountProcess.cpp; path = ../../Source/Libs/assimp/code/PostProcessing/SplitByBoneCountProcess.cpp; sourceTree = SOURCE_ROOT; };
 		76B6DF4533E253A4F1506BD1 /* rifle.source.txt */ /* rifle.source.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = rifle.source.txt; path = "../../Source/Libs/assimp/test/models-nonbsd/LWO/LWO2/rifle.source.txt"; sourceTree = SOURCE_ROOT; };
 		76C6BC5068E4F73ED63A69C7 /* BoxTextured.gltf */ /* BoxTextured.gltf */ = {isa = PBXFileReference; lastKnownFileType = file.gltf; name = BoxTextured.gltf; path = "../../Source/Libs/assimp/test/models/glTF2/BoxTextured-glTF/BoxTextured.gltf"; sourceTree = SOURCE_ROOT; };
+		76C749B3C6D55D16EF0A917F /* linear.h */ /* linear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = linear.h; path = ../../Source/Libs/linear/linear.h; sourceTree = SOURCE_ROOT; };
 		76E33B47FEB89EB1951F0C31 /* BlenderDefault_269.blend */ /* BlenderDefault_269.blend */ = {isa = PBXFileReference; lastKnownFileType = file.blend; name = BlenderDefault_269.blend; path = ../../Source/Libs/assimp/test/models/BLEND/BlenderDefault_269.blend; sourceTree = SOURCE_ROOT; };
 		76ED06748EA7DAF70D6680EB /* MorphStressTest_cycle_animations.gif */ /* MorphStressTest_cycle_animations.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = MorphStressTest_cycle_animations.gif; path = ../../Source/Libs/assimp/test/models/glTF2/ref/screenshots/MorphStressTest_cycle_animations.gif; sourceTree = SOURCE_ROOT; };
 		76F3698C230067ACF969B285 /* options.cc */ /* options.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = options.cc; path = ../../Source/Libs/assimp/contrib/draco/src/draco/core/options.cc; sourceTree = SOURCE_ROOT; };
@@ -2639,6 +2663,7 @@
 		7AB3B1735BEDDE3BEA4705F7 /* compile.sh */ /* compile.sh */ = {isa = PBXFileReference; lastKnownFileType = file.sh; name = compile.sh; path = ../../Source/Libs/stretch/web/emscripten/compile.sh; sourceTree = SOURCE_ROOT; };
 		7ACF18D456D2D305CE9EDB37 /* juce_animation */ /* juce_animation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_animation; path = "~/JUCE/modules/juce_animation"; sourceTree = "<absolute>"; };
 		7AD1DAE6E6E1F9C3C641EBA5 /* MD5Parser.cpp */ /* MD5Parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MD5Parser.cpp; path = ../../Source/Libs/assimp/code/AssetLib/MD5/MD5Parser.cpp; sourceTree = SOURCE_ROOT; };
+		7AE020B5C488DA26EAC60D06 /* ModulationUI.h */ /* ModulationUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ModulationUI.h; path = ../../Source/UI/ModulationUI.h; sourceTree = SOURCE_ROOT; };
 		7AE23A5A1E16EC48E595E5D4 /* SKINI.tbl */ /* SKINI.tbl */ = {isa = PBXFileReference; lastKnownFileType = file.tbl; name = SKINI.tbl; path = ../../Source/Libs/stk/SKINI.tbl; sourceTree = SOURCE_ROOT; };
 		7B0B3C8E543F0F64318DE3BC /* animation.h */ /* animation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = animation.h; path = ../../Source/Libs/assimp/contrib/draco/src/draco/animation/animation.h; sourceTree = SOURCE_ROOT; };
 		7B13A40FBCD1D41C7CF22C96 /* cube_uv.ply */ /* cube_uv.ply */ = {isa = PBXFileReference; lastKnownFileType = file.ply; name = cube_uv.ply; path = ../../Source/Libs/assimp/test/models/PLY/cube_uv.ply; sourceTree = SOURCE_ROOT; };
@@ -2679,6 +2704,7 @@
 		7DD8986160A288EFF86776A3 /* Mesh_PrimitiveMode_07.gltf */ /* Mesh_PrimitiveMode_07.gltf */ = {isa = PBXFileReference; lastKnownFileType = file.gltf; name = Mesh_PrimitiveMode_07.gltf; path = "../../Source/Libs/assimp/test/models/glTF2/glTF-Asset-Generator/Mesh_PrimitiveMode/Mesh_PrimitiveMode_07.gltf"; sourceTree = SOURCE_ROOT; };
 		7DE9556A9343B295814B61F1 /* Info-VST3.plist */ /* Info-VST3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-VST3.plist"; path = "Info-VST3.plist"; sourceTree = SOURCE_ROOT; };
 		7DEB927D5DAED7F99ED9FD7A /* ChecksumImpl.cs */ /* ChecksumImpl.cs */ = {isa = PBXFileReference; lastKnownFileType = file.cs; name = ChecksumImpl.cs; path = ../../Source/Libs/assimp/contrib/zlib/contrib/dotzlib/DotZLib/ChecksumImpl.cs; sourceTree = SOURCE_ROOT; };
+		7E2AD7DCB6DDD05F02964079 /* fft.h */ /* fft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fft.h; path = ../../Source/Libs/linear/fft.h; sourceTree = SOURCE_ROOT; };
 		7E38D88859EF33ADAF4940AE /* MDCFileData.h */ /* MDCFileData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDCFileData.h; path = ../../Source/Libs/assimp/code/AssetLib/MDC/MDCFileData.h; sourceTree = SOURCE_ROOT; };
 		7E6F734FB892B36567CBFD32 /* UVTransform_ScaleUV10-2_OffsetUV10-mirrorUV.png */ /* UVTransform_ScaleUV10-2_OffsetUV10-mirrorUV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UVTransform_ScaleUV10-2_OffsetUV10-mirrorUV.png"; path = "../../Source/Libs/assimp/test/models/ReferenceImages/UVTransform/UVTransform_ScaleUV10-2_OffsetUV10-mirrorUV.png"; sourceTree = SOURCE_ROOT; };
 		7E7C0A005DEEBB34B34D87AE /* kwxport_test_vcolors.dae.source.txt */ /* kwxport_test_vcolors.dae.source.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = kwxport_test_vcolors.dae.source.txt; path = ../../Source/Libs/assimp/test/models/Collada/kwxport_test_vcolors.dae.source.txt; sourceTree = SOURCE_ROOT; };
@@ -2826,6 +2852,7 @@
 		884E5CBBC0E3AE68555B16FD /* MS3DLoader.cpp */ /* MS3DLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MS3DLoader.cpp; path = ../../Source/Libs/assimp/code/AssetLib/MS3D/MS3DLoader.cpp; sourceTree = SOURCE_ROOT; };
 		8851A57CB56BA881EB364815 /* geometry_metadata.h */ /* geometry_metadata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = geometry_metadata.h; path = ../../Source/Libs/assimp/contrib/draco/src/draco/metadata/geometry_metadata.h; sourceTree = SOURCE_ROOT; };
 		8872106253B93EC761389D31 /* X3DImporter_Macro.hpp */ /* X3DImporter_Macro.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = X3DImporter_Macro.hpp; path = ../../Source/Libs/assimp/code/AssetLib/X3D/X3DImporter_Macro.hpp; sourceTree = SOURCE_ROOT; };
+		88859D06F96E927B3A7035FD /* linear.h */ /* linear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = linear.h; path = "../../Source/Libs/linear/include/signalsmith-linear/linear.h"; sourceTree = SOURCE_ROOT; };
 		888D50BC2F367565A706A7A6 /* source.txt */ /* source.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = source.txt; path = "../../Source/Libs/assimp/test/models-nonbsd/MD2/source.txt"; sourceTree = SOURCE_ROOT; };
 		889A476618BA5E1917F5D534 /* utLogger.cpp */ /* utLogger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = utLogger.cpp; path = ../../Source/Libs/assimp/test/unit/Common/utLogger.cpp; sourceTree = SOURCE_ROOT; };
 		88A2F22020A17C429D357741 /* draco_pc_decoder_fuzzer.cc */ /* draco_pc_decoder_fuzzer.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = draco_pc_decoder_fuzzer.cc; path = ../../Source/Libs/assimp/contrib/draco/src/draco/tools/fuzz/draco_pc_decoder_fuzzer.cc; sourceTree = SOURCE_ROOT; };
@@ -2994,6 +3021,7 @@
 		94704633532811373196E059 /* mod.rs */ /* mod.rs */ = {isa = PBXFileReference; lastKnownFileType = file.rs; name = mod.rs; path = ../../Source/Libs/assimp/port/assimp_rs/src/structs/transform/mod.rs; sourceTree = SOURCE_ROOT; };
 		94777B2B8AD17A175B89C452 /* README.md */ /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = README.md; path = "../../Source/Libs/assimp/test/models-nonbsd/Ogre/OgreSDK/ref/README.md"; sourceTree = SOURCE_ROOT; };
 		948E441BDE32DFA711C2BCD3 /* quantization_utils.h */ /* quantization_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = quantization_utils.h; path = ../../Source/Libs/assimp/contrib/draco/src/draco/core/quantization_utils.h; sourceTree = SOURCE_ROOT; };
+		949CEB2D71AC6C559B0CE952 /* CMakeLists.txt */ /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = CMakeLists.txt; path = ../../Source/Libs/linear/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		94ADAEA152A0D4D58A6D2CB0 /* fast_atof.h */ /* fast_atof.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fast_atof.h; path = ../../Source/Libs/assimp/include/assimp/fast_atof.h; sourceTree = SOURCE_ROOT; };
 		94B56CF6FAB7145F958A9BE3 /* testline.obj */ /* testline.obj */ = {isa = PBXFileReference; lastKnownFileType = file.obj; name = testline.obj; path = ../../Source/Libs/assimp/test/models/OBJ/testline.obj; sourceTree = SOURCE_ROOT; };
 		94E697CD909EB160D96CACD4 /* include_juce_animation.cpp */ /* include_juce_animation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_animation.cpp; path = ../../JuceLibraryCode/include_juce_animation.cpp; sourceTree = SOURCE_ROOT; };
@@ -3021,6 +3049,7 @@
 		9626D99CD5ECCD701CEB2C78 /* LICENSE */ /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = file; name = LICENSE; path = ../../Source/Libs/assimp/contrib/googletest/LICENSE; sourceTree = SOURCE_ROOT; };
 		9632053FCF0E72F1198DA086 /* mesh_encoder_test.cc */ /* mesh_encoder_test.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = mesh_encoder_test.cc; path = ../../Source/Libs/assimp/contrib/draco/src/draco/compression/mesh/mesh_encoder_test.cc; sourceTree = SOURCE_ROOT; };
 		96412FD955F80F3F55C58944 /* Wuson.acc */ /* Wuson.acc */ = {isa = PBXFileReference; lastKnownFileType = file.acc; name = Wuson.acc; path = ../../Source/Libs/assimp/test/models/AC/Wuson.acc; sourceTree = SOURCE_ROOT; };
+		96513CDBD64CFFB1B38E70D7 /* Makefile */ /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = file; name = Makefile; path = ../../Source/Libs/linear/tests/Makefile; sourceTree = SOURCE_ROOT; };
 		965A87578A5D604435AFDB66 /* HOME4.NFF */ /* HOME4.NFF */ = {isa = PBXFileReference; lastKnownFileType = file.NFF; name = HOME4.NFF; path = "../../Source/Libs/assimp/test/models-nonbsd/NFF/NFFSense8/HOME4.NFF"; sourceTree = SOURCE_ROOT; };
 		9680D93D39E86AC7ACF1FA4A /* assimp_tools_icon.ico */ /* assimp_tools_icon.ico */ = {isa = PBXFileReference; lastKnownFileType = file.ico; name = assimp_tools_icon.ico; path = ../../Source/Libs/assimp/tools/shared/assimp_tools_icon.ico; sourceTree = SOURCE_ROOT; };
 		9681E65041BDFAEEAE791CEC /* ply_property_writer.h */ /* ply_property_writer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ply_property_writer.h; path = ../../Source/Libs/assimp/contrib/draco/src/draco/io/ply_property_writer.h; sourceTree = SOURCE_ROOT; };
@@ -3453,6 +3482,7 @@
 		B8A4CAEE4F9211ED5DD703AC /* ColladaParser.cpp */ /* ColladaParser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ColladaParser.cpp; path = ../../Source/Libs/assimp/code/AssetLib/Collada/ColladaParser.cpp; sourceTree = SOURCE_ROOT; };
 		B8CF2386AB0365CAE9AE7771 /* Mesh_PrimitiveMode_03.gltf */ /* Mesh_PrimitiveMode_03.gltf */ = {isa = PBXFileReference; lastKnownFileType = file.gltf; name = Mesh_PrimitiveMode_03.gltf; path = "../../Source/Libs/assimp/test/models/glTF2/glTF-Asset-Generator/Mesh_PrimitiveMode/Mesh_PrimitiveMode_03.gltf"; sourceTree = SOURCE_ROOT; };
 		B8E606AC8514048C6EECFB1D /* fwd.h */ /* fwd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fwd.h; path = ../../Source/Libs/assimp/contrib/rapidjson/include/rapidjson/fwd.h; sourceTree = SOURCE_ROOT; };
+		B8F0B2790EDC38467A4B008D /* InfoButtonUI.cpp */ /* InfoButtonUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = InfoButtonUI.cpp; path = ../../Source/UI/InfoButtonUI.cpp; sourceTree = SOURCE_ROOT; };
 		B8FD88FF0F17183C905A8102 /* wal67ar_small.jpg */ /* wal67ar_small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wal67ar_small.jpg; path = ../../Source/Libs/assimp/test/models/IRRMesh/assets/wal67ar_small.jpg; sourceTree = SOURCE_ROOT; };
 		B90713FDFC1850765737E07B /* Halfway Attack Loud.wav */ /* Halfway Attack Loud.wav */ = {isa = PBXFileReference; lastKnownFileType = file.wav; name = "Halfway Attack Loud.wav"; path = "../../Source/Assets/Audio/Impulse Response Captures/Euphonium/Loud/Attack/Halfway Stage/Halfway Attack Loud.wav"; sourceTree = SOURCE_ROOT; };
 		B9206DE24E5D6A81355F03A0 /* quaternion.h */ /* quaternion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = quaternion.h; path = ../../Source/Libs/assimp/include/assimp/quaternion.h; sourceTree = SOURCE_ROOT; };
@@ -3483,6 +3513,7 @@
 		BB2391F8317C0E368B228A59 /* AU */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VG-JUCE_Plugin.component"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB35DE1ADFF0F0DCD301F884 /* guard1_helmet.png */ /* guard1_helmet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = guard1_helmet.png; path = "../../Source/Libs/assimp/test/models-nonbsd/BLEND/guard1_helmet.png"; sourceTree = SOURCE_ROOT; };
 		BB3986E260C0E32C129467E3 /* Mesh_PrimitiveMode_05.gltf */ /* Mesh_PrimitiveMode_05.gltf */ = {isa = PBXFileReference; lastKnownFileType = file.gltf; name = Mesh_PrimitiveMode_05.gltf; path = "../../Source/Libs/assimp/test/models/glTF2/glTF-Asset-Generator/Mesh_PrimitiveMode/Mesh_PrimitiveMode_05.gltf"; sourceTree = SOURCE_ROOT; };
+		BB3C7BE2838382A9A7C7F771 /* fft-ipp.h */ /* fft-ipp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "fft-ipp.h"; path = "../../Source/Libs/linear/platform/fft-ipp.h"; sourceTree = SOURCE_ROOT; };
 		BB76B58F7A73423CF91D32D4 /* BoxTextured.bin */ /* BoxTextured.bin */ = {isa = PBXFileReference; lastKnownFileType = file.bin; name = BoxTextured.bin; path = "../../Source/Libs/assimp/test/models/glTF/BoxTextured-glTF/BoxTextured.bin"; sourceTree = SOURCE_ROOT; };
 		BB86D593430DDACBDF4776CA /* cube_usemtl.m3d */ /* cube_usemtl.m3d */ = {isa = PBXFileReference; lastKnownFileType = file.m3d; name = cube_usemtl.m3d; path = ../../Source/Libs/assimp/test/models/M3D/cube_usemtl.m3d; sourceTree = SOURCE_ROOT; };
 		BB93248C117472F75A662984 /* arm-ios-common.cmake */ /* arm-ios-common.cmake */ = {isa = PBXFileReference; lastKnownFileType = file.cmake; name = "arm-ios-common.cmake"; path = "../../Source/Libs/assimp/contrib/draco/cmake/toolchains/arm-ios-common.cmake"; sourceTree = SOURCE_ROOT; };
@@ -3546,6 +3577,7 @@
 		BF654B74652FCDE39ED4083B /* README.body.md */ /* README.body.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = README.body.md; path = ../../Source/Libs/assimp/test/models/glTF2/SimpleMorph/README.body.md; sourceTree = SOURCE_ROOT; };
 		BF76B9CD41BD8ABFB7052C68 /* man01.mdl */ /* man01.mdl */ = {isa = PBXFileReference; lastKnownFileType = file.mdl; name = man01.mdl; path = "../../Source/Libs/assimp/test/models/MDL/MDL (HL1)/man01.mdl"; sourceTree = SOURCE_ROOT; };
 		BF7784057B0BACB8EB3F8463 /* TriangulateProcess.cpp */ /* TriangulateProcess.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TriangulateProcess.cpp; path = ../../Source/Libs/assimp/code/PostProcessing/TriangulateProcess.cpp; sourceTree = SOURCE_ROOT; };
+		BF81778BBD563E865B49C396 /* InfoButtonUI.h */ /* InfoButtonUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InfoButtonUI.h; path = ../../Source/UI/InfoButtonUI.h; sourceTree = SOURCE_ROOT; };
 		BF8F34AD5B2BB1A097E748A5 /* README.txt */ /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = README.txt; path = ../../Source/Libs/assimp/test/regression/README.txt; sourceTree = SOURCE_ROOT; };
 		BF92142AF3D2C14080976781 /* mesh_connected_components.h */ /* mesh_connected_components.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mesh_connected_components.h; path = ../../Source/Libs/assimp/contrib/draco/src/draco/mesh/mesh_connected_components.h; sourceTree = SOURCE_ROOT; };
 		BFA291A133C24F935DF3BB50 /* readme.txt */ /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = readme.txt; path = ../../Source/Libs/assimp/contrib/pugixml/readme.txt; sourceTree = SOURCE_ROOT; };
@@ -3854,6 +3886,7 @@
 		D44441E613B4F12EE6BB4050 /* AiTextureInfo.java */ /* AiTextureInfo.java */ = {isa = PBXFileReference; lastKnownFileType = file.java; name = AiTextureInfo.java; path = ../../Source/Libs/assimp/port/jassimp/jassimp/src/jassimp/AiTextureInfo.java; sourceTree = SOURCE_ROOT; };
 		D4493801F2113FC0BDD0C88F /* main.js */ /* main.js */ = {isa = PBXFileReference; lastKnownFileType = file.js; name = main.js; path = ../../Source/Libs/stretch/web/emscripten/main.js; sourceTree = SOURCE_ROOT; };
 		D44D36F634FF44A8ED822C04 /* 3d_viewer_py3.py */ /* 3d_viewer_py3.py */ = {isa = PBXFileReference; lastKnownFileType = file.py; name = 3d_viewer_py3.py; path = ../../Source/Libs/assimp/port/PyAssimp/scripts/3d_viewer_py3.py; sourceTree = SOURCE_ROOT; };
+		D44FAAD0AE66DE6FE968F656 /* stft.h */ /* stft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stft.h; path = "../../Source/Libs/linear/include/signalsmith-linear/stft.h"; sourceTree = SOURCE_ROOT; };
 		D457318FACEBC2E63DEA3885 /* googletest-message-test.cc */ /* googletest-message-test.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "googletest-message-test.cc"; path = "../../Source/Libs/assimp/contrib/googletest/googletest/test/googletest-message-test.cc"; sourceTree = SOURCE_ROOT; };
 		D45C44D4874A23FF800E19AD /* main.scss */ /* main.scss */ = {isa = PBXFileReference; lastKnownFileType = file.scss; name = main.scss; path = ../../Source/Libs/assimp/contrib/googletest/docs/_sass/main.scss; sourceTree = SOURCE_ROOT; };
 		D46C55C2BE678865C8097757 /* cokecan.mat */ /* cokecan.mat */ = {isa = PBXFileReference; lastKnownFileType = file.mat; name = cokecan.mat; path = "../../Source/Libs/assimp/test/models-nonbsd/NFF/NFFSense8/cokecan.mat"; sourceTree = SOURCE_ROOT; };
@@ -3875,6 +3908,7 @@
 		D550F4063BD6E27A4DB0C081 /* CMakeLists.txt */ /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = CMakeLists.txt; path = ../../Source/Libs/assimp/code/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		D587CF5DE44F6B8BE90319D3 /* stdafx.cpp */ /* stdafx.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = stdafx.cpp; path = ../../Source/Libs/assimp/tools/assimp_view/stdafx.cpp; sourceTree = SOURCE_ROOT; };
 		D58D458FE2B38FE7B7DE3EFC /* AbstractImportExportBase.cpp */ /* AbstractImportExportBase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AbstractImportExportBase.cpp; path = ../../Source/Libs/assimp/test/unit/AbstractImportExportBase.cpp; sourceTree = SOURCE_ROOT; };
+		D5953773AF6E032E931BF1BD /* fft-accelerate.h */ /* fft-accelerate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "fft-accelerate.h"; path = "../../Source/Libs/linear/platform/fft-accelerate.h"; sourceTree = SOURCE_ROOT; };
 		D59E471E35BD75E9BBCDE3FD /* test_open.c */ /* test_open.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = test_open.c; path = ../../Source/Libs/assimp/contrib/zip/test/test_open.c; sourceTree = SOURCE_ROOT; };
 		D5C260E268BE3460583F7572 /* ply_encoder.h */ /* ply_encoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ply_encoder.h; path = ../../Source/Libs/assimp/contrib/draco/src/draco/io/ply_encoder.h; sourceTree = SOURCE_ROOT; };
 		D5C64832DF112620B6844287 /* simpleMorphGeometry.bin */ /* simpleMorphGeometry.bin */ = {isa = PBXFileReference; lastKnownFileType = file.bin; name = simpleMorphGeometry.bin; path = ../../Source/Libs/assimp/test/models/glTF2/SimpleMorph/glTF/simpleMorphGeometry.bin; sourceTree = SOURCE_ROOT; };
@@ -4175,6 +4209,7 @@
 		EC974E679E1760FDB7466516 /* testFormatDetection */ /* testFormatDetection */ = {isa = PBXFileReference; lastKnownFileType = file; name = testFormatDetection; path = ../../Source/Libs/assimp/test/models/3DS/testFormatDetection; sourceTree = SOURCE_ROOT; };
 		ECB72096CD3A0EE3158C8763 /* cube_with_diffuse_texture.3DS */ /* cube_with_diffuse_texture.3DS */ = {isa = PBXFileReference; lastKnownFileType = file.3DS; name = cube_with_diffuse_texture.3DS; path = ../../Source/Libs/assimp/test/models/3DS/cube_with_diffuse_texture.3DS; sourceTree = SOURCE_ROOT; };
 		ECC0AB00C1B062ED376E96F9 /* gtest_main_unittest.cc */ /* gtest_main_unittest.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = gtest_main_unittest.cc; path = ../../Source/Libs/assimp/contrib/googletest/googletest/test/gtest_main_unittest.cc; sourceTree = SOURCE_ROOT; };
+		ECC7A0DDD6F412632E4C6FAF /* test-linear.h */ /* test-linear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "test-linear.h"; path = "../../Source/Libs/linear/tests/test-linear.h"; sourceTree = SOURCE_ROOT; };
 		ECC90A2403051295EBB0D6AF /* material_utils_test.cc */ /* material_utils_test.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = material_utils_test.cc; path = ../../Source/Libs/assimp/contrib/draco/src/draco/material/material_utils_test.cc; sourceTree = SOURCE_ROOT; };
 		ECED30A2A0F9AE262B6D5DF6 /* Rifle.source.txt */ /* Rifle.source.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = Rifle.source.txt; path = "../../Source/Libs/assimp/test/models-nonbsd/ASE/Rifle.source.txt"; sourceTree = SOURCE_ROOT; };
 		ED09A4372DD94581210F068C /* BlenderSceneGen.h */ /* BlenderSceneGen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BlenderSceneGen.h; path = ../../Source/Libs/assimp/code/AssetLib/Blender/BlenderSceneGen.h; sourceTree = SOURCE_ROOT; };
@@ -4362,6 +4397,7 @@
 		FAF905004145EE04DF0A2874 /* BinaryData39.cpp */ /* BinaryData39.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData39.cpp; path = ../../JuceLibraryCode/BinaryData39.cpp; sourceTree = SOURCE_ROOT; };
 		FB1739FEAE2071647698D268 /* README */ /* README */ = {isa = PBXFileReference; lastKnownFileType = file; name = README; path = ../../Source/Libs/assimp/contrib/zlib/README; sourceTree = SOURCE_ROOT; };
 		FB343F40D6D7E1A7DB6BBA10 /* transparency.lwo */ /* transparency.lwo */ = {isa = PBXFileReference; lastKnownFileType = file.lwo; name = transparency.lwo; path = ../../Source/Libs/assimp/test/models/LWO/LWO2/transparency.lwo; sourceTree = SOURCE_ROOT; };
+		FB3B858C3A6723F4B13C1A90 /* fft.h */ /* fft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fft.h; path = "../../Source/Libs/linear/include/signalsmith-linear/fft.h"; sourceTree = SOURCE_ROOT; };
 		FB3D151F25A60CA43C83D984 /* AiBlendMode.java */ /* AiBlendMode.java */ = {isa = PBXFileReference; lastKnownFileType = file.java; name = AiBlendMode.java; path = ../../Source/Libs/assimp/port/jassimp/jassimp/src/jassimp/AiBlendMode.java; sourceTree = SOURCE_ROOT; };
 		FB44E558D2571291A23CDFD8 /* anims_with_full_rotations_between_keys.DAE */ /* anims_with_full_rotations_between_keys.DAE */ = {isa = PBXFileReference; lastKnownFileType = file.DAE; name = anims_with_full_rotations_between_keys.DAE; path = ../../Source/Libs/assimp/test/models/Collada/anims_with_full_rotations_between_keys.DAE; sourceTree = SOURCE_ROOT; };
 		FB530C4BA87EB98DA9A4BFE8 /* test_entry.c */ /* test_entry.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = test_entry.c; path = ../../Source/Libs/assimp/contrib/zip/test/test_entry.c; sourceTree = SOURCE_ROOT; };
@@ -4394,6 +4430,7 @@
 		FDB3B3B92057FBE9B9D41C3D /* Value.h */ /* Value.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Value.h; path = ../../Source/Libs/assimp/contrib/openddlparser/include/openddlparser/Value.h; sourceTree = SOURCE_ROOT; };
 		FDBF5B4E918BFA8DD9D276D7 /* utMetadata.cpp */ /* utMetadata.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = utMetadata.cpp; path = ../../Source/Libs/assimp/test/unit/utMetadata.cpp; sourceTree = SOURCE_ROOT; };
 		FDCEE6655DF605D536D1AB62 /* CONTRIBUTING.md */ /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = CONTRIBUTING.md; path = ../../Source/Libs/assimp/contrib/zip/CONTRIBUTING.md; sourceTree = SOURCE_ROOT; };
+		FDD15F88CAC2AF21EC057D19 /* SUPPORT.txt */ /* SUPPORT.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = SUPPORT.txt; path = ../../Source/Libs/linear/SUPPORT.txt; sourceTree = SOURCE_ROOT; };
 		FDE285317B5E1179BF66B53A /* Filter.h */ /* Filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Filter.h; path = ../../Source/Libs/stk/Filter.h; sourceTree = SOURCE_ROOT; };
 		FE19CB494B512A2E2CA8E592 /* HalfLifeFileData.h */ /* HalfLifeFileData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HalfLifeFileData.h; path = ../../Source/Libs/assimp/code/AssetLib/HMP/HalfLifeFileData.h; sourceTree = SOURCE_ROOT; };
 		FE19ED0EA995EE8459C005AF /* UVTransform_ScaleUV1-2_OffsetUV0-0.9_Rotate-72_mirrorU.ase */ /* UVTransform_ScaleUV1-2_OffsetUV0-0.9_Rotate-72_mirrorU.ase */ = {isa = PBXFileReference; lastKnownFileType = file.ase; name = "UVTransform_ScaleUV1-2_OffsetUV0-0.9_Rotate-72_mirrorU.ase"; path = "../../Source/Libs/assimp/test/models/ASE/TestUVTransform/UVTransform_ScaleUV1-2_OffsetUV0-0.9_Rotate-72_mirrorU.ase"; sourceTree = SOURCE_ROOT; };
@@ -4967,6 +5004,23 @@
 				83786D100A8AC8B529A0EA56,
 			);
 			name = css;
+			sourceTree = "<group>";
+		};
+		0BF24013BA5CD73EE8068A6B /* linear */ = {
+			isa = PBXGroup;
+			children = (
+				C6F7971DA3CE224232CB362E,
+				62DE7D42D07D64F44E156D9D,
+				62E8265813AF664C2C46F56D,
+				949CEB2D71AC6C559B0CE952,
+				7E2AD7DCB6DDD05F02964079,
+				3A66A78CF609BF7C8E2E1D01,
+				76C749B3C6D55D16EF0A917F,
+				41AF49ED685E37C5739B4C7F,
+				6AD8190D1F598B40C47D549F,
+				FDD15F88CAC2AF21EC057D19,
+			);
+			name = linear;
 			sourceTree = "<group>";
 		};
 		0C36C101E8236FAE2D2B71A2 /* Sustain */ = {
@@ -6954,8 +7008,8 @@
 			isa = PBXGroup;
 			children = (
 				BF9C70C9ECB888C9CD48BA24,
-				B5A7E1781F562D8EA133EE09,
 				3F6A1D7CB73CDD9E751ED573,
+				E914C37D83058B52D4018939,
 				E38E27E9065CCD926606F35F,
 				DE2ABF3737BA8CABA15F6B86,
 				D106472753DAFB11AC770763,
@@ -7855,6 +7909,33 @@
 			name = ref;
 			sourceTree = "<group>";
 		};
+		62DE7D42D07D64F44E156D9D /* platform */ = {
+			isa = PBXGroup;
+			children = (
+				D5953773AF6E032E931BF1BD,
+				BB3C7BE2838382A9A7C7F771,
+				097C6BF1C592DCE0D2700092,
+			);
+			name = platform;
+			sourceTree = "<group>";
+		};
+		62E8265813AF664C2C46F56D /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				A7209A261A7395B7DEDE4094,
+				3302B4A0A6F04592DD4B4B7B,
+				0B33FA9253B43FE774855E3E,
+				96513CDBD64CFFB1B38E70D7,
+				641F93B4247C3EDB9F08FDAC,
+				0079AB619C4AF8CB07B09B1C,
+				24E3168CE1862A16A9DF83F8,
+				ECC7A0DDD6F412632E4C6FAF,
+				19E47AC80E3809E776E32233,
+				54C632A0D1DEE72590E12080,
+			);
+			name = tests;
+			sourceTree = "<group>";
+		};
 		62FBC5FBA6ED5C2CF615578E /* 3DS */ = {
 			isa = PBXGroup;
 			children = (
@@ -8654,8 +8735,16 @@
 				670905F95075EA66F171AF40,
 				6A5F5EC045646E4F909D41AC,
 				1E0D9E1357C245B7FCDC24D4,
+				0CDCFFE9352EFDC52F9FE2B1,
+				1E6B4541F3CCA53487059E4B,
 				6B8FE5ECCFE9B5D2D0E69CC8,
 				803ADC1C1FE3962497D8A7AC,
+				6C6EE5B1DEEA93ACB687C7A6,
+				312D94E56B6D6E6AC40580D9,
+				B8F0B2790EDC38467A4B008D,
+				BF81778BBD563E865B49C396,
+				7AE020B5C488DA26EAC60D06,
+				67F2FEB13D0C57D405FD0EAF,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -9709,6 +9798,24 @@
 			name = CApi;
 			sourceTree = "<group>";
 		};
+		A7209A261A7395B7DEDE4094 /* others */ = {
+			isa = PBXGroup;
+			children = (
+				701385158E0A8F6391408B5D,
+			);
+			name = others;
+			sourceTree = "<group>";
+		};
+		A73164583A9ECF1B12A30315 /* signalsmith-linear */ = {
+			isa = PBXGroup;
+			children = (
+				FB3B858C3A6723F4B13C1A90,
+				88859D06F96E927B3A7035FD,
+				D44FAAD0AE66DE6FE968F656,
+			);
+			name = "signalsmith-linear";
+			sourceTree = "<group>";
+		};
 		A7645C051E64E9949A65058F /* screenshots */ = {
 			isa = PBXGroup;
 			children = (
@@ -10188,14 +10295,6 @@
 			name = q3root;
 			sourceTree = "<group>";
 		};
-		B5A7E1781F562D8EA133EE09 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				1E6B4541F3CCA53487059E4B,
-			);
-			name = Data;
-			sourceTree = "<group>";
-		};
 		B5DAF93BE9A613FEAC29F97A /* minizip */ = {
 			isa = PBXGroup;
 			children = (
@@ -10508,7 +10607,6 @@
 			isa = PBXGroup;
 			children = (
 				7F10FB4AEC1216DA43FEB5EF,
-				0CDCFFE9352EFDC52F9FE2B1,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -10725,9 +10823,16 @@
 				9594D846A67F53FB72776FAB,
 				91BDE27B73949ED4ADC19098,
 				576198FA6763D270B8AA356E,
-				6C6EE5B1DEEA93ACB687C7A6,
 			);
 			name = stretch;
+			sourceTree = "<group>";
+		};
+		C6F7971DA3CE224232CB362E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				A73164583A9ECF1B12A30315,
+			);
+			name = include;
 			sourceTree = "<group>";
 		};
 		C70CA9738109314538187459 /* meta */ = {
@@ -11605,6 +11710,14 @@
 				543A16FD88574E77A5BD051A,
 			);
 			name = vc10;
+			sourceTree = "<group>";
+		};
+		E914C37D83058B52D4018939 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0BF24013BA5CD73EE8068A6B,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		E9EE10D7AF166EDB8E0D6D11 /* camera */ = {
@@ -12652,8 +12765,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A70BF5ACABF20E6EF37D7B7E,
+				BD6B1AEB88231046E508FA53,
+				1E4DBBB295CD2940444D1228,
 				863303F6DD12FC78C97EB45E,
 				30C4F87A95DEC78AEDAD9696,
+				3EF38149ADCB97FAE31DAF22,
+				CF46DC73E79478630448A5EB,
+				6CBAEDA6C2143F7F8082EA47,
+				642851DD391B7436D5D5284E,
+				47A03ACC6B1F4112FD0E5F7D,
+				38BB4FA7C6F3E9272D4B1B08,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12662,8 +12783,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A70BF5ACABF20E6EF37D7B7E,
+				BD6B1AEB88231046E508FA53,
+				1E4DBBB295CD2940444D1228,
 				863303F6DD12FC78C97EB45E,
 				30C4F87A95DEC78AEDAD9696,
+				3EF38149ADCB97FAE31DAF22,
+				CF46DC73E79478630448A5EB,
+				6CBAEDA6C2143F7F8082EA47,
+				642851DD391B7436D5D5284E,
+				47A03ACC6B1F4112FD0E5F7D,
+				38BB4FA7C6F3E9272D4B1B08,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12672,8 +12801,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A70BF5ACABF20E6EF37D7B7E,
+				BD6B1AEB88231046E508FA53,
+				1E4DBBB295CD2940444D1228,
 				863303F6DD12FC78C97EB45E,
 				30C4F87A95DEC78AEDAD9696,
+				3EF38149ADCB97FAE31DAF22,
+				CF46DC73E79478630448A5EB,
+				6CBAEDA6C2143F7F8082EA47,
+				642851DD391B7436D5D5284E,
+				47A03ACC6B1F4112FD0E5F7D,
+				38BB4FA7C6F3E9272D4B1B08,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13577,6 +13714,8 @@
 				795245B84060A4BC28D89F6D,
 				635E62B1DCDED9E872128F63,
 				880C512A303481A550B0DA60,
+				B585C84A512A178B77BFF07A,
+				6CBAEDA6C2143F7F8082EA47,
 				9D944E84E8BD28CE75FB0E15,
 				46C50D04A877E09124C30B46,
 				58CD49BF3ED22AE27D5C4468,

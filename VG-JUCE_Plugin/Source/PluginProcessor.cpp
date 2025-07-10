@@ -101,8 +101,6 @@ void VGJUCE_PluginAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
-
-    delete[] fIn;
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -131,42 +129,32 @@ bool VGJUCE_PluginAudioProcessor::isBusesLayoutSupported (const BusesLayout& lay
 }
 #endif
 
-void VGJUCE_PluginAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+void VGJUCE_PluginAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
-    auto totalNumInputChannels  = getTotalNumInputChannels();
+    auto totalNumInputChannels = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
 
-    // In case we have more outputs than inputs, this code clears any output
-    // channels that didn't contain input data, (because these aren't
-    // guaranteed to be empty - they may contain garbage).
-    // This is here to avoid people getting screaming feedback
-    // when they first compile a plugin, but obviously you don't need to keep
-    // this code if your algorithm always overwrites all the output channels.
+    // Clear any unused channels
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        buffer.clear (i, 0, buffer.getNumSamples());
+        buffer.clear(i, 0, buffer.getNumSamples());
 
-    float fMonoMix = 0;
+    // Create a buffer for mono mix if needed for the wow and flutter effect
+    juce::AudioBuffer<float> monoBuffer(1, buffer.getNumSamples());
+    monoBuffer.clear();
 
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
-    // Make sure to reset the state if your inner loop is processing
-    // the samples and the outer loop is handling the channels.
-    // Alternatively, you can process the samples with the channels
-    // interleaved by keeping the same state.
+    // Mix down to mono if using mono wow and flutter effect
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
-        auto* fIn = buffer.getWritePointer (channel);
+        auto* channelData = buffer.getReadPointer(channel);
+        auto* monoData = monoBuffer.getWritePointer(0);
 
-        // ..do something to the data...
-        
-        fMonoMix += *fIn;
+        for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
+            monoData[sample] += channelData[sample] / totalNumInputChannels;
     }
 
-	fMonoMix /= totalNumInputChannels; // Average the mono mix
-    //fIn[channel] *= fInputGain; // Apply input gain
-
-    wowAndFlutter.applyModulation(&fMonoMix, buffer.getNumSamples(), &fOut[i], buffer.getNumSamples(), fWowControl, fFlutterControl, getSampleRate());
+    // Process audio through the stylusComponent (which contains the wow and flutter effect)
+    stylusComponent.process(monoBuffer, 0, getSampleRate(), buffer);
 }
 
 //==============================================================================

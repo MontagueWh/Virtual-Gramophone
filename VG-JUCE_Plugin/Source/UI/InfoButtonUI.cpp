@@ -1,0 +1,47 @@
+#include "InfoButtonUI.h"
+
+InfoButton::InfoButton (juce::Colour colour)
+{
+    button.setButtonText ("i");
+    button.addListener (this);
+
+    info_text.setColour (juce::Label::backgroundColourId, colour);
+    info_text.setColour (juce::Label::outlineColourId, juce::Colours::white);
+    info_text.setColour (juce::Label::textColourId, juce::Colours::lightgrey);
+    info_text.setJustificationType (juce::Justification::centredLeft);
+    info_text.setBorderSize (juce::BorderSize<int> (20, 70, 20, 70));
+
+    std::string info_string = "";
+    info_string += ProjectInfo::companyName + std::string (" ") + ProjectInfo::projectName + std::string (" version 1.0 ") + ProjectInfo::versionString + std::string ("\n\n");
+    info_string += std::string ("By Montague Whishaw");
+
+    info_text.setText (info_string, juce::dontSendNotification);
+}
+
+InfoButton::~InfoButton() {}
+
+void InfoButton::addToEditor (juce::AudioProcessorEditor* editor)
+{
+    editor->addAndMakeVisible (info_text);
+    info_text.setVisible (false);
+    editor->addAndMakeVisible (button);
+}
+
+void InfoButton::buttonStateChanged (juce::Button* b)
+{
+    if (b == &button)
+    {
+        if (button.isOver())
+        {
+            info_text.setVisible (true);
+        }
+        else
+        {
+            info_text.setVisible (false);
+        }
+    }
+}
+
+void InfoButton::buttonClicked (juce::Button* button)
+{
+}

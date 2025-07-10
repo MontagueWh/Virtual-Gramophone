@@ -74,4 +74,7 @@ private:
     float fEccentricPhase;
     Modulation::Osc osc;
     Modulation::PitchShiftAndTimeStretch pitchTimeWarp;
+
+    float fWowControl;
+	float fFlutterControl;  
 };

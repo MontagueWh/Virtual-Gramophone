@@ -63,10 +63,12 @@
             </GROUP>
           </GROUP>
         </GROUP>
-        <FILE id="bnlxtZ" name="GramoSuite.fbx" compile="0" resource="1" file="Source/Assets/GramoSuite.fbx"/>
+        <FILE id="bnlxtZ" name="GramoSuite.fbx" compile="0" resource="1" file="Source/Assets/GramoSuite.fbx"
+              xcodeResource="1"/>
       </GROUP>
       <GROUP id="{CDCFFF2C-E5F5-C9DE-AA69-A26ED5DFF88D}" name="Data">
-        <FILE id="TSzNss" name="DynamicsData.h" compile="0" resource="0" file="Source/Data/DynamicsData.h"/>
+        <FILE id="TSzNss" name="DynamicsData.h" compile="0" resource="1" file="Source/Data/DynamicsData.h"
+              xcodeResource="1"/>
         <FILE id="w9LGob" name="ModulationData.h" compile="0" resource="1"
               file="Source/Data/ModulationData.h" xcodeResource="1"/>
         <FILE id="blUr45" name="WowAndFlutterData.h" compile="0" resource="1"
@@ -6032,13 +6034,65 @@
           <FILE id="N58753" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/stretch/CMakeLists.txt"/>
           <FILE id="r9Qlqe" name="LICENSE.txt" compile="0" resource="1" file="Source/Libs/stretch/LICENSE.txt"/>
           <FILE id="v1pZ9S" name="README.md" compile="0" resource="1" file="Source/Libs/stretch/README.md"/>
-          <FILE id="OGgOKj" name="signalsmith-stretch.h" compile="0" resource="0"
-                file="Source/Libs/stretch/signalsmith-stretch.h"/>
+          <FILE id="OGgOKj" name="signalsmith-stretch.h" compile="0" resource="1"
+                file="Source/Libs/stretch/signalsmith-stretch.h" xcodeResource="1"/>
         </GROUP>
-        <FILE id="trTvSd" name="include.cpp" compile="1" resource="0" file="Source/Libs/include.cpp"/>
-        <FILE id="h00Ibr" name="stk.h" compile="0" resource="0" file="Source/Libs/stk.h"/>
+        <FILE id="trTvSd" name="include.cpp" compile="1" resource="0" file="Source/Libs/include.cpp"
+              xcodeResource="0"/>
+        <FILE id="h00Ibr" name="stk.h" compile="0" resource="0" file="Source/Libs/stk.h"
+              xcodeResource="0"/>
       </GROUP>
-      <GROUP id="{AC480796-A47E-57DC-60FD-66FA548C43D5}" name="UI"/>
+      <GROUP id="{AC480796-A47E-57DC-60FD-66FA548C43D5}" name="UI">
+        <GROUP id="{3BFD8429-D51A-676F-4FE5-D55F132B4826}" name="linear">
+          <GROUP id="{FE8365F0-6651-E84E-54D2-ACB7142E0875}" name="include">
+            <GROUP id="{89B5BC24-BB62-C698-3EE0-DEE9D6CADAC4}" name="signalsmith-linear">
+              <FILE id="Usq3Pr" name="fft.h" compile="0" resource="0" file="Source/Libs/linear/include/signalsmith-linear/fft.h"/>
+              <FILE id="qBCfYC" name="linear.h" compile="0" resource="0" file="Source/Libs/linear/include/signalsmith-linear/linear.h"/>
+              <FILE id="HLjWhZ" name="stft.h" compile="0" resource="0" file="Source/Libs/linear/include/signalsmith-linear/stft.h"/>
+            </GROUP>
+          </GROUP>
+          <GROUP id="{A2EF496B-70F0-FF69-AC1C-838D0F2914AD}" name="platform">
+            <FILE id="k54aRl" name="fft-accelerate.h" compile="0" resource="0"
+                  file="Source/Libs/linear/platform/fft-accelerate.h"/>
+            <FILE id="m5tJaH" name="fft-ipp.h" compile="0" resource="0" file="Source/Libs/linear/platform/fft-ipp.h"/>
+            <FILE id="i2Xg8Y" name="linear-accelerate.h" compile="0" resource="0"
+                  file="Source/Libs/linear/platform/linear-accelerate.h"/>
+          </GROUP>
+          <GROUP id="{48E8D29B-CF0C-5410-59A5-41D7B527ACF6}" name="tests">
+            <GROUP id="{85C25863-198E-BB49-031B-352E6A2EF596}" name="others">
+              <FILE id="wXO4Xw" name="signalsmith-fft.h" compile="0" resource="0"
+                    file="Source/Libs/linear/tests/others/signalsmith-fft.h"/>
+            </GROUP>
+            <FILE id="Oi0uWW" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/linear/tests/CMakeLists.txt"/>
+            <FILE id="Bpf7FE" name="main.cpp" compile="1" resource="0" file="Source/Libs/linear/tests/main.cpp"/>
+            <FILE id="wTXhs3" name="Makefile" compile="0" resource="1" file="Source/Libs/linear/tests/Makefile"/>
+            <FILE id="hSqebI" name="stop-denormals.h" compile="0" resource="0"
+                  file="Source/Libs/linear/tests/stop-denormals.h"/>
+            <FILE id="gJWyJA" name="stopwatch.h" compile="0" resource="0" file="Source/Libs/linear/tests/stopwatch.h"/>
+            <FILE id="OebuP3" name="test-ffts.h" compile="0" resource="0" file="Source/Libs/linear/tests/test-ffts.h"/>
+            <FILE id="Em9Etu" name="test-linear.h" compile="0" resource="0" file="Source/Libs/linear/tests/test-linear.h"/>
+            <FILE id="SOngiS" name="test-runner.h" compile="0" resource="0" file="Source/Libs/linear/tests/test-runner.h"/>
+            <FILE id="A57yOI" name="test-stfts.h" compile="0" resource="0" file="Source/Libs/linear/tests/test-stfts.h"/>
+          </GROUP>
+          <FILE id="GdWyBD" name="CMakeLists.txt" compile="0" resource="1" file="Source/Libs/linear/CMakeLists.txt"/>
+          <FILE id="GdVp2c" name="fft.h" compile="0" resource="0" file="Source/Libs/linear/fft.h"/>
+          <FILE id="PTOaMi" name="LICENSE.txt" compile="0" resource="1" file="Source/Libs/linear/LICENSE.txt"/>
+          <FILE id="fjXDxX" name="linear.h" compile="0" resource="0" file="Source/Libs/linear/linear.h"/>
+          <FILE id="clczPX" name="README.md" compile="0" resource="1" file="Source/Libs/linear/README.md"/>
+          <FILE id="A9Jq6P" name="stft.h" compile="0" resource="0" file="Source/Libs/linear/stft.h"/>
+          <FILE id="K95CCu" name="SUPPORT.txt" compile="0" resource="1" file="Source/Libs/linear/SUPPORT.txt"/>
+        </GROUP>
+        <FILE id="AeNKnR" name="DynamicsUI.h" compile="0" resource="1" file="Source/UI/DynamicsUI.h"
+              xcodeResource="1"/>
+        <FILE id="vImazo" name="InfoButtonUI.cpp" compile="1" resource="1"
+              file="Source/UI/InfoButtonUI.cpp" xcodeResource="1"/>
+        <FILE id="YkTpwk" name="InfoButtonUI.h" compile="0" resource="1" file="Source/UI/InfoButtonUI.h"
+              xcodeResource="1"/>
+        <FILE id="lEt9si" name="ModulationUI.h" compile="0" resource="1" file="Source/UI/ModulationUI.h"
+              xcodeResource="1"/>
+        <FILE id="hvdjlC" name="WowAndFlutterUI.h" compile="0" resource="1"
+              file="Source/UI/WowAndFlutterUI.h" xcodeResource="1"/>
+      </GROUP>
       <FILE id="T140GO" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="jmfMsN" name="PluginProcessor.h" compile="0" resource="0"

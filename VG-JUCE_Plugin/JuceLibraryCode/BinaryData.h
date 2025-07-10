@@ -44,11 +44,14 @@ namespace BinaryData
     extern const char*   GramoSuite_fbx;
     const int            GramoSuite_fbxSize = 22266768;
 
+    extern const char*   DynamicsData_h;
+    const int            DynamicsData_hSize = 1376;
+
     extern const char*   ModulationData_h;
-    const int            ModulationData_hSize = 270;
+    const int            ModulationData_hSize = 2722;
 
     extern const char*   WowAndFlutterData_h;
-    const int            WowAndFlutterData_hSize = 273;
+    const int            WowAndFlutterData_hSize = 2873;
 
     extern const char*   assimphunterconfig_cmake_in;
     const int            assimphunterconfig_cmake_inSize = 657;
@@ -4763,8 +4766,44 @@ namespace BinaryData
     extern const char*   README_md65;
     const int            README_md65Size = 8113;
 
+    extern const char*   signalsmithstretch_h;
+    const int            signalsmithstretch_hSize = 32791;
+
+    extern const char*   CMakeLists_txt24;
+    const int            CMakeLists_txt24Size = 991;
+
+    extern const char*   Makefile3;
+    const int            Makefile3Size = 955;
+
+    extern const char*   CMakeLists_txt25;
+    const int            CMakeLists_txt25Size = 2005;
+
+    extern const char*   LICENSE_txt2;
+    const int            LICENSE_txt2Size = 1074;
+
+    extern const char*   README_md66;
+    const int            README_md66Size = 4598;
+
+    extern const char*   SUPPORT_txt;
+    const int            SUPPORT_txtSize = 315;
+
+    extern const char*   DynamicsUI_h;
+    const int            DynamicsUI_hSize = 267;
+
+    extern const char*   InfoButtonUI_cpp;
+    const int            InfoButtonUI_cppSize = 1373;
+
+    extern const char*   InfoButtonUI_h;
+    const int            InfoButtonUI_hSize = 643;
+
+    extern const char*   ModulationUI_h;
+    const int            ModulationUI_hSize = 269;
+
+    extern const char*   WowAndFlutterUI_h;
+    const int            WowAndFlutterUI_hSize = 1442;
+
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 1585;
+    const int namedResourceListSize = 1598;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];
