@@ -78,3 +78,5 @@ crashlytics-build.properties
 *.aup3-shm
 /VG-JUCE_Plugin/Builds
 /VG-JUCE_Plugin/JuceLibraryCode
+/VG-JUCE_Plugin/Builds
+/VG-JUCE_Plugin/JuceLibraryCode
