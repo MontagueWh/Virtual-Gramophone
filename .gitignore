@@ -71,12 +71,11 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 /VG-Reaper
-/VG-JUCE/Builds
-/VG-JUCE/Source/The Synthesis Tookit
 *.aup3
 *.aup3-wal
 *.aup3-shm
-/VG-JUCE_Plugin/Builds
-/VG-JUCE_Plugin/JuceLibraryCode
-/VG-JUCE_Plugin/Builds
-/VG-JUCE_Plugin/JuceLibraryCode
+/Virtual Gramophone/Builds
+/Virtual Gramophone/JuceLibraryCode
+/VG-MyEffect/MyEffect/resources
+/VG-MyEffect/MyEffect/MyEffect.xcodeproj
+/VG-MyEffect/MyEffect/include
