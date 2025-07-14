@@ -20,7 +20,7 @@ class StylusUI : public juce::Component,
     public juce::Slider::Listener
 {
 public:
-    StylusUI(GramophonyAudioProcessor& p);
+    StylusUI(VirtualGramoAudioProcessor& p);
     ~StylusUI() override;
 
     void paint(juce::Graphics&) override;
@@ -36,32 +36,32 @@ private:
     typedef std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> SliderAttachmentPtr;
 
     juce::Slider fCompressControl;
-    SliderAttachmentPtr compress_slider_attachment_;
+    SliderAttachmentPtr compressControlAttach;
 
     juce::Slider fVibratoDepthControl;
-    SliderAttachmentPtr vibrato_slider_attachment_;
+    SliderAttachmentPtr vibratoDepthControlAttach;
 
-    juce::Slider vibrato_rate_slider_;
-    SliderAttachmentPtr vibrato_rate_slider_attachment_;
+    juce::Slider fVibratoRateControl;
+    SliderAttachmentPtr vibratoRateControlAttach;
 
     juce::Rectangle<int> picture_section_;
     juce::Rectangle<int> compressSection;
     juce::Rectangle<int> vibratoDepthSection;
     juce::Rectangle<int> vibratoRateSection;
     juce::Rectangle<int> compressTextSection;
-    juce::Rectangle<int> vibrato_text_section_;
+    juce::Rectangle<int> vibratoTextSection;
 
-    GramophonyAudioProcessor& audioProcessor;
+    VirtualGramoAudioProcessor& audioProcessor;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(StylusUI)
 };
 
-class GramophonyAudioProcessorEditor : public juce::AudioProcessorEditor,
+class VirtualGramoUIEditor : public juce::AudioProcessorEditor,
                                        public juce::Slider::Listener
 {
 public:
-    explicit GramophonyAudioProcessorEditor(GramophonyAudioProcessor&);
-    ~GramophonyAudioProcessorEditor() override;
+    explicit VirtualGramoUIEditor(VirtualGramoAudioProcessor&);
+    ~VirtualGramoUIEditor() override;
 
     //==============================================================================
     void paint(juce::Graphics&) override;
@@ -72,16 +72,16 @@ private:
     void SetupSections();
     void sliderValueChanged(juce::Slider* slider) override;
 
-    InfoButton info_button_;
-    StylusUI stylus_ui_;
+    InfoButton infoButtonUI;
+    StylusUI stylusUI;
 
     typedef std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> SliderAttatchmentPtr;
 
     juce::Slider fToneControl;
-    SliderAttatchmentPtr tone_slider_attachment_;
+    SliderAttatchmentPtr toneControlAttach;
 
     juce::Slider fMixControl;
-    SliderAttatchmentPtr mix_slider_attachment_;
+    SliderAttatchmentPtr mixControlAttach;
 
     juce::Rectangle<int> top_section_;
     juce::Rectangle<int> toneSection;
@@ -89,7 +89,7 @@ private:
     juce::Rectangle<int> toneTextSection;
     juce::Rectangle<int> mixTextSection;
 
-    GramophonyAudioProcessor& audioProcessor;
+    VirtualGramoAudioProcessor& audioProcessor;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GramophonyAudioProcessorEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VirtualGramoUIEditor)
 };

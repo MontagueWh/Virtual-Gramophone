@@ -5,24 +5,24 @@ InfoButton::InfoButton (juce::Colour colour)
     button.setButtonText ("i");
     button.addListener (this);
 
-    info_text.setColour (juce::Label::backgroundColourId, colour);
-    info_text.setColour (juce::Label::outlineColourId, juce::Colours::white);
-    info_text.setColour (juce::Label::textColourId, juce::Colours::blue);
-    info_text.setJustificationType (juce::Justification::centredLeft);
-    info_text.setBorderSize (juce::BorderSize<int> (20, 70, 20, 70));
+    infoText.setColour (juce::Label::backgroundColourId, colour);
+    infoText.setColour (juce::Label::outlineColourId, juce::Colours::white);
+    infoText.setColour (juce::Label::textColourId, juce::Colours::blue);
+    infoText.setJustificationType (juce::Justification::centredLeft);
+    infoText.setBorderSize (juce::BorderSize<int> (20, 70, 20, 70));
 
-    std::string info_string = "";
-    info_string += ProjectInfo::companyName + std::string (" ") + ProjectInfo::projectName + std::string (" version ") + ProjectInfo::versionString + std::string ("\n\n");
+    std::string sInfoString = "";
+    sInfoString += ProjectInfo::companyName + std::string (" ") + ProjectInfo::projectName + std::string (" version ") + ProjectInfo::versionString + std::string ("\n\n");
 
-    info_text.setText (info_string, juce::dontSendNotification);
+    infoText.setText (sInfoString, juce::dontSendNotification);
 }
 
 InfoButton::~InfoButton() {}
 
 void InfoButton::addToEditor (juce::AudioProcessorEditor* editor)
 {
-    editor->addAndMakeVisible (info_text);
-    info_text.setVisible (false);
+    editor->addAndMakeVisible (infoText);
+    infoText.setVisible (false);
     editor->addAndMakeVisible (button);
 }
 
@@ -32,11 +32,11 @@ void InfoButton::buttonStateChanged (juce::Button* b)
     {
         if (button.isOver())
         {
-            info_text.setVisible (true);
+            infoText.setVisible (true);
         }
         else
         {
-            info_text.setVisible (false);
+            infoText.setVisible (false);
         }
     }
 }

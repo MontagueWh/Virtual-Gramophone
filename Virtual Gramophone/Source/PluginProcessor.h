@@ -13,12 +13,12 @@
 //==============================================================================
 /**
 */
-class GramophonyAudioProcessor : public juce::AudioProcessor
+class VirtualGramoAudioProcessor : public juce::AudioProcessor
 {
 public:
     //==============================================================================
-    GramophonyAudioProcessor();
-    ~GramophonyAudioProcessor() override;
+    VirtualGramoAudioProcessor();
+    ~VirtualGramoAudioProcessor() override;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -64,5 +64,5 @@ private:
     juce::dsp::DryWetMixer<float> mix_;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GramophonyAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VirtualGramoAudioProcessor)
 };

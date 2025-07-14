@@ -13,8 +13,8 @@ constexpr float LINE_THICKNESS = 4.0f;
 constexpr int TEXT_BOX_SIZE = 25;
 
 //==============================================================================
-GramophonyAudioProcessorEditor::GramophonyAudioProcessorEditor (GramophonyAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p), info_button_ (juce::Colours::darkgrey), stylus_ui_ (p)
+VirtualGramoUIEditor::VirtualGramoUIEditor (VirtualGramoAudioProcessor& p)
+    : AudioProcessorEditor (&p), audioProcessor (p), infoButtonUI (juce::Colours::darkgrey), stylusUI (p)
 {
 
     fToneControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
@@ -22,21 +22,26 @@ GramophonyAudioProcessorEditor::GramophonyAudioProcessorEditor (GramophonyAudioP
     fToneControl.addListener(this);
     addAndMakeVisible(fToneControl);
 
-    tone_slider_attachment_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "TONE", fToneControl);
+    toneControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "TONE", fToneControl);
 
     fMixControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
     fMixControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
     fMixControl.addListener(this);
     addAndMakeVisible(fMixControl);
 
-    mix_slider_attachment_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "MIX", fMixControl);
+    mixControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "MIX", fMixControl);
 
-    addAndMakeVisible(stylus_ui_);
-    info_button_.addToEditor(this);
+    addAndMakeVisible(stylusUI);
+    infoButtonUI.addToEditor(this);
+
+    // Make the editor resizable with a resizable corner in the bottom-right
+    setResizable(true, true);
+    setResizeLimits(500, 300, 1200, 800); // Min size 500x300, max size 1200x800
+
     setSize(500, 300);
 }
 
-StylusUI::StylusUI(GramophonyAudioProcessor& p)
+StylusUI::StylusUI(VirtualGramoAudioProcessor& p)
     : audioProcessor(p)
 {
 
@@ -45,7 +50,7 @@ StylusUI::StylusUI(GramophonyAudioProcessor& p)
     fCompressControl.addListener(this);
     addAndMakeVisible(fCompressControl);
 
-    compress_slider_attachment_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    compressControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.apvts, "COMPRESS", fCompressControl);
 
     fVibratoDepthControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
@@ -53,16 +58,16 @@ StylusUI::StylusUI(GramophonyAudioProcessor& p)
     fVibratoDepthControl.addListener(this);
     addAndMakeVisible(fVibratoDepthControl);
 
-    vibrato_slider_attachment_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    vibratoDepthControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.apvts, "VIBRATO_DEPTH", fVibratoDepthControl);
 
-    vibrato_rate_slider_.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    vibrato_rate_slider_.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    vibrato_rate_slider_.addListener(this);
-    addAndMakeVisible(vibrato_rate_slider_);
+    fVibratoRateControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    fVibratoRateControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+    fVibratoRateControl.addListener(this);
+    addAndMakeVisible(fVibratoRateControl);
 
-    vibrato_rate_slider_attachment_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-        audioProcessor.apvts, "VIBRATO_RATE", vibrato_rate_slider_);
+    vibratoRateControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+        audioProcessor.apvts, "VIBRATO_RATE", fVibratoRateControl);
 }
 
 StylusUI::~StylusUI()
@@ -70,14 +75,14 @@ StylusUI::~StylusUI()
 
 }
 
-GramophonyAudioProcessorEditor::~GramophonyAudioProcessorEditor()
+VirtualGramoUIEditor::~VirtualGramoUIEditor()
 {
 }
 
-void GramophonyAudioProcessorEditor::paint(juce::Graphics& g)
+void VirtualGramoUIEditor::paint(juce::Graphics& g)
 {
     // Fill background
-    g.fillAll(juce::Colours::beige);
+    g.fillAll(juce::Colours::darkgoldenrod);
 
     // Draw title
     g.setColour(juce::Colour(0xff123456));
@@ -85,7 +90,7 @@ void GramophonyAudioProcessorEditor::paint(juce::Graphics& g)
     g.drawFittedText("GRAMOPHONY", getLocalBounds(), juce::Justification::centredTop, 1);
 
     // Let the StylusUI component draw the gramophone with our tone and mix values
-    stylus_ui_.drawGramophone(g, sliderToAplhaValue(fToneControl), sliderToAplhaValue(fMixControl));
+    stylusUI.drawGramophone(g, sliderToAplhaValue(fToneControl), sliderToAplhaValue(fMixControl));
 
     // Draw labels for tone and mix
     SetupSections();
@@ -145,7 +150,7 @@ void StylusUI::drawGramophone(juce::Graphics& g, float toneValue, float mixValue
     g.setColour(juce::Colours::blueviolet.withAlpha(sliderToAplhaValue(fVibratoDepthControl) / 4.0f));
     g.fillPath(funnel);
 
-    g.setColour(juce::Colours::rebeccapurple.withAlpha(sliderToAplhaValue(vibrato_rate_slider_) / 3.0f));
+    g.setColour(juce::Colours::rebeccapurple.withAlpha(sliderToAplhaValue(fVibratoRateControl) / 3.0f));
     g.fillPath(funnel);
 
     // Apply mix effect from outside
@@ -169,7 +174,7 @@ void StylusUI::drawGramophone(juce::Graphics& g, float toneValue, float mixValue
     setupSections();
     g.setFont(18.0f);
     g.drawFittedText("COMP", compressTextSection, juce::Justification::left, 1);
-    g.drawFittedText("VIBE", vibrato_text_section_, juce::Justification::left, 1);
+    g.drawFittedText("VIBE", vibratoTextSection, juce::Justification::left, 1);
 }
 
 
@@ -182,7 +187,7 @@ void StylusUI::drawThreePointLine(juce::Graphics& g,
     g.drawLine(juce::Line<float>(x2, y2, x3, y3), LINE_THICKNESS);
 }
 
-float GramophonyAudioProcessorEditor::sliderToAplhaValue(juce::Slider& slider)
+float VirtualGramoUIEditor::sliderToAplhaValue(juce::Slider& slider)
 {
     double range = (slider.getMaximum() - slider.getMinimum());
     return static_cast<float>((slider.getValue() - slider.getMinimum()) / range);
@@ -194,15 +199,15 @@ float StylusUI::sliderToAplhaValue(juce::Slider& slider)
     return static_cast<float>((slider.getValue() - slider.getMinimum()) / range);
 }
 
-void GramophonyAudioProcessorEditor::resized()
+void VirtualGramoUIEditor::resized()
 {
-    info_button_.button.setBounds(getWidth() - 35, 10, 20, 20);
-    info_button_.info_text.setBounds(30, 50, getWidth() - 60, getHeight() - 100);
+    infoButtonUI.button.setBounds(getWidth() - 35, 10, 20, 20);
+    infoButtonUI.infoText.setBounds(30, 50, getWidth() - 60, getHeight() - 100);
 
     SetupSections();
 
     // Position the StylusUI component
-    stylus_ui_.setBounds(0, 50, getWidth(), 200);
+    stylusUI.setBounds(0, 50, getWidth(), 200);
 
     fToneControl.setBounds(toneSection);
     fMixControl.setBounds(mixSection);
@@ -214,10 +219,10 @@ void StylusUI::resized()
     setupSections();
     fCompressControl.setBounds(compressSection);
     fVibratoDepthControl.setBounds(vibratoDepthSection);
-    vibrato_rate_slider_.setBounds(vibratoRateSection);
+    fVibratoRateControl.setBounds(vibratoRateSection);
 }
 
-void GramophonyAudioProcessorEditor::SetupSections()
+void VirtualGramoUIEditor::SetupSections()
 {
     juce::Rectangle<int> r = getLocalBounds();
     top_section_ = r.removeFromTop(50);
@@ -249,11 +254,11 @@ void StylusUI::setupSections()
     compressTextSection = compressSection.removeFromLeft(iTextSectionWidth);
 
     vibratoDepthSection = interfaceSection;
-    vibrato_text_section_ = vibratoDepthSection.removeFromLeft(iTextSectionWidth);
+    vibratoTextSection = vibratoDepthSection.removeFromLeft(iTextSectionWidth);
     vibratoRateSection = vibratoDepthSection.removeFromRight(vibratoDepthSection.getWidth() / 2);
 }
 
-void GramophonyAudioProcessorEditor::sliderValueChanged (juce::Slider* /*slider*/)
+void VirtualGramoUIEditor::sliderValueChanged (juce::Slider* /*slider*/)
 {
     repaint();
 }

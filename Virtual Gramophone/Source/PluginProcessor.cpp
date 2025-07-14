@@ -12,7 +12,7 @@
 constexpr float BP_FREQ = 2950.0f;
 
 //==============================================================================
-GramophonyAudioProcessor::GramophonyAudioProcessor()
+VirtualGramoAudioProcessor::VirtualGramoAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
     : AudioProcessor (BusesProperties()
 #if ! JucePlugin_IsMidiEffect
@@ -27,17 +27,17 @@ GramophonyAudioProcessor::GramophonyAudioProcessor()
 {
 }
 
-GramophonyAudioProcessor::~GramophonyAudioProcessor()
+VirtualGramoAudioProcessor::~VirtualGramoAudioProcessor()
 {
 }
 
 //==============================================================================
-const juce::String GramophonyAudioProcessor::getName() const
+const juce::String VirtualGramoAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool GramophonyAudioProcessor::acceptsMidi() const
+bool VirtualGramoAudioProcessor::acceptsMidi() const
 {
 #if JucePlugin_WantsMidiInput
     return true;
@@ -46,7 +46,7 @@ bool GramophonyAudioProcessor::acceptsMidi() const
 #endif
 }
 
-bool GramophonyAudioProcessor::producesMidi() const
+bool VirtualGramoAudioProcessor::producesMidi() const
 {
 #if JucePlugin_ProducesMidiOutput
     return true;
@@ -55,7 +55,7 @@ bool GramophonyAudioProcessor::producesMidi() const
 #endif
 }
 
-bool GramophonyAudioProcessor::isMidiEffect() const
+bool VirtualGramoAudioProcessor::isMidiEffect() const
 {
 #if JucePlugin_IsMidiEffect
     return true;
@@ -64,37 +64,37 @@ bool GramophonyAudioProcessor::isMidiEffect() const
 #endif
 }
 
-double GramophonyAudioProcessor::getTailLengthSeconds() const
+double VirtualGramoAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int GramophonyAudioProcessor::getNumPrograms()
+int VirtualGramoAudioProcessor::getNumPrograms()
 {
     return 1; // NB: some hosts don't cope very well if you tell them there are 0 programs,
         // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int GramophonyAudioProcessor::getCurrentProgram()
+int VirtualGramoAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
 
-void GramophonyAudioProcessor::setCurrentProgram (int /*index*/)
+void VirtualGramoAudioProcessor::setCurrentProgram (int /*index*/)
 {
 }
 
-const juce::String GramophonyAudioProcessor::getProgramName (int /*index*/)
+const juce::String VirtualGramoAudioProcessor::getProgramName (int /*index*/)
 {
     return {};
 }
 
-void GramophonyAudioProcessor::changeProgramName (int /*index*/, const juce::String& /*newName*/)
+void VirtualGramoAudioProcessor::changeProgramName (int /*index*/, const juce::String& /*newName*/)
 {
 }
 
 //==============================================================================
-void GramophonyAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void VirtualGramoAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
@@ -113,14 +113,14 @@ void GramophonyAudioProcessor::prepareToPlay (double sampleRate, int samplesPerB
     filter_ch2_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass (sampleRate, frequency, 6.0f);
 }
 
-void GramophonyAudioProcessor::releaseResources()
+void VirtualGramoAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool GramophonyAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool VirtualGramoAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
 #if JucePlugin_IsMidiEffect
     juce::ignoreUnused (layouts);
@@ -143,7 +143,7 @@ bool GramophonyAudioProcessor::isBusesLayoutSupported (const BusesLayout& layout
 }
 #endif
 
-void GramophonyAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midiMessages*/)
+void VirtualGramoAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midiMessages*/)
 {
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels = getTotalNumInputChannels();
@@ -209,18 +209,18 @@ void GramophonyAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
 }
 
 //==============================================================================
-bool GramophonyAudioProcessor::hasEditor() const
+bool VirtualGramoAudioProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-juce::AudioProcessorEditor* GramophonyAudioProcessor::createEditor()
+juce::AudioProcessorEditor* VirtualGramoAudioProcessor::createEditor()
 {
-    return new GramophonyAudioProcessorEditor (*this);
+    return new VirtualGramoUIEditor (*this);
 }
 
 //==============================================================================
-void GramophonyAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
+void VirtualGramoAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
@@ -230,7 +230,7 @@ void GramophonyAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
     copyXmlToBinary (*xml, destData);
 }
 
-void GramophonyAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void VirtualGramoAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
@@ -241,7 +241,7 @@ void GramophonyAudioProcessor::setStateInformation (const void* data, int sizeIn
             apvts.replaceState (juce::ValueTree::fromXml (*xmlState));
 }
 
-juce::AudioProcessorValueTreeState::ParameterLayout GramophonyAudioProcessor::createParameters()
+juce::AudioProcessorValueTreeState::ParameterLayout VirtualGramoAudioProcessor::createParameters()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> parameters;
 
@@ -257,5 +257,5 @@ juce::AudioProcessorValueTreeState::ParameterLayout GramophonyAudioProcessor::cr
 // This creates new instances of the plugin..
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new GramophonyAudioProcessor();
+    return new VirtualGramoAudioProcessor();
 }

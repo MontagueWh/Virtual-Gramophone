@@ -15,5 +15,5 @@ public:
     void buttonStateChanged (juce::Button* b) override;
     void buttonClicked (juce::Button* button) override;
     juce::TextButton button;
-    juce::Label info_text;
+    juce::Label infoText;
 };
