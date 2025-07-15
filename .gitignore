@@ -81,3 +81,5 @@ crashlytics-build.properties
 /VG-MyEffect/MyEffect/include
 /VG-JUCE_Plugin/Builds
 /VG-JUCE_Plugin/JuceLibraryCode
+/VG-MyEffect/__MACOSX
+/VG-MyEffect/Build
