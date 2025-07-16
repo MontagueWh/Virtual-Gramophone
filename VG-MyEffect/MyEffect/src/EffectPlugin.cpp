@@ -52,9 +52,9 @@ extern "C" {
 }
 
 MyEffect::MyEffect(const Parameters& parameters, const Presets& presets)
-    : Effect(parameters, presets)
+    : Effect(parameters, presets), wowAndFlutter()
 {
-    // Initialise WowAndFlutter effects for each channel
+    // No additional initialisation needed here
 }
 
 // Destructor: called when the effect is terminated / unloaded
@@ -86,6 +86,7 @@ void MyEffect::buttonPressed(int iButton)
 void MyEffect::process(const float** inputBuffers, float** outputBuffers, int numSamples)
 {
     float fIn[2], fOut[2];
+    for (int i = 0; i < 2; i++) fOut[i] = 0.0f;
     const float* pfInBuffer0 = inputBuffers[0], * pfInBuffer1 = inputBuffers[1];
     float* pfOutBuffer0 = outputBuffers[0], * pfOutBuffer1 = outputBuffers[1];
 
@@ -114,7 +115,7 @@ void MyEffect::process(const float** inputBuffers, float** outputBuffers, int nu
 
             float fMonoMix = (fIn[0] + fIn[1]) / 2.0f; // Mono mix of both channelsssss
 
-            wowAndFlutter.applyModulation(&fMonoMix, numSamples, &fOut[i], numSamples, fWowControl, fFlutterControl, getSampleRate());
+            fOut[i] = wowAndFlutter.processSample(fMonoMix, fWowControl, fFlutterControl, getSampleRate());
         }
 
 

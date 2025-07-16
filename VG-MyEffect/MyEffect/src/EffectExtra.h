@@ -63,9 +63,32 @@ public:
             float semitones = 0.0f,
             float formantSampleRate = 8000.0f, float sampleRate = 44100.0f)
         {
+            // Create a wrapper that makes a single pointer look like an array of channels
+            struct MonoChannelWrapper {
+                float* ptr;
+                
+                // This wrapper represents a single channel
+                struct Channel {
+                    float* ptr;
+                    float& operator[](int i) { 
+                        // Critical fix: ensure we don't go out of bounds
+                        return ptr[i]; 
+                    }
+                };
+                
+                // Return the same channel regardless of the index
+                Channel operator[](int) {
+                    return Channel{ptr};
+                }
+            };
+            
+            // Create wrappers for input and output
+            MonoChannelWrapper inputWrapper{input};
+            MonoChannelWrapper outputWrapper{output};
+            
             warp.setTransposeSemitones(semitones, formantSampleRate);
             warp.setTransposeFactor(transposeFactor);
-            warp.process(input, inputSamples, output, outputSamples);
+            warp.process(inputWrapper, inputSamples, outputWrapper, outputSamples);
         }
 
         void clear()
@@ -83,21 +106,27 @@ public:
         fFlutterPhase(0.0f),
         fEccentricPhase(0.0f),
         osc(),
-        pitchTimeWarp(44100.0f)  // Will be updated with actual sample rate in applyModulation
+        pitchTimeWarp(44100.0f),
+        bufferPos(0),
+        lastPitchFactor(1.0f)
     {
+        inputBuffer.resize(BUFFER_SIZE, 0.0f);
+        outputBuffer.resize(BUFFER_SIZE, 0.0f);
     }
 
     ~WowAndFlutter()
     {
-        pitchTimeWarp.clear(); // Clear the pitch shift and time stretch effect
+        pitchTimeWarp.clear();
     }
-
-    void applyModulation(float* input, int inputSamples, float* output, int outputSamples,
-        float wowAmount, float flutterAmount, float sampleRate)
+    
+    float processSample(float input, float wowAmount, float flutterAmount, float sampleRate)
     {
+        // Store the incoming sample in our buffer
+        inputBuffer[bufferPos] = input;
+        
         // Base frequencies (Hz)
-        float fWowFreq = 0.5f + (5.5f * (rand() / 100000.f));      // 0.5 Hz to 6 Hz
-        float fFlutterFreq = 16.5f + (flutterAmount * 16.5f * (rand() / 10000.f)); // 16.5 Hz to 33 Hz
+        float fWowFreq = 0.5f + (5.5f * (rand() / (float)RAND_MAX * 0.1f));      // 0.5 Hz to 6 Hz
+        float fFlutterFreq = 16.5f + (flutterAmount * 16.5f * (rand() / (float)RAND_MAX * 0.1f)); // 16.5 Hz to 33 Hz
 
         // Update phases
         fWowPhase = osc.progressAndWrap(osc.incrementPhase(fWowFreq, sampleRate), fWowPhase);
@@ -114,35 +143,54 @@ public:
         fFlutter *= 1.0f - 0.3f * fabsf(fFlutter * fFlutter);
         fFlutter += sin(fEccentricPhase) * flutterAmount * 0.35f;
 
-        // Combine modulations and scale for pitch shifting
-        // Convert to semitones (small values for subtle pitch variations)
-        float fPitchMod = (fWowMod * wowAmount * 0.15f) +
-            (fFlutter * flutterAmount * 0.05f);
-
-        // Apply pitch modulation using pitchTimeWarp
-        // Base fTransposeFactor is 1.0 (no shift), modulated by our wow and flutter
-        float fTransposeFactor = 1.0f + fPitchMod;
-
-        // Create wrapper objects that properly support the [] operator
-        struct InputWrapper {
-            float* ptr;
-            float& operator[](int i) { return ptr[i]; }
-        } inputWrapper{input};
+        // Calculate the pitch modulation factor (actual semitones now)
+        float pitchFactor = 1.0f + (fWowMod * wowAmount * 0.08f) + (fFlutter * flutterAmount * 0.03f);
         
-        struct OutputWrapper {
-            float* ptr;
-            float& operator[](int i) { return ptr[i]; }
-        } outputWrapper{output};
-
-        // Apply the pitch modulation using the wrappers
-        pitchTimeWarp.applyEffect(inputWrapper, inputSamples,
-            outputWrapper, outputSamples,
-            fTransposeFactor,  // Modulated pitch factor
-            0.0f,            // No additional semitone shift
-            8000.0f);        // Standard formant sample rate
+        // Process buffers when full or when pitch changes significantly
+        if (bufferPos >= BUFFER_SIZE - 1 || fabs(pitchFactor - lastPitchFactor) > 0.01f) {
+            processBuffer(pitchFactor, sampleRate);
+            lastPitchFactor = pitchFactor;
+        }
+        
+        // Get output sample and advance buffer position
+        float output = outputBuffer[bufferPos++];
+        
+        // Reset buffer position if needed
+        if (bufferPos >= BUFFER_SIZE) {
+            bufferPos = 0;
+        }
+        
+        return output;
     }
 
 private:
+    void processBuffer(float pitchFactor, float sampleRate) {
+        // Apply pitch shifting to the entire buffer
+        pitchTimeWarp.warp.setTransposeFactor(pitchFactor);
+        
+        // Wrapper to make our vector look like a channel array
+        struct BufferWrapper {
+            std::vector<float>& buffer;
+            struct Channel {
+                std::vector<float>& buffer;
+                float& operator[](int i) { return buffer[i]; }
+            };
+            Channel operator[](int) { return Channel{buffer}; }
+        };
+        
+        BufferWrapper inWrapper{inputBuffer};
+        BufferWrapper outWrapper{outputBuffer};
+        
+        // Process with time-stretching at unity speed (pitch shift only)
+        pitchTimeWarp.warp.process(inWrapper, BUFFER_SIZE, outWrapper, BUFFER_SIZE);
+    }
+
+    static const int BUFFER_SIZE = 1024; // Buffer size for block processing
+    std::vector<float> inputBuffer;
+    std::vector<float> outputBuffer;
+    int bufferPos;
+    float lastPitchFactor;
+    
     float fWowPhase;
     float fFlutterPhase;
     float fEccentricPhase;
