@@ -66,25 +66,28 @@ public:
             // Create a wrapper that makes a single pointer look like an array of channels
             struct MonoChannelWrapper {
                 float* ptr;
+                int size; // Add size parameter
                 
                 // This wrapper represents a single channel
                 struct Channel {
                     float* ptr;
+                    int maxSize;
+                    
                     float& operator[](int i) { 
-                        // Critical fix: ensure we don't go out of bounds
-                        return ptr[i]; 
+                        // Actually implement bounds checking
+                        return ptr[i < maxSize ? i : maxSize - 1]; 
                     }
                 };
                 
                 // Return the same channel regardless of the index
                 Channel operator[](int) {
-                    return Channel{ptr};
+                    return Channel{ptr, size};
                 }
             };
             
-            // Create wrappers for input and output
-            MonoChannelWrapper inputWrapper{input};
-            MonoChannelWrapper outputWrapper{output};
+            // Create wrappers for input and output with proper initialization
+            MonoChannelWrapper inputWrapper{input, inputSamples};
+            MonoChannelWrapper outputWrapper{output, outputSamples};
             
             warp.setTransposeSemitones(semitones, formantSampleRate);
             warp.setTransposeFactor(transposeFactor);
@@ -121,12 +124,17 @@ public:
     
     float processSample(float input, float wowAmount, float flutterAmount, float sampleRate)
     {
+        // Ensure buffer position is always in bounds BEFORE access
+        if (bufferPos >= BUFFER_SIZE) {
+            bufferPos = 0;
+        }
+        
         // Store the incoming sample in our buffer
         inputBuffer[bufferPos] = input;
         
         // Base frequencies (Hz)
-        float fWowFreq = 0.5f + (5.5f * (rand() / (float)RAND_MAX * 0.1f));      // 0.5 Hz to 6 Hz
-        float fFlutterFreq = 16.5f + (flutterAmount * 16.5f * (rand() / (float)RAND_MAX * 0.1f)); // 16.5 Hz to 33 Hz
+        float fWowFreq = 0.5f + (5.5f * (rand() / (float)RAND_MAX * 0.1f));
+        float fFlutterFreq = 16.5f + (flutterAmount * 16.5f * (rand() / (float)RAND_MAX * 0.1f));
 
         // Update phases
         fWowPhase = osc.progressAndWrap(osc.incrementPhase(fWowFreq, sampleRate), fWowPhase);
@@ -143,22 +151,22 @@ public:
         fFlutter *= 1.0f - 0.3f * fabsf(fFlutter * fFlutter);
         fFlutter += sin(fEccentricPhase) * flutterAmount * 0.35f;
 
-        // Calculate the pitch modulation factor (actual semitones now)
+        // Calculate the pitch modulation factor
         float pitchFactor = 1.0f + (fWowMod * wowAmount * 0.08f) + (fFlutter * flutterAmount * 0.03f);
         
         // Process buffers when full or when pitch changes significantly
         if (bufferPos >= BUFFER_SIZE - 1 || fabs(pitchFactor - lastPitchFactor) > 0.01f) {
             processBuffer(pitchFactor, sampleRate);
+            // Buffer has been processed, so we reset position
+            bufferPos = 0;
             lastPitchFactor = pitchFactor;
         }
         
-        // Get output sample and advance buffer position
-        float output = outputBuffer[bufferPos++];
+        // Get output sample
+        float output = outputBuffer[bufferPos];
         
-        // Reset buffer position if needed
-        if (bufferPos >= BUFFER_SIZE) {
-            bufferPos = 0;
-        }
+        // Advance buffer position AFTER accessing
+        bufferPos++;
         
         return output;
     }
@@ -173,7 +181,10 @@ private:
             std::vector<float>& buffer;
             struct Channel {
                 std::vector<float>& buffer;
-                float& operator[](int i) { return buffer[i]; }
+                float& operator[](int i) { 
+                    // Add bounds checking for safety
+                    return buffer[i < buffer.size() ? i : buffer.size()-1]; 
+                }
             };
             Channel operator[](int) { return Channel{buffer}; }
         };
