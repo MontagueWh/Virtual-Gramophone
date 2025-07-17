@@ -9,24 +9,25 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "Data/WowAndFlutterData.h" // Add this include
 
 //==============================================================================
 /**
 */
-class VirtualGramophoneAudioProcessor  : public juce::AudioProcessor
+class VirtualGramoAudioProcessor : public juce::AudioProcessor
 {
 public:
     //==============================================================================
-    VirtualGramophoneAudioProcessor();
-    ~VirtualGramophoneAudioProcessor() override;
+    VirtualGramoAudioProcessor();
+    ~VirtualGramoAudioProcessor() override;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
 
-   #ifndef JucePlugin_PreferredChannelConfigurations
+#ifndef JucePlugin_PreferredChannelConfigurations
     bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
-   #endif
+#endif
 
     void processBlock (juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
 
@@ -53,7 +54,17 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    juce::AudioProcessorValueTreeState apvts;
+
 private:
+    juce::AudioProcessorValueTreeState::ParameterLayout createParameters();
+
+    juce::dsp::Chorus<float> chorus_;
+    juce::dsp::IIR::Filter<float> filter_ch1_;
+    juce::dsp::IIR::Filter<float> filter_ch2_;
+    juce::dsp::DryWetMixer<float> mix_;
+    WowAndFlutter wowAndFlutter_; // Add WowAndFlutter member
+
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VirtualGramophoneAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VirtualGramoAudioProcessor)
 };

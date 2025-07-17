@@ -54,7 +54,8 @@ public:
 
         explicit PitchShiftAndTimeStretch(float sampleRate)
         {
-            warp.presetDefault(1, sampleRate); // Use only one preset
+            // Keep mono (1 channel) but use the cheaper preset with better buffer handling
+            warp.presetCheaper(1, sampleRate, true);
         }
 
         void applyEffect(float* input, int inputSamples,
@@ -125,7 +126,8 @@ public:
     float processSample(float input, float wowAmount, float flutterAmount, float sampleRate)
     {
         // Ensure buffer position is always in bounds BEFORE access
-        if (bufferPos >= BUFFER_SIZE) {
+        if (bufferPos >= BUFFER_SIZE - 1) {
+            processBuffer(lastPitchFactor, sampleRate);
             bufferPos = 0;
         }
         
@@ -176,27 +178,38 @@ private:
         // Apply pitch shifting to the entire buffer
         pitchTimeWarp.warp.setTransposeFactor(pitchFactor);
         
-        // Wrapper to make our vector look like a channel array
-        struct BufferWrapper {
+        // Create safer buffer wrappers with proper bounds checking
+        struct SafeBufferWrapper {
             std::vector<float>& buffer;
-            struct Channel {
+            int size;
+            
+            struct SafeChannel {
                 std::vector<float>& buffer;
+                int size;
+                
                 float& operator[](int i) { 
-                    // Add bounds checking for safety
-                    return buffer[i < buffer.size() ? i : buffer.size()-1]; 
+                    return buffer[i < size ? i : size-1]; 
                 }
             };
-            Channel operator[](int) { return Channel{buffer}; }
+            
+            SafeChannel operator[](int) { 
+                return SafeChannel{buffer, (int)buffer.size()}; 
+            }
         };
         
-        BufferWrapper inWrapper{inputBuffer};
-        BufferWrapper outWrapper{outputBuffer};
+        // Use the actual sizes of the buffers
+        SafeBufferWrapper inWrapper{inputBuffer, (int)inputBuffer.size()};
+        SafeBufferWrapper outWrapper{outputBuffer, (int)outputBuffer.size()};
         
-        // Process with time-stretching at unity speed (pitch shift only)
-        pitchTimeWarp.warp.process(inWrapper, BUFFER_SIZE, outWrapper, BUFFER_SIZE);
+        // Make sure the sizes we pass to process are within bounds
+        int inSize = std::min(BUFFER_SIZE, (int)inputBuffer.size());
+        int outSize = std::min(BUFFER_SIZE, (int)outputBuffer.size());
+        
+        // Process with time-stretching
+        pitchTimeWarp.warp.process(inWrapper, inSize, outWrapper, outSize);
     }
 
-    static const int BUFFER_SIZE = 1024; // Buffer size for block processing
+    static const int BUFFER_SIZE = 257; // Buffer size for block processing
     std::vector<float> inputBuffer;
     std::vector<float> outputBuffer;
     int bufferPos;

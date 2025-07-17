@@ -12,7 +12,7 @@ InfoButton::InfoButton (juce::Colour colour)
     info_text.setBorderSize (juce::BorderSize<int> (20, 70, 20, 70));
 
     std::string info_string = "";
-    info_string += ProjectInfo::companyName + std::string (" ") + ProjectInfo::projectName + std::string (" version 2.0.0 ") + ProjectInfo::versionString + std::string ("\n\n");
+    info_string += ProjectInfo::companyName + std::string (" ") + ProjectInfo::projectName + std::string (" version 1.0 ") + ProjectInfo::versionString + std::string ("\n\n");
     info_string += std::string ("By Montague Whishaw");
 
     info_text.setText (info_string, juce::dontSendNotification);

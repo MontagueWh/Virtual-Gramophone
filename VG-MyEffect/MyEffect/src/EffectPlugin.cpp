@@ -85,8 +85,8 @@ void MyEffect::buttonPressed(int iButton)
 // (inputBuffer contains the input audio, and processed samples should be stored in outputBuffer)
 void MyEffect::process(const float** inputBuffers, float** outputBuffers, int numSamples)
 {
-    float fIn[2], fOut[2];
-    for (int i = 0; i < 2; i++) fOut[i] = 0.0f;
+    float fIn, fOut;
+
     const float* pfInBuffer0 = inputBuffers[0], * pfInBuffer1 = inputBuffers[1];
     float* pfOutBuffer0 = outputBuffers[0], * pfOutBuffer1 = outputBuffers[1];
 
@@ -95,32 +95,21 @@ void MyEffect::process(const float** inputBuffers, float** outputBuffers, int nu
     float fWowControl = parameters[1] * log(10);
     float fFlutterControl = parameters[2];
 
-    //   float fDiameterControl = parameters[4];
-       //float fTrackForceControl = parameters[5];
-       //float fRpmControl = parameters[6];
-
     while (numSamples--)
     {
         // Get sample from input
-        fIn[0] = *pfInBuffer0++;
-        fIn[1] = *pfInBuffer1++;
+        fIn = ((*pfInBuffer0++ + *pfInBuffer1++) / 2.0f) * fInputGain;
 
-        for (int i = 0; i < 2; i++)
-        {
-            fIn[i] *= fInputGain; // Apply input gain
+        // Only process if actually using wowandflutter
+        if (fWowControl == 0 && fFlutterControl == 0)
+            fOut = fIn;
+        else {
+            fOut = wowAndFlutter.processSample(fIn, fWowControl, fFlutterControl, getSampleRate());
 
-            // Add your effect processing here
-
-            //fOut[i] = lfo[i].applyLFO(fLfoRateControl, fLfoDepthControl, fIn[i], getSampleRate(), fFreq); // Apply lfo effect
-
-            float fMonoMix = (fIn[0] + fIn[1]) / 2.0f; // Mono mix of both channelsssss
-
-            fOut[i] = wowAndFlutter.processSample(fMonoMix, fWowControl, fFlutterControl, getSampleRate());
         }
 
-
         // Copy result to output
-        *pfOutBuffer0++ = fOut[0];
-        *pfOutBuffer1++ = fOut[1];
+        *pfOutBuffer0++ = fOut;
+        *pfOutBuffer1++ = fOut;
     }
 }

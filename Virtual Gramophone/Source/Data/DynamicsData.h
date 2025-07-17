@@ -20,11 +20,11 @@ public:
 
     float fAmplitude = 0.f; // Current amplitude of the inputBuffer signal
 
-    float peakDetector(float input, float sampleRate)
+    float peakDetector(float input)
     {
         fAmplitude = fabs(input); // Get the absolute value of the inputBuffer signal
 
-        iMeasuredLength = (int)(0.02 * sampleRate); // Calculate the length of the measurement window
+        iMeasuredLength = (int)(0.02 * getSampleRate()); // Calculate the length of the measurement window based bLfoActive a 20ms duration
 
         if (fAmplitude > fMax) fMax = fAmplitude; // Update the maximum amplitude if the current amplitude is greater
 

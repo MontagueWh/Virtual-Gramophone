@@ -12,6 +12,11 @@
 
 #include "../Libs/stretch/signalsmith-stretch.h"
 
+// Define M_PI using JUCE's MathConstants only if not already defined
+#ifndef M_PI
+constexpr float M_PI = juce::MathConstants<float>::pi;
+#endif
+
 class Modulation
 {
 public:
@@ -66,18 +71,45 @@ public:
 
         explicit PitchShiftAndTimeStretch(float sampleRate)
         {
-            warp.presetDefault(1, sampleRate); // Use only one preset
+            // Keep mono (1 channel) but use the cheaper preset with better buffer handling
+            warp.presetCheaper(1, sampleRate, true);
         }
 
-        void applyEffect(float input, int inputSamples,
-            float output, int outputSamples,
+        void applyEffect(float* input, int inputSamples,
+            float* output, int outputSamples,
             float transposeFactor = 1.0f,
             float semitones = 0.0f,
-            float formantSampleRate = 8000.0f, float sampleRate)
+            float formantSampleRate = 8000.0f, float sampleRate = 44100.0f)
         {
+            // Create a wrapper that makes a single pointer look like an array of channels
+            struct MonoChannelWrapper {
+                float* ptr;
+                int size; // Add size parameter
+
+                // This wrapper represents a single channel
+                struct Channel {
+                    float* ptr;
+                    int maxSize;
+
+                    float& operator[](int i) {
+                        // Actually implement bounds checking
+                        return ptr[i < maxSize ? i : maxSize - 1];
+                    }
+                };
+
+                // Return the same channel regardless of the index
+                Channel operator[](int) {
+                    return Channel{ ptr, size };
+                }
+            };
+
+            // Create wrappers for input and output with proper initialization
+            MonoChannelWrapper inputWrapper{ input, inputSamples };
+            MonoChannelWrapper outputWrapper{ output, outputSamples };
+
             warp.setTransposeSemitones(semitones, formantSampleRate);
             warp.setTransposeFactor(transposeFactor);
-            warp.process(input, inputSamples, output, outputSamples);
+            warp.process(inputWrapper, inputSamples, outputWrapper, outputSamples);
         }
 
         void clear()
@@ -85,6 +117,4 @@ public:
             warp.reset();
         }
     };
-
-	const float M_PI = juce::MathConstants<float>::pi;
 };

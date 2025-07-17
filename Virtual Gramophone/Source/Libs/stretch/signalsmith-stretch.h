@@ -1,7 +1,7 @@
 #ifndef SIGNALSMITH_STRETCH_H
 #define SIGNALSMITH_STRETCH_H
 
-#include "linear/stft.h" // https://github.com/Signalsmith-Audio/linear
+#include "../linear/stft.h" // https://github.com/Signalsmith-Audio/linear
 
 #include <vector>
 #include <array>
