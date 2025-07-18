@@ -20,26 +20,14 @@ class VinylCrackleUI : public juce::Component,
 public:
     VinylCrackleUI(VirtualGramoAudioProcessor& p) : audioProcessor(p)
     {
-        // Main crackle control
-        fCrackleControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-        fCrackleControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-        fCrackleControl.addListener(this);
-        addAndMakeVisible(fCrackleControl);
+        // Single control for vinyl artifacts (combines crackle and dust)
+        fVinylArtifactsControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+        fVinylArtifactsControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+        fVinylArtifactsControl.addListener(this);
+        addAndMakeVisible(fVinylArtifactsControl);
 
-        crackleControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-            audioProcessor.apvts, "CRACKLE", fCrackleControl);
-
-        // Dust control - affected by crackle intensity but can be adjusted separately
-        fDustControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-        fDustControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-        fDustControl.setRange(0.0f, 1.0f);  // Normalized range 0-1
-        fDustControl.setValue(0.0f);        // Start at 0
-        fDustControl.addListener(this);
-        addAndMakeVisible(fDustControl);
-
-        // We'll manually update dust intensity when crackle control changes
-        dustControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-            audioProcessor.apvts, "DUST", fDustControl);
+        vinylArtifactsControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+            audioProcessor.apvts, "VINYL_ARTIFACTS", fVinylArtifactsControl);
     }
 
     ~VinylCrackleUI() override
@@ -51,15 +39,16 @@ public:
         // Background with slight color tint
         g.fillAll(juce::Colours::lightgrey.withAlpha(0.1f));
 
-        // Draw labels directly in the component's paint method
-        drawVinylCrackleLabels(g);
+        // Draw labels
+        g.setFont(16.0f);
+        g.setColour(juce::Colours::darkred);
+        g.drawFittedText("VINYL WEAR", 10, 10, 100, 30, juce::Justification::left, 1);
     }
 
     void resized() override
     {
         setupSections();
-        fCrackleControl.setBounds(crackleSection);
-        fDustControl.setBounds(dustSection);
+        fVinylArtifactsControl.setBounds(vinylSection);
     }
 
     void setupSections()
@@ -70,8 +59,7 @@ public:
         float heightScaleFactor = juce::jmin(1.0f, (float)getHeight() / 275.0f);
         
         // Adjust control heights based on available space
-        int controlHeight = juce::jmax(40, (int)(80 * heightScaleFactor));
-        int labelVerticalOffset = juce::jmax(20, (int)(40 * heightScaleFactor));
+        int controlHeight = juce::jmax(40, (int)(100 * heightScaleFactor));
         
         // Reserve space for visualization
         picture_section_ = r.removeFromLeft(r.getWidth() - 250);
@@ -79,56 +67,34 @@ public:
         // Right side for controls
         constexpr int iTextSectionWidth = 80;
         
-        // Crackle control
-        crackleSection = r.removeFromTop(controlHeight);
-        crackleTextSection = crackleSection.removeFromLeft(iTextSectionWidth);
-        crackleTextSection = crackleTextSection.withY(crackleTextSection.getY() + labelVerticalOffset)
-                                         .withHeight(crackleTextSection.getHeight() - labelVerticalOffset);
-        
-        // Dust control - only show if there's enough space
-        if (getHeight() > 150) {
-            dustSection = r.removeFromTop(controlHeight);
-            dustTextSection = dustSection.removeFromLeft(iTextSectionWidth);
-            dustTextSection = dustTextSection.withY(dustTextSection.getY() + labelVerticalOffset)
-                                       .withHeight(dustTextSection.getHeight() - labelVerticalOffset);
-        }
-    }
-
-    void drawVinylCrackleLabels(juce::Graphics& g)
-    {
-        if (!isVisible())
-            return;
-        
-        juce::Graphics::ScopedSaveState saveState(g);
-        
-        g.setFont(16.0f);
-        g.setColour(juce::Colours::darkred);
-        
-        auto bounds = getLocalBounds();
-        int margin = 10;
-        
-        g.drawFittedText("CRACKLE", margin, margin, 80, 30, juce::Justification::left, 1);
-        
-        if (getHeight() > 150)
-            g.drawFittedText("DUST", margin, 80, 80, 30, juce::Justification::left, 1);
+        // Vinyl artifacts control
+        vinylSection = r.removeFromTop(controlHeight);
+        vinylTextSection = vinylSection.removeFromLeft(iTextSectionWidth);
+        vinylTextSection = vinylTextSection.withY(vinylTextSection.getY() + 40)
+                                   .withHeight(vinylTextSection.getHeight() - 40);
     }
 
     void sliderValueChanged(juce::Slider* slider) override
     {
-        // Repaint the component when sliders change
-        if (slider == &fCrackleControl) {
-            // Map the crackle control (0-1) to dust intensity
-            float crackleValue = fCrackleControl.getValue();
+        if (slider == &fVinylArtifactsControl) {
+            float vinylValue = fVinylArtifactsControl.getValue();
             
-            // Update dust parameters based on crackle value
-            auto* dustParam = audioProcessor.apvts.getRawParameterValue("DUST_INTENSITY");
+            // Update both crackle and dust parameters based on vinyl value
+            auto* crackleParam = audioProcessor.apvts.getParameter("CRACKLE");
+            auto* dustParam = audioProcessor.apvts.getParameter("DUST");
+            auto* dustIntensityParam = audioProcessor.apvts.getParameter("DUST_INTENSITY");
             
-            if (dustParam) {
-                // Map the crackle value to dust intensity - make dust slightly less intense than crackle
-                float newDustIntensity = crackleValue * 0.7f;
+            if (crackleParam && dustParam && dustIntensityParam) {
+                // Set values directly from vinyl control, adjusting for desired effect
+                crackleParam->setValueNotifyingHost(
+                    audioProcessor.apvts.getParameter("CRACKLE")->convertTo0to1(vinylValue));
                 
-                // Set parameter value without using attachments
-                audioProcessor.apvts.getParameter("DUST_INTENSITY")->setValueNotifyingHost(
+                dustParam->setValueNotifyingHost(
+                    audioProcessor.apvts.getParameter("DUST")->convertTo0to1(vinylValue * 0.8f));
+                
+                // Dust intensity more sensitive to vinyl control
+                float newDustIntensity = vinylValue * 0.85f;
+                dustIntensityParam->setValueNotifyingHost(
                     audioProcessor.apvts.getParameter("DUST_INTENSITY")->convertTo0to1(newDustIntensity));
             }
         }
@@ -142,20 +108,21 @@ public:
         return static_cast<float>((slider.getValue() - slider.getMinimum()) / range);
     }
 
-    juce::Slider fCrackleControl;
+    juce::Slider fVinylArtifactsControl;
+    
+    // Keep old controls as public members to maintain compatibility with existing code
+    // These will be removed or hidden from the UI
+    juce::Slider fCrackleControl; 
     juce::Slider fDustControl;
 
 private:
     typedef std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> SliderAttachmentPtr;
 
-    SliderAttachmentPtr crackleControlAttach;
-    SliderAttachmentPtr dustControlAttach;
+    SliderAttachmentPtr vinylArtifactsControlAttach;
 
     juce::Rectangle<int> picture_section_;
-    juce::Rectangle<int> crackleSection;
-    juce::Rectangle<int> dustSection;
-    juce::Rectangle<int> crackleTextSection;
-    juce::Rectangle<int> dustTextSection;
+    juce::Rectangle<int> vinylSection;
+    juce::Rectangle<int> vinylTextSection;
 
     const int TEXT_BOX_SIZE = 25;
 

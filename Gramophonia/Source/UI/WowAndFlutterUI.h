@@ -116,26 +116,16 @@ public:
     {
         // Repaint the component when sliders change
         if (slider == &fFlutterControl) {
-            // Map the flutter control (0-1) to appropriate ranges for rate and depth
             float flutterValue = fFlutterControl.getValue();
+            // Map to vibrato parameters
+            float newRate = 0.5f + (flutterValue * 3.5f);  // 0.5 to 4.0
+            float newDepth = flutterValue * 0.33f;         // 0.0 to 0.33
             
-            // Update vibrato rate and depth parameters based on flutter value
-            auto* rateParam = audioProcessor.apvts.getRawParameterValue("VIBRATO_RATE");
-            auto* depthParam = audioProcessor.apvts.getRawParameterValue("VIBRATO_DEPTH");
+            audioProcessor.apvts.getParameter("VIBRATO_RATE")->setValueNotifyingHost(
+                audioProcessor.apvts.getParameter("VIBRATO_RATE")->convertTo0to1(newRate));
             
-            if (rateParam && depthParam) {
-                // Map the flutter control value to appropriate parameter ranges
-                // These mapping formulas can be adjusted to taste
-                float newRate = 0.5f + (flutterValue * 3.5f);  // 0.5 to 4.0
-                float newDepth = flutterValue * 0.33f;         // 0.0 to 0.33
-                
-                // Set parameter values without using attachments
-                audioProcessor.apvts.getParameter("VIBRATO_RATE")->setValueNotifyingHost(
-                    audioProcessor.apvts.getParameter("VIBRATO_RATE")->convertTo0to1(newRate));
-                
-                audioProcessor.apvts.getParameter("VIBRATO_DEPTH")->setValueNotifyingHost(
-                    audioProcessor.apvts.getParameter("VIBRATO_DEPTH")->convertTo0to1(newDepth));
-            }
+            audioProcessor.apvts.getParameter("VIBRATO_DEPTH")->setValueNotifyingHost(
+                audioProcessor.apvts.getParameter("VIBRATO_DEPTH")->convertTo0to1(newDepth));
         }
         
         repaint();

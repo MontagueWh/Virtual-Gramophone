@@ -294,15 +294,14 @@ juce::AudioProcessorValueTreeState::ParameterLayout VirtualGramoAudioProcessor::
 
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("IN_GAIN", "Input Gain", 0.0f, 2.0f, 1.0f));
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("OUT_GAIN", "Output Gain", 0.0f, 2.0f, 1.0f));
-    parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("VIBRATO_DEPTH", "Vibrato Depth", 0.0f, 0.33f, 0.01f));
-    parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("VIBRATO_RATE", "Vibrato Rate", 0.5f, 4.0f, 2.0f));
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("TONE", "Tone", 320.1f, 4700.0f, 2000.0f));
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("MIX", "Mix", 0.0f, 1.0f, 0.0f));
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("WOW", "Wow", 0.0f, 1.0f, 0.0f));
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("FLUTTER", "Flutter", 0.0f, 1.0f, 0.0f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VINYL_ARTIFACTS", "Vinyl Artifacts", 0.0f, 1.0f, 0.0f));
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("CRACKLE", "Crackle", 0.0f, 1.0f, 0.0f));
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("DUST", "Dust", 0.0f, 1.0f, 0.0f));
-    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("DUST_INTENSITY", "Dust Intensity", 0.0f, 0.7f, 0.0f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("DUST_INTENSITY", "Dust Intensity", 0.0f, 1.0f, 0.5f));
     return { parameters.begin(), parameters.end() };
 }
 

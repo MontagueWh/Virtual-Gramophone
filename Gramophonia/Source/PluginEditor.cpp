@@ -129,20 +129,18 @@ void VirtualGramoUIEditor::drawComponents(juce::Graphics& g, float toneValue, fl
     g.setColour(juce::Colours::green.withAlpha(sliderToAplhaValue(wowFlutterUI.fWowControl) / 3.0f));
     g.fillPath(funnel);
 
-    // Apply crackle effect
-    float crackleIntensity = sliderToAplhaValue(vinylCrackleUI.fCrackleControl);
-    if (crackleIntensity > 0.0f) {
-        g.setColour(juce::Colours::red.withAlpha(crackleIntensity / 5.0f));
+    // Apply vinyl artifacts effects (combines crackle and dust)
+    float vinylArtifactsIntensity = sliderToAplhaValue(vinylCrackleUI.fVinylArtifactsControl);
+    if (vinylArtifactsIntensity > 0.0f) {
+        // Vinyl crackle effect (reddish tint)
+        g.setColour(juce::Colours::red.withAlpha(vinylArtifactsIntensity / 5.0f));
+        g.fillPath(funnel);
+        
+        // Vinyl dust effect (brownish tint)
+        g.setColour(juce::Colours::brown.withAlpha(vinylArtifactsIntensity / 6.0f));
         g.fillPath(funnel);
     }
     
-    // Apply dust effect
-    float dustIntensity = sliderToAplhaValue(vinylCrackleUI.fDustControl);
-    if (dustIntensity > 0.0f) {
-        g.setColour(juce::Colours::brown.withAlpha(dustIntensity / 6.0f));
-        g.fillPath(funnel);
-    }
-
     // Apply mix effect from outside (keep this after the other effects)
     g.setColour(juce::Colours::orangered.withAlpha(mixValue / 3.0f));
     g.fillPath(funnel);
