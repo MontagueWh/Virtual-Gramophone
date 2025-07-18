@@ -45,8 +45,9 @@ public:
         inputBuffer[bufferPos] = input;
 
         // Base frequencies (Hz)
-        float fWowFreq = 0.5f + (5.5f * (rand() / (float)RAND_MAX * 0.1f));
-        float fFlutterFreq = 16.5f + (flutterAmount * 16.5f * (rand() / (float)RAND_MAX * 0.1f));
+// WowAndFlutterData.h
+        float fWowFreq = 0.5f; // Fixed base frequency for wow
+        float fFlutterFreq = 16.5f + (flutterAmount * 16.5f); // Fixed base frequency, modulated by flutterAmount
 
         // Update phases
         fWowPhase = osc.progressAndWrap(osc.incrementPhase(fWowFreq, sampleRate), fWowPhase);
