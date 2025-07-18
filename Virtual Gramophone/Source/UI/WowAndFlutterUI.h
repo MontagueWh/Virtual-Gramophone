@@ -40,9 +40,13 @@ public:
     {
     }
 
-    void paint(juce::Graphics& g) override
+    void paint(juce::Graphics& g)
     {
-        // Empty implementation - drawing handled by parent component
+        // Debug background color (can be removed later)
+        g.fillAll(juce::Colours::lightgreen.withAlpha(0.1f));
+
+        // Draw labels directly in the component's paint method
+        drawWowFlutterLabels(g);
     }
 
     void resized() override
@@ -56,13 +60,18 @@ public:
     {
         juce::Rectangle<int> r = getLocalBounds();
         
+        // Calculate a scale factor based on the actual height of the component
+        float heightScaleFactor = juce::jmin(1.0f, (float)getHeight() / 275.0f);
+        
+        // Adjust control heights based on available space
+        int controlHeight = juce::jmax(40, (int)(80 * heightScaleFactor));
+        int labelVerticalOffset = juce::jmax(20, (int)(40 * heightScaleFactor));
+        
         // Reserve space for gramophone visualization
         picture_section_ = r.removeFromLeft(r.getWidth() - 250);
         
         // Right side for controls
-        constexpr int controlHeight = 80;
         constexpr int iTextSectionWidth = 80;
-        constexpr int labelVerticalOffset = 40;
         
         // Wow control
         wowSection = r.removeFromTop(controlHeight);
@@ -70,22 +79,32 @@ public:
         wowTextSection = wowTextSection.withY(wowTextSection.getY() + labelVerticalOffset)
                                       .withHeight(wowTextSection.getHeight() - labelVerticalOffset);
         
-        // Flutter control
-        flutterSection = r.removeFromTop(controlHeight);
-        flutterTextSection = flutterSection.removeFromLeft(iTextSectionWidth);
-        flutterTextSection = flutterTextSection.withY(flutterTextSection.getY() + labelVerticalOffset)
-                                              .withHeight(flutterTextSection.getHeight() - labelVerticalOffset);
+        // Flutter control - only show if there's enough space
+        if (getHeight() > 150) {
+            flutterSection = r.removeFromTop(controlHeight);
+            flutterTextSection = flutterSection.removeFromLeft(iTextSectionWidth);
+            flutterTextSection = flutterTextSection.withY(flutterTextSection.getY() + labelVerticalOffset)
+                                                  .withHeight(flutterTextSection.getHeight() - labelVerticalOffset);
+        }
     }
 
     void drawWowFlutterLabels(juce::Graphics& g)
     {
-        // Draw labels
-        setupSections();
-        g.setFont(16.0f);
+        if (!isVisible())
+            return;
         
-        // Draw labels slightly lower to align with controls
-        g.drawFittedText("WOW", wowTextSection, juce::Justification::centredLeft, 1);
-        g.drawFittedText("FLUTTER", flutterTextSection, juce::Justification::centredLeft, 1);
+        juce::Graphics::ScopedSaveState saveState(g);
+        
+        g.setFont(16.0f);
+        g.setColour(juce::Colours::darkred);
+        
+        auto bounds = getLocalBounds();
+        int margin = 10;
+        
+        g.drawFittedText("WOW", margin, margin, 80, 30, juce::Justification::left, 1);
+        
+        if (getHeight() > 150)
+            g.drawFittedText("FLUTTER", margin, 80, 80, 30, juce::Justification::left, 1);
     }
 
     void sliderValueChanged(juce::Slider* /*slider*/) override

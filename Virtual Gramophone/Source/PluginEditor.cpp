@@ -10,7 +10,6 @@
 #include "PluginProcessor.h"
 
 constexpr float LINE_THICKNESS = 4.0f;
-constexpr int TEXT_BOX_SIZE = 25;
 
 //==============================================================================
 VirtualGramoUIEditor::VirtualGramoUIEditor (VirtualGramoAudioProcessor& p)
@@ -98,15 +97,35 @@ void VirtualGramoUIEditor::paint(juce::Graphics& g)
     // Draw labels for tone and mix
     SetupSections();
     g.setFont(18.0f);
+    g.setColour(juce::Colours::darkred);  // Make labels more visible
     g.drawFittedText("TONE", toneTextSection, juce::Justification::left, 1);
     g.drawFittedText("DRY", mixTextSection, juce::Justification::left, 1);
 }
 
 void StylusUI::paint(juce::Graphics& g)
-{  }
+{
+    // Debug background color (can be removed later)
+    g.fillAll(juce::Colours::lightblue.withAlpha(0.1f));
+
+    // Draw labels directly in the component's paint method
+    drawStylusLabels(g);
+}
 
 void VirtualGramoUIEditor::drawComponents(juce::Graphics& g, float toneValue, float mixValue)
 {
+    // Get the current component bounds to determine where to draw the gramophone
+    juce::Rectangle<int> visualArea = getLocalBounds().withWidth(getWidth() - 250).withHeight(getHeight() - 50);
+    
+    // Save the current state
+    g.saveState();
+    
+    // Translate to center the gramophone in the visualization area
+    g.addTransform(juce::AffineTransform::translation(
+        visualArea.getWidth()/2 - 150, // Center horizontally
+        visualArea.getHeight()/2 - 100  // Center vertically
+    ));
+    
+    // Draw the gramophone with all its effects
     // Gramophone
     juce::Path funnel;
     juce::Path base;
@@ -149,8 +168,9 @@ void VirtualGramoUIEditor::drawComponents(juce::Graphics& g, float toneValue, fl
     // Draw contours
     g.setColour(juce::Colour(0xff123456));
     drawGramophoneContours(g);
-    stylusUI.drawStylusLabels(g);
-    wowFlutterUI.drawWowFlutterLabels(g);  // Keep this line
+    
+    // Restore the state
+    g.restoreState();
 }
 
 void VirtualGramoUIEditor::drawGramophoneContours(juce::Graphics& g)
@@ -194,14 +214,29 @@ void VirtualGramoUIEditor::drawGramophoneModel(juce::Path& funnel, juce::Path& b
 
 void StylusUI::drawStylusLabels(juce::Graphics& g)
 {
-    // Draw labels
-    setupSections();
-    g.setFont(16.0f); // Slightly smaller font to fit the longer labels
+    // Only draw labels if this component is visible
+    if (!isVisible())
+        return;
     
-    // Draw labels slightly lower to align with controls
-    g.drawFittedText("COMP", compressTextSection, juce::Justification::centredLeft, 1);
-    g.drawFittedText("VIBRATO\nDEPTH", vibratoDepthTextSection, juce::Justification::centredLeft, 2);
-    g.drawFittedText("VIBRATO\nRATE", vibratoRateTextSection, juce::Justification::centredLeft, 2);
+    // Create a local graphics context that's properly positioned
+    juce::Graphics::ScopedSaveState saveState(g);
+    
+    // Use the actual bounds of the component for drawing
+    g.setFont(16.0f);
+    g.setColour(juce::Colours::darkred);  // Make labels more visible
+    
+    // Position labels within the component's bounds
+    auto bounds = getLocalBounds();
+    int margin = 10;
+    
+    // Draw labels at specific positions within the component
+    g.drawFittedText("COMP", margin, margin, 80, 30, juce::Justification::left, 1);
+    
+    if (getHeight() > 150)
+        g.drawFittedText("VIBRATO\nDEPTH", margin, 80, 80, 40, juce::Justification::left, 2);
+    
+    if (getHeight() > 220)
+        g.drawFittedText("VIBRATO\nRATE", margin, 160, 80, 40, juce::Justification::left, 2);
 }
 
 void VirtualGramoUIEditor::drawThreePointLine(juce::Graphics& g,
@@ -227,21 +262,34 @@ float StylusUI::sliderToAplhaValue(juce::Slider& slider)
 
 void VirtualGramoUIEditor::resized()
 {
-    infoButtonUI.button.setBounds(getWidth() - 35, 10, 20, 20);
-    infoButtonUI.info_text.setBounds(30, 50, getWidth() - 60, getHeight() - 100);
-
-    SetupSections();
-
-    // Position the StylusUI component to take the left side for visualization
-    // and reserve the right side for controls
-    stylusUI.setBounds(0, 50, getWidth() - 250, getHeight() - 50);
+    // Header area with title
+    auto bounds = getLocalBounds();
+    auto headerArea = bounds.removeFromTop(50);
+    infoButtonUI.button.setBounds(headerArea.getRight() - 35, 10, 20, 20);
     
-    // Position the WowAndFlutterUI component - keep this line
-    wowFlutterUI.setBounds(0, 50, getWidth() - 250, getHeight() - 50);
-
-    // Position the tone and mix controls on the right side
-    fToneControl.setBounds(toneSection);
-    fMixControl.setBounds(mixSection);
+    // Right control panel
+    auto rightPanel = bounds.removeFromRight(250);
+    
+    // Main area with gramophone visualization
+    auto mainArea = bounds;
+    
+    // Position control components in the right panel
+    int controlHeight = 100;
+    
+    // Tone control
+    auto toneArea = rightPanel.removeFromTop(controlHeight);
+    fToneControl.setBounds(toneArea.withTrimmedLeft(60));  // Make room for label
+    
+    // Mix control
+    auto mixArea = rightPanel.removeFromTop(controlHeight);
+    fMixControl.setBounds(mixArea.withTrimmedLeft(60));  // Make room for label
+    
+    // Position UI panels in their own specific areas within the right panel
+    stylusUI.setBounds(rightPanel.removeFromTop(rightPanel.getHeight()/2));
+    wowFlutterUI.setBounds(rightPanel);
+    
+    // Info text area
+    infoButtonUI.info_text.setBounds(30, 50, getWidth() - 60, getHeight() - 100);
 }
 
 
@@ -262,7 +310,7 @@ void VirtualGramoUIEditor::SetupSections()
     juce::Rectangle<int> rightSide = r.removeFromRight(250);
     
     // Divide the right side into sections for controls
-    constexpr int controlHeight = 200;
+    constexpr int controlHeight = 100;  // Reduced from 200 to prevent overlap
     constexpr int iTextSectionWidth = 60;
     
     // Tone control (top)
@@ -278,34 +326,40 @@ void StylusUI::setupSections()
 {
     juce::Rectangle<int> r = getLocalBounds();
     
-    // Reserve space for gramophone visualization
-    picture_section_ = r.removeFromLeft(r.getWidth() - 250);
+    // Calculate a scale factor based on the actual height of the component
+    float heightScaleFactor = juce::jmin(1.0f, (float)getHeight() / 275.0f);
     
-    // Right side for controls
-    constexpr int controlHeight = 80;
+    // Adjust control heights based on available space
+    int controlHeight = juce::jmax(40, (int)(80 * heightScaleFactor));
+    int labelVerticalOffset = juce::jmax(20, (int)(40 * heightScaleFactor));
+    
+    // Define text section width constant
     constexpr int iTextSectionWidth = 80; // Wider text section for the longer labels
-    constexpr int labelVerticalOffset = 40; // Significantly increased offset to bring labels even lower
+    
+    // Don't remove space for visualization - just position controls on the right
+    juce::Rectangle<int> controlsArea = r;  // Use the entire bounds for controls since we're now in the right panel
     
     // Compress control
-    compressSection = r.removeFromTop(controlHeight);
+    compressSection = controlsArea.removeFromTop(controlHeight);
     compressTextSection = compressSection.removeFromLeft(iTextSectionWidth);
-    // Adjust vertical position to align with control
     compressTextSection = compressTextSection.withY(compressTextSection.getY() + labelVerticalOffset)
                                            .withHeight(compressTextSection.getHeight() - labelVerticalOffset);
     
-    // Vibrato Depth control
-    vibratoDepthSection = r.removeFromTop(controlHeight);
-    vibratoDepthTextSection = vibratoDepthSection.removeFromLeft(iTextSectionWidth);
-    // Adjust vertical position to align with control
-    vibratoDepthTextSection = vibratoDepthTextSection.withY(vibratoDepthTextSection.getY() + labelVerticalOffset)
-                                                   .withHeight(vibratoDepthTextSection.getHeight() - labelVerticalOffset);
-    
-    // Vibrato Rate control
-    vibratoRateSection = r.removeFromTop(controlHeight);
-    vibratoRateTextSection = vibratoRateSection.removeFromLeft(iTextSectionWidth);
-    // Adjust vertical position to align with control
-    vibratoRateTextSection = vibratoRateTextSection.withY(vibratoRateTextSection.getY() + labelVerticalOffset)
-                                                 .withHeight(vibratoRateTextSection.getHeight() - labelVerticalOffset);
+    // Vibrato Depth control - adjust positioning if needed
+    if (getHeight() > 150) {
+        vibratoDepthSection = controlsArea.removeFromTop(controlHeight);
+        vibratoDepthTextSection = vibratoDepthSection.removeFromLeft(iTextSectionWidth);
+        vibratoDepthTextSection = vibratoDepthTextSection.withY(vibratoDepthTextSection.getY() + labelVerticalOffset)
+                                                       .withHeight(vibratoDepthTextSection.getHeight() - labelVerticalOffset);
+        
+        // Vibrato Rate control - only show if there's enough space
+        if (getHeight() > 220) {
+            vibratoRateSection = controlsArea.removeFromTop(controlHeight);
+            vibratoRateTextSection = vibratoRateSection.removeFromLeft(iTextSectionWidth);
+            vibratoRateTextSection = vibratoRateTextSection.withY(vibratoRateTextSection.getY() + labelVerticalOffset)
+                                                         .withHeight(vibratoRateTextSection.getHeight() - labelVerticalOffset);
+        }
+    }
 }
 
 void VirtualGramoUIEditor::sliderValueChanged (juce::Slider* /*slider*/)

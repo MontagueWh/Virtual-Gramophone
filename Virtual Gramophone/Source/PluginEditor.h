@@ -55,6 +55,8 @@ private:
 
     VirtualGramoAudioProcessor& audioProcessor;
 
+    static constexpr int TEXT_BOX_SIZE = 25;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(StylusUI)
 };
 
@@ -102,6 +104,8 @@ private:
     juce::Rectangle<int> mixTextSection;
 
     VirtualGramoAudioProcessor& audioProcessor;
+
+    static constexpr int TEXT_BOX_SIZE = 25;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VirtualGramoUIEditor)
 };
