@@ -69,7 +69,6 @@
         <FILE id="FdAnFN" name="GramoSuite.fbx" compile="0" resource="1" file="Source/Assets/GramoSuite.fbx"/>
       </GROUP>
       <GROUP id="{F7627B61-1C79-A1C1-7489-C3C8F5672A16}" name="Data">
-        <FILE id="MTPjaN" name="DynamicsData.h" compile="0" resource="0" file="Source/Data/DynamicsData.h"/>
         <FILE id="C8zXWv" name="ModulationData.h" compile="0" resource="0"
               file="Source/Data/ModulationData.h"/>
         <FILE id="PatLAE" name="WowAndFlutterData.h" compile="0" resource="0"

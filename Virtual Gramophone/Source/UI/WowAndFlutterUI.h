@@ -13,8 +13,6 @@
 #include "../Data/WowAndFlutterData.h"
 #include "../PluginProcessor.h"
 
-constexpr int TEXT_BOX_SIZE = 25;
-
 class WowAndFlutterUI : public juce::Component,
                         public juce::Slider::Listener
 {
@@ -116,6 +114,8 @@ private:
     juce::Rectangle<int> flutterSection;
     juce::Rectangle<int> wowTextSection;
     juce::Rectangle<int> flutterTextSection;
+
+    const int TEXT_BOX_SIZE = 25;
 
     VirtualGramoAudioProcessor& audioProcessor;
 
