@@ -45,14 +45,7 @@ VirtualGramoUIEditor::VirtualGramoUIEditor (VirtualGramoAudioProcessor& p)
 StylusUI::StylusUI(VirtualGramoAudioProcessor& p)
     : audioProcessor(p)
 {
-
-    fCompressControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    fCompressControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    fCompressControl.addListener(this);
-    addAndMakeVisible(fCompressControl);
-
-    compressControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-        audioProcessor.apvts, "COMPRESS", fCompressControl);
+    // Removed compressor control initialization
 
     fVibratoDepthControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
     fVibratoDepthControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
@@ -142,9 +135,7 @@ void VirtualGramoUIEditor::drawComponents(juce::Graphics& g, float toneValue, fl
     g.setColour(juce::Colours::orange.withAlpha(0.2f + toneValue / 2.0f));
     g.fillPath(funnel);
 
-    // Apply compression effect
-    g.setColour(juce::Colours::yellow.withAlpha(sliderToAplhaValue(stylusUI.fCompressControl) / 2.0f));
-    g.fillPath(funnel);
+    // Removed compression effect
 
     // Apply vibrato effects
     g.setColour(juce::Colours::blueviolet.withAlpha(sliderToAplhaValue(stylusUI.fVibratoDepthControl) / 4.0f));
@@ -229,14 +220,13 @@ void StylusUI::drawStylusLabels(juce::Graphics& g)
     auto bounds = getLocalBounds();
     int margin = 10;
     
-    // Draw labels at specific positions within the component
-    g.drawFittedText("COMP", margin, margin, 80, 30, juce::Justification::left, 1);
+    // Removed compress label
+    
+    if (getHeight() > 80)
+        g.drawFittedText("VIBRATO\nDEPTH", margin, 10, 80, 40, juce::Justification::left, 2);
     
     if (getHeight() > 150)
-        g.drawFittedText("VIBRATO\nDEPTH", margin, 80, 80, 40, juce::Justification::left, 2);
-    
-    if (getHeight() > 220)
-        g.drawFittedText("VIBRATO\nRATE", margin, 160, 80, 40, juce::Justification::left, 2);
+        g.drawFittedText("VIBRATO\nRATE", margin, 90, 80, 40, juce::Justification::left, 2);
 }
 
 void VirtualGramoUIEditor::drawThreePointLine(juce::Graphics& g,
@@ -296,7 +286,7 @@ void VirtualGramoUIEditor::resized()
 void StylusUI::resized()
 {
     setupSections();
-    fCompressControl.setBounds(compressSection);
+    // Removed compress control positioning
     fVibratoDepthControl.setBounds(vibratoDepthSection);
     fVibratoRateControl.setBounds(vibratoRateSection);
 }
@@ -339,26 +329,18 @@ void StylusUI::setupSections()
     // Don't remove space for visualization - just position controls on the right
     juce::Rectangle<int> controlsArea = r;  // Use the entire bounds for controls since we're now in the right panel
     
-    // Compress control
-    compressSection = controlsArea.removeFromTop(controlHeight);
-    compressTextSection = compressSection.removeFromLeft(iTextSectionWidth);
-    compressTextSection = compressTextSection.withY(compressTextSection.getY() + labelVerticalOffset)
-                                           .withHeight(compressTextSection.getHeight() - labelVerticalOffset);
+    // Vibrato Depth control - moved to top position
+    vibratoDepthSection = controlsArea.removeFromTop(controlHeight);
+    vibratoDepthTextSection = vibratoDepthSection.removeFromLeft(iTextSectionWidth);
+    vibratoDepthTextSection = vibratoDepthTextSection.withY(vibratoDepthTextSection.getY() + labelVerticalOffset)
+                                                   .withHeight(vibratoDepthTextSection.getHeight() - labelVerticalOffset);
     
-    // Vibrato Depth control - adjust positioning if needed
-    if (getHeight() > 150) {
-        vibratoDepthSection = controlsArea.removeFromTop(controlHeight);
-        vibratoDepthTextSection = vibratoDepthSection.removeFromLeft(iTextSectionWidth);
-        vibratoDepthTextSection = vibratoDepthTextSection.withY(vibratoDepthTextSection.getY() + labelVerticalOffset)
-                                                       .withHeight(vibratoDepthTextSection.getHeight() - labelVerticalOffset);
-        
-        // Vibrato Rate control - only show if there's enough space
-        if (getHeight() > 220) {
-            vibratoRateSection = controlsArea.removeFromTop(controlHeight);
-            vibratoRateTextSection = vibratoRateSection.removeFromLeft(iTextSectionWidth);
-            vibratoRateTextSection = vibratoRateTextSection.withY(vibratoRateTextSection.getY() + labelVerticalOffset)
-                                                         .withHeight(vibratoRateTextSection.getHeight() - labelVerticalOffset);
-        }
+    // Vibrato Rate control - adjust positioning if needed
+    if (getHeight() > 80) {
+        vibratoRateSection = controlsArea.removeFromTop(controlHeight);
+        vibratoRateTextSection = vibratoRateSection.removeFromLeft(iTextSectionWidth);
+        vibratoRateTextSection = vibratoRateTextSection.withY(vibratoRateTextSection.getY() + labelVerticalOffset)
+                                                     .withHeight(vibratoRateTextSection.getHeight() - labelVerticalOffset);
     }
 }
 

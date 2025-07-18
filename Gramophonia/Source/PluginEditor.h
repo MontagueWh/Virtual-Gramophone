@@ -30,7 +30,7 @@ public:
     void drawStylusLabels(juce::Graphics& g);
     void sliderValueChanged(juce::Slider* slider) override;
 
-    juce::Slider fCompressControl;
+    // Removed compress control
     juce::Slider fVibratoDepthControl;
     juce::Slider fVibratoRateControl;
 
@@ -39,16 +39,15 @@ private:
 
     typedef std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> SliderAttachmentPtr;
 
-    SliderAttachmentPtr compressControlAttach;
+    // Removed compress control attachment
     SliderAttachmentPtr vibratoDepthControlAttach;
-
     SliderAttachmentPtr vibratoRateControlAttach;
 
     juce::Rectangle<int> picture_section_;
-    juce::Rectangle<int> compressSection;
+    // Removed compress section
     juce::Rectangle<int> vibratoDepthSection;
     juce::Rectangle<int> vibratoRateSection;
-    juce::Rectangle<int> compressTextSection;
+    // Removed compress text section
     juce::Rectangle<int> vibratoDepthTextSection;
     juce::Rectangle<int> vibratoRateTextSection;
     juce::Rectangle<int> vibratoTextSection;
