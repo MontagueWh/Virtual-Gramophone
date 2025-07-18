@@ -1,4 +1,4 @@
-﻿/*
+/*
   ==============================================================================
 
     This file contains the basic framework code for a JUCE plugin processor.
@@ -106,6 +106,10 @@ void VirtualGramoAudioProcessor::prepareToPlay (double sampleRate, int samplesPe
     float frequency = apvts.getRawParameterValue ("TONE")->load();
     filter_.prepare (spec);
     filter_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(sampleRate, frequency, 6.0f);
+
+    // Initialize vinyl crackle
+    vinylCrackle_.setSampleRate(sampleRate);
+    vinylCrackle_.reset();
 }
 
 void VirtualGramoAudioProcessor::releaseResources()
@@ -153,10 +157,11 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
         buffer.clear(i, 0, buffer.getNumSamples());
 
     // Load parameters once per processing block
-    // Removed fThresholdControl parameter
     float fFrequencyControl = apvts.getRawParameterValue("TONE")->load();
     float fWowAmount = apvts.getRawParameterValue("WOW")->load();
-    float fFlutterAmount = apvts.getRawParameterValue("FLUTTER")->load();
+    float fFlutterAmount = apvts.getRawParameterValue("FLUTTER")->load(); // Main flutter control
+    float fVibratoDepth = apvts.getRawParameterValue("VIBRATO_DEPTH")->load(); // Controlled by flutter knob
+    float fVibratoRate = apvts.getRawParameterValue("VIBRATO_RATE")->load(); // Controlled by flutter knob
     float fMixControl = apvts.getRawParameterValue("MIX")->load();
     float fInGain = apvts.getRawParameterValue("IN_GAIN")->load();
     float fOutGain = apvts.getRawParameterValue("OUT_GAIN")->load();
@@ -197,27 +202,44 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
     float* wetData = wetBuffer.getWritePointer(0);
     for (int sample = 0; sample < wetBuffer.getNumSamples(); ++sample)
     {
-        // Removed compression code
-        
         // Apply filter (using filter_ch1_ for the mono signal)
         wetData[sample] = filter_.processSample(wetData[sample]);
         
-        // Apply wow and flutter effect
+        // Apply wow and flutter effect 
+        // Use flutter amount for both the wow-and-flutter module and for vibrato
         if (fWowAmount > 0.0f || fFlutterAmount > 0.0f)
             wetData[sample] = wowAndFlutter_.processSample(wetData[sample], fWowAmount, fFlutterAmount, getSampleRate());
     }
     
-    // Apply chorus to wet buffer
+    // Apply chorus to wet buffer - which is our vibrato effect
+    // Vibrato rate and depth are already set by the flutter control in the slider callback
     auto wetBlock = juce::dsp::AudioBlock<float>(wetBuffer);
     auto wetContext = juce::dsp::ProcessContextReplacing<float>(wetBlock);
 
-    chorus_.setRate(apvts.getRawParameterValue("VIBRATO_RATE")->load());
-    chorus_.setDepth(apvts.getRawParameterValue("VIBRATO_DEPTH")->load());
+    chorus_.setRate(fVibratoRate);
+    chorus_.setDepth(fVibratoDepth);
     chorus_.setCentreDelay(1.0f);
     chorus_.setFeedback(0.0f);
     chorus_.setMix(1.0f);
 
     chorus_.process(wetContext);
+    
+    // Apply vinyl crackle effects
+    float fCrackleAmount = apvts.getRawParameterValue("CRACKLE")->load();
+    float fDustAmount = apvts.getRawParameterValue("DUST")->load();
+    float fDustIntensity = apvts.getRawParameterValue("DUST_INTENSITY")->load();
+
+    if (fCrackleAmount > 0.0f || fDustAmount > 0.0f)
+    {
+        for (int sample = 0; sample < wetBuffer.getNumSamples(); ++sample)
+        {
+            // Apply the vinyl crackle and dust effects
+            wetData[sample] = vinylCrackle_.process(wetData[sample], 
+                                                   fCrackleAmount, 
+                                                   fDustIntensity, 
+                                                   false); // Don't use built-in wow/flutter
+        }
+    }
     
     // Mix dry and wet signals (mono wet to all dry channels)
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
@@ -272,14 +294,15 @@ juce::AudioProcessorValueTreeState::ParameterLayout VirtualGramoAudioProcessor::
 
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("IN_GAIN", "Input Gain", 0.0f, 2.0f, 1.0f));
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("OUT_GAIN", "Output Gain", 0.0f, 2.0f, 1.0f));
-    // Removed COMPRESS parameter
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("VIBRATO_DEPTH", "Vibrato Depth", 0.0f, 0.33f, 0.01f));
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("VIBRATO_RATE", "Vibrato Rate", 0.5f, 4.0f, 2.0f));
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("TONE", "Tone", 320.1f, 4700.0f, 2000.0f));
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("MIX", "Mix", 0.0f, 1.0f, 0.0f));
-    // Add wow and flutter parameters
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("WOW", "Wow", 0.0f, 1.0f, 0.0f));
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("FLUTTER", "Flutter", 0.0f, 1.0f, 0.0f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("CRACKLE", "Crackle", 0.0f, 1.0f, 0.0f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("DUST", "Dust", 0.0f, 1.0f, 0.0f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("DUST_INTENSITY", "Dust Intensity", 0.0f, 0.7f, 0.0f));
     return { parameters.begin(), parameters.end() };
 }
 

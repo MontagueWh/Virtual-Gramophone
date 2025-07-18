@@ -13,8 +13,8 @@ constexpr float LINE_THICKNESS = 4.0f;
 
 //==============================================================================
 VirtualGramoUIEditor::VirtualGramoUIEditor (VirtualGramoAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p), infoButtonUI (juce::Colours::darkgrey), 
-      stylusUI (p), wowFlutterUI(p)  // Keep wowFlutterUI initialization
+    : AudioProcessorEditor (&p), audioProcessor (p), infoButtonUI (juce::Colours::darkgrey),
+      stylusUI (p), wowFlutterUI(p), vinylCrackleUI(p)  // Add vinylCrackleUI initialization
 {
 
     fToneControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
@@ -33,6 +33,7 @@ VirtualGramoUIEditor::VirtualGramoUIEditor (VirtualGramoAudioProcessor& p)
 
     addAndMakeVisible(stylusUI);
     addAndMakeVisible(wowFlutterUI);  // Keep this line
+    addAndMakeVisible(vinylCrackleUI);
     infoButtonUI.addToEditor(this);
 
     // Make the editor resizable with a resizable corner in the bottom-right
@@ -45,23 +46,7 @@ VirtualGramoUIEditor::VirtualGramoUIEditor (VirtualGramoAudioProcessor& p)
 StylusUI::StylusUI(VirtualGramoAudioProcessor& p)
     : audioProcessor(p)
 {
-    // Removed compressor control initialization
 
-    fVibratoDepthControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    fVibratoDepthControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    fVibratoDepthControl.addListener(this);
-    addAndMakeVisible(fVibratoDepthControl);
-
-    vibratoDepthControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-        audioProcessor.apvts, "VIBRATO_DEPTH", fVibratoDepthControl);
-
-    fVibratoRateControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    fVibratoRateControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-    fVibratoRateControl.addListener(this);
-    addAndMakeVisible(fVibratoRateControl);
-
-    vibratoRateControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-        audioProcessor.apvts, "VIBRATO_RATE", fVibratoRateControl);
 }
 
 StylusUI::~StylusUI()
@@ -97,11 +82,8 @@ void VirtualGramoUIEditor::paint(juce::Graphics& g)
 
 void StylusUI::paint(juce::Graphics& g)
 {
-    // Debug background color (can be removed later)
-    g.fillAll(juce::Colours::lightblue.withAlpha(0.1f));
-
-    // Draw labels directly in the component's paint method
-    drawStylusLabels(g);
+    // This component is now empty
+    g.fillAll(juce::Colours::transparentBlack);
 }
 
 void VirtualGramoUIEditor::drawComponents(juce::Graphics& g, float toneValue, float mixValue)
@@ -135,24 +117,33 @@ void VirtualGramoUIEditor::drawComponents(juce::Graphics& g, float toneValue, fl
     g.setColour(juce::Colours::orange.withAlpha(0.2f + toneValue / 2.0f));
     g.fillPath(funnel);
 
-    // Removed compression effect
-
-    // Apply vibrato effects
-    g.setColour(juce::Colours::blueviolet.withAlpha(sliderToAplhaValue(stylusUI.fVibratoDepthControl) / 4.0f));
+    // Apply flutter effect (which controls both vibrato rate and depth)
+    float flutterIntensity = sliderToAplhaValue(wowFlutterUI.fFlutterControl);
+    g.setColour(juce::Colours::blueviolet.withAlpha(flutterIntensity / 4.0f));
+    g.fillPath(funnel);
+    
+    g.setColour(juce::Colours::rebeccapurple.withAlpha(flutterIntensity / 3.0f));
     g.fillPath(funnel);
 
-    g.setColour(juce::Colours::rebeccapurple.withAlpha(sliderToAplhaValue(stylusUI.fVibratoRateControl) / 3.0f));
-    g.fillPath(funnel);
-
-    // Apply wow effect - keep these lines
+    // Apply wow effect
     g.setColour(juce::Colours::green.withAlpha(sliderToAplhaValue(wowFlutterUI.fWowControl) / 3.0f));
     g.fillPath(funnel);
 
-    // Apply flutter effect - keep these lines
-    g.setColour(juce::Colours::lightblue.withAlpha(sliderToAplhaValue(wowFlutterUI.fFlutterControl) / 3.0f));
-    g.fillPath(funnel);
+    // Apply crackle effect
+    float crackleIntensity = sliderToAplhaValue(vinylCrackleUI.fCrackleControl);
+    if (crackleIntensity > 0.0f) {
+        g.setColour(juce::Colours::red.withAlpha(crackleIntensity / 5.0f));
+        g.fillPath(funnel);
+    }
+    
+    // Apply dust effect
+    float dustIntensity = sliderToAplhaValue(vinylCrackleUI.fDustControl);
+    if (dustIntensity > 0.0f) {
+        g.setColour(juce::Colours::brown.withAlpha(dustIntensity / 6.0f));
+        g.fillPath(funnel);
+    }
 
-    // Apply mix effect from outside
+    // Apply mix effect from outside (keep this after the other effects)
     g.setColour(juce::Colours::orangered.withAlpha(mixValue / 3.0f));
     g.fillPath(funnel);
 
@@ -203,32 +194,6 @@ void VirtualGramoUIEditor::drawGramophoneModel(juce::Path& funnel, juce::Path& b
     base.closeSubPath();
 }
 
-void StylusUI::drawStylusLabels(juce::Graphics& g)
-{
-    // Only draw labels if this component is visible
-    if (!isVisible())
-        return;
-    
-    // Create a local graphics context that's properly positioned
-    juce::Graphics::ScopedSaveState saveState(g);
-    
-    // Use the actual bounds of the component for drawing
-    g.setFont(16.0f);
-    g.setColour(juce::Colours::darkred);  // Make labels more visible
-    
-    // Position labels within the component's bounds
-    auto bounds = getLocalBounds();
-    int margin = 10;
-    
-    // Removed compress label
-    
-    if (getHeight() > 80)
-        g.drawFittedText("VIBRATO\nDEPTH", margin, 10, 80, 40, juce::Justification::left, 2);
-    
-    if (getHeight() > 150)
-        g.drawFittedText("VIBRATO\nRATE", margin, 90, 80, 40, juce::Justification::left, 2);
-}
-
 void VirtualGramoUIEditor::drawThreePointLine(juce::Graphics& g,
     float x1, float y1,
     float x2, float y2,
@@ -274,9 +239,15 @@ void VirtualGramoUIEditor::resized()
     auto mixArea = rightPanel.removeFromTop(controlHeight);
     fMixControl.setBounds(mixArea.withTrimmedLeft(60));  // Make room for label
     
-    // Position UI panels in their own specific areas within the right panel
-    stylusUI.setBounds(rightPanel.removeFromTop(rightPanel.getHeight()/2));
-    wowFlutterUI.setBounds(rightPanel);
+    // Since StylusUI is now empty, give all remaining space to other controls
+    stylusUI.setBounds(0, 0, 0, 0);  // Hide StylusUI completely
+    
+    // Split remaining space between WowAndFlutterUI and VinylCrackleUI
+    int remainingHeight = rightPanel.getHeight();
+    int wowHeight = remainingHeight / 2;
+    
+    wowFlutterUI.setBounds(rightPanel.removeFromTop(wowHeight));
+    vinylCrackleUI.setBounds(rightPanel);  // Give remaining space to VinylCrackleUI
     
     // Info text area
     infoButtonUI.info_text.setBounds(30, 50, getWidth() - 60, getHeight() - 100);
@@ -285,63 +256,28 @@ void VirtualGramoUIEditor::resized()
 
 void StylusUI::resized()
 {
-    setupSections();
-    // Removed compress control positioning
-    fVibratoDepthControl.setBounds(vibratoDepthSection);
-    fVibratoRateControl.setBounds(vibratoRateSection);
+
 }
 
 void VirtualGramoUIEditor::SetupSections()
 {
     juce::Rectangle<int> r = getLocalBounds();
     top_section_ = r.removeFromTop(50);
-    
+
     // Reserve right side for controls (250px width)
     juce::Rectangle<int> rightSide = r.removeFromRight(250);
-    
+
     // Divide the right side into sections for controls
     constexpr int controlHeight = 100;  // Reduced from 200 to prevent overlap
     constexpr int iTextSectionWidth = 60;
-    
+
     // Tone control (top)
     toneSection = rightSide.removeFromTop(controlHeight);
     toneTextSection = toneSection.removeFromLeft(iTextSectionWidth);
-    
+
     // Mix control (below tone)
     mixSection = rightSide.removeFromTop(controlHeight);
     mixTextSection = mixSection.removeFromLeft(iTextSectionWidth);
-}
-
-void StylusUI::setupSections()
-{
-    juce::Rectangle<int> r = getLocalBounds();
-    
-    // Calculate a scale factor based on the actual height of the component
-    float heightScaleFactor = juce::jmin(1.0f, (float)getHeight() / 275.0f);
-    
-    // Adjust control heights based on available space
-    int controlHeight = juce::jmax(40, (int)(80 * heightScaleFactor));
-    int labelVerticalOffset = juce::jmax(20, (int)(40 * heightScaleFactor));
-    
-    // Define text section width constant
-    constexpr int iTextSectionWidth = 80; // Wider text section for the longer labels
-    
-    // Don't remove space for visualization - just position controls on the right
-    juce::Rectangle<int> controlsArea = r;  // Use the entire bounds for controls since we're now in the right panel
-    
-    // Vibrato Depth control - moved to top position
-    vibratoDepthSection = controlsArea.removeFromTop(controlHeight);
-    vibratoDepthTextSection = vibratoDepthSection.removeFromLeft(iTextSectionWidth);
-    vibratoDepthTextSection = vibratoDepthTextSection.withY(vibratoDepthTextSection.getY() + labelVerticalOffset)
-                                                   .withHeight(vibratoDepthTextSection.getHeight() - labelVerticalOffset);
-    
-    // Vibrato Rate control - adjust positioning if needed
-    if (getHeight() > 80) {
-        vibratoRateSection = controlsArea.removeFromTop(controlHeight);
-        vibratoRateTextSection = vibratoRateSection.removeFromLeft(iTextSectionWidth);
-        vibratoRateTextSection = vibratoRateTextSection.withY(vibratoRateTextSection.getY() + labelVerticalOffset)
-                                                     .withHeight(vibratoRateTextSection.getHeight() - labelVerticalOffset);
-    }
 }
 
 void VirtualGramoUIEditor::sliderValueChanged (juce::Slider* /*slider*/)
@@ -351,6 +287,5 @@ void VirtualGramoUIEditor::sliderValueChanged (juce::Slider* /*slider*/)
 
 void StylusUI::sliderValueChanged(juce::Slider* /*slider*/)
 {
-    // Repaint the component when sliders change
-    repaint();
+
 }

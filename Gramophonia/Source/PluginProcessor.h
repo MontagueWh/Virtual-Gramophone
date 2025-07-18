@@ -9,7 +9,8 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "Data/WowAndFlutterData.h" // Add this include
+#include "Data/WowAndFlutterData.h" 
+#include "Data/VinylCrackleData.h" // Add this include
 
 //==============================================================================
 /**
@@ -61,7 +62,8 @@ private:
 
     juce::dsp::Chorus<float> chorus_;
     juce::dsp::IIR::Filter<float> filter_;
-    WowAndFlutter wowAndFlutter_; // Add WowAndFlutter member
+    WowAndFlutter wowAndFlutter_; 
+    VinylArtifacts vinylCrackle_; // Add VinylArtifacts member
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VirtualGramoAudioProcessor)

@@ -3,28 +3,33 @@
 <JUCERPROJECT id="K7SXPp" name="Gramophonia" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
   <MAINGROUP id="GPAhlA" name="Gramophonia">
-    <GROUP id="{037F5EDD-F1A5-DC47-29BF-C22C2EF91447}" name="Data">
-      <FILE id="ob25Os" name="ModulationData.h" compile="0" resource="0"
-            file="Source/Data/ModulationData.h"/>
-      <FILE id="GQ2Cko" name="WowAndFlutterData.h" compile="0" resource="0"
-            file="Source/Data/WowAndFlutterData.h"/>
+    <GROUP id="{2B9569E5-B5E0-9FA9-ABAC-18C0FF36F298}" name="Source">
+      <FILE id="tKZDIj" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="kZhoGJ" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="idwJkM" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="KX41sT" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <GROUP id="{A89B018A-7C3C-2EF2-12BE-3EFDF5960DCC}" name="UI">
+        <FILE id="QSD7cp" name="InfoButtonUI.cpp" compile="1" resource="0"
+              file="Source/UI/InfoButtonUI.cpp"/>
+        <FILE id="oI4Gll" name="InfoButtonUI.h" compile="0" resource="0" file="Source/UI/InfoButtonUI.h"/>
+        <FILE id="iUgDhL" name="ModulationUI.h" compile="0" resource="0" file="Source/UI/ModulationUI.h"/>
+        <FILE id="ZXIbLJ" name="VinylCrackleUI.h" compile="0" resource="0"
+              file="Source/UI/VinylCrackleUI.h"/>
+        <FILE id="iNrsAI" name="WowAndFlutterUI.h" compile="0" resource="0"
+              file="Source/UI/WowAndFlutterUI.h"/>
+      </GROUP>
+      <GROUP id="{037F5EDD-F1A5-DC47-29BF-C22C2EF91447}" name="Data">
+        <FILE id="ob25Os" name="ModulationData.h" compile="0" resource="0"
+              file="Source/Data/ModulationData.h"/>
+        <FILE id="PCtgtC" name="VinylCrackleData.h" compile="0" resource="0"
+              file="Source/Data/VinylCrackleData.h"/>
+        <FILE id="GQ2Cko" name="WowAndFlutterData.h" compile="0" resource="0"
+              file="Source/Data/WowAndFlutterData.h"/>
+      </GROUP>
     </GROUP>
-    <GROUP id="{2B9569E5-B5E0-9FA9-ABAC-18C0FF36F298}" name="Source"/>
-    <GROUP id="{A89B018A-7C3C-2EF2-12BE-3EFDF5960DCC}" name="UI">
-      <FILE id="QSD7cp" name="InfoButtonUI.cpp" compile="1" resource="0"
-            file="Source/UI/InfoButtonUI.cpp"/>
-      <FILE id="oI4Gll" name="InfoButtonUI.h" compile="0" resource="0" file="Source/UI/InfoButtonUI.h"/>
-      <FILE id="iUgDhL" name="ModulationUI.h" compile="0" resource="0" file="Source/UI/ModulationUI.h"/>
-      <FILE id="iNrsAI" name="WowAndFlutterUI.h" compile="0" resource="0"
-            file="Source/UI/WowAndFlutterUI.h"/>
-    </GROUP>
-    <FILE id="tKZDIj" name="PluginEditor.cpp" compile="1" resource="0"
-          file="Source/PluginEditor.cpp"/>
-    <FILE id="kZhoGJ" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
-    <FILE id="idwJkM" name="PluginProcessor.cpp" compile="1" resource="0"
-          file="Source/PluginProcessor.cpp"/>
-    <FILE id="KX41sT" name="PluginProcessor.h" compile="0" resource="0"
-          file="Source/PluginProcessor.h"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

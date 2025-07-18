@@ -27,11 +27,16 @@ public:
         wowControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
             audioProcessor.apvts, "WOW", fWowControl);
 
+        // Flutter control now affects both rate and depth
         fFlutterControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
         fFlutterControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
+        fFlutterControl.setRange(0.0f, 1.0f);  // Normalized range 0-1
+        fFlutterControl.setValue(0.0f);        // Start at 0
         fFlutterControl.addListener(this);
         addAndMakeVisible(fFlutterControl);
 
+        // We'll manually update vibrato rate and depth when flutter control changes
+        // Remove the standard attachment since we're controlling multiple parameters
         flutterControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
             audioProcessor.apvts, "FLUTTER", fFlutterControl);
     }
@@ -107,9 +112,32 @@ public:
             g.drawFittedText("FLUTTER", margin, 80, 80, 30, juce::Justification::left, 1);
     }
 
-    void sliderValueChanged(juce::Slider* /*slider*/) override
+    void sliderValueChanged(juce::Slider* slider) override
     {
         // Repaint the component when sliders change
+        if (slider == &fFlutterControl) {
+            // Map the flutter control (0-1) to appropriate ranges for rate and depth
+            float flutterValue = fFlutterControl.getValue();
+            
+            // Update vibrato rate and depth parameters based on flutter value
+            auto* rateParam = audioProcessor.apvts.getRawParameterValue("VIBRATO_RATE");
+            auto* depthParam = audioProcessor.apvts.getRawParameterValue("VIBRATO_DEPTH");
+            
+            if (rateParam && depthParam) {
+                // Map the flutter control value to appropriate parameter ranges
+                // These mapping formulas can be adjusted to taste
+                float newRate = 0.5f + (flutterValue * 3.5f);  // 0.5 to 4.0
+                float newDepth = flutterValue * 0.33f;         // 0.0 to 0.33
+                
+                // Set parameter values without using attachments
+                audioProcessor.apvts.getParameter("VIBRATO_RATE")->setValueNotifyingHost(
+                    audioProcessor.apvts.getParameter("VIBRATO_RATE")->convertTo0to1(newRate));
+                
+                audioProcessor.apvts.getParameter("VIBRATO_DEPTH")->setValueNotifyingHost(
+                    audioProcessor.apvts.getParameter("VIBRATO_DEPTH")->convertTo0to1(newDepth));
+            }
+        }
+        
         repaint();
     }
 
@@ -120,7 +148,7 @@ public:
     }
 
     juce::Slider fWowControl;
-    juce::Slider fFlutterControl;
+    juce::Slider fFlutterControl;  // Now controls both rate and depth
 
 private:
     typedef std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> SliderAttachmentPtr;
