@@ -176,14 +176,6 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
         float fDry[2] = { 0.0f, 0.0f };
         float fWet[2] = { 0.0f, 0.0f };
 
-        // Read input samples
-        for (int channel = 0; channel < juce::jmin(totalNumInputChannels, 2); ++channel)
-            fIn[channel] = buffer.getReadPointer(channel)[sample];
-
-        // Store dry signal (unprocessed)
-        for (int channel = 0; channel < juce::jmin(totalNumInputChannels, 2); ++channel)
-            fDry[channel] = fIn[channel];
-
         // Calculate mono mix for this sample (used only for wet signal)
         float fMonoMix = 0.0f;
         for (int channel = 0; channel < juce::jmin(totalNumInputChannels, 2); ++channel)
@@ -195,8 +187,10 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
         // Process wet signal (with mono mix if needed)
         for (int channel = 0; channel < juce::jmin(totalNumInputChannels, 2); ++channel)
         {
-            // Start with input sample
-            fWet[channel] = fIn[channel];
+            fDry[channel] = fIn[channel];
+
+            for (int channel = 0; channel < juce::jmin(totalNumInputChannels, 2); ++channel)
+                fWet[channel] = fDry[channel] = fIn[channel];
 
             // Compression
             if (fWet[channel] >= treshold)
@@ -216,12 +210,7 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
             // Apply wow and flutter effect
             if (fWowAmount > 0.0f || fFlutterAmount > 0.0f)
                 fWet[channel] = wowAndFlutter_.processSample(fWet[channel], fWowAmount, fFlutterAmount, getSampleRate());
-        }
 
-        // Mix dry and wet signals directly according to the mix parameter
-        // mixValue ranges from 0.0 (fully wet) to 0.5 (equal mix)
-        for (int channel = 0; channel < juce::jmin(totalNumInputChannels, 2); ++channel)
-        {
             // Direct mixing of dry and wet signals
             fOut[channel] = (fDry[channel] * mixValue) + (fWet[channel] * (1.0f - mixValue));
             buffer.getWritePointer(channel)[sample] = fOut[channel];

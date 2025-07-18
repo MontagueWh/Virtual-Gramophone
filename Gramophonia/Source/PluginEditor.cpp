@@ -83,10 +83,10 @@ VirtualGramoUIEditor::~VirtualGramoUIEditor()
 void VirtualGramoUIEditor::paint(juce::Graphics& g)
 {
     // Fill background
-    g.fillAll(juce::Colours::darkgoldenrod);
+    g.fillAll(juce::Colours::silver);
 
     // Draw title with Century Gothic font
-    g.setColour(juce::Colour(0xff123456));
+    g.setColour(juce::Colours::gold);
     juce::Font centuryGothic("Century Gothic", 40.0f, juce::Font::plain);
     g.setFont(centuryGothic);
     g.drawFittedText("Virtual Gramophone", getLocalBounds(), juce::Justification::centredTop, 1);
