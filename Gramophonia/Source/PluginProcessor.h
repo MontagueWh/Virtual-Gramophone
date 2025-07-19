@@ -65,6 +65,11 @@ private:
     WowAndFlutter wowAndFlutter_; 
     VinylArtifacts vinylCrackle_; // Add VinylArtifacts member
 
+    // Individual vinyl artefact parameters (controlled by the single VINYL_ARTIFACTS parameter)
+    float fCrackleAmount = 0.0f;
+    float fDustAmount = 0.0f;
+    float fDustIntensity = 0.0f;
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VirtualGramoAudioProcessor)
 };

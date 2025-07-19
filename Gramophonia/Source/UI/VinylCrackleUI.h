@@ -20,7 +20,7 @@ class VinylCrackleUI : public juce::Component,
 public:
     VinylCrackleUI(VirtualGramoAudioProcessor& p) : audioProcessor(p)
     {
-        // Single control for vinyl artifacts (combines crackle and dust)
+        // Single control for vinyl artefacts (combines crackle, dust and dust intensity)
         fVinylArtifactsControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
         fVinylArtifactsControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
         fVinylArtifactsControl.addListener(this);
@@ -42,7 +42,7 @@ public:
         // Draw labels
         g.setFont(16.0f);
         g.setColour(juce::Colours::darkred);
-        g.drawFittedText("VINYL WEAR", 10, 10, 100, 30, juce::Justification::left, 1);
+        g.drawFittedText("VINYL ARTIFACTS", 10, 10, 100, 30, juce::Justification::left, 1);
     }
 
     void resized() override
@@ -56,19 +56,19 @@ public:
         juce::Rectangle<int> r = getLocalBounds();
         
         // Calculate a scale factor based on the actual height of the component
-        float heightScaleFactor = juce::jmin(1.0f, (float)getHeight() / 275.0f);
+        float fHeightScaleFactor = juce::jmin(1.0f, (float)getHeight() / 275.0f);
         
         // Adjust control heights based on available space
-        int controlHeight = juce::jmax(40, (int)(100 * heightScaleFactor));
+        int iControlHeight = juce::jmax(40, (int)(100 * fHeightScaleFactor));
         
         // Reserve space for visualization
-        picture_section_ = r.removeFromLeft(r.getWidth() - 250);
+        pictureSection = r.removeFromLeft(r.getWidth() - 250);
         
         // Right side for controls
         constexpr int iTextSectionWidth = 80;
         
         // Vinyl artifacts control
-        vinylSection = r.removeFromTop(controlHeight);
+        vinylSection = r.removeFromTop(iControlHeight);
         vinylTextSection = vinylSection.removeFromLeft(iTextSectionWidth);
         vinylTextSection = vinylTextSection.withY(vinylTextSection.getY() + 40)
                                    .withHeight(vinylTextSection.getHeight() - 40);
@@ -79,23 +79,26 @@ public:
         if (slider == &fVinylArtifactsControl) {
             float vinylValue = fVinylArtifactsControl.getValue();
             
-            // Update both crackle and dust parameters based on vinyl value
-            auto* crackleParam = audioProcessor.apvts.getParameter("CRACKLE");
-            auto* dustParam = audioProcessor.apvts.getParameter("DUST");
-            auto* dustIntensityParam = audioProcessor.apvts.getParameter("DUST_INTENSITY");
+            // Define scaling factors for different parameters
+            constexpr float CRACKLE_SCALE = 1.0f;         // 100% of vinyl value
+            constexpr float DUST_SCALE = 0.8f;            // 80% of vinyl value
+            constexpr float DUST_INTENSITY_SCALE = 0.85f; // 85% of vinyl value
             
-            if (crackleParam && dustParam && dustIntensityParam) {
-                // Set values directly from vinyl control, adjusting for desired effect
-                crackleParam->setValueNotifyingHost(
-                    audioProcessor.apvts.getParameter("CRACKLE")->convertTo0to1(vinylValue));
-                
-                dustParam->setValueNotifyingHost(
-                    audioProcessor.apvts.getParameter("DUST")->convertTo0to1(vinylValue * 0.8f));
-                
-                // Dust intensity more sensitive to vinyl control
-                float newDustIntensity = vinylValue * 0.85f;
-                dustIntensityParam->setValueNotifyingHost(
-                    audioProcessor.apvts.getParameter("DUST_INTENSITY")->convertTo0to1(newDustIntensity));
+            // Map of parameters to update with their scaling factors
+            const std::pair<const char*, float> paramMappings[] = {
+                {"CRACKLE", CRACKLE_SCALE},
+                {"DUST", DUST_SCALE},
+                {"DUST_INTENSITY", DUST_INTENSITY_SCALE}
+            };
+            
+            // Update all parameters based on vinyl value with appropriate scaling
+            for (const auto& [paramID, scaleFactor] : paramMappings) {
+                auto* param = audioProcessor.apvts.getParameter(paramID);
+                if (param) {
+                    // Apply scaling factor to the vinyl artefacts value
+                    float scaledValue = vinylValue * scaleFactor;
+                    param->setValueNotifyingHost(param->convertTo0to1(scaledValue));
+                }
             }
         }
         
@@ -120,7 +123,7 @@ private:
 
     SliderAttachmentPtr vinylArtifactsControlAttach;
 
-    juce::Rectangle<int> picture_section_;
+    juce::Rectangle<int> pictureSection;
     juce::Rectangle<int> vinylSection;
     juce::Rectangle<int> vinylTextSection;
 

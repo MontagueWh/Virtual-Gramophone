@@ -17,14 +17,25 @@ VirtualGramoAudioProcessor::VirtualGramoAudioProcessor()
     : AudioProcessor (BusesProperties()
 #if ! JucePlugin_IsMidiEffect
 #if ! JucePlugin_IsSynth
-                          .withInput ("Input", juce::AudioChannelSet::stereo(), true)
+                          .withInput ("Input", juce::AudioChannelSet::mono(), true)
 #endif
-                          .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
+                          .withOutput ("Output", juce::AudioChannelSet::mono(), true)
 #endif
                           ),
       apvts (*this, nullptr, "Parameters", createParameters())
 #endif
 {
+    // Make sure we support dynamic channel configurations
+    setRateAndBufferSizeDetails(44100.0, 512);
+    
+    // Initialize all possible buses to handle flexible channel configurations
+    bool success = true;
+    
+#if ! JucePlugin_IsSynth && ! JucePlugin_IsMidiEffect
+    // For non-synth plugins, we need to ensure we can handle the same channel 
+    // configurations on both input and output
+    success &= setBusesLayout(getBusesLayout());
+#endif
 }
 
 VirtualGramoAudioProcessor::~VirtualGramoAudioProcessor()
@@ -159,98 +170,139 @@ void VirtualGramoAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, 
     // Load parameters once per processing block
     float fFrequencyControl = apvts.getRawParameterValue("TONE")->load();
     float fWowAmount = apvts.getRawParameterValue("WOW")->load();
-    float fFlutterAmount = apvts.getRawParameterValue("FLUTTER")->load(); // Main flutter control
-    float fVibratoDepth = apvts.getRawParameterValue("VIBRATO_DEPTH")->load(); // Controlled by flutter knob
-    float fVibratoRate = apvts.getRawParameterValue("VIBRATO_RATE")->load(); // Controlled by flutter knob
+    float fFlutterAmount = apvts.getRawParameterValue("FLUTTER")->load();
     float fMixControl = apvts.getRawParameterValue("MIX")->load();
     float fInGain = apvts.getRawParameterValue("IN_GAIN")->load();
     float fOutGain = apvts.getRawParameterValue("OUT_GAIN")->load();
+    float fVinylArtefacts = apvts.getRawParameterValue("VINYL_ARTIFACTS")->load();
 
-    // Apply input gain to all channels in one loop
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    {
-        float* channelData = buffer.getWritePointer(channel);
-        for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
-        {
-            channelData[sample] *= fInGain;
-        }
-    }
+    // Update individual vinyl artefact parameters based on master control
+    constexpr float CRACKLE_SCALE = 1.0f;         // 100% of vinyl value
+    constexpr float DUST_SCALE = 0.8f;            // 80% of vinyl value
+    constexpr float DUST_INTENSITY_SCALE = 0.85f; // 85% of vinyl value
+    
+    fCrackleAmount = fVinylArtefacts * CRACKLE_SCALE;        // Set crackle amount
+    fDustAmount = fVinylArtefacts * DUST_SCALE;              // Set dust amount
+    fDustIntensity = fVinylArtefacts * DUST_INTENSITY_SCALE; // Set dust intensity
 
-    // If mix is 0, skip effect processing and just apply output gain
+    // If mix is 0, apply input and output gain in a single channel/sample loop and return
     if (fMixControl <= 0.0f)
     {
-        // Apply output gain
+        const float combinedGain = fInGain * fOutGain;
         for (int channel = 0; channel < totalNumInputChannels; ++channel)
         {
             float* channelData = buffer.getWritePointer(channel);
             for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
             {
-                channelData[sample] *= fOutGain;
+                channelData[sample] *= combinedGain;
             }
         }
         return;
     }
 
-    // Update filter coefficients
-    filter_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(getSampleRate(), fFrequencyControl + 10.0f, 2.7f);
-
-    // Create a mono wet buffer from the first channel
-    juce::AudioBuffer<float> wetBuffer(1, buffer.getNumSamples());
-    wetBuffer.copyFrom(0, 0, buffer, 0, 0, buffer.getNumSamples());
-
-    // Process mono wet buffer with all effects
-    float* wetData = wetBuffer.getWritePointer(0);
-    for (int sample = 0; sample < wetBuffer.getNumSamples(); ++sample)
+    // Update filter coefficients for tone control
+    filter_.coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(
+        getSampleRate(), fFrequencyControl + 10.0f, 2.7f);
+    
+    // Prepare chorus if it will be used (still needs block processing)
+    if (fFlutterAmount > 0.0f)
     {
-        // Apply filter (using filter_ch1_ for the mono signal)
-        wetData[sample] = filter_.processSample(wetData[sample]);
-        
-        // Apply wow and flutter effect 
-        // Use flutter amount for both the wow-and-flutter module and for vibrato
-        if (fWowAmount > 0.0f || fFlutterAmount > 0.0f)
-            wetData[sample] = wowAndFlutter_.processSample(wetData[sample], fWowAmount, fFlutterAmount, getSampleRate());
+        chorus_.setRate(fFlutterAmount);
+        chorus_.setDepth(fFlutterAmount);
+        chorus_.setCentreDelay(1.0f);
+        chorus_.setFeedback(0.0f);
+        chorus_.setMix(1.0f);
+    }
+
+    // Create a temporary buffer to hold wet signal for chorus block processing
+    juce::AudioBuffer<float> chorusBuffer;
+    bool needsChorusProcessing = (fFlutterAmount > 0.0f);
+    
+    if (needsChorusProcessing)
+    {
+        chorusBuffer.setSize(1, buffer.getNumSamples());
     }
     
-    // Apply chorus to wet buffer - which is our vibrato effect
-    // Vibrato rate and depth are already set by the flutter control in the slider callback
-    auto wetBlock = juce::dsp::AudioBlock<float>(wetBuffer);
-    auto wetContext = juce::dsp::ProcessContextReplacing<float>(wetBlock);
-
-    chorus_.setRate(fVibratoRate);
-    chorus_.setDepth(fVibratoDepth);
-    chorus_.setCentreDelay(1.0f);
-    chorus_.setFeedback(0.0f);
-    chorus_.setMix(1.0f);
-
-    chorus_.process(wetContext);
-    
-    // Apply vinyl crackle effects
-    float fCrackleAmount = apvts.getRawParameterValue("CRACKLE")->load();
-    float fDustAmount = apvts.getRawParameterValue("DUST")->load();
-    float fDustIntensity = apvts.getRawParameterValue("DUST_INTENSITY")->load();
-
-    if (fCrackleAmount > 0.0f || fDustAmount > 0.0f)
-    {
-        for (int sample = 0; sample < wetBuffer.getNumSamples(); ++sample)
-        {
-            // Apply the vinyl crackle and dust effects
-            wetData[sample] = vinylCrackle_.process(wetData[sample], 
-                                                   fCrackleAmount, 
-                                                   fDustIntensity, 
-                                                   false); // Don't use built-in wow/flutter
-        }
-    }
-    
-    // Mix dry and wet signals (mono wet to all dry channels)
+    // Process all channels
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         float* channelData = buffer.getWritePointer(channel);
         
+        // Process each sample with all effects in sequence
         for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
         {
-            // Mix dry channel with mono wet signal and apply output gain in one step
-            channelData[sample] = (channelData[sample] * (1.0f - fMixControl) + 
-                              wetData[sample] * fMixControl) * fOutGain;
+            // Apply input gain
+            float drySample = channelData[sample] * fInGain;
+            float wetSample = drySample;
+            
+            // Apply vinyl artefacts if enabled
+            if (fVinylArtefacts > 0.0f)
+            {
+                wetSample = vinylCrackle_.process(
+                    wetSample,
+                    fCrackleAmount,    // Use calculated crackle amount
+                    fDustIntensity,    // Use calculated dust intensity
+                    false              // Disable wow/flutter in vinyl processor
+                );
+            }
+            
+            // Apply wow and flutter if enabled
+            if (fWowAmount > 0.0f || fFlutterAmount > 0.0f)
+            {
+                wetSample = wowAndFlutter_.processSample(
+                    wetSample, 
+                    fWowAmount, 
+                    fFlutterAmount, 
+                    getSampleRate()
+                );
+            }
+            
+            // Store wet sample for chorus block processing if needed
+            if (needsChorusProcessing)
+            {
+                chorusBuffer.setSample(0, sample, wetSample);
+            }
+            
+            // Apply filter
+            wetSample = filter_.processSample(wetSample);
+            
+            // Store processed sample - we'll finish mixing after chorus processing if needed
+            channelData[sample] = drySample;
+            
+            // If we don't need chorus processing, we can mix and output now
+            if (!needsChorusProcessing)
+            {
+                // Mix dry and wet signals and apply output gain
+                channelData[sample] = (drySample * (1.0f - fMixControl) + 
+                                      wetSample * fMixControl) * fOutGain;
+            }
+        }
+    }
+    
+    // Apply chorus processing if needed (this must be done as a block)
+    if (needsChorusProcessing)
+    {
+        auto wetBlock = juce::dsp::AudioBlock<float>(chorusBuffer);
+        auto wetContext = juce::dsp::ProcessContextReplacing<float>(wetBlock);
+        chorus_.process(wetContext);
+        
+        // Now finalise the mixing with the chorus-processed wet signal
+        for (int channel = 0; channel < totalNumInputChannels; ++channel)
+        {
+            float* channelData = buffer.getWritePointer(channel);
+            
+            for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
+            {
+                float drySample = channelData[sample];
+                float wetSample = chorusBuffer.getSample(0, sample);
+                
+                // Apply filter to the chorus-processed signal
+                wetSample = filter_.processSample(wetSample);
+                
+                // Mix dry and wet signals and apply output gain
+                channelData[sample] = (drySample * (1.0f - fMixControl) + 
+                                      wetSample * fMixControl) * fOutGain;
+            }
         }
     }
 }
@@ -298,10 +350,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout VirtualGramoAudioProcessor::
     parameters.push_back(std::make_unique<juce::AudioParameterFloat>("MIX", "Mix", 0.0f, 1.0f, 0.0f));
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("WOW", "Wow", 0.0f, 1.0f, 0.0f));
     parameters.push_back (std::make_unique<juce::AudioParameterFloat> ("FLUTTER", "Flutter", 0.0f, 1.0f, 0.0f));
-    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VINYL_ARTIFACTS", "Vinyl Artifacts", 0.0f, 1.0f, 0.0f));
-    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("CRACKLE", "Crackle", 0.0f, 1.0f, 0.0f));
-    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("DUST", "Dust", 0.0f, 1.0f, 0.0f));
-    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("DUST_INTENSITY", "Dust Intensity", 0.0f, 1.0f, 0.5f));
+    parameters.push_back(std::make_unique<juce::AudioParameterFloat>("VINYL_ARTIFACTS", "Vinyl Artefacts", 0.0f, 1.0f, 0.0f));
+    
     return { parameters.begin(), parameters.end() };
 }
 
