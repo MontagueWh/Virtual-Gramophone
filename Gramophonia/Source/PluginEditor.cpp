@@ -77,7 +77,7 @@ void VirtualGramoUIEditor::paint(juce::Graphics& g)
     g.setFont(18.0f);
     g.setColour(juce::Colours::darkred);  // Make labels more visible
     g.drawFittedText("TONE", toneTextSection, juce::Justification::left, 1);
-    g.drawFittedText("DRY/WET", mixTextSection, juce::Justification::left, 1);
+    g.drawFittedText("DRY", mixTextSection, juce::Justification::left, 1);
 }
 
 void StylusUI::paint(juce::Graphics& g)
@@ -236,8 +236,7 @@ void VirtualGramoUIEditor::resized()
     // Mix control
     auto mixArea = rightPanel.removeFromTop(controlHeight);
     fMixControl.setBounds(mixArea.withTrimmedLeft(60));  // Make room for label
-    //fMixControl.toFront(true); 
-
+    
     // Since StylusUI is now empty, give all remaining space to other controls
     stylusUI.setBounds(0, 0, 0, 0);  // Hide StylusUI completely
     

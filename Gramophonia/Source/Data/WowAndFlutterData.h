@@ -1,4 +1,4 @@
-﻿/*
+/*
   ==============================================================================
 
     WowAndFlutterData.h
@@ -12,24 +12,16 @@
 
 #include "ModulationData.h"
 
-#include <vector>
-#include <cmath>
-
-#include <vector>
-#include <cmath>
-
 class WowAndFlutter
 {
 public:
-    WowAndFlutter()
-        : fWowPhase(0.0f),
-        flutterLFO1(44100),
-        flutterLFO3(44100),
+    WowAndFlutter() :
+        fWowPhase(0.0f),
+        fFlutterPhase(0.0f),
         fEccentricPhase(0.0f),
         osc(),
         pitchTimeWarp(44100.0f),
-        inputPos(0),
-        outputPos(0),
+        bufferPos(0),
         lastPitchFactor(1.0f)
     {
         inputBuffer.resize(BUFFER_SIZE, 0.0f);
@@ -41,129 +33,102 @@ public:
         pitchTimeWarp.clear();
     }
 
-    void setSampleRate(float newSampleRate)
+    float processSample(float input, float wowAmount, float flutterAmount, float sampleRate)
     {
-        sampleRate = newSampleRate;
+        // Ensure buffer position is always in bounds BEFORE access
+        if (bufferPos >= BUFFER_SIZE - 1) {
+            processBuffer(lastPitchFactor, sampleRate);
+            bufferPos = 0;
+        }
 
-        // Update sample rate on internal LFOs
-        flutterLFO1.setSampleRate(sampleRate);
-        flutterLFO3.setSampleRate(sampleRate);
-    }
+        // Store the incoming sample in our buffer
+        inputBuffer[bufferPos] = input;
 
-    float processSample(float input, float wowAmount, float flutterAmount, int sampleRate)
-    {
-        // Base modulation frequencies
-        const float fWowFreq = 0.5f;
-        const float fEccentricFreq = 0.555f;
+        // Base frequencies (Hz)
+// WowAndFlutterData.h
+        float fWowFreq = 0.5f; // Fixed base frequency for wow
+        float fFlutterFreq = 16.5f + (flutterAmount * 16.5f); // Fixed base frequency, modulated by flutterAmount
 
-        // Update flutter LFO rates according to flutterAmount
-        float flutterFreq = 16.5f + (flutterAmount * 16.5f);
-        flutterLFO1.setRate(flutterFreq);
-        flutterLFO3.setRate(flutterFreq * 3.0f);
+        // Update phases
+        fWowPhase = osc.progressAndWrap(osc.incrementPhase(fWowFreq, sampleRate), fWowPhase);
+        fFlutterPhase = osc.progressAndWrap(osc.incrementPhase(fFlutterFreq, sampleRate), fFlutterPhase);
 
-        // Advance LFO phases for wow and eccentric manually
-        fWowPhase += twoPi * fWowFreq / sampleRate;
-        if (fWowPhase >= twoPi) fWowPhase -= twoPi;
-
-        fEccentricPhase += twoPi * fEccentricFreq / sampleRate;
-        if (fEccentricPhase >= twoPi) fEccentricPhase -= twoPi;
+        const float fEccentricFreq = 0.555f; // 33.3 RPM
+        fEccentricPhase = osc.progressAndWrap(osc.incrementPhase(fEccentricFreq, sampleRate), fEccentricPhase);
 
         // Generate modulation signals
-        float fWowMod = std::sin(fWowPhase) * 0.85f
-            + std::sin(fWowPhase * 2.0f) * 0.15f
-            + std::sin(fEccentricPhase) * 0.15f;
+        float fWowMod = sin(fWowPhase) * 0.85f + sin(fWowPhase * 2.0f) * 0.15f;
+        fWowMod += sin(fEccentricPhase) * 0.15f;
 
-        // Flutter modulation via the two flutter LFO sine oscillators
-        float flutter = flutterLFO1.process() * 0.7f + flutterLFO3.process() * 0.3f;
-        flutter *= 1.0f - 0.3f * std::fabs(flutter * flutter);
-        flutter += std::sin(fEccentricPhase) * flutterAmount * 0.35f;
+        float fFlutter = sin(fFlutterPhase) * 0.7f + sin(fFlutterPhase * 3.0f) * 0.3f;
+        fFlutter *= 1.0f - 0.3f * fabsf(fFlutter * fFlutter);
+        fFlutter += sin(fEccentricPhase) * flutterAmount * 0.35f;
 
-        // Calculate pitch factor with wow and flutter contributions
-        float pitchFactor = 1.0f + (fWowMod * wowAmount * 0.08f) + (flutter * flutterAmount * 0.03f);
+        // Calculate the pitch modulation factor
+        float pitchFactor = 1.0f + (fWowMod * wowAmount * 0.08f) + (fFlutter * flutterAmount * 0.03f);
 
-        // Store input sample
-        inputBuffer[inputPos++] = input;
-
-        // Process buffer if full or pitch changed significantly
-        if (inputPos >= BUFFER_SIZE || std::fabs(pitchFactor - lastPitchFactor) > 0.01f)
-        {
-            pitchTimeWarp.warp.setTransposeFactor(pitchFactor);
-
-            float* inputs[1] = { inputBuffer.data() };
-            float* outputs[1] = { outputBuffer.data() };
-            pitchTimeWarp.warp.process(inputs, BUFFER_SIZE, outputs, BUFFER_SIZE);
-
-            inputPos = 0;
-            outputPos = 0;
+        // Process buffers when full or when pitch changes significantly
+        if (bufferPos >= BUFFER_SIZE - 1 || fabs(pitchFactor - lastPitchFactor) > 0.01f) {
+            processBuffer(pitchFactor, sampleRate);
+            // Buffer has been processed, so we reset position
+            bufferPos = 0;
             lastPitchFactor = pitchFactor;
         }
 
-        // Output current sample from processed block
-        float output = outputBuffer[outputPos];
+        // Get output sample
+        float output = outputBuffer[bufferPos];
 
-        // Advance output position but clamp
-        if (++outputPos >= BUFFER_SIZE)
-            outputPos = BUFFER_SIZE - 1;
+        // Advance buffer position AFTER accessing
+        bufferPos++;
 
         return output;
     }
 
 private:
+    void processBuffer(float pitchFactor, float sampleRate) {
+        // Apply pitch shifting to the entire buffer
+        pitchTimeWarp.warp.setTransposeFactor(pitchFactor);
 
-    class SineLFO {
-    public:
-        SineLFO(float sampleRate_)
-            : sampleRate(sampleRate_), phase(0.0f), rateHz(1.0f), depth(1.0f)
-        {
-        }
+        // Create safer buffer wrappers with proper bounds checking
+        struct SafeBufferWrapper {
+            std::vector<float>& buffer;
+            int size;
 
-        void setSampleRate(float newSampleRate) { sampleRate = newSampleRate; }
-        void setRate(float newRateHz) { rateHz = newRateHz; }
-        void setDepth(float newDepth) { depth = newDepth; }
+            struct SafeChannel {
+                std::vector<float>& buffer;
+                int size;
 
-        float process()
-        {
-            float lfoValue = std::sin(phase) * depth;
+                float& operator[](int i) {
+                    return buffer[i < size ? i : size - 1];
+                }
+            };
 
-            // Advance phase
-            phase += twoPi * rateHz / sampleRate;
-            if (phase >= twoPi)
-                phase -= twoPi;
+            SafeChannel operator[](int) {
+                return SafeChannel{ buffer, (int)buffer.size() };
+            }
+        };
 
-            return lfoValue;
-        }
+        // Use the actual sizes of the buffers
+        SafeBufferWrapper inWrapper{ inputBuffer, (int)inputBuffer.size() };
+        SafeBufferWrapper outWrapper{ outputBuffer, (int)outputBuffer.size() };
 
-        void reset() { phase = 0.0f; }
+        // Make sure the sizes we pass to process are within bounds
+        int inSize = std::min(BUFFER_SIZE, (int)inputBuffer.size());
+        int outSize = std::min(BUFFER_SIZE, (int)outputBuffer.size());
 
-    private:
-        float sampleRate;
-        float phase;
-        float rateHz;
-        float depth;
+        // Process with time-stretching
+        pitchTimeWarp.warp.process(inWrapper, inSize, outWrapper, outSize);
+    }
 
-        constexpr static float twoPi = 6.28318530718f;
-    };
-
-    static const int BUFFER_SIZE = 256;
-
+    static const int BUFFER_SIZE = 257; // Buffer size for block processing
     std::vector<float> inputBuffer;
     std::vector<float> outputBuffer;
-    int inputPos;
-    int outputPos;
+    int bufferPos;
     float lastPitchFactor;
 
     float fWowPhase;
+    float fFlutterPhase;
     float fEccentricPhase;
-
-    SineLFO flutterLFO1;
-    SineLFO flutterLFO3;
-
     Modulation::Osc osc;
     Modulation::PitchShiftAndTimeStretch pitchTimeWarp;
-
-    float sampleRate;
-
-    constexpr static float twoPi = 6.28318530718f;
 };
-
-

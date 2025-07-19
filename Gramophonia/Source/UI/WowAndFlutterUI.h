@@ -116,16 +116,8 @@ public:
     {
         // Repaint the component when sliders change
         if (slider == &fFlutterControl) {
-            float flutterValue = fFlutterControl.getValue();
-            // Map to vibrato parameters
-            float newRate = 0.5f + (flutterValue * 3.5f);  // 0.5 to 4.0
-            float newDepth = flutterValue * 0.33f;         // 0.0 to 0.33
-            
-            audioProcessor.apvts.getParameter("VIBRATO_RATE")->setValueNotifyingHost(
-                audioProcessor.apvts.getParameter("VIBRATO_RATE")->convertTo0to1(newRate));
-            
-            audioProcessor.apvts.getParameter("VIBRATO_DEPTH")->setValueNotifyingHost(
-                audioProcessor.apvts.getParameter("VIBRATO_DEPTH")->convertTo0to1(newDepth));
+            // The flutter parameter is already connected via the attachment
+            // No need to manually update parameters that don't exist
         }
         
         repaint();
