@@ -17,7 +17,6 @@ class WowAndFlutter
 public:
     WowAndFlutter() :
         fWowPhase(0.0f),
-        fFlutterPhase(0.0f),
         fEccentricPhase(0.0f),
         osc(),
         pitchTimeWarp(44100.0f),
@@ -33,7 +32,7 @@ public:
         pitchTimeWarp.clear();
     }
 
-    float processSample(float input, float wowAmount, float flutterAmount, float sampleRate)
+    float processSample(float input, float wowAmount, float sampleRate)
     {
         // Ensure buffer position is always in bounds BEFORE access
         if (bufferPos >= BUFFER_SIZE - 1) {
@@ -45,13 +44,10 @@ public:
         inputBuffer[bufferPos] = input;
 
         // Base frequencies (Hz)
-// WowAndFlutterData.h
         float fWowFreq = 0.5f; // Fixed base frequency for wow
-        float fFlutterFreq = 16.5f + (flutterAmount * 16.5f); // Fixed base frequency, modulated by flutterAmount
 
         // Update phases
         fWowPhase = osc.progressAndWrap(osc.incrementPhase(fWowFreq, sampleRate), fWowPhase);
-        fFlutterPhase = osc.progressAndWrap(osc.incrementPhase(fFlutterFreq, sampleRate), fFlutterPhase);
 
         const float fEccentricFreq = 0.555f; // 33.3 RPM
         fEccentricPhase = osc.progressAndWrap(osc.incrementPhase(fEccentricFreq, sampleRate), fEccentricPhase);
@@ -60,12 +56,8 @@ public:
         float fWowMod = sin(fWowPhase) * 0.85f + sin(fWowPhase * 2.0f) * 0.15f;
         fWowMod += sin(fEccentricPhase) * 0.15f;
 
-        float fFlutter = sin(fFlutterPhase) * 0.7f + sin(fFlutterPhase * 3.0f) * 0.3f;
-        fFlutter *= 1.0f - 0.3f * fabsf(fFlutter * fFlutter);
-        fFlutter += sin(fEccentricPhase) * flutterAmount * 0.35f;
-
         // Calculate the pitch modulation factor
-        float pitchFactor = 1.0f + (fWowMod * wowAmount * 0.08f) + (fFlutter * flutterAmount * 0.03f);
+        float pitchFactor = 1.0f + (fWowMod * wowAmount * 0.08f);
 
         // Process buffers when full or when pitch changes significantly
         if (bufferPos >= BUFFER_SIZE - 1 || fabs(pitchFactor - lastPitchFactor) > 0.01f) {
@@ -127,7 +119,6 @@ private:
     float lastPitchFactor;
 
     float fWowPhase;
-    float fFlutterPhase;
     float fEccentricPhase;
     Modulation::Osc osc;
     Modulation::PitchShiftAndTimeStretch pitchTimeWarp;

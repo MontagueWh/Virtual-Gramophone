@@ -27,16 +27,11 @@ public:
         wowControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
             audioProcessor.apvts, "WOW", fWowControl);
 
-        // Flutter control now affects both rate and depth
         fFlutterControl.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
         fFlutterControl.setTextBoxStyle(juce::Slider::NoTextBox, true, TEXT_BOX_SIZE, TEXT_BOX_SIZE);
-        fFlutterControl.setRange(0.0f, 1.0f);  // Normalized range 0-1
-        fFlutterControl.setValue(0.0f);        // Start at 0
         fFlutterControl.addListener(this);
         addAndMakeVisible(fFlutterControl);
 
-        // We'll manually update vibrato rate and depth when flutter control changes
-        // Remove the standard attachment since we're controlling multiple parameters
         flutterControlAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
             audioProcessor.apvts, "FLUTTER", fFlutterControl);
     }
@@ -112,14 +107,9 @@ public:
             g.drawFittedText("FLUTTER", margin, 80, 80, 30, juce::Justification::left, 1);
     }
 
-    void sliderValueChanged(juce::Slider* slider) override
+    void sliderValueChanged(juce::Slider* /*slider*/) override
     {
         // Repaint the component when sliders change
-        if (slider == &fFlutterControl) {
-            // The flutter parameter is already connected via the attachment
-            // No need to manually update parameters that don't exist
-        }
-        
         repaint();
     }
 
@@ -130,7 +120,7 @@ public:
     }
 
     juce::Slider fWowControl;
-    juce::Slider fFlutterControl;  // Now controls both rate and depth
+    juce::Slider fFlutterControl;
 
 private:
     typedef std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> SliderAttachmentPtr;

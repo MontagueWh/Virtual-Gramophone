@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="K7SXPp" name="Gramophonia" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginManufacturer="Montague Whishaw"
+              companyEmail="montague2.whishaw@live.uwe.ac.uk">
   <MAINGROUP id="GPAhlA" name="Gramophonia">
     <GROUP id="{2B9569E5-B5E0-9FA9-ABAC-18C0FF36F298}" name="Source">
       <FILE id="tKZDIj" name="PluginEditor.cpp" compile="1" resource="0"

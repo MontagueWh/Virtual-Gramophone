@@ -10,8 +10,7 @@
 
 #include "PluginProcessor.h"
 #include "UI/InfoButtonUI.h"
-#include "UI/WowAndFlutterUI.h"
-#include "UI/VinylCrackleUI.h" // Add this include
+#include "UI/WowAndFlutterUI.h" // Make sure this include is present
 #include <JuceHeader.h>
 
 //==============================================================================
@@ -27,10 +26,24 @@ public:
 
     void paint(juce::Graphics&) override;
     void resized() override;
+    void setupSections();
+    void drawStylusLabels(juce::Graphics& g);
     void sliderValueChanged(juce::Slider* slider) override;
+
+    // Removed compress control
+    juce::Slider fVibratoDepthControl;
+    juce::Slider fVibratoRateControl;
 
 private:
     float sliderToAplhaValue(juce::Slider& slider);
+
+    typedef std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> SliderAttachmentPtr;
+
+    // Removed compress control attachment
+    SliderAttachmentPtr vibratoDepthControlAttach;
+    SliderAttachmentPtr vibratoRateControlAttach;
+
+    juce::Rectangle<int> picture_section_;
 
     VirtualGramoAudioProcessor& audioProcessor;
 
@@ -38,6 +51,8 @@ private:
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(StylusUI)
 };
+
+// WowAndFlutterUI class removed as it's now in WowAndFlutterUI.h
 
 class VirtualGramoUIEditor : public juce::AudioProcessorEditor,
                                        public juce::Slider::Listener
@@ -64,8 +79,7 @@ private:
 
     InfoButton infoButtonUI;
     StylusUI stylusUI;
-    WowAndFlutterUI wowFlutterUI;
-    VinylCrackleUI vinylCrackleUI; // Add VinylCrackleUI
+    WowAndFlutterUI wowFlutterUI; // Keep this member variable
 
     typedef std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> SliderAttatchmentPtr;
 
