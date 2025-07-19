@@ -60,7 +60,9 @@ private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameters();
 
     juce::dsp::Chorus<float> chorus_;
-    juce::dsp::IIR::Filter<float> filter_;
+    juce::dsp::IIR::Filter<float> filter_ch1_;
+    juce::dsp::IIR::Filter<float> filter_ch2_;
+    juce::dsp::DryWetMixer<float> mix_;
     WowAndFlutter wowAndFlutter_; // Add WowAndFlutter member
 
     //==============================================================================
